@@ -1,7 +1,12 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 
-const app = new Hono()
+// Cloudflare Bindings の型定義
+type Bindings = {
+  OPENAI_API_KEY: string
+}
+
+const app = new Hono<{ Bindings: Bindings }>()
 
 // 開発モード設定
 const USE_MOCK_RESPONSES = true
@@ -300,34 +305,18 @@ app.post('/api/ai/chat', async (c) => {
 ・学習内容: ${session.analysis.split('\n\n')[0]}`
     }
     
-    // OpenAI APIキーの確認
-    const apiKey = c.env?.OPENAI_API_KEY
+    // OpenAI APIキーの確認（型安全）
+    const apiKey = c.env.OPENAI_API_KEY?.trim()
     console.log('🔑 API Key check:', apiKey ? 'Present (length: ' + apiKey.length + ')' : 'Missing')
+    console.log('🔑 API Key preview:', apiKey ? apiKey.substring(0, 20) + '...' : 'No key')
     
     if (!apiKey) {
-      // フォールバック回答を提供
-      const fallbackAnswer = `申し訳ございません。現在AIシステムのメンテナンス中です。
-
-📚 学習に関するご質問は、以下の方法で解決できる場合があります：
-
-✅ **基本的な問題解決法**
-• 段階的学習システムで Step 1 から順番に進む
-• 確認問題で理解度をチェック
-• 類題で応用力を身につける
-
-✅ **よくある質問**
-• 数学の問題：公式の確認、計算手順の見直し
-• 英語の問題：文法ルール、語彙の確認
-
-🎓 **プログラミングのKOBEYA より**
-分からないことがあれば、遠慮なく先生に質問してくださいね！`
-
       return c.json({
-        ok: true,
-        question: question || '画像について',
-        answer: fallbackAnswer,
+        ok: false,
+        error: 'api_key_missing',
+        message: 'OPENAI_API_KEY環境変数が設定されていません',
         timestamp: new Date().toISOString()
-      }, 200)
+      }, 500)
     }
     
     // OpenAI APIに送信
@@ -390,34 +379,15 @@ ${contextInfo}
       const errorText = await openaiResponse.text()
       console.error('❌ OpenAI API error:', openaiResponse.status, errorText)
       
-      // API エラーの場合もフォールバック回答を提供
-      const fallbackAnswer = `申し訳ございません。現在AIシステムが一時的に利用できません。
-
-🎯 **お役に立てる学習ヒント**
-
-${image ? `📷 **画像の学習について**
-• 問題文をもう一度よく読んでみましょう
-• 図表やグラフがある場合は、数値や関係性に注目
-• 分からない用語があれば、段階的学習で基礎を確認` : ''}
-
-📚 **学習のコツ**
-• 基本概念をしっかりと理解する
-• 類似問題で応用力を身につける  
-• 間違えた問題は何度も復習する
-
-💡 **次のステップ**
-• 段階的学習システムを活用
-• 確認問題で理解度をチェック
-• 分からないことは先生に質問
-
-🌟 頑張って学習を続けてくださいね！`
-
+      // デバッグ用：詳細なエラー情報を返す
       return c.json({
-        ok: true,
-        question: question || '画像について', 
-        answer: fallbackAnswer,
+        ok: false,
+        error: 'openai_api_error',
+        message: `OpenAI API Error - Status: ${openaiResponse.status}`,
+        details: errorText,
+        status: openaiResponse.status,
         timestamp: new Date().toISOString()
-      }, 200)
+      }, 500)
     }
     
     const aiResult = await openaiResponse.json()
