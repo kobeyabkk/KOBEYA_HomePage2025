@@ -638,6 +638,49 @@ app.get('/ai-chat/:sessionId', (c) => {
           padding: 2rem;
           font-style: italic;
         }
+        
+        /* Cropper.js のハンドルサイズを大きく調整 - メイン画面と同じサイズに */
+        .cropper-point {
+          width: 12px !important;
+          height: 12px !important;
+          background-color: #7c3aed !important;
+          border-radius: 50% !important;
+          opacity: 0.9 !important;
+        }
+        
+        .cropper-point:hover {
+          background-color: #5b21b6 !important;
+          opacity: 1 !important;
+        }
+        
+        /* 角の四角ハンドル */
+        .cropper-point.point-nw,
+        .cropper-point.point-ne,
+        .cropper-point.point-sw,
+        .cropper-point.point-se {
+          width: 14px !important;
+          height: 14px !important;
+          border-radius: 3px !important;
+        }
+        
+        /* 辺の中央ハンドル */
+        .cropper-point.point-n,
+        .cropper-point.point-s,
+        .cropper-point.point-e,
+        .cropper-point.point-w {
+          width: 12px !important;
+          height: 12px !important;
+          border-radius: 50% !important;
+        }
+        
+        /* クロップボックスのボーダーも見やすく */
+        .cropper-crop-box {
+          border: 2px solid #7c3aed !important;
+        }
+        
+        .cropper-view-box {
+          outline: 1px solid rgba(124, 58, 237, 0.75) !important;
+        }
         </style>
     </head>
     <body>
