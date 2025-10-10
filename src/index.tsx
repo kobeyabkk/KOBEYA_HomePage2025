@@ -300,11 +300,24 @@ app.post('/api/ai/chat', async (c) => {
 ・学習内容: ${session.analysis.split('\n\n')[0]}`
     }
     
+    // OpenAI APIキーの確認
+    const apiKey = c.env?.OPENAI_API_KEY
+    console.log('🔑 API Key check:', apiKey ? 'Present (length: ' + apiKey.length + ')' : 'Missing')
+    
+    if (!apiKey) {
+      return c.json({
+        ok: false,
+        error: 'api_key_missing',
+        message: 'AI質問処理でエラーが発生しました: OpenAI APIキーが設定されていません',
+        timestamp: new Date().toISOString()
+      }, 500)
+    }
+    
     // OpenAI APIに送信
     const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${c.env?.OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -357,7 +370,9 @@ ${contextInfo}
     })
     
     if (!openaiResponse.ok) {
-      throw new Error(`OpenAI API error: ${openaiResponse.status}`)
+      const errorText = await openaiResponse.text()
+      console.error('❌ OpenAI API error:', openaiResponse.status, errorText)
+      throw new Error(`OpenAI API error: ${openaiResponse.status} - ${errorText}`)
     }
     
     const aiResult = await openaiResponse.json()
