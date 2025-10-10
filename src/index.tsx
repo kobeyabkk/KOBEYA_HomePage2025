@@ -1816,6 +1816,14 @@ app.get('/study-partner', (c) => {
                     </button>
                 </div>
 
+                <!-- AIに質問ボタン -->
+                <div style="margin-bottom: 1rem;">
+                    <button id="aiQuestionMainButton" style="width: 100%; border-radius: 0.5rem; padding: 1rem; background-color: #7c3aed; color: white; font-weight: 500; border: none; cursor: pointer; min-height: 56px; font-size: 16px;">
+                        <i class="fas fa-robot" style="margin-right: 0.5rem;"></i>
+                        🤖 AIに質問
+                    </button>
+                </div>
+
                 <!-- 写真アップロード -->
                 <div style="margin-bottom: 2.5rem;">
                     <!-- カメラ撮影ボタン -->
@@ -1962,6 +1970,15 @@ app.get('/study-partner', (c) => {
           const btnLogin = document.getElementById('btnLogin');
           if (btnLogin) {
             btnLogin.addEventListener('click', handleLogin);
+          }
+          
+          // メインのAIに質問ボタン
+          const aiQuestionMainButton = document.getElementById('aiQuestionMainButton');
+          if (aiQuestionMainButton) {
+            aiQuestionMainButton.addEventListener('click', function() {
+              console.log('🤖 Main AI question button clicked');
+              openAIChatDirect();
+            });
           }
           
           // カメラボタン
@@ -2878,6 +2895,25 @@ app.get('/study-partner', (c) => {
           // 新しいウインドウでAIチャットを開く
           const windowFeatures = 'width=600,height=700,scrollbars=yes,resizable=yes,status=no,location=no,toolbar=no,menubar=no';
           const aiWindow = window.open('/ai-chat/' + currentSession.sessionId, 'ai-chat', windowFeatures);
+          
+          if (!aiWindow) {
+            alert('❌ ポップアップがブロックされました。ポップアップを許可してください。');
+          } else {
+            // ウインドウにフォーカスを移す
+            aiWindow.focus();
+          }
+        }
+        
+        // 学習セッション無しでAIチャットを開く（メインボタン用）
+        function openAIChatDirect() {
+          console.log('🤖 Opening direct AI chat window');
+          
+          // 汎用的なセッションIDを生成
+          const directSessionId = 'direct_' + Date.now() + '_' + Math.random().toString(36).substring(7);
+          
+          // 新しいウインドウでAIチャットを開く
+          const windowFeatures = 'width=600,height=700,scrollbars=yes,resizable=yes,status=no,location=no,toolbar=no,menubar=no';
+          const aiWindow = window.open('/ai-chat/' + directSessionId, 'ai-chat', windowFeatures);
           
           if (!aiWindow) {
             alert('❌ ポップアップがブロックされました。ポップアップを許可してください。');
