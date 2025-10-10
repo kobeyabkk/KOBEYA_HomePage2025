@@ -9,7 +9,7 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>()
 
 // 開発モード設定
-const USE_MOCK_RESPONSES = true
+const USE_MOCK_RESPONSES = false
 
 // 学習セッション管理（インメモリ）
 const learningSessions = new Map()
@@ -62,52 +62,364 @@ app.post('/api/analyze-and-learn', async (c) => {
       throw new Error('画像ファイルが必要です')
     }
     
-    // 模擬的な画像解析結果 + 段階学習データ生成
     const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
     
-    // 問題タイプをランダムに決定（実際は画像解析で判定）
-    const problemTypes = ['quadratic_equation', 'english_grammar', 'physics_motion']
-    const problemType = problemTypes[Math.floor(Math.random() * problemTypes.length)]
+    // OpenAI API Key の確認
+    const apiKey = c.env.OPENAI_API_KEY?.trim()
+    console.log('🔑 API Key check:', apiKey ? 'Present (length: ' + apiKey.length + ')' : 'Missing')
     
-    let learningData = generateLearningData(problemType)
-    
-    // 学習セッションを保存
-    const learningSession = {
-      sessionId,
-      appkey,
-      sid,
-      problemType,
-      analysis: learningData.analysis, // 解析メッセージ（文字列）
-      steps: learningData.steps,
-      confirmationProblem: learningData.confirmationProblem,
-      similarProblems: learningData.similarProblems, // 類似問題データを直接追加
-      currentStep: 0, // 0から開始（最初のステップは steps[0]）
-      status: 'learning',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+    if (!apiKey) {
+      console.error('❌ OPENAI_API_KEY not found - using fallback')
+      // フォールバック: ダミーデータを使用
+      const problemTypes = ['quadratic_equation', 'english_grammar']
+      const problemType = problemTypes[Math.floor(Math.random() * problemTypes.length)]
+      let learningData = generateLearningData(problemType)
+      learningData.analysis = `【AI学習アシスタント】\n\n⚠️ AI接続でエラーが発生しました。サンプル問題で学習を開始します。\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！`
+      
+      // 学習セッションを保存（フォールバック）
+      const learningSession = {
+        sessionId,
+        appkey,
+        sid,
+        problemType,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: 0,
+        status: 'learning',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }
+      learningSessions.set(sessionId, learningSession)
+      
+      return c.json({
+        ok: true,
+        sessionId,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: learningSession.steps[0],
+        totalSteps: learningSession.steps.length,
+        status: 'learning',
+        message: '段階学習を開始します'
+      })
     }
     
-    learningSessions.set(sessionId, learningSession)
-    console.log('📚 Learning session created:', sessionId)
-    console.log('🔍 Session similarProblems:', learningSession.similarProblems ? 'Present' : 'Missing')
-    console.log('🔍 SimilarProblems count:', learningSession.similarProblems?.length || 0)
-    
-    const response = {
-      ok: true,
-      sessionId: sessionId,
-      analysis: learningData.analysis,
-      steps: learningData.steps,
-      confirmationProblem: learningData.confirmationProblem,
-      similarProblems: learningData.similarProblems, // 類似問題データを追加
-      currentStep: learningSession.steps[0], // 最初のステップを返す
-      totalSteps: learningSession.steps.length,
-      status: 'learning',
-      message: 'AI解析完了 - 段階学習を開始します',
-      timestamp: new Date().toISOString()
+    // 画像サポート形式チェック
+    if (!['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(imageField.type)) {
+      console.warn('⚠️ Unsupported image type:', imageField.type)
+      // フォールバック処理
+      const problemTypes = ['quadratic_equation', 'english_grammar']
+      const problemType = problemTypes[Math.floor(Math.random() * problemTypes.length)]
+      let learningData = generateLearningData(problemType)
+      learningData.analysis = `【AI学習アシスタント】\n\n⚠️ サポートされていない画像形式です。サンプル問題で学習を開始します。\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！`
+      
+      const learningSession = {
+        sessionId,
+        appkey,
+        sid,
+        problemType,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: 0,
+        status: 'learning',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }
+      learningSessions.set(sessionId, learningSession)
+      
+      return c.json({
+        ok: true,
+        sessionId,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: learningSession.steps[0],
+        totalSteps: learningSession.steps.length,
+        status: 'learning',
+        message: '段階学習を開始します'
+      })
     }
     
-    console.log('📸 Analysis and learning started successfully')
-    return c.json(response, 200)
+    // 画像をBase64に変換（Cloudflare Workers環境対応）
+    let base64Image
+    try {
+      const arrayBuffer = await imageField.arrayBuffer()
+      const uint8Array = new Uint8Array(arrayBuffer)
+      
+      if (uint8Array.length > 500000) { // 500KB制限
+        throw new Error('Image too large for Base64 encoding')
+      }
+      
+      // Cloudflare Workers環境でのBase64エンコーディング
+      let binary = ''
+      for (let i = 0; i < uint8Array.length; i++) {
+        binary += String.fromCharCode(uint8Array[i])
+      }
+      base64Image = btoa(binary)
+    } catch (base64Error) {
+      console.error('❌ Base64 encoding failed:', base64Error)
+      // フォールバック処理
+      const problemTypes = ['quadratic_equation', 'english_grammar']
+      const problemType = problemTypes[Math.floor(Math.random() * problemTypes.length)]
+      let learningData = generateLearningData(problemType)
+      learningData.analysis = `【AI学習アシスタント】\n\n⚠️ 画像処理でエラーが発生しました。サンプル問題で学習を開始します。\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！`
+      
+      const learningSession = {
+        sessionId,
+        appkey,
+        sid,
+        problemType,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: 0,
+        status: 'learning',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }
+      learningSessions.set(sessionId, learningSession)
+      
+      return c.json({
+        ok: true,
+        sessionId,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: learningSession.steps[0],
+        totalSteps: learningSession.steps.length,
+        status: 'learning',
+        message: '段階学習を開始します'
+      })
+    }
+    
+    const dataUrl = `data:${imageField.type};base64,${base64Image}`
+    console.log('🤖 Starting OpenAI Vision API analysis...')
+    
+    // OpenAI Vision API 呼び出し
+    try {
+      const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o',
+          messages: [
+            {
+              role: 'system',
+              content: `あなたは「プログラミングのKOBEYA」の学習分析AIです。アップロードされた画像を分析し、適切な学習コンテンツを作成してください。
+
+【分析と学習コンテンツ作成の要求】
+
+【回答形式】
+以下のJSON形式で回答してください：
+{
+  "subject": "数学|英語|プログラミング|その他",
+  "problemType": "custom",
+  "difficulty": "basic|intermediate|advanced", 
+  "analysis": "画像分析結果の詳細説明（日本語、温かい励ましの言葉を含む）",
+  "confidence": 0.0-1.0,
+  "steps": [
+    {
+      "stepNumber": 0,
+      "instruction": "ステップ1の指導内容（なぜそうなるか考えさせる問いかけ形式）",
+      "type": "choice",
+      "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
+      "correctAnswer": "A",
+      "explanation": "詳しい解説（温かい励ましと次への誘導を含む）"
+    }
+  ],
+  "confirmationProblem": {
+    "question": "確認問題の内容",
+    "type": "choice",
+    "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
+    "correctAnswer": "A",
+    "explanation": "確認問題の解説"
+  },
+  "similarProblems": [
+    {
+      "problemNumber": 1,
+      "question": "類似問題1の内容",
+      "type": "choice",
+      "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
+      "correctAnswer": "A",
+      "explanation": "類似問題1の解説",
+      "difficulty": "basic"
+    }
+  ]
+}
+
+【重要な指示】
+- ChatGPT学習支援モードで回答してください
+- 段階的な問いかけで生徒の思考を促進
+- 即答せず、考えさせる指導スタイル
+- 温かく励ましの言葉を多用
+- 各ステップは前のステップの理解を前提とした構成
+- 説明は温かく励ましの言葉を含める
+- すべて日本語で作成`
+            },
+            {
+              role: 'user',
+              content: [
+                {
+                  type: 'text',
+                  text: 'この画像を分析して、適切な学習内容を提案してください。'
+                },
+                {
+                  type: 'image_url',
+                  image_url: {
+                    url: dataUrl,
+                    detail: 'high'
+                  }
+                }
+              ]
+            }
+          ],
+          max_tokens: 2000,
+          temperature: 0.3
+        })
+      })
+      
+      if (!openaiResponse.ok) {
+        const errorText = await openaiResponse.text()
+        console.error('❌ OpenAI API error:', openaiResponse.status, errorText)
+        throw new Error(`OpenAI API Error: ${openaiResponse.status}`)
+      }
+      
+      const aiContent = (await openaiResponse.json())?.choices?.[0]?.message?.content || ''
+      const jsonMatch = aiContent.match(/\{[\s\S]*\}/)
+      let aiAnalysis
+      
+      if (jsonMatch) {
+        try {
+          aiAnalysis = JSON.parse(jsonMatch[0])
+          console.log('🤖 AI分析成功:', {
+            subject: aiAnalysis.subject,
+            problemType: aiAnalysis.problemType,
+            difficulty: aiAnalysis.difficulty,
+            confidence: aiAnalysis.confidence
+          })
+        } catch (parseError) {
+          console.error('❌ AI分析結果のJSON解析エラー:', parseError)
+          throw new Error('AI分析結果の解析に失敗しました')
+        }
+      } else {
+        console.error('❌ AI分析結果にJSONが見つかりません:', aiContent.substring(0, 200))
+        throw new Error('AI分析結果の形式が不正です')
+      }
+      
+      // AI分析結果から学習データを構築
+      const selectedProblemType = aiAnalysis.problemType || 'custom'
+      
+      // AIが生成した学習データを使用（カスタムコンテンツ）
+      let learningData
+      if (aiAnalysis.steps && Array.isArray(aiAnalysis.steps)) {
+        // AIが完全な学習データを生成した場合
+        learningData = {
+          analysis: `【AI学習アシスタント分析結果】\n\n${aiAnalysis.analysis}\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！`,
+          steps: aiAnalysis.steps.map(step => ({
+            ...step,
+            completed: false,
+            attempts: []
+          })),
+          confirmationProblem: aiAnalysis.confirmationProblem || {
+            question: "確認問題: 学習内容を理解できましたか？",
+            type: "choice",
+            options: ["A) よく理解できた", "B) 少し理解できた", "C) もう一度説明が欲しい", "D) 全く分からない"],
+            correctAnswer: "A",
+            explanation: "素晴らしい！理解が深まりましたね。",
+            attempts: []
+          },
+          similarProblems: aiAnalysis.similarProblems || []
+        }
+      } else {
+        // AIが部分的なデータしか生成しなかった場合のフォールバック
+        console.log('⚠️ AI did not generate complete steps, using fallback')
+        learningData = generateLearningData('quadratic_equation')
+        learningData.analysis = `【AI学習アシスタント分析結果】\n\n${aiAnalysis.analysis}\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！`
+      }
+      
+      // 学習セッションを保存（AI分析成功）
+      const learningSession = {
+        sessionId,
+        appkey,
+        sid,
+        problemType: selectedProblemType,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: 0,
+        status: 'learning',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }
+      learningSessions.set(sessionId, learningSession)
+      
+      console.log('✅ AI analysis completed successfully')
+      
+      return c.json({
+        ok: true,
+        sessionId,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: learningSession.steps[0],
+        totalSteps: learningSession.steps.length,
+        status: 'learning',
+        message: 'AI解析完了 - 段階学習を開始します'
+      })
+      
+    } catch (aiError) {
+      console.error('❌ OpenAI API呼び出しエラー:', aiError)
+      
+      // AI分析に失敗した場合の安全なフォールバック
+      const problemTypes = ['quadratic_equation', 'english_grammar']
+      const selectedProblemType = problemTypes[Math.floor(Math.random() * problemTypes.length)]
+      let learningData = generateLearningData(selectedProblemType)
+      learningData.analysis = '【AI学習アシスタント】\n\n⚠️ AI分析でエラーが発生しました。画像の内容を推測してサンプル問題で学習を開始します。\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！'
+      
+      // 学習セッションを保存（AI分析エラーフォールバック）
+      const learningSession = {
+        sessionId,
+        appkey,
+        sid,
+        problemType: selectedProblemType,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: 0,
+        status: 'learning',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }
+      learningSessions.set(sessionId, learningSession)
+      
+      return c.json({
+        ok: true,
+        sessionId,
+        analysis: learningData.analysis,
+        steps: learningData.steps,
+        confirmationProblem: learningData.confirmationProblem,
+        similarProblems: learningData.similarProblems,
+        currentStep: learningSession.steps[0],
+        totalSteps: learningSession.steps.length,
+        status: 'learning',
+        message: 'フォールバック動作 - 段階学習を開始します'
+      })
+    }
+
     
   } catch (error) {
     console.error('❌ Analyze and learn error:', error)
@@ -1269,7 +1581,10 @@ app.post('/api/similar/check', async (c) => {
       isCorrect
     })
     
-    // 回答履歴を記録
+    // 回答履歴を記録（attemptsが未定義の場合は初期化）
+    if (!similarProblem.attempts) {
+      similarProblem.attempts = [];
+    }
     similarProblem.attempts.push({
       answer,
       isCorrect,
@@ -1288,7 +1603,7 @@ app.post('/api/similar/check', async (c) => {
     }
     
     const completedProblems = session.similarProblems.filter(p => 
-      p.attempts.some(attempt => attempt.isCorrect)
+      p.attempts && p.attempts.some(attempt => attempt.isCorrect)
     ).length
     
     let nextAction = 'continue'
