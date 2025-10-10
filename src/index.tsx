@@ -816,9 +816,10 @@ app.get('/ai-chat/:sessionId', (c) => {
             setTimeout(() => {
                 if (window.Cropper && cropImage) {
                     cropper = new window.Cropper(cropImage, {
-                        aspectRatio: NaN,
+                        aspectRatio: NaN, // フリーサイズ
                         viewMode: 1,
-                        autoCropArea: 0.95,
+                        dragMode: 'move', // メイン画面と同じ設定
+                        autoCropArea: 0.95, // ほぼ全体を初期選択（メイン画面と同じ）
                         responsive: true,
                         restore: false,
                         guides: true,
@@ -828,7 +829,7 @@ app.get('/ai-chat/:sessionId', (c) => {
                         cropBoxResizable: true,
                         toggleDragModeOnDblclick: false,
                         ready: function() {
-                            console.log('✂️ AI Chat Cropper initialized');
+                            console.log('✂️ AI Chat Cropper initialized with large crop area');
                         }
                     });
                 }
