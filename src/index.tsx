@@ -14,6 +14,35 @@ const USE_MOCK_RESPONSES = false
 // 学習セッション管理（インメモリ）
 const learningSessions = new Map()
 
+// 生徒情報データベース（必要最小限追加）
+interface StudentInfo {
+  studentId: string
+  name: string
+  grade: number
+  subjects: string[]
+  weakSubjects: string[]
+  lastLogin: string
+}
+
+const studentDatabase: Record<string, StudentInfo> = {
+  'JS2-04': {
+    studentId: 'JS2-04',
+    name: '田中太郎',
+    grade: 2,
+    subjects: ['数学', '理科'],
+    weakSubjects: ['英語'],
+    lastLogin: new Date().toISOString()
+  },
+  'test123': {
+    studentId: 'test123',
+    name: 'テスト生徒',
+    grade: 1,
+    subjects: ['国語'],
+    weakSubjects: ['数学'],
+    lastLogin: new Date().toISOString()
+  }
+}
+
 console.log('🚀 Study Partner server starting...')
 
 // CORS設定
@@ -46,6 +75,41 @@ app.get('/api/health', (c) => {
   return c.json(response, 200)
 })
 
+// ログインAPI（最小限追加）
+app.post('/api/login', async (c) => {
+  try {
+    const { appKey, studentId } = await c.req.json()
+    console.log('🔑 Login attempt:', { appKey, studentId })
+    
+    const validAppKeys = ['KOBEYA2024', '180418']
+    if (!validAppKeys.includes(appKey)) {
+      return c.json({ success: false, message: 'APP_KEYが正しくありません' }, 401)
+    }
+    
+    const studentInfo = studentDatabase[studentId]
+    if (!studentInfo) {
+      return c.json({ success: false, message: '生徒IDが見つかりません' }, 404)
+    }
+    
+    studentInfo.lastLogin = new Date().toISOString()
+    
+    return c.json({ 
+      success: true, 
+      message: 'ログインに成功しました', 
+      studentInfo: {
+        studentId: studentInfo.studentId,
+        name: studentInfo.name,
+        grade: studentInfo.grade,
+        subjects: studentInfo.subjects,
+        weakSubjects: studentInfo.weakSubjects
+      }
+    })
+  } catch (error) {
+    console.error('❌ Login error:', error)
+    return c.json({ success: false, message: 'ログイン処理でエラーが発生しました' }, 500)
+  }
+})
+
 // 画像解析 + 段階学習開始 endpoint
 app.post('/api/analyze-and-learn', async (c) => {
   console.log('📸 Analyze and learn endpoint called')
@@ -64,6 +128,10 @@ app.post('/api/analyze-and-learn', async (c) => {
     }
     
     const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    
+    // 生徒情報の取得
+    const studentInfo = studentDatabase[sid]
+    console.log('👨‍🎓 Student info:', studentInfo ? `${studentInfo.name} (中学${studentInfo.grade}年)` : 'Not found')
     
     // OpenAI API Key の確認
     const apiKey = c.env.OPENAI_API_KEY?.trim()
@@ -217,16 +285,25 @@ app.post('/api/analyze-and-learn', async (c) => {
           messages: [
             {
               role: 'system',
-              content: `あなたは日本の中学校の先生として、バンコク「プログラミングのKOBEYA」で中学1年生〜3年生の生徒をサポートしています。画像を分析し、中学生に分かりやすい学習内容を作成してください。
+              content: `あなたは日本の中学校の先生として、バンコク「プログラミングのKOBEYA」で中学1年生〜3年生の生徒をサポートしています。
 
-【指導対象】
-中学1年生〜3年生（12歳〜15歳）のバンコク在住日本人生徒
+【現在指導中の生徒情報】
+${studentInfo ? 
+  `生徒名：${studentInfo.name}
+学年：中学${studentInfo.grade}年生
+得意分野：${studentInfo.subjects.join('・')}
+苦手分野：${studentInfo.weakSubjects.join('・')}
+
+この生徒の学年レベル（中学${studentInfo.grade}年）に合わせて指導してください。` : 
+  '生徒情報なし（一般的な中学生レベルで指導してください）'
+}
 
 【指導方針】
 - 中学生向けのやさしい敬語で説明
 - 海外在住への配慮：「日本でも同じ内容を学習するよ」「心配しないで大丈夫」
 - 段階的思考を促す問いかけ形式
 - 温かい励ましと共感を含む指導
+- 生徒の得意/苦手分野を考慮した説明
 
 【学年判定ルール（文部科学省学習指導要領準拠）】
 ■数学
@@ -262,7 +339,7 @@ app.post('/api/analyze-and-learn', async (c) => {
   "subject": "数学|英語|プログラミング|その他",
   "problemType": "custom",
   "difficulty": "basic|intermediate|advanced", 
-  "analysis": "【推定学年】中学○年（根拠：使用されている用語「○○」「××」から判定）\\n\\n①問題の整理\\n（どんな問題か、何を求めるかを整理）\\n\\n②使う知識\\n（この問題を解くために必要な基礎知識）\\n\\n③手順\\n（解き方の流れ）\\n\\n④答え\\n（解答と計算過程）\\n\\n⑤確認・振り返り\\n（解答の確認方法、類似問題への応用）\\n\\n※中学生向けのやさしい言葉で、励ましの言葉も含めて説明",
+  "analysis": "問題を確認しました！一緒に段階的に解いていきましょう。",
   "confidence": 0.0-1.0,
   "steps": [
     {
@@ -296,6 +373,9 @@ app.post('/api/analyze-and-learn', async (c) => {
 
 【重要な指示】
 - ChatGPT学習支援モードで回答してください
+- 画像を正確に分析し、教科・難易度を判定してください
+- 学年推定は行わない（生徒情報を活用）
+- analysisは生徒向けの簡潔で励ましのメッセージのみ
 - 段階的な問いかけで生徒の思考を促進
 - 即答せず、考えさせる指導スタイル
 - 温かく励ましの言葉を多用
@@ -2700,21 +2780,29 @@ app.get('/study-partner', (c) => {
           }
         }
         
-        // 解析結果表示
+        // 解析結果表示（生徒向け簡潔表示）
         function displayAnalysisResult(result) {
           const analysisResult = document.getElementById('analysisResult');
           const analysisContent = document.getElementById('analysisContent');
-          const outPre = document.getElementById('out');
           
-          if (analysisContent && result.analysis) {
-            analysisContent.innerHTML = result.analysis;
+          if (analysisContent) {
+            // 生徒向けの簡潔で励ましのメッセージのみ表示
+            const studentMessage = 
+              '<div style="font-size: 0.9rem; color: #374151;">' +
+                '<strong>📋 問題を分析しました！</strong><br>' +
+                (result.subject || '学習') + 'の問題ですね。<br>' +
+                '段階的に一緒に解いていきましょう！' +
+              '</div>';
+            analysisContent.innerHTML = studentMessage;
+            
             if (analysisResult) {
               analysisResult.style.display = 'block';
             }
           }
           
-          if (outPre) {
-            outPre.textContent = JSON.stringify(result, null, 2);
+          // 詳細分析は内部ログのみ（生徒には非表示）
+          if (result.analysis) {
+            console.log('🔍 詳細分析結果（内部用）:', result.analysis);
           }
         }
         
