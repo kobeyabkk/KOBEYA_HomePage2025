@@ -1875,6 +1875,11 @@ function generateLearningData(problemType) {
   }
 }
 
+// ルートパスハンドラー
+app.get('/', (c) => {
+  return c.redirect('/study-partner', 302)
+})
+
 // Study Partner SPA - 完全復元版
 app.get('/study-partner', (c) => {
   console.log('📱 Study Partner SPA requested')
