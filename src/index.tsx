@@ -1613,8 +1613,8 @@ app.get('/ai-chat/:sessionId', (c) => {
             }
             
             questionInput.value = '';
-            const imageData = currentImageData;
-            clearImage(); // 送信後は画像をクリア
+            const imageData = currentImageData; // 画像データを保存
+            // 注意: clearImage()は送信後に実行（画像データ使用前にクリアしない）
             
             // 送信ボタンを無効化
             sendButton.disabled = true;
@@ -1623,6 +1623,16 @@ app.get('/ai-chat/:sessionId', (c) => {
             const thinkingMessage = addMessage('', 'ai', true);
             
             try {
+                console.log('📤 AI Chat: Sending request to server:');
+                console.log('  - sessionId:', sessionId);
+                console.log('  - question:', question || '(empty)');
+                console.log('  - imageData exists:', !!imageData);
+                console.log('  - imageData type:', typeof imageData);
+                if (imageData) {
+                    console.log('  - imageData length:', imageData.length);
+                    console.log('  - imageData preview:', imageData.substring(0, 50) + '...');
+                }
+                
                 const response = await fetch('/api/ai/chat', {
                     method: 'POST',
                     headers: {
@@ -1650,6 +1660,11 @@ app.get('/ai-chat/:sessionId', (c) => {
                 console.error('AI Chat error:', error);
                 thinkingMessage.remove();
                 addMessage('申し訳ございません。通信エラーが発生しました。', 'ai');
+            }
+            
+            // 送信完了後に画像をクリア
+            if (imageData) {
+                clearImage();
             }
             
             // 送信ボタンを有効化
