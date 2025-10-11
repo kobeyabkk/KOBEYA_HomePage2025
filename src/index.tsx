@@ -773,6 +773,18 @@ app.post('/api/ai/chat', async (c) => {
     if (image) {
       console.log('  - image length:', image.length)
       console.log('  - image starts with:', image.substring(0, 30) + '...')
+      
+      // Base64画像データの検証とクリーニング
+      if (!image.startsWith('data:image/')) {
+        console.log('⚠️  Warning: Image does not start with data:image/ prefix')
+      }
+      
+      // 不正な文字をチェック
+      const base64Part = image.split(',')[1]
+      if (base64Part) {
+        console.log('  - base64 part length:', base64Part.length)
+        console.log('  - base64 valid chars:', /^[A-Za-z0-9+/=]*$/.test(base64Part))
+      }
     }
     
     if (!sessionId || (!question?.trim() && !image)) {
@@ -877,7 +889,7 @@ ${contextInfo}
               {
                 type: 'image_url',
                 image_url: {
-                  url: image,
+                  url: image, // data:image/jpeg;base64,プレフィックス付きで送信
                   detail: 'high'
                 }
               }
@@ -1322,7 +1334,7 @@ app.get('/ai-chat/:sessionId', (c) => {
         
         sendButton.addEventListener('click', sendQuestion);
         
-        // 画像機能のイベントリスナー
+        // 画像機能のイベントリスナー（AI質問チャット内では認証済みと仮定）
         cameraBtn.addEventListener('click', () => cameraInput.click());
         fileBtn.addEventListener('click', () => fileInput.click());
         clearImageBtn.addEventListener('click', clearImage);
@@ -2562,6 +2574,10 @@ app.get('/study-partner', (c) => {
           if (cameraButton) {
             cameraButton.addEventListener('click', function() {
               console.log('📷 Camera button clicked');
+              if (!authenticated) {
+                alert('❌ ログインが必要です。最初にログインボタンをクリックしてください。');
+                return;
+              }
               if (cameraInput) {
                 cameraInput.click();
               }
@@ -2573,6 +2589,10 @@ app.get('/study-partner', (c) => {
           if (fileButton) {
             fileButton.addEventListener('click', function() {
               console.log('📁 File button clicked');
+              if (!authenticated) {
+                alert('❌ ログインが必要です。最初にログインボタンをクリックしてください。');
+                return;
+              }
               if (fileInput) {
                 fileInput.click();
               }
@@ -3494,6 +3514,11 @@ app.get('/study-partner', (c) => {
         
         // AI質問ウインドウを開く
         function openAIChat() {
+          if (!authenticated) {
+            alert('❌ ログインが必要です。最初にログインボタンをクリックしてください。');
+            return;
+          }
+          
           if (!currentSession) {
             alert('❌ 学習セッションが見つかりません');
             return;
@@ -3515,6 +3540,11 @@ app.get('/study-partner', (c) => {
         
         // 学習セッション無しでAIチャットを開く（メインボタン用）
         function openAIChatDirect() {
+          if (!authenticated) {
+            alert('❌ ログインが必要です。最初にログインボタンをクリックしてください。');
+            return;
+          }
+          
           console.log('🤖 Opening direct AI chat window');
           
           // 汎用的なセッションIDを生成
