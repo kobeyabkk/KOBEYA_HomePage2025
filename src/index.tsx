@@ -55,8 +55,9 @@ app.post('/api/analyze-and-learn', async (c) => {
     const appkey = formData.get('appkey')?.toString() || '180418'
     const sid = formData.get('sid')?.toString() || 'JS2-04'
     const imageField = formData.get('image')
+    const userMessage = formData.get('message')?.toString() || ''
     
-    console.log('📸 Image analysis request:', { appkey, sid, hasImage: !!imageField })
+    console.log('📸 Image analysis request:', { appkey, sid, hasImage: !!imageField, hasMessage: !!userMessage })
     
     if (!imageField || !(imageField instanceof File)) {
       throw new Error('画像ファイルが必要です')
@@ -272,7 +273,9 @@ app.post('/api/analyze-and-learn', async (c) => {
               content: [
                 {
                   type: 'text',
-                  text: 'この画像を分析して、適切な学習内容を提案してください。'
+                  text: userMessage ? 
+                    `ユーザーからの質問・要望: ${userMessage}\n\n上記の内容を踏まえて、この画像を分析し、適切な学習内容を提案してください。` :
+                    'この画像を分析して、適切な学習内容を提案してください。'
                 },
                 {
                   type: 'image_url',
@@ -325,7 +328,7 @@ app.post('/api/analyze-and-learn', async (c) => {
       if (aiAnalysis.steps && Array.isArray(aiAnalysis.steps)) {
         // AIが完全な学習データを生成した場合
         learningData = {
-          analysis: `【AI学習アシスタント分析結果】\n\n${aiAnalysis.analysis}\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！`,
+          analysis: `【AI学習アシスタント分析結果】<br><br>${aiAnalysis.analysis.replace(/。/g, '。<br>').replace(/！/g, '！<br>').replace(/<br><br>+/g, '<br><br>')}<br><br>🎯 **段階的学習を開始します**<br>一緒に問題を解いていきましょう。<br>各ステップで丁寧に説明しながら進めます！`,
           steps: aiAnalysis.steps.map(step => ({
             ...step,
             completed: false,
@@ -345,7 +348,7 @@ app.post('/api/analyze-and-learn', async (c) => {
         // AIが部分的なデータしか生成しなかった場合のフォールバック
         console.log('⚠️ AI did not generate complete steps, using fallback')
         learningData = generateLearningData('quadratic_equation')
-        learningData.analysis = `【AI学習アシスタント分析結果】\n\n${aiAnalysis.analysis}\n\n🎯 **段階的学習を開始します**\n一緒に問題を解いていきましょう。各ステップで丁寧に説明しながら進めます！`
+        learningData.analysis = `【AI学習アシスタント分析結果】<br><br>${aiAnalysis.analysis.replace(/。/g, '。<br>').replace(/！/g, '！<br>').replace(/<br><br>+/g, '<br><br>')}<br><br>🎯 **段階的学習を開始します**<br>一緒に問題を解いていきましょう。<br>各ステップで丁寧に説明しながら進めます！`
       }
       
       // 学習セッションを保存（AI分析成功）
@@ -2172,15 +2175,26 @@ app.get('/study-partner', (c) => {
                         <img id="previewImage" style="max-width: 100%; max-height: 350px; border-radius: 0.25rem; object-fit: contain;">
                     </div>
                     
-                    <div style="padding: 1rem; border-top: 1px solid #d1d5db; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                        <button id="btnStartCrop" class="secondary" style="flex: 1; min-width: 150px; margin: 0;">
-                            <i class="fas fa-crop" style="margin-right: 0.5rem;"></i>
-                            🔲 この範囲で解析
-                        </button>
-                        <button id="btnSendDirect" class="contrast" style="flex: 1; min-width: 150px; margin: 0;">
-                            <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
-                            📤 そのまま送信
-                        </button>
+                    <!-- 画像付きメッセージ入力エリア -->
+                    <div style="padding: 1rem; border-top: 1px solid #d1d5db;">
+                        <div style="margin-bottom: 1rem;">
+                            <label for="imageMessageInput" style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #374151;">
+                                💬 この画像について質問や説明を入力してください（任意）
+                            </label>
+                            <textarea id="imageMessageInput" placeholder="例: この問題の解き方を教えてください。特に○○の部分が分からないので詳しく説明してください。" 
+                                style="width: 100%; padding: 0.75rem; border: 2px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; line-height: 1.5; min-height: 80px; resize: vertical; box-sizing: border-box; font-family: inherit;"></textarea>
+                        </div>
+                        
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <button id="btnStartCrop" class="secondary" style="flex: 1; min-width: 150px; margin: 0;">
+                                <i class="fas fa-crop" style="margin-right: 0.5rem;"></i>
+                                🔲 範囲を調整して送信
+                            </button>
+                            <button id="btnSendDirect" class="contrast" style="flex: 1; min-width: 150px; margin: 0;">
+                                <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+                                📤 この画像で送信
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -2198,15 +2212,25 @@ app.get('/study-partner', (c) => {
                         </div>
                     </div>
                     
-                    <div style="padding: 1rem; border-top: 1px solid #7c3aed; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                        <button id="btnCancelCrop" class="secondary" style="flex: 1; min-width: 120px; margin: 0;">
-                            <i class="fas fa-times" style="margin-right: 0.5rem;"></i>
-                            キャンセル
-                        </button>
-                        <button id="btnConfirmCrop" class="contrast" style="flex: 2; min-width: 150px; margin: 0;">
-                            <i class="fas fa-check" style="margin-right: 0.5rem;"></i>
-                            ✅ この範囲で送信
-                        </button>
+                    <div style="padding: 1rem; border-top: 1px solid #7c3aed;">
+                        <div style="margin-bottom: 1rem;">
+                            <label for="cropMessageInput" style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #374151;">
+                                💬 この画像について質問や説明を入力してください（任意）
+                            </label>
+                            <textarea id="cropMessageInput" placeholder="例: この問題の解き方を教えてください。特に○○の部分が分からないので詳しく説明してください。" 
+                                style="width: 100%; padding: 0.75rem; border: 2px solid #e9d5ff; border-radius: 0.5rem; font-size: 1rem; line-height: 1.5; min-height: 80px; resize: vertical; box-sizing: border-box; font-family: inherit;"></textarea>
+                        </div>
+                        
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <button id="btnCancelCrop" class="secondary" style="flex: 1; min-width: 120px; margin: 0;">
+                                <i class="fas fa-times" style="margin-right: 0.5rem;"></i>
+                                キャンセル
+                            </button>
+                            <button id="btnConfirmCrop" class="contrast" style="flex: 2; min-width: 150px; margin: 0;">
+                                <i class="fas fa-check" style="margin-right: 0.5rem;"></i>
+                                ✅ この範囲で送信
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -2398,6 +2422,13 @@ app.get('/study-partner', (c) => {
             cropImage.src = previewImage.src;
           }
           
+          // メッセージもコピー
+          const imageMessageInput = document.getElementById('imageMessageInput');
+          const cropMessageInput = document.getElementById('cropMessageInput');
+          if (imageMessageInput && cropMessageInput) {
+            cropMessageInput.value = imageMessageInput.value;
+          }
+          
           showArea(cropArea);
           hideArea(imagePreviewArea);
           
@@ -2448,8 +2479,12 @@ app.get('/study-partner', (c) => {
             croppedImageData = previewImage.src;
           }
           
+          // メッセージ入力欄から値を取得
+          const messageInput = document.getElementById('cropMessageInput');
+          const userMessage = messageInput ? messageInput.value.trim() : '';
+          
           // 画像を送信
-          sendAnalysisRequest(croppedImageData, true);
+          sendAnalysisRequest(croppedImageData, true, userMessage);
         }
         
         // クロップキャンセル
@@ -2478,6 +2513,13 @@ app.get('/study-partner', (c) => {
             btnSendDirect.style.display = 'flex'; // 再表示
           }
           
+          // メッセージも戻す
+          const imageMessageInput = document.getElementById('imageMessageInput');
+          const cropMessageInput = document.getElementById('cropMessageInput');
+          if (imageMessageInput && cropMessageInput) {
+            imageMessageInput.value = cropMessageInput.value;
+          }
+          
           showImagePreview();
         }
         
@@ -2499,7 +2541,11 @@ app.get('/study-partner', (c) => {
           console.log('📤 Sending directly');
           
           if (previewImage && previewImage.src) {
-            sendAnalysisRequest(previewImage.src, false);
+            // メッセージ入力欄から値を取得
+            const messageInput = document.getElementById('imageMessageInput');
+            const userMessage = messageInput ? messageInput.value.trim() : '';
+            
+            sendAnalysisRequest(previewImage.src, false, userMessage);
           }
         }
         
@@ -2551,8 +2597,8 @@ app.get('/study-partner', (c) => {
         }
         
         // 解析リクエスト送信（段階学習システム対応版）
-        async function sendAnalysisRequest(imageData, cropped) {
-          console.log('📤 Sending analysis request, cropped:', cropped);
+        async function sendAnalysisRequest(imageData, cropped, userMessage = '') {
+          console.log('📤 Sending analysis request, cropped:', cropped, 'message:', userMessage);
           
           if (!authenticated) {
             alert('❌ ログインが必要です。最初にログインボタンをクリックしてください。');
@@ -2574,6 +2620,9 @@ app.get('/study-partner', (c) => {
             formData.append('image', blob, 'image.jpg');
             formData.append('appkey', appkey);
             formData.append('sid', sid);
+            if (userMessage) {
+              formData.append('message', userMessage);
+            }
             
             console.log('📤 Sending to /api/analyze-and-learn with FormData');
             
@@ -2618,7 +2667,7 @@ app.get('/study-partner', (c) => {
           const outPre = document.getElementById('out');
           
           if (analysisContent && result.analysis) {
-            analysisContent.textContent = result.analysis;
+            analysisContent.innerHTML = result.analysis;
             if (analysisResult) {
               analysisResult.style.display = 'block';
             }
