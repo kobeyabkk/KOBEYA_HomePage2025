@@ -1206,6 +1206,15 @@ app.get('/ai-chat/:sessionId', (c) => {
             </div>
             
             <div class="chat-input">
+                <!-- 画像添付インジケーター -->
+                <div id="imageAttachmentIndicator" style="display: none; background: #eff6ff; border: 1px solid #3b82f6; border-radius: 0.5rem; padding: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; color: #1d4ed8;">
+                    <i class="fas fa-image" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                    📷 画像が添付されています
+                    <button onclick="clearImage()" style="background: none; border: none; color: #dc2626; font-size: 0.8rem; margin-left: 0.5rem; cursor: pointer;">
+                        <i class="fas fa-times"></i> 削除
+                    </button>
+                </div>
+                
                 <!-- 画像アップロード機能 -->
                 <div class="image-controls">
                     <button class="image-btn" id="cameraBtn">
@@ -1464,23 +1473,16 @@ app.get('/ai-chat/:sessionId', (c) => {
                 console.log('✂️ AI Chat: Cropper destroyed');
             }
             
-            console.log('✂️ AI Chat: Crop completed, preparing to send question');
+            console.log('✂️ AI Chat: Crop completed, image ready for sending');
             console.log('✂️ AI Chat: Final check - currentImageData length:', currentImageData ? currentImageData.length : 'null');
             
-            // クロップ完了後、自動的に質問を送信
-            setTimeout(() => {
-                console.log('✂️ AI Chat: Timeout callback - currentImageData exists:', !!currentImageData);
-                console.log('✂️ AI Chat: Timeout callback - currentImageData length:', currentImageData ? currentImageData.length : 0);
-                
-                if (!currentImageData) {
-                    console.error('❌ AI Chat: Image data lost during timeout');
-                    alert('画像データが失われました。再度お試しください。');
-                    return;
-                }
-                
-                console.log('✂️ AI Chat: Calling sendQuestion() with image data');
-                sendQuestion();
-            }, 100); // タイムアウトを短縮
+            // 画像添付インジケーターを表示
+            const indicator = document.getElementById('imageAttachmentIndicator');
+            if (indicator) {
+                indicator.style.display = 'block';
+            }
+            
+            console.log('✂️ AI Chat: Image attachment indicator displayed');
         }
         
         function confirmImage() {
@@ -1512,15 +1514,18 @@ app.get('/ai-chat/:sessionId', (c) => {
                     ctx.drawImage(img, 0, 0, width, height);
                     currentImageData = canvas.toDataURL('image/jpeg', 0.8);
                     
-                    console.log('🖼️ AI Chat: Image processed, auto-sending question');
+                    console.log('🖼️ AI Chat: Image processed, ready for sending');
                     
                     // 画像設定完了後にプレビューを非表示
                     imagePreviewArea.style.display = 'none';
                     
-                    // 画像確定後、自動的に質問を送信
-                    setTimeout(() => {
-                        sendQuestion();
-                    }, 300);
+                    // 画像添付インジケーターを表示
+                    const indicator = document.getElementById('imageAttachmentIndicator');
+                    if (indicator) {
+                        indicator.style.display = 'block';
+                    }
+                    
+                    console.log('🖼️ AI Chat: Image attachment indicator displayed');
                 };
                 
                 img.src = previewImage.src;
@@ -1528,11 +1533,13 @@ app.get('/ai-chat/:sessionId', (c) => {
                 // 既に画像データがある場合
                 imagePreviewArea.style.display = 'none';
                 
-                // 自動的に質問を送信
-                setTimeout(() => {
-                    console.log('🖼️ AI Chat: Using existing image data, auto-sending question');
-                    sendQuestion();
-                }, 300);
+                // 画像添付インジケーターを表示
+                const indicator = document.getElementById('imageAttachmentIndicator');
+                if (indicator) {
+                    indicator.style.display = 'block';
+                }
+                
+                console.log('🖼️ AI Chat: Image attachment indicator displayed');
             }
         }
         
@@ -1542,6 +1549,12 @@ app.get('/ai-chat/:sessionId', (c) => {
             cropArea.style.display = 'none';
             clearImageBtn.style.display = 'none';
             
+            // 画像添付インジケーターを非表示
+            const indicator = document.getElementById('imageAttachmentIndicator');
+            if (indicator) {
+                indicator.style.display = 'none';
+            }
+            
             if (cropper) {
                 cropper.destroy();
                 cropper = null;
@@ -1550,6 +1563,8 @@ app.get('/ai-chat/:sessionId', (c) => {
             // 入力要素をリセット
             cameraInput.value = '';
             fileInput.value = '';
+            
+            console.log('🗑️ AI Chat: Image cleared and indicator hidden');
         }
 
         async function sendQuestion() {
