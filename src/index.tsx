@@ -765,6 +765,16 @@ app.post('/api/ai/chat', async (c) => {
   try {
     const { sessionId, question, image } = await c.req.json()
     
+    console.log('🤖 AI Chat: Request details:')
+    console.log('  - sessionId:', sessionId)
+    console.log('  - question:', question || '(empty)')
+    console.log('  - image present:', !!image)
+    console.log('  - image type:', typeof image)
+    if (image) {
+      console.log('  - image length:', image.length)
+      console.log('  - image starts with:', image.substring(0, 30) + '...')
+    }
+    
     if (!sessionId || (!question?.trim() && !image)) {
       return c.json({
         ok: false,
@@ -1301,9 +1311,10 @@ app.get('/ai-chat/:sessionId', (c) => {
         let cropper = null;
         let currentImageData = null;
         
-        // エンターキーで送信（Shift+Enterで改行）
+        // エンターキーで送信（Shift+Enterで改行）- 日本語入力中は除外
         questionInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
+            // 日本語入力中（IME変換中）は送信しない
+            if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
                 e.preventDefault();
                 sendQuestion();
             }
