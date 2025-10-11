@@ -1505,6 +1505,10 @@ app.get('/ai-chat/:sessionId', (c) => {
                 indicator.style.display = 'block';
             }
             
+            console.log('✂️ AI Chat: Crop completed, currentImageData set:');
+            console.log('✂️   - Data type:', typeof currentImageData);
+            console.log('✂️   - Data length:', currentImageData ? currentImageData.length : 'null');
+            console.log('✂️   - Data valid:', currentImageData && currentImageData.startsWith('data:image/'));
             console.log('✂️ AI Chat: Image attachment indicator displayed');
         }
         
@@ -1548,6 +1552,10 @@ app.get('/ai-chat/:sessionId', (c) => {
                         indicator.style.display = 'block';
                     }
                     
+                    console.log('🖼️ AI Chat: Image processed, currentImageData set:');
+                    console.log('🖼️   - Data type:', typeof currentImageData);
+                    console.log('🖼️   - Data length:', currentImageData ? currentImageData.length : 'null');
+                    console.log('🖼️   - Data valid:', currentImageData && currentImageData.startsWith('data:image/'));
                     console.log('🖼️ AI Chat: Image attachment indicator displayed');
                 };
                 
@@ -1562,11 +1570,16 @@ app.get('/ai-chat/:sessionId', (c) => {
                     indicator.style.display = 'block';
                 }
                 
+                console.log('🖼️ AI Chat: Using existing image data:');
+                console.log('🖼️   - Data type:', typeof currentImageData);
+                console.log('🖼️   - Data length:', currentImageData ? currentImageData.length : 'null');
+                console.log('🖼️   - Data valid:', currentImageData && currentImageData.startsWith('data:image/'));
                 console.log('🖼️ AI Chat: Image attachment indicator displayed');
             }
         }
         
         function clearImage() {
+            console.log('🗑️ AI Chat: clearImage() called, currentImageData before clear:', !!currentImageData);
             currentImageData = null;
             imagePreviewArea.style.display = 'none';
             cropArea.style.display = 'none';
@@ -1587,19 +1600,25 @@ app.get('/ai-chat/:sessionId', (c) => {
             cameraInput.value = '';
             fileInput.value = '';
             
-            console.log('🗑️ AI Chat: Image cleared and indicator hidden');
+            console.log('🗑️ AI Chat: Image cleared and indicator hidden, currentImageData after clear:', currentImageData);
         }
 
         async function sendQuestion() {
             const question = questionInput.value.trim();
             console.log('📤 AI Chat: ===== SEND QUESTION CALLED =====');
             console.log('📤 Question text:', question || '(empty)');
+            console.log('📤 currentImageData raw value:', currentImageData);
             console.log('📤 Has image data:', !!currentImageData);
             console.log('📤 Image data length:', currentImageData ? currentImageData.length : 0);
             console.log('📤 Image data type:', typeof currentImageData);
+            console.log('📤 Image data is null:', currentImageData === null);
+            console.log('📤 Image data is undefined:', currentImageData === undefined);
             
             if (currentImageData) {
                 console.log('📤 Image data preview:', currentImageData.substring(0, 50) + '...');
+                console.log('📤 Image data valid base64:', currentImageData.startsWith('data:image/'));
+            } else {
+                console.log('📤 ❌ NO IMAGE DATA AVAILABLE');
             }
             
             if (!question && !currentImageData) {
