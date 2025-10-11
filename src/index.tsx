@@ -1229,10 +1229,10 @@ app.get('/ai-chat/:sessionId', (c) => {
             
             <div class="chat-input">
                 <!-- 画像添付インジケーター -->
-                <div id="imageAttachmentIndicator" style="display: none; background: #eff6ff; border: 1px solid #3b82f6; border-radius: 0.5rem; padding: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; color: #1d4ed8;">
-                    <i class="fas fa-image" style="margin-right: 0.5rem; color: #3b82f6;"></i>
-                    📷 画像が添付されています
-                    <button onclick="clearImage()" style="background: none; border: none; color: #dc2626; font-size: 0.8rem; margin-left: 0.5rem; cursor: pointer;">
+                <div id="imageAttachmentIndicator" style="display: none; background: #dcfce7; border: 2px solid #16a34a; border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; font-size: 1rem; color: #15803d; font-weight: 600;">
+                    <i class="fas fa-check-circle" style="margin-right: 0.5rem; color: #16a34a;"></i>
+                    ✅ 画像が添付されました！質問を入力して送信してください
+                    <button onclick="clearImage()" style="background: #fee2e2; border: 1px solid #dc2626; color: #dc2626; font-size: 0.9rem; margin-left: 1rem; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">
                         <i class="fas fa-times"></i> 削除
                     </button>
                 </div>
@@ -1261,8 +1261,8 @@ app.get('/ai-chat/:sessionId', (c) => {
                         <button class="image-btn" id="startCropBtn" style="background: #7c3aed; color: white;">
                             <i class="fas fa-crop"></i> 範囲を調整
                         </button>
-                        <button class="image-btn" id="confirmImageBtn" style="background: #059669; color: white;">
-                            <i class="fas fa-check"></i> この画像で質問
+                        <button class="image-btn" id="confirmImageBtn" style="background: #059669; color: white; font-weight: 600;">
+                            <i class="fas fa-check"></i> ✅ この画像を添付する
                         </button>
                     </div>
                 </div>
@@ -1276,8 +1276,8 @@ app.get('/ai-chat/:sessionId', (c) => {
                         <button class="image-btn" id="cancelCropBtn">
                             <i class="fas fa-times"></i> キャンセル
                         </button>
-                        <button class="image-btn" id="confirmCropBtn" style="background: #7c3aed; color: white;">
-                            <i class="fas fa-check"></i> この範囲で質問
+                        <button class="image-btn" id="confirmCropBtn" style="background: #7c3aed; color: white; font-weight: 600;">
+                            <i class="fas fa-check"></i> ✅ この範囲を添付する
                         </button>
                     </div>
                 </div>
