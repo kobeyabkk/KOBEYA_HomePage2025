@@ -14,6 +14,65 @@ const USE_MOCK_RESPONSES = false
 // 学習セッション管理（インメモリ）
 const learningSessions = new Map()
 
+// 教育方針フレームワーク読み込み
+let educationalPolicy: any = null
+
+// 教育方針を読み込む関数
+async function loadEducationalPolicy() {
+  try {
+    // 本来は外部ファイルから読み込むが、ここでは埋め込み
+    educationalPolicy = {
+      "ai_interaction_protocols": {
+        "communication_style": {
+          "tone_and_manner": {
+            "basic_principles": [
+              "丁寧で親しみやすい敬語を使用",
+              "学習者の年齢に適した語彙と表現",
+              "励ましと支援の姿勢を常に保持",
+              "多様性を尊重した包括的な言葉遣い"
+            ]
+          }
+        }
+      },
+      "cross_curricular_competencies": {
+        "key_competencies": {
+          "language_ability": {
+            "ai_guidance": [
+              "適切な語彙と文法を用いた明確な説明を心がける",
+              "学習者の発達段階に応じた言葉遣いを選択する",
+              "多様な表現方法（文字、音声、図表等）を組み合わせる"
+            ]
+          },
+          "problem_solving": {
+            "ai_guidance": [
+              "段階的な思考プロセスを明示して支援する",
+              "複数の解決方法を提示し、比較検討を促す",
+              "失敗を学習機会として前向きに捉える姿勢を育成する"
+            ]
+          }
+        }
+      },
+      "teaching_methodology": {
+        "pedagogical_approaches": {
+          "individualized_support": {
+            "ai_guidance": [
+              "学習履歴と理解度を分析して個別最適な支援を提供",
+              "多様な学習スタイルに対応した説明方法を選択",
+              "適切な難易度の問題や課題を提示"
+            ]
+          }
+        }
+      }
+    }
+    console.log('📚 Educational policy loaded successfully')
+  } catch (error) {
+    console.error('❌ Failed to load educational policy:', error)
+  }
+}
+
+// 起動時に教育方針を読み込み
+loadEducationalPolicy()
+
 // 生徒情報データベース（必要最小限追加）
 interface StudentInfo {
   studentId: string
@@ -305,12 +364,15 @@ ${studentInfo ?
   '生徒情報なし（問題内容に基づいて適切なレベルで指導してください）'
 }
 
-【指導方針】
-- 中学生向けのやさしい敬語で説明
+【教育方針（文部科学省学習指導要領準拠）】
+- 人間中心の学習重視：一人一人の人格を尊重し、個性を生かす指導
+- 主体的・対話的で深い学び：段階的思考プロセスの明示支援
+- 3つの観点重視：知識・技能、思考・判断・表現、主体的学習態度の育成
+- 中学生向けのやさしい敬語で説明（学習者の発達段階に応じた言葉遣い）
 - 海外在住への配慮：「日本でも同じ内容を学習するよ」「心配しないで大丈夫」
-- 段階的思考を促す問いかけ形式
-- 温かい励ましと共感を含む指導
-- 生徒の得意/苦手分野を考慮した説明
+- 問題解決能力育成：複数解決方法の提示、比較検討の促進
+- 温かい励ましと支援姿勢：失敗を学習機会として前向きに捉える
+- 個別最適化支援：学習履歴と理解度に応じた説明方法の選択
 
 【学年判定ルール（文部科学省学習指導要領準拠）】
 ■数学
@@ -816,6 +878,75 @@ app.post('/api/ai/chat', async (c) => {
 ・学習内容: ${session.analysis.split('\n\n')[0]}`
     }
     
+    // 画像データのクリーニング（必要に応じて）
+    let cleanedImage = image
+    if (image) {
+      // Base64データの検証とクリーニング
+      if (!image.startsWith('data:image/')) {
+        console.log('⚠️ Invalid image format: Missing data:image/ prefix')
+        return c.json({
+          ok: false,
+          error: 'invalid_image_format',
+          message: '画像データの形式が正しくありません',
+          timestamp: new Date().toISOString()
+        }, 400)
+      }
+      
+      // Base64部分の抽出と検証
+      const parts = image.split(',')
+      if (parts.length !== 2) {
+        console.log('⚠️ Invalid image format: Missing comma separator')
+        return c.json({
+          ok: false,
+          error: 'invalid_image_format', 
+          message: '画像データの形式が正しくありません（comma separator）',
+          timestamp: new Date().toISOString()
+        }, 400)
+      }
+      
+      const [header, base64Data] = parts
+      
+      // Base64データの検証
+      if (!base64Data || base64Data.length === 0) {
+        console.log('⚠️ Invalid image format: Empty base64 data')
+        return c.json({
+          ok: false,
+          error: 'invalid_image_format',
+          message: '画像データが空です',
+          timestamp: new Date().toISOString()
+        }, 400)
+      }
+      
+      // Base64文字の検証
+      if (!/^[A-Za-z0-9+/=]*$/.test(base64Data)) {
+        console.log('⚠️ Invalid base64 characters detected')
+        return c.json({
+          ok: false,
+          error: 'invalid_image_format',
+          message: '画像データに不正な文字が含まれています',
+          timestamp: new Date().toISOString()
+        }, 400)
+      }
+      
+      // 画像サイズが大きすぎる場合の追加チェック
+      const base64Length = base64Data.length
+      console.log('📊 Base64 data length:', base64Length)
+      
+      // Base64サイズが約1MB（約1.4MB in base64）を超える場合は警告
+      if (base64Length > 1400000) {
+        console.log('⚠️ Large image detected, size:', base64Length)
+        return c.json({
+          ok: false,
+          error: 'image_too_large',
+          message: '画像ファイルが大きすぎます。より小さな画像を使用してください。',
+          timestamp: new Date().toISOString()
+        }, 400)
+      }
+      
+      cleanedImage = image
+      console.log('✅ Image validation passed, size OK')
+    }
+
     // OpenAI APIキーの確認（型安全）
     const apiKey = c.env.OPENAI_API_KEY?.trim()
     console.log('🔑 API Key check:', apiKey ? 'Present (length: ' + apiKey.length + ')' : 'Missing')
@@ -830,6 +961,25 @@ app.post('/api/ai/chat', async (c) => {
       }, 500)
     }
     
+    // OpenAI API送信前の最終確認
+    if (cleanedImage) {
+      const parts = cleanedImage.split(',')
+      if (parts.length === 2) {
+        console.log('🔍 Final image data check before OpenAI API:')
+        console.log('  - Header:', parts[0])
+        console.log('  - Base64 length:', parts[1].length)
+        console.log('  - Estimated file size:', Math.round(parts[1].length * 0.75 / 1024) + 'KB')
+        console.log('  - First 100 chars of base64:', parts[1].substring(0, 100))
+        console.log('  - Last 50 chars of base64:', parts[1].substring(parts[1].length - 50))
+        
+        // Base64パディングチェック
+        const base64 = parts[1]
+        const paddingCount = (base64.match(/=/g) || []).length
+        console.log('  - Padding count:', paddingCount)
+        console.log('  - Length modulo 4:', base64.length % 4)
+      }
+    }
+
     // OpenAI APIに送信
     const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -846,23 +996,26 @@ app.post('/api/ai/chat', async (c) => {
 
 【重要】このチャット機能では確認問題や類似問題の生成は行いません。通常のChatGPTの学習サポートモードで質問に答えてください。
 
-【あなたの役割】
-・生徒の学習をサポートする頼れる先生
-・分かりやすく、励ましの言葉を含めた温かい対応
-・生徒のレベルに合わせた段階的な説明
-・具体例や比喩を使った理解しやすい解説
-・質問に対する直接的で親切な回答
+【あなたの役割（文部科学省学習指導要領準拠）】
+・生徒の学習をサポートする頼れる先生（人間中心の学習重視）
+・主体的・対話的で深い学び：段階的思考プロセスの明示支援
+・個別最適化：生徒の理解度に応じた説明方法の選択
+・言語能力育成：適切な語彙と文法を用いた明確な説明
+・問題解決能力育成：複数の解決方法提示、比較検討促進
+・励ましと支援姿勢：失敗を学習機会として前向きに捉える指導
+・多様な表現方法：文字、図表等を組み合わせた理解促進
 
 【現在の学習コンテキスト】
 ${contextInfo}
 
-【回答方針】
+【回答方針（教育方針準拠）】
 ✅ 実行すべきこと：
-・質問内容を理解し、分かりやすく説明する
-・具体例や図式的説明で理解を促進する  
-・励ましの言葉と温かい指導を提供する
-・関連する学習ポイントやコツを紹介する
-・「一緒に頑張りましょう！」の姿勢を保つ
+・知識・技能習得支援：質問内容を正確に理解し、段階的に説明
+・思考・判断・表現力育成：ソクラテス式問答で気付きを促す質問投げかけ
+・主体的学習態度育成：学習への関心・意欲向上、粘り強い取組支援
+・個別最適化：多様な学習スタイルに対応した説明方法選択
+・言語能力重視：学習者の発達段階に応じた適切な語彙選択
+・励ましと支援姿勢：「一緒に頑張りましょう！」で自信を損なわない指導
 
 ❌ 実行してはいけないこと：
 ・確認問題や類似問題の生成
@@ -881,7 +1034,7 @@ ${contextInfo}
           },
           {
             role: 'user',
-            content: image ? [
+            content: cleanedImage ? [
               {
                 type: 'text',
                 text: question || '写真について教えてください。わからない部分があれば詳しく解説してください。'
@@ -889,7 +1042,7 @@ ${contextInfo}
               {
                 type: 'image_url',
                 image_url: {
-                  url: image, // data:image/jpeg;base64,プレフィックス付きで送信
+                  url: cleanedImage, // data:image/jpeg;base64,プレフィックス付きで送信
                   detail: 'high'
                 }
               }
@@ -904,6 +1057,22 @@ ${contextInfo}
     if (!openaiResponse.ok) {
       const errorText = await openaiResponse.text()
       console.error('❌ OpenAI API error:', openaiResponse.status, errorText)
+      
+      // 画像データの詳細情報をログ出力
+      if (image) {
+        console.log('🔍 Detailed image analysis for debugging:')
+        console.log('  - Full image prefix (first 100 chars):', image.substring(0, 100))
+        console.log('  - Image total length:', image.length)
+        console.log('  - Contains data: prefix:', image.includes('data:'))
+        console.log('  - Contains base64 separator:', image.includes(','))
+        
+        if (image.includes(',')) {
+          const parts = image.split(',')
+          console.log('  - Header part:', parts[0])
+          console.log('  - Base64 part length:', parts[1]?.length || 0)
+          console.log('  - Base64 sample (first 50 chars):', parts[1]?.substring(0, 50) || 'N/A')
+        }
+      }
       
       // デバッグ用：詳細なエラー情報を返す
       return c.json({
@@ -1228,10 +1397,10 @@ app.get('/ai-chat/:sessionId', (c) => {
             </div>
             
             <div class="chat-input">
-                <!-- 画像添付インジケーター -->
-                <div id="imageAttachmentIndicator" style="display: none; background: #dcfce7; border: 2px solid #16a34a; border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; font-size: 1rem; color: #15803d; font-weight: 600;">
-                    <i class="fas fa-check-circle" style="margin-right: 0.5rem; color: #16a34a;"></i>
-                    ✅ 画像が添付されました！質問を入力して送信してください
+                <!-- 統合フローサポートインフォメーション -->
+                <div id="imageAttachmentIndicator" style="display: none; background: #f0f9ff; border: 2px solid #0ea5e9; border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem; font-size: 1rem; color: #0c4a6e; font-weight: 600;">
+                    <i class="fas fa-info-circle" style="margin-right: 0.5rem; color: #0ea5e9;"></i>
+                    📝 質問を入力して送信ボタンを押すと、画像と一緒に送信されます
                     <button onclick="clearImage()" style="background: #fee2e2; border: 1px solid #dc2626; color: #dc2626; font-size: 0.9rem; margin-left: 1rem; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">
                         <i class="fas fa-times"></i> 削除
                     </button>
@@ -1262,7 +1431,7 @@ app.get('/ai-chat/:sessionId', (c) => {
                             <i class="fas fa-crop"></i> 範囲を調整
                         </button>
                         <button class="image-btn" id="confirmImageBtn" style="background: #059669; color: white; font-weight: 600;">
-                            <i class="fas fa-check"></i> ✅ この画像を添付する
+                            <i class="fas fa-paper-plane"></i> ✅ この画像で送信
                         </button>
                     </div>
                 </div>
@@ -1272,21 +1441,23 @@ app.get('/ai-chat/:sessionId', (c) => {
                     <div class="crop-container">
                         <img id="cropImage" style="max-width: 100%; max-height: 280px;">
                     </div>
-                    <div style="text-align: center; margin-bottom: 1rem;">
-                        <button class="image-btn" id="cancelCropBtn">
-                            <i class="fas fa-times"></i> キャンセル
-                        </button>
-                        <button class="image-btn" id="confirmCropBtn" style="background: #7c3aed; color: white; font-weight: 600;">
-                            <i class="fas fa-check"></i> ✅ この範囲を添付する
-                        </button>
+                    <div style="text-align: center; margin-bottom: 1rem; color: #6b7280; font-size: 0.95rem;">
+                        📝 範囲を調整してください。質問を入力後、下のボタンで送信できます。
                     </div>
                 </div>
                 
-                <!-- テキスト入力と送信 -->
+                <!-- メインページと同じレイアウト：テキスト入力 + 動的ボタン -->
                 <div class="input-row">
                     <textarea id="questionInput" placeholder="質問を入力してください...（画像のみの場合は空白でもOK）"></textarea>
-                    <button id="sendButton">
-                        <i class="fas fa-paper-plane"></i><br>送信
+                    
+                    <!-- 通常時：送信ボタンのみ -->
+                    <button id="sendButton" style="background: #7c3aed; color: white; font-weight: 600; min-width: 120px;">
+                        <i class="fas fa-paper-plane"></i><br><span id="sendButtonText">送信</span>
+                    </button>
+                    
+                    <!-- クロップ時：キャンセルボタンが追加表示 -->
+                    <button id="cancelCropBtn" style="display: none; background: #6b7280; color: white; font-weight: 600; min-width: 120px; margin-left: 0.5rem;">
+                        <i class="fas fa-times"></i><br>キャンセル
                     </button>
                 </div>
             </div>
@@ -1318,7 +1489,6 @@ app.get('/ai-chat/:sessionId', (c) => {
         const cropArea = document.getElementById('cropArea');
         const cropImage = document.getElementById('cropImage');
         const cancelCropBtn = document.getElementById('cancelCropBtn');
-        const confirmCropBtn = document.getElementById('confirmCropBtn');
         
         let cropper = null;
         let currentImageData = null;
@@ -1343,7 +1513,6 @@ app.get('/ai-chat/:sessionId', (c) => {
         startCropBtn.addEventListener('click', startCrop);
         confirmImageBtn.addEventListener('click', confirmImage);
         cancelCropBtn.addEventListener('click', cancelCrop);
-        confirmCropBtn.addEventListener('click', confirmCrop);
         
         // 画像選択処理
         function handleImageSelect(event) {
@@ -1387,6 +1556,9 @@ app.get('/ai-chat/:sessionId', (c) => {
             imagePreviewArea.style.display = 'none';
             cropArea.style.display = 'block';
             
+            // クロップモード用のUI更新
+            updateUIForCropMode();
+            
             if (cropper) {
                 cropper.destroy();
             }
@@ -1416,8 +1588,13 @@ app.get('/ai-chat/:sessionId', (c) => {
         }
         
         function cancelCrop() {
+            console.log('❌ AI Chat: Canceling crop');
+            
             cropArea.style.display = 'none';
             showImagePreview();
+            
+            // 通常モード用のUI更新
+            updateUIForNormalMode();
             
             if (cropper) {
                 cropper.destroy();
@@ -1425,8 +1602,9 @@ app.get('/ai-chat/:sessionId', (c) => {
             }
         }
         
+        // クロップ確定（画像データを準備、送信は統合送信ボタンで）
         function confirmCrop() {
-            console.log('✂️ AI Chat: ConfirmCrop called, cropper exists:', !!cropper);
+            console.log('✂️ AI Chat: ConfirmCrop called (UI integrated flow), cropper exists:', !!cropper);
             
             if (!cropper) {
                 console.error('❌ AI Chat: No cropper instance available');
@@ -1434,13 +1612,13 @@ app.get('/ai-chat/:sessionId', (c) => {
                 return;
             }
             
-            console.log('✂️ AI Chat: Starting crop process');
+            console.log('✂️ AI Chat: Processing crop for integrated UI');
             
             let canvas;
             try {
                 canvas = cropper.getCroppedCanvas({
-                    maxWidth: 1024,
-                    maxHeight: 1024,
+                    maxWidth: 768,
+                    maxHeight: 768,
                     imageSmoothingQuality: 'high'
                 });
                 
@@ -1460,21 +1638,43 @@ app.get('/ai-chat/:sessionId', (c) => {
             
             // 画像データをBase64に変換
             try {
-                const imageDataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                console.log('✂️ AI Chat: Image converted to base64, length:', imageDataUrl.length);
+                const croppedImageData = canvas.toDataURL('image/jpeg', 0.95);
+                console.log('✂️ AI Chat: Image converted to base64, length:', croppedImageData.length);
+                console.log('✂️ AI Chat: Image data starts with:', croppedImageData.substring(0, 50));
+                console.log('✂️ AI Chat: Image data format check:', croppedImageData.startsWith('data:image/'));
                 
-                // グローバル変数に設定
-                currentImageData = imageDataUrl;
-                
-                // 設定の確認
-                console.log('✂️ AI Chat: currentImageData set, verify length:', currentImageData ? currentImageData.length : 'null');
-                console.log('✂️ AI Chat: currentImageData starts with:', currentImageData ? currentImageData.substring(0, 30) : 'null');
-                
-                if (!currentImageData || currentImageData.length < 100) {
+                if (!croppedImageData || croppedImageData.length < 100) {
                     console.error('❌ AI Chat: Image data not properly set');
                     alert('画像データの設定に失敗しました。');
                     return;
                 }
+                
+                if (!croppedImageData.startsWith('data:image/')) {
+                    console.error('❌ AI Chat: Invalid image data format');
+                    alert('画像データの形式が正しくありません。');
+                    return;
+                }
+                
+                // Base64部分のチェック
+                const parts = croppedImageData.split(',');
+                if (parts.length === 2) {
+                    const base64Part = parts[1];
+                    console.log('✂️ AI Chat: Base64 part length:', base64Part.length);
+                    console.log('✂️ AI Chat: Base64 valid chars test:', /^[A-Za-z0-9+/=]*$/.test(base64Part));
+                    
+                    if (!/^[A-Za-z0-9+/=]*$/.test(base64Part)) {
+                        console.error('❌ AI Chat: Invalid base64 characters');
+                        alert('画像データに不正な文字が含まれています。');
+                        return;
+                    }
+                } else {
+                    console.error('❌ AI Chat: Invalid data URL format');
+                    alert('画像データの形式が正しくありません。');
+                    return;
+                }
+                
+                // グローバル変数に設定
+                currentImageData = croppedImageData;
                 
             } catch (error) {
                 console.error('❌ AI Chat: Error converting to base64:', error);
@@ -1482,9 +1682,8 @@ app.get('/ai-chat/:sessionId', (c) => {
                 return;
             }
             
-            console.log('✂️ AI Chat: Hiding crop interface');
-            
-            // クロップ完了後は直接画像を確定
+            // UIを更新（クロップエリアを隠す）
+            console.log('✂️ AI Chat: Updating UI for integrated flow');
             cropArea.style.display = 'none';
             imagePreviewArea.style.display = 'none';
             clearImageBtn.style.display = 'inline-block';
@@ -1496,8 +1695,8 @@ app.get('/ai-chat/:sessionId', (c) => {
                 console.log('✂️ AI Chat: Cropper destroyed');
             }
             
-            console.log('✂️ AI Chat: Crop completed, image ready for sending');
-            console.log('✂️ AI Chat: Final check - currentImageData length:', currentImageData ? currentImageData.length : 'null');
+            // 画像モード用のUI更新（この画像で送信、キャンセルボタン非表示）
+            updateSendButtonForImageMode();
             
             // 画像添付インジケーターを表示
             const indicator = document.getElementById('imageAttachmentIndicator');
@@ -1505,15 +1704,12 @@ app.get('/ai-chat/:sessionId', (c) => {
                 indicator.style.display = 'block';
             }
             
-            console.log('✂️ AI Chat: Crop completed, currentImageData set:');
-            console.log('✂️   - Data type:', typeof currentImageData);
-            console.log('✂️   - Data length:', currentImageData ? currentImageData.length : 'null');
-            console.log('✂️   - Data valid:', currentImageData && currentImageData.startsWith('data:image/'));
-            console.log('✂️ AI Chat: Image attachment indicator displayed');
+            console.log('✂️ AI Chat: Crop completed, ready for integrated send');
         }
         
+        // 画像確定（クロップなし、画像データを準備）
         function confirmImage() {
-            console.log('🖼️ AI Chat: Confirm image called');
+            console.log('🖼️ AI Chat: Confirm image called (UI integrated flow)');
             
             if (previewImage.src && !currentImageData) {
                 // クロップしていない場合は元画像を使用
@@ -1522,8 +1718,8 @@ app.get('/ai-chat/:sessionId', (c) => {
                 const img = new Image();
                 
                 img.onload = function() {
-                    // 1024px以下にリサイズ
-                    const maxSize = 1024;
+                    // 768px以下にリサイズ（文字認識のため品質重視）
+                    const maxSize = 768;
                     let { width, height } = img;
                     
                     if (width > maxSize || height > maxSize) {
@@ -1539,12 +1735,43 @@ app.get('/ai-chat/:sessionId', (c) => {
                     canvas.width = width;
                     canvas.height = height;
                     ctx.drawImage(img, 0, 0, width, height);
-                    currentImageData = canvas.toDataURL('image/jpeg', 0.8);
+                    const imageData = canvas.toDataURL('image/jpeg', 0.95);
                     
-                    console.log('🖼️ AI Chat: Image processed, ready for sending');
+                    console.log('🖼️ AI Chat: Image processed, length:', imageData.length);
+                    console.log('🖼️ AI Chat: Image data starts with:', imageData.substring(0, 50));
+                    console.log('🖼️ AI Chat: Image data format check:', imageData.startsWith('data:image/'));
                     
-                    // 画像設定完了後にプレビューを非表示
+                    // 画像データの検証
+                    if (!imageData.startsWith('data:image/')) {
+                        console.error('❌ AI Chat: Invalid image data format in confirmImage');
+                        alert('画像データの形式が正しくありません。');
+                        return;
+                    }
+                    
+                    const parts = imageData.split(',');
+                    if (parts.length === 2) {
+                        const base64Part = parts[1];
+                        console.log('🖼️ AI Chat: Base64 part length:', base64Part.length);
+                        if (!/^[A-Za-z0-9+/=]*$/.test(base64Part)) {
+                            console.error('❌ AI Chat: Invalid base64 characters in confirmImage');
+                            alert('画像データに不正な文字が含まれています。');
+                            return;
+                        }
+                    } else {
+                        console.error('❌ AI Chat: Invalid data URL format in confirmImage');
+                        alert('画像データの形式が正しくありません。');
+                        return;
+                    }
+                    
+                    currentImageData = imageData;
+                    console.log('🖼️ AI Chat: Image processed and validated, ready for integrated UI');
+                    
+                    // UI更新
                     imagePreviewArea.style.display = 'none';
+                    clearImageBtn.style.display = 'inline-block';
+                    
+                    // 送信ボタンのテキストを変更
+                    updateSendButtonForImageMode();
                     
                     // 画像添付インジケーターを表示
                     const indicator = document.getElementById('imageAttachmentIndicator');
@@ -1552,17 +1779,20 @@ app.get('/ai-chat/:sessionId', (c) => {
                         indicator.style.display = 'block';
                     }
                     
-                    console.log('🖼️ AI Chat: Image processed, currentImageData set:');
-                    console.log('🖼️   - Data type:', typeof currentImageData);
-                    console.log('🖼️   - Data length:', currentImageData ? currentImageData.length : 'null');
-                    console.log('🖼️   - Data valid:', currentImageData && currentImageData.startsWith('data:image/'));
-                    console.log('🖼️ AI Chat: Image attachment indicator displayed');
+                    console.log('🖼️ AI Chat: Image confirmed, ready for integrated send');
                 };
                 
                 img.src = previewImage.src;
             } else {
                 // 既に画像データがある場合
+                console.log('🖼️ AI Chat: Using existing image data');
+                
+                // UI更新
                 imagePreviewArea.style.display = 'none';
+                clearImageBtn.style.display = 'inline-block';
+                
+                // 送信ボタンのテキストを変更
+                updateSendButtonForImageMode();
                 
                 // 画像添付インジケーターを表示
                 const indicator = document.getElementById('imageAttachmentIndicator');
@@ -1570,11 +1800,7 @@ app.get('/ai-chat/:sessionId', (c) => {
                     indicator.style.display = 'block';
                 }
                 
-                console.log('🖼️ AI Chat: Using existing image data:');
-                console.log('🖼️   - Data type:', typeof currentImageData);
-                console.log('🖼️   - Data length:', currentImageData ? currentImageData.length : 'null');
-                console.log('🖼️   - Data valid:', currentImageData && currentImageData.startsWith('data:image/'));
-                console.log('🖼️ AI Chat: Image attachment indicator displayed');
+                console.log('🖼️ AI Chat: Image confirmed, ready for integrated send');
             }
         }
         
@@ -1596,56 +1822,124 @@ app.get('/ai-chat/:sessionId', (c) => {
                 cropper = null;
             }
             
+            // 送信ボタンをテキストモードに戻す
+            updateSendButtonForTextMode();
+            
             // 入力要素をリセット
             cameraInput.value = '';
             fileInput.value = '';
             
             console.log('🗑️ AI Chat: Image cleared and indicator hidden, currentImageData after clear:', currentImageData);
         }
-
-        async function sendQuestion() {
-            const question = questionInput.value.trim();
-            console.log('📤 AI Chat: ===== SEND QUESTION CALLED =====');
-            console.log('📤 Question text:', question || '(empty)');
-            console.log('📤 currentImageData raw value:', currentImageData);
-            console.log('📤 Has image data:', !!currentImageData);
-            console.log('📤 Image data length:', currentImageData ? currentImageData.length : 0);
-            console.log('📤 Image data type:', typeof currentImageData);
-            console.log('📤 Image data is null:', currentImageData === null);
-            console.log('📤 Image data is undefined:', currentImageData === undefined);
+        
+        // クロップモード時のUI更新
+        function updateUIForCropMode() {
+            const sendButtonText = document.getElementById('sendButtonText');
+            const cancelButton = document.getElementById('cancelCropBtn');
             
-            if (currentImageData) {
-                console.log('📤 Image data preview:', currentImageData.substring(0, 50) + '...');
-                console.log('📤 Image data valid base64:', currentImageData.startsWith('data:image/'));
-            } else {
-                console.log('📤 ❌ NO IMAGE DATA AVAILABLE');
+            if (sendButtonText) {
+                sendButtonText.textContent = 'この範囲で送信';
+            }
+            if (cancelButton) {
+                cancelButton.style.display = 'inline-block';
             }
             
-            if (!question && !currentImageData) {
+            console.log('✂️ AI Chat: UI updated for crop mode - send button: "この範囲で送信", cancel button: visible');
+        }
+        
+        // 送信ボタンのテキストを画像モード用に更新
+        function updateSendButtonForImageMode() {
+            const sendButtonText = document.getElementById('sendButtonText');
+            const cancelButton = document.getElementById('cancelCropBtn');
+            
+            if (sendButtonText) {
+                sendButtonText.textContent = 'この画像で送信';
+            }
+            if (cancelButton) {
+                cancelButton.style.display = 'none';
+            }
+            
+            console.log('🖼️ AI Chat: UI updated for image mode - send button: "この画像で送信", cancel button: hidden');
+        }
+        
+        // 送信ボタンのテキストをテキストモード用に更新
+        function updateSendButtonForTextMode() {
+            const sendButtonText = document.getElementById('sendButtonText');
+            const cancelButton = document.getElementById('cancelCropBtn');
+            
+            if (sendButtonText) {
+                sendButtonText.textContent = '送信';
+            }
+            if (cancelButton) {
+                cancelButton.style.display = 'none';
+            }
+            
+            console.log('📝 AI Chat: UI updated for text mode - send button: "送信", cancel button: hidden');
+        }
+        
+        // 通常モード時のUI更新
+        function updateUIForNormalMode() {
+            updateSendButtonForTextMode();
+            console.log('🔄 AI Chat: UI updated for normal mode');
+        }
+
+        // 統合送信関数：画像とメッセージを同時に送信
+        async function sendQuestionIntegrated(question, imageData) {
+            console.log('📤 AI Chat: ===== INTEGRATED SEND CALLED =====');
+            console.log('📤 Question text:', question || '(empty)');
+            console.log('📤 Has image data:', !!imageData);
+            console.log('📤 Image data length:', imageData ? imageData.length : 0);
+            
+            if (imageData) {
+                console.log('📤 Image data starts with:', imageData.substring(0, 50));
+                console.log('📤 Image data format valid:', imageData.startsWith('data:image/'));
+                
+                // 送信前の最終検証
+                if (!imageData.startsWith('data:image/')) {
+                    console.error('❌ AI Chat: Invalid image format at send time');
+                    alert('画像データの形式が正しくありません。再度お試しください。');
+                    return;
+                }
+                
+                const parts = imageData.split(',');
+                if (parts.length !== 2) {
+                    console.error('❌ AI Chat: Invalid data URL structure at send time');
+                    alert('画像データの構造が正しくありません。再度お試しください。');
+                    return;
+                }
+                
+                const base64Part = parts[1];
+                if (!base64Part || !/^[A-Za-z0-9+/=]*$/.test(base64Part)) {
+                    console.error('❌ AI Chat: Invalid base64 data at send time');
+                    alert('画像データが破損しています。再度お試しください。');
+                    return;
+                }
+                
+                console.log('✅ AI Chat: Image data validation passed at send time');
+            }
+            
+            if (!question && !imageData) {
                 console.error('❌ AI Chat: Both question and image are empty');
-                console.log('❌ Question value:', JSON.stringify(question));
-                console.log('❌ currentImageData value:', currentImageData);
                 alert('質問を入力するか、画像を選択してください');
                 return;
             }
             
-            console.log('📤 AI Chat: Validation passed, proceeding with request');
+            console.log('📤 AI Chat: Validation passed, proceeding with integrated request');
             
             // ユーザーメッセージを表示
             let displayMessage = question || '📷 画像について質問';
-            if (currentImageData && question) {
+            if (imageData && question) {
                 displayMessage = '📷 ' + question;
             }
             addMessage(displayMessage, 'user');
             
             // 画像がある場合は画像も表示
-            if (currentImageData) {
-                addImageMessage(currentImageData, 'user');
+            if (imageData) {
+                addImageMessage(imageData, 'user');
             }
             
+            // 入力欄をクリア
             questionInput.value = '';
-            const imageData = currentImageData; // 画像データを保存
-            // 注意: clearImage()は送信後に実行（画像データ使用前にクリアしない）
             
             // 送信ボタンを無効化
             sendButton.disabled = true;
@@ -1654,11 +1948,10 @@ app.get('/ai-chat/:sessionId', (c) => {
             const thinkingMessage = addMessage('', 'ai', true);
             
             try {
-                console.log('📤 AI Chat: Sending request to server:');
+                console.log('📤 AI Chat: Sending integrated request to server:');
                 console.log('  - sessionId:', sessionId);
                 console.log('  - question:', question || '(empty)');
                 console.log('  - imageData exists:', !!imageData);
-                console.log('  - imageData type:', typeof imageData);
                 if (imageData) {
                     console.log('  - imageData length:', imageData.length);
                     console.log('  - imageData preview:', imageData.substring(0, 50) + '...');
@@ -1688,14 +1981,101 @@ app.get('/ai-chat/:sessionId', (c) => {
                 }
                 
             } catch (error) {
-                console.error('AI Chat error:', error);
+                console.error('AI Chat integrated error:', error);
                 thinkingMessage.remove();
                 addMessage('申し訳ございません。通信エラーが発生しました。', 'ai');
             }
             
-            // 送信完了後に画像をクリア
-            if (imageData) {
-                clearImage();
+            // 送信ボタンを有効化
+            sendButton.disabled = false;
+            questionInput.focus();
+        }
+
+        // メイン送信関数（統合フローサポート）
+        async function sendQuestion() {
+            console.log('📤 AI Chat: ===== SEND QUESTION CALLED =====');
+            
+            // クロップモード中の場合は、まずクロップを確定してから送信
+            if (cropper && cropArea.style.display !== 'none') {
+                console.log('✂️ AI Chat: In crop mode, executing confirmCrop first');
+                confirmCrop();
+                
+                // クロップ確定後、少し待ってから送信処理を実行
+                setTimeout(() => {
+                    console.log('✂️ AI Chat: Auto-executing send after crop confirmation');
+                    sendQuestion();
+                }, 100);
+                return;
+            }
+            
+            const question = questionInput.value.trim();
+            console.log('📤 Question text:', question || '(empty)');
+            console.log('📤 currentImageData exists:', !!currentImageData);
+            
+            // 画像データがある場合は統合送信を使用
+            if (currentImageData) {
+                console.log('📤 AI Chat: Using integrated flow (image + text)');
+                const imageData = currentImageData;
+                clearImage(); // UI クリア
+                sendQuestionIntegrated(question, imageData);
+                return;
+            }
+            
+            // テキストのみの場合は従来の処理
+            console.log('📤 AI Chat: Using text-only flow');
+            
+            if (!question) {
+                console.error('❌ AI Chat: No question provided');
+                alert('質問を入力してください');
+                return;
+            }
+            
+            console.log('📤 AI Chat: Validation passed, proceeding with text-only request');
+            
+            // ユーザーメッセージを表示
+            addMessage(question, 'user');
+            
+            // 入力欄をクリア
+            questionInput.value = '';
+            
+            // 送信ボタンを無効化
+            sendButton.disabled = true;
+            
+            // AI思考中メッセージを表示
+            const thinkingMessage = addMessage('', 'ai', true);
+            
+            try {
+                console.log('📤 AI Chat: Sending text-only request to server:');
+                console.log('  - sessionId:', sessionId);
+                console.log('  - question:', question);
+                
+                const response = await fetch('/api/ai/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        sessionId: sessionId,
+                        question: question,
+                        image: null
+                    })
+                });
+                
+                const result = await response.json();
+                
+                // 思考中メッセージを削除
+                thinkingMessage.remove();
+                
+                if (result.ok) {
+                    addMessage(result.answer, 'ai');
+                } else {
+                    addMessage('申し訳ございません。エラーが発生しました: ' + result.message, 'ai');
+                }
+                
+            } catch (error) {
+                console.error('AI Chat text-only error:', error);
+                thinkingMessage.remove();
+                addMessage('申し訳ございません。通信エラーが発生しました。', 'ai');
             }
             
             // 送信ボタンを有効化
