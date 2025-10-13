@@ -233,7 +233,10 @@ app.post('/api/analyze-and-learn', async (c) => {
         currentStep: 0,
         status: 'learning',
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
+        // 修正1: フォールバック時も構造の一貫性を保持
+        originalImageData: null,
+        originalUserMessage: ''
       }
       learningSessions.set(sessionId, learningSession)
       
@@ -748,7 +751,7 @@ ${studentInfo ?
         learningData.analysis = `【AI学習アシスタント分析結果】<br><br>${aiAnalysis.analysis.replace(/。/g, '。<br>').replace(/！/g, '！<br>').replace(/<br><br>+/g, '<br><br>')}<br><br>🎯 **段階的学習を開始します**<br>一緒に問題を解いていきましょう。<br>各ステップで丁寧に説明しながら進めます！`
       }
       
-      // 学習セッションを保存（AI分析成功）
+      // 学習セッションを保存（AI分析成功）- 修正1: 元画像データも保存
       const learningSession = {
         sessionId,
         appkey,
@@ -761,7 +764,10 @@ ${studentInfo ?
         currentStep: 0,
         status: 'learning',
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
+        // 修正1: 再生成用に元画像データとメッセージを保存
+        originalImageData: dataUrl,  // base64形式の元画像
+        originalUserMessage: userMessage || ''  // ユーザーが入力したメッセージ
       }
       learningSessions.set(sessionId, learningSession)
       
@@ -805,7 +811,10 @@ ${studentInfo ?
         currentStep: 0,
         status: 'learning',
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
+        // 修正1: エラー時フォールバックでも構造の一貫性を保持  
+        originalImageData: null,
+        originalUserMessage: ''
       }
       learningSessions.set(sessionId, learningSession)
       
@@ -2383,8 +2392,50 @@ app.post('/api/regenerate-problem', async (c) => {
       weakSubjects: ['英語']
     }
     
-    // 再生成用のプロンプト作成
+    // 修正2: 元画像を使用した再生成プロンプト作成
     const regenerationPrompt = createRegenerationPrompt(session, studentInfo, regenerationType)
+    
+    // 修正2: 元画像データがある場合は画像つきで再生成、ない場合はテキストのみ
+    let messages
+    if (session.originalImageData) {
+      console.log('🔄 Using original image for regeneration')
+      messages = [
+        {
+          role: 'system',
+          content: regenerationPrompt
+        },
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: session.originalUserMessage ? 
+                `元の質問: ${session.originalUserMessage}\n\nこの画像の内容を基に、同じ教科・同じレベルで別のアプローチの学習内容を再生成してください。` :
+                'この画像の内容を基に、同じ教科・同じレベルで別のアプローチの学習内容を再生成してください。'
+            },
+            {
+              type: 'image_url',
+              image_url: {
+                url: session.originalImageData,
+                detail: 'high'
+              }
+            }
+          ]
+        }
+      ]
+    } else {
+      console.log('🔄 Using text-only regeneration (no original image)')
+      messages = [
+        {
+          role: 'system',
+          content: regenerationPrompt
+        },
+        {
+          role: 'user',
+          content: '上記の要求に基づいて、新しいバリエーションの学習コンテンツを生成してください。'
+        }
+      ]
+    }
     
     // OpenAI API 呼び出し（再生成）
     const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -2395,16 +2446,7 @@ app.post('/api/regenerate-problem', async (c) => {
       },
       body: JSON.stringify({
         model: 'gpt-4o',
-        messages: [
-          {
-            role: 'system',
-            content: regenerationPrompt
-          },
-          {
-            role: 'user',
-            content: '上記の要求に基づいて、新しいバリエーションの学習コンテンツを生成してください。'
-          }
-        ],
+        messages: messages,
         max_tokens: 8000,
         temperature: 0.7  // 再生成では少し高めの温度で多様性を確保
       })
@@ -2513,25 +2555,34 @@ app.post('/api/regenerate-problem', async (c) => {
   }
 })
 
-// 再生成用プロンプト作成関数
+// 修正2: 画像ベース再生成用プロンプト作成関数
 function createRegenerationPrompt(session, studentInfo, regenerationType) {
-  const basePrompt = `あなたは中学生向けの学習サポート専門教師です。既存の学習コンテンツをより良いバリエーションに再生成してください。
+  const basePrompt = `あなたは中学生向けの学習サポート専門教師です。画像で提示された問題を基に、同じ教科・同じレベルで別のアプローチの学習コンテンツを再生成してください。
+
+【重要】画像の内容を正確に理解し、同じ教科の問題として再生成してください
 
 【既存セッション情報】
 問題タイプ: ${session.problemType}
-教科: ${session.analysis ? session.analysis.split('\n')[0] : '不明'}
+既存の教科: ${session.analysis ? session.analysis.split('。')[0] : '不明'}
 生徒情報: ${studentInfo.name} (中学${studentInfo.grade}年)
 
 【再生成の要求】
 再生成タイプ: ${regenerationType}
-${regenerationType === 'full' ? '・全体的な内容とアプローチを変更' : '・類似問題のみを新しいパターンに変更'}
+${regenerationType === 'full' ? '・画像の問題と同じ教科で、全く異なるアプローチや解法を使用' : '・類似問題のみを新しいパターン・数値・設定に変更'}
 
-【重要な改善指示】
-1. 既存のコンテンツとは異なるアプローチや例を使用してください
-2. 段階学習の各ステップに新しい視点や説明方法を取り入れてください
-3. 類似問題は全て新しいパターン・数値・設定で生成してください
-4. 選択肢の順序や正解位置をランダム化してください
-5. より分かりやすく、より教育的価値の高い内容にしてください
+【修正2: 画像ベース再生成の必須条件】
+1. 📸 画像で示された問題の教科を正確に判定してください
+2. 🎯 同じ教科の範囲内で、異なる問題パターンを生成してください
+3. 📚 問題のレベル・難易度は元画像と同程度に保ってください
+4. 🔄 解法・アプローチ・説明方法は完全に変更してください
+5. ✨ より分かりやすく、より教育的価値の高い内容にしてください
+
+【絶対に守ること】
+❌ 教科を変更しない（国語→算数など）
+❌ 難易度を大幅に変更しない  
+❌ 元画像の内容を無視しない
+✅ 同じ教科の別のトピック・アプローチで生成
+✅ 元の学習目標を維持しつつ新鮮な視点を提供
 
 【必須要件（変更不可）】
 - 段階学習の全ステップは必ずtype: "choice"（選択肢問題）
@@ -2540,7 +2591,7 @@ ${regenerationType === 'full' ? '・全体的な内容とアプローチを変�
 - 正解がAに偏らないよう分散させる
 - JSON形式での応答必須
 
-以下の元の教育方針とJSON形式を完全に踏襲しつつ、内容のみを新しいバリエーションに変更してください：`
+以下の元の教育方針とJSON形式を完全に踏襲しつつ、画像の内容に基づいた同一教科での新バリエーションを作成してください：`
 
   // 元のシステムプロンプトの教育方針部分を再利用
   const educationalPolicyPrompt = `
