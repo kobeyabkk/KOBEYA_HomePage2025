@@ -2335,6 +2335,282 @@ app.get('/api/debug/session/:sessionId', (c) => {
   })
 })
 
+// 問題再生成API（Step 1: バックエンドのみ実装）
+app.post('/api/regenerate-problem', async (c) => {
+  console.log('🔄 Problem regeneration API called')
+  
+  try {
+    const { sessionId, regenerationType = 'full' } = await c.req.json()
+    
+    if (!sessionId) {
+      return c.json({
+        ok: false,
+        error: 'missing_session_id',
+        message: 'セッションIDが必要です',
+        timestamp: new Date().toISOString()
+      }, 400)
+    }
+    
+    // セッション取得
+    const session = learningSessions.get(sessionId)
+    if (!session) {
+      return c.json({
+        ok: false,
+        error: 'session_not_found',
+        message: 'セッションが見つかりません',
+        timestamp: new Date().toISOString()
+      }, 404)
+    }
+    
+    console.log('🔄 Regenerating problem for session:', sessionId, 'type:', regenerationType)
+    
+    // OpenAI API Key の確認
+    const apiKey = c.env.OPENAI_API_KEY?.trim()
+    if (!apiKey) {
+      return c.json({
+        ok: false,
+        error: 'api_key_missing',
+        message: 'AI機能が利用できません',
+        timestamp: new Date().toISOString()
+      }, 500)
+    }
+    
+    // 元のセッションから生徒情報を取得
+    const studentInfo = studentDatabase[session.sid] || {
+      name: 'テスト生徒',
+      grade: 2,
+      subjects: ['数学'],
+      weakSubjects: ['英語']
+    }
+    
+    // 再生成用のプロンプト作成
+    const regenerationPrompt = createRegenerationPrompt(session, studentInfo, regenerationType)
+    
+    // OpenAI API 呼び出し（再生成）
+    const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [
+          {
+            role: 'system',
+            content: regenerationPrompt
+          },
+          {
+            role: 'user',
+            content: '上記の要求に基づいて、新しいバリエーションの学習コンテンツを生成してください。'
+          }
+        ],
+        max_tokens: 8000,
+        temperature: 0.7  // 再生成では少し高めの温度で多様性を確保
+      })
+    })
+    
+    if (!openaiResponse.ok) {
+      const errorText = await openaiResponse.text()
+      console.error('❌ OpenAI API error during regeneration:', openaiResponse.status, errorText)
+      
+      // Step 4: エラーハンドリング強化 - OpenAI APIエラーの詳細分類
+      let userMessage = 'AI再生成でエラーが発生しました'
+      
+      if (openaiResponse.status === 429) {
+        userMessage = 'AI機能の利用制限に達しています。少し時間をおいてから再度お試しください。'
+      } else if (openaiResponse.status === 401) {
+        userMessage = 'AI機能の認証に問題があります。管理者にお問い合わせください。'
+      } else if (openaiResponse.status === 400) {
+        userMessage = 'リクエストの内容に問題があります。別の問題で再度お試しください。'
+      } else if (openaiResponse.status >= 500) {
+        userMessage = 'AI機能のサーバーに一時的な問題があります。少し時間をおいてから再度お試しください。'
+      }
+      
+      return c.json({
+        ok: false,
+        error: 'openai_api_error',
+        message: userMessage,
+        statusCode: openaiResponse.status,
+        timestamp: new Date().toISOString()
+      }, 500)
+    }
+    
+    const aiContent = (await openaiResponse.json())?.choices?.[0]?.message?.content || ''
+    console.log('🤖 Regenerated AI content length:', aiContent.length)
+    
+    const jsonMatch = aiContent.match(/\{[\s\S]*\}/)
+    let aiAnalysis
+    
+    if (jsonMatch) {
+      try {
+        aiAnalysis = JSON.parse(jsonMatch[0])
+        console.log('🔄 Regeneration analysis success:', {
+          subject: aiAnalysis.subject,
+          problemType: aiAnalysis.problemType,
+          difficulty: aiAnalysis.difficulty,
+          confidence: aiAnalysis.confidence
+        })
+      } catch (parseError) {
+        console.error('❌ Regenerated analysis JSON parsing error:', parseError)
+        return c.json({
+          ok: false,
+          error: 'parse_error',
+          message: 'AI再生成結果の解析に失敗しました',
+          timestamp: new Date().toISOString()
+        }, 500)
+      }
+    } else {
+      console.error('❌ No JSON found in regenerated analysis:', aiContent.substring(0, 200))
+      
+      // Step 4: エラーハンドリング強化 - AI応答形式エラーの詳細対応
+      if (aiContent.includes("I'm sorry") || aiContent.includes("I can't") || aiContent.toLowerCase().includes("sorry")) {
+        return c.json({
+          ok: false,
+          error: 'ai_policy_violation',
+          message: 'この内容では問題を再生成できません。別の問題画像をお試しください。',
+          timestamp: new Date().toISOString()
+        }, 400)
+      } else {
+        return c.json({
+          ok: false,
+          error: 'format_error',
+          message: 'AI再生成結果の形式が不正です。もう一度お試しください。',
+          timestamp: new Date().toISOString()
+        }, 500)
+      }
+    }
+    
+    // 再生成されたデータでセッションを更新
+    updateSessionWithRegeneratedData(session, aiAnalysis)
+    
+    // 更新されたセッション情報を返却
+    return c.json({
+      ok: true,
+      sessionId,
+      regenerationType,
+      analysis: session.analysis,
+      subject: aiAnalysis.subject || session.problemType,
+      difficulty: aiAnalysis.difficulty || 'standard',
+      steps: session.steps,
+      confirmationProblem: session.confirmationProblem,
+      similarProblems: session.similarProblems,
+      currentStep: session.steps[0],
+      totalSteps: session.steps.length,
+      status: 'learning',
+      message: '問題を再生成しました',
+      timestamp: new Date().toISOString()
+    })
+    
+  } catch (error) {
+    console.error('❌ Problem regeneration error:', error)
+    return c.json({
+      ok: false,
+      error: 'regeneration_error',
+      message: error.message || '問題再生成でエラーが発生しました',
+      timestamp: new Date().toISOString()
+    }, 500)
+  }
+})
+
+// 再生成用プロンプト作成関数
+function createRegenerationPrompt(session, studentInfo, regenerationType) {
+  const basePrompt = `あなたは中学生向けの学習サポート専門教師です。既存の学習コンテンツをより良いバリエーションに再生成してください。
+
+【既存セッション情報】
+問題タイプ: ${session.problemType}
+教科: ${session.analysis ? session.analysis.split('\n')[0] : '不明'}
+生徒情報: ${studentInfo.name} (中学${studentInfo.grade}年)
+
+【再生成の要求】
+再生成タイプ: ${regenerationType}
+${regenerationType === 'full' ? '・全体的な内容とアプローチを変更' : '・類似問題のみを新しいパターンに変更'}
+
+【重要な改善指示】
+1. 既存のコンテンツとは異なるアプローチや例を使用してください
+2. 段階学習の各ステップに新しい視点や説明方法を取り入れてください
+3. 類似問題は全て新しいパターン・数値・設定で生成してください
+4. 選択肢の順序や正解位置をランダム化してください
+5. より分かりやすく、より教育的価値の高い内容にしてください
+
+【必須要件（変更不可）】
+- 段階学習の全ステップは必ずtype: "choice"（選択肢問題）
+- 確認問題もtype: "choice"（選択肢問題）  
+- 類似問題はtype: "choice"とtype: "input"の混合
+- 正解がAに偏らないよう分散させる
+- JSON形式での応答必須
+
+以下の元の教育方針とJSON形式を完全に踏襲しつつ、内容のみを新しいバリエーションに変更してください：`
+
+  // 元のシステムプロンプトの教育方針部分を再利用
+  const educationalPolicyPrompt = `
+【教育方針（文部科学省学習指導要領準拠）】
+- 人間中心の学習重視：一人一人の人格を尊重し、個性を生かす指導
+- 主体的・対話的で深い学び：段階的思考プロセスの明示支援
+- 3つの観点重視：知識・技能、思考・判断・表現、主体的学習態度の育成
+- 中学生向けのやさしい敬語で説明（学習者の発達段階に応じた言葉遣い）
+- 海外在住への配慮：「日本でも同じ内容を学習するよ」「心配しないで大丈夫」
+- 問題解決能力育成：複数解決方法の提示、比較検討の促進
+- 温かい励ましと支援姿勢：失敗を学習機会として前向きに捉える
+- 個別最適化支援：学習履歴と理解度に応じた説明方法の選択
+
+【回答形式】
+以下のJSON形式で回答してください：
+{
+  "subject": "数学|英語|プログラミング|その他",
+  "problemType": "custom",
+  "difficulty": "basic|intermediate|advanced", 
+  "analysis": "【詳細分析】\\n\\n①問題の整理\\n②使う知識\\n③解法のポイント\\n④解答例\\n⑤確認・振り返り",
+  "confidence": 0.0-1.0,
+  "steps": [4-7個の段階学習ステップ],
+  "confirmationProblem": {選択肢問題},
+  "similarProblems": [5-8個の類似問題、choice/inputの混合]
+}`
+
+  return basePrompt + educationalPolicyPrompt
+}
+
+// セッション更新関数
+function updateSessionWithRegeneratedData(session, aiAnalysis) {
+  // 新しい分析内容で更新
+  session.analysis = `【AI学習アシスタント再生成】<br><br>${aiAnalysis.analysis.replace(/。/g, '。<br>').replace(/！/g, '！<br>').replace(/<br><br>+/g, '<br><br>')}<br><br>🔄 **新しいパターンで学習を始めましょう**<br>別のアプローチで問題に取り組みます！`
+  
+  // 段階学習ステップを更新
+  if (aiAnalysis.steps && Array.isArray(aiAnalysis.steps)) {
+    session.steps = aiAnalysis.steps.map(step => ({
+      ...step,
+      completed: false,
+      attempts: []
+    }))
+  }
+  
+  // 確認問題を更新
+  if (aiAnalysis.confirmationProblem) {
+    session.confirmationProblem = {
+      ...aiAnalysis.confirmationProblem,
+      attempts: []
+    }
+  }
+  
+  // 類似問題を更新
+  if (aiAnalysis.similarProblems) {
+    session.similarProblems = aiAnalysis.similarProblems.map(problem => ({
+      ...problem,
+      attempts: []
+    }))
+  }
+  
+  // セッション状態をリセット
+  session.currentStep = 0
+  session.status = 'learning'
+  session.updatedAt = new Date().toISOString()
+  
+  console.log('🔄 Session updated with regenerated data:', {
+    stepsCount: session.steps.length,
+    similarProblemsCount: session.similarProblems.length
+  })
+}
+
 // 類似問題チェックAPI
 app.post('/api/similar/check', async (c) => {
   console.log('🔥 Similar problem check API called')
@@ -3333,6 +3609,13 @@ app.get('/study-partner', (c) => {
                 '<strong>📋 問題を分析しました！</strong><br>' +
                 (result.subject || '学習') + 'の問題ですね。<br>' +
                 '段階的に一緒に解いていきましょう！' +
+              '</div>' +
+              // Step 2: 再生成ボタンを追加（最小限の変更）
+              '<div style="margin-top: 0.75rem; text-align: center;">' +
+                '<button onclick="regenerateProblem()" id="regenerateButton" ' +
+                'style="background: #f59e0b; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.875rem; font-weight: 500;">' +
+                '<i class="fas fa-sync-alt" style="margin-right: 0.5rem;"></i>🔄 問題を再生成' +
+                '</button>' +
               '</div>';
             analysisContent.innerHTML = studentMessage;
             
@@ -3981,6 +4264,105 @@ app.get('/study-partner', (c) => {
           } else {
             // ウインドウにフォーカスを移す
             aiWindow.focus();
+          }
+        }
+
+        // === 問題再生成機能（Step 2: フロントエンド実装） ===
+        
+        // 問題再生成関数
+        async function regenerateProblem(regenerationType = 'full') {
+          console.log('🔄 Regenerate problem called, type:', regenerationType);
+          
+          if (!authenticated) {
+            alert('❌ ログインが必要です');
+            return;
+          }
+          
+          if (!currentSession) {
+            alert('❌ 学習セッションが見つかりません');
+            return;
+          }
+          
+          // 再生成ボタンを無効化
+          const regenerateButton = document.getElementById('regenerateButton');
+          if (regenerateButton) {
+            regenerateButton.disabled = true;
+            regenerateButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>再生成中...';
+          }
+          
+          try {
+            console.log('🔄 Sending regeneration request for session:', currentSession.sessionId);
+            
+            const response = await fetch('/api/regenerate-problem', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify({
+                sessionId: currentSession.sessionId,
+                regenerationType: regenerationType
+              })
+            });
+            
+            console.log('📡 Regeneration response status:', response.status);
+            
+            if (!response.ok) {
+              throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+            }
+            
+            const result = await response.json();
+            console.log('📋 Regeneration result:', result);
+            
+            if (result.ok) {
+              // セッション情報を更新
+              currentSession.analysis = result.analysis;
+              currentSession.steps = result.steps;
+              currentSession.confirmationProblem = result.confirmationProblem;
+              currentSession.similarProblems = result.similarProblems;
+              currentSession.currentStep = result.currentStep;
+              
+              // 学習システムを新しいデータで再開
+              alert('✅ 新しいパターンの問題を生成しました！');
+              displayLearningStep(result);
+              
+              // 再生成ボタンを隠す（新しい学習フローでは不要）
+              if (regenerateButton) {
+                regenerateButton.style.display = 'none';
+              }
+              
+            } else {
+              throw new Error(result.message || '再生成に失敗しました');
+            }
+            
+          } catch (error) {
+            console.error('❌ Regeneration error:', error);
+            
+            // Step 4: エラーハンドリング強化 - より詳細で分かりやすいエラーメッセージ
+            let errorMessage = '❌ 問題の再生成に失敗しました';
+            
+            if (error.message.includes('HTTP 500')) {
+              errorMessage = '❌ AI機能に問題が発生しています。少し時間をおいてから再度お試しください。';
+            } else if (error.message.includes('HTTP 404')) {
+              errorMessage = '❌ 学習セッションが見つかりません。ページを更新してもう一度お試しください。';
+            } else if (error.message.includes('HTTP 400')) {
+              errorMessage = '❌ リクエストに問題があります。ページを更新してもう一度お試しください。';
+            } else if (error.message.includes('network') || error.message.includes('fetch')) {
+              errorMessage = '❌ ネットワーク接続に問題があります。インターネット接続を確認してください。';
+            } else if (error.message.includes('timeout')) {
+              errorMessage = '❌ 処理に時間がかかりすぎています。もう一度お試しください。';
+            } else {
+              errorMessage = '❌ 問題の再生成に失敗しました。もう一度お試しいただくか、ページを更新してください。';
+            }
+            
+            alert(errorMessage + '\n\n（エラー詳細: ' + error.message + '）');
+          } finally {
+            // ボタンを元の状態に戻す
+            if (regenerateButton) {
+              regenerateButton.disabled = false;
+              regenerateButton.innerHTML = '<i class="fas fa-sync-alt" style="margin-right: 0.5rem;"></i>🔄 問題を再生成';
+              regenerateButton.style.display = 'inline-block'; // エラー時もボタンを再表示
+            }
           }
         }
 
