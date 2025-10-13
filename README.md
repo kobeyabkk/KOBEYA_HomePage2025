@@ -1,13 +1,13 @@
-# AI & プログラミングのKOBEYA - Website
+# AI & プログラミングのKOBEYA - Study Partner System
 
-バンコク在住の日本人小中学生向けプログラミング教室のモダンなWebサイト
+バンコク在住の日本人小中学生向けプログラミング教室のAI学習パートナーシステム
 
 ## 🎯 プロジェクト概要
 
 ### 目的
-- **Primary Goal**: 新規生徒の体験申込（リード獲得）を最大化
-- バンコクの日本人家庭に安心感を与える信頼性の高いWebサイト
-- モバイルファーストのレスポンシブデザイン
+- **Primary Goal**: AI学習パートナーによる個別最適化学習支援
+- バンコクの日本人学生向け画像解析・段階的学習システム
+- 保護者への学習進捗レポート自動生成機能
 
 ### ターゲット
 - バンコク在住の日本人家庭
@@ -18,74 +18,78 @@
 
 - **Framework**: Hono (Cloudflare Workers)
 - **Language**: TypeScript/JSX
+- **Database**: Cloudflare D1 (SQLite)
+- **AI**: OpenAI GPT-4o, GPT-4o Vision
 - **Styling**: Tailwind CSS (CDN) + Custom CSS
 - **Deployment**: Cloudflare Pages
 - **Frontend**: Vanilla JavaScript (ES6+)
+- **Process Manager**: PM2 (development)
 
 ## 📖 現在実装されている機能
 
-### ✅ 完成済みページ
+### ✅ AI学習パートナー機能
 
-#### 1. **ホーム (/)** 
-- ヒーローセクション（メイン訴求）
-- 実績・安心材料の表示
-- 4つのコース紹介カード
-- 料金・タイムテーブル
-- よくある質問（FAQ）
-- アクセス情報
+#### 1. **画像解析・段階学習システム**
+- OpenAI GPT-4o Vision による画像解析
+- 問題の複雑さに応じた4-7ステップの動的段階学習生成
+- **5-8問の類似問題自動生成**（easy→medium→hard）
+  - **混合形式対応**: 選択問題（60%）と記述問題（40%）をミックス
+  - **段階的学習・確認問題**: 必ず選択肢形式で統一表示
+  - **類似問題**: choice形式とinput形式の柔軟な組み合わせ
+- ステップバイステップの確認問題
+- リアルタイム回答チェックとフィードバック
 
-#### 2. **コース (/courses)**
-- Scratch入門（小1〜3年）
-- Robloxゲーム制作（小4〜中学）
-- AI Coaching Lab（中学生）
-- Study Partner（家庭学習支援）
-- コース比較表
+#### 2. **AI質問チャット機能**
+- テキスト・画像対応の質問受付
+- 文部科学省学習指導要領準拠の回答生成
+- 学習コンテキストを考慮した個別サポート
+- 別ウィンドウでの専用チャット環境
 
-#### 3. **教室について (/about)**
-- 教室理念・指導方針
-- 講師紹介（鈴木政路先生）
-- 安心ポイント（安全・送迎・日本語サポート）
-- 教室実績・環境
+#### 3. **学習ログ記録システム**
+- 学習セッション自動記録
+- 学習時間・正答率・弱点タグの自動集計
+- 数値正規化（全角→半角、文字列→数値変換）
+- 教材マスターデータによるタグ推定
 
-#### 4. **お知らせ (/news)**
-- ニュース一覧表示
-- 個別記事詳細ページ
-- カテゴリー別分類
-- サンプル記事5件
+#### 4. **保護者レポート生成機能**
+- 週次学習レポート自動生成
+- 学習時間、正答率、弱点分析の集計
+- 次回推奨アクション提案
+- Webhook Secret認証によるセキュア通信
 
-#### 5. **お問い合わせ (/contact)**
-- 体験申込フォーム
-- 3つの連絡方法（LINE・電話・メール）
-- アクセス情報・地図
-- 開講時間案内
+### ✅ ユーザーインターフェース
 
-### ✅ 実装済み機能
+#### メイン学習画面
+- ✅ ログイン認証システム（APP_KEY + 生徒ID）
+- ✅ AIに質問ボタン
+- ✅ カメラ撮影・ファイル選択機能
+- ✅ 画像クロップ機能（Cropper.js）
+- ✅ アップロード進行表示
+- ✅ 段階学習・類似問題インターフェース
 
-#### UI/UX機能
-- ✅ レスポンシブデザイン（モバイル・タブレット・デスクトップ）
-- ✅ モバイルハンバーガーメニュー
-- ✅ スムーススクロール
-- ✅ FAQアコーディオン
-- ✅ フォームバリデーション
+#### 新機能プレースホルダー
+- ✅ 英検対策（実装予定）
+- ✅ 小論文対策（実装予定）
+- ✅ インター生用（実装予定）
 
-#### CTA（Call to Action）
-- ✅ 右下固定フローティングCTAボタン
-- ✅ ヒーローセクション「無料体験予約」ボタン
-- ✅ LINE友だち追加ボタン
-- ✅ 各セクション末尾のCTAボタン
+### ✅ バックエンド・データベース機能
 
-#### フォーム機能
-- ✅ リアルタイムバリデーション
-- ✅ ローディング状態表示
-- ✅ 成功・エラーメッセージ表示
-- ✅ API連携（/api/contact）
+#### API エンドポイント
+- ✅ `/api/health` - システムヘルスチェック
+- ✅ `/api/login` - 生徒認証
+- ✅ `/api/analyze-and-learn` - 画像解析・学習開始
+- ✅ `/api/step/check` - 段階学習ステップ確認
+- ✅ `/api/confirmation/check` - 確認問題チェック
+- ✅ `/api/similar/check` - 類似問題チェック
+- ✅ `/api/ai/chat` - AI質問チャット
+- ✅ `/api/logs` - 学習ログ記録（Webhook Secret認証）
+- ✅ `/api/logs/health` - ログシステムヘルスチェック
+- ✅ `/api/reports/weekly` - 週次レポート生成
 
-#### SEO対策
-- ✅ 適切なメタタグ設定
-- ✅ OGP（Open Graph Protocol）対応
-- ✅ sitemap.xml生成
-- ✅ robots.txt設定
-- ✅ 構造化データ対応準備
+#### データベーススキーマ（Cloudflare D1）
+- ✅ `logs` - 学習ログデータ
+- ✅ `students` - 生徒マスターデータ
+- ✅ `master_materials` - 教材マスターデータ
 
 ## 🎨 デザインシステム
 
@@ -103,44 +107,86 @@
 
 ## 📱 主要URI一覧
 
-| Path | 説明 | 主な機能 |
-|------|------|----------|
-| `/` | ホーム | ヒーロー、コース紹介、FAQ |
-| `/courses` | コース詳細 | 4コースの詳細、比較表 |
-| `/about` | 教室について | 理念、講師、実績、環境 |
-| `/news` | お知らせ一覧 | ニュース記事一覧 |
-| `/news/:slug` | 記事詳細 | 個別ニュース記事 |
-| `/contact` | お問い合わせ | 体験申込フォーム |
-| `/api/contact` | フォーム送信API | POST: お問い合わせ処理 |
+### 🎓 学習システム
+| Path | Method | 説明 | 主な機能 |
+|------|--------|------|----------|
+| `/` | GET | メイン学習画面 | ログイン、画像アップロード、AI学習 |
+| `/ai-chat/:sessionId` | GET | AI質問チャット | 別ウィンドウでの質問・回答 |
+
+### 🔧 学習API
+| Path | Method | 認証 | 説明 |
+|------|--------|------|------|
+| `/api/health` | GET | なし | システムヘルスチェック |
+| `/api/login` | POST | APP_KEY | 生徒認証 |
+| `/api/analyze-and-learn` | POST | なし | 画像解析・学習開始 |
+| `/api/step/check` | POST | なし | 段階学習ステップ確認 |
+| `/api/confirmation/check` | POST | なし | 確認問題チェック |
+| `/api/similar/check` | POST | なし | 類似問題チェック |
+| `/api/ai/chat` | POST | なし | AI質問チャット |
+
+### 📊 ログ・レポートAPI
+| Path | Method | 認証 | 説明 |
+|------|--------|------|------|
+| `/api/logs/health` | GET | なし | ログシステムヘルスチェック |
+| `/api/logs` | POST | Webhook Secret | 学習ログ記録 |
+| `/api/reports/weekly` | POST | Webhook Secret | 週次レポート生成 |
 
 ## 🗄️ データ構造
 
-### コース情報
+### 学習ログデータ
 ```typescript
-interface Course {
-  id: string;
-  name: string;
-  targetGrade: string;
-  duration: number; // 分
-  language: string;
-  difficulty: 1 | 2 | 3;
-  price: number; // THB
-  features: string[];
+interface LogRequest {
+  student_id: string;
+  student_name?: string;
+  date: string; // YYYY-MM-DD
+  subject: string;
+  textbook_code?: string;
+  page?: number | null;
+  problem_id?: string;
+  error_tags?: string[];
+  tasks_done?: string;
+  problems_attempted?: string;
+  correct?: string;
+  incorrect?: string;
+  mini_quiz_score?: string;
+  weak_tags?: string[];
+  next_action?: string;
+  started_at?: string; // ISO datetime
+  ended_at?: string; // ISO datetime
+  flag_teacher_review?: boolean;
+  request_id?: string; // 冪等性キー
 }
 ```
 
-### お問い合わせフォーム
+### 週次レポートデータ
 ```typescript
-interface ContactForm {
-  parentName: string;
-  phone: string;
-  email: string;
-  childName: string;
-  childGrade: string;
-  course: 'scratch' | 'roblox' | 'ai-coaching' | 'study-partner';
-  preferredTime: string[];
-  contactMethod: 'line' | 'phone' | 'email';
-  message?: string;
+interface WeeklyReport {
+  student_id: string;
+  period: {
+    start: string; // YYYY-MM-DD
+    end: string; // YYYY-MM-DD
+  };
+  summary: {
+    sessions: number; // セッション数
+    minutes: number; // 学習時間（分）
+    avg_score: number; // 平均点
+    weak_tags_top3: string[]; // 弱点タグTOP3
+    student_name: string;
+    next_action: string;
+  };
+  logs_count: number;
+}
+```
+
+### 生徒データ
+```typescript
+interface StudentInfo {
+  student_id: string;
+  student_name: string;
+  grade: number;
+  subjects: string[];
+  weakSubjects: string[];
+  lastLogin: string;
 }
 ```
 
@@ -233,38 +279,88 @@ npm run deploy:prod
 
 ## 🔄 最新の更新履歴
 
-### v1.1.0 - AI段階学習の動的生成機能強化 (2025-01-11)
+### v2.1.0 - 類似問題混合形式対応実装 (2025-10-13)
 
-#### ✅ 修正内容
-**問題**: 段階的学習が1回だけ・類似問題が1問しか出ない問題を修正
+#### ✅ 類似問題形式多様化
+**新機能**: 類似問題で選択問題と記述問題を混合表示する機能を実装
 
-**解決策**: AIに動的コンテンツ生成を指示する機能を追加
-- **段階学習**: 固定1-3ステップ → 問題の複雑さに応じて4-7ステップを動的生成
-- **類似問題**: 固定3問 → 元画像分析に基づき5-8問を段階的難易度で動的生成
+#### 📚 学習体験の改善
+- **段階的学習**: 必ず選択肢形式で統一（学習効果の確実性重視）
+- **確認問題**: 必ず選択肢形式で統一（復習効果の確実性重視） 
+- **類似問題**: 選択問題（60%）+ 記述問題（40%）の混合形式
+  - choice形式: 4つの選択肢から選択
+  - input形式: テキストエリアでの自由記述回答
 
-#### 🔧 技術的変更点
-1. **AIプロンプト強化**:
-   - 段階学習ステップ生成ルールを明確化
-   - 類似問題生成ルールを詳細指定
-   - 動的コンテンツ生成の必須要件を追加
+#### 🤖 AI生成プロンプト強化
+- OpenAI GPT-4o に類似問題の混合形式生成を指示
+- easy問題の60%をchoice、40%をinputで自動配分
+- 各問題タイプに応じた適切な正答パターン生成
 
-2. **品質保証機能**:
-   - steps: 最低4個〜最大7個の動的生成
-   - similarProblems: 最低5個〜最大8個の動的生成
-   - 問題内容・難易度・教科特性への完全対応
+#### 💻 フロントエンド・バックエンド対応
+- **フロントエンド**: choice/input両形式のUI自動切替
+- **バックエンド**: 両形式の回答検証と採点ロジック
+- **既存機能保護**: 段階学習・確認問題の動作維持
 
-3. **フォールバック機能**:
-   - 既存の固定データをフォールバック用として保持
-   - AI動的生成失敗時の安全機能を維持
-
-#### 📈 期待される効果
-- 📚 **学習量増加**: 段階学習4-7ステップ、類似問題5-8問
-- 🎯 **個別最適化**: 各問題に最適化されたコンテンツ
-- 🔄 **多様性向上**: 固定パターンから脱却した動的生成
-- 💪 **理解定着**: 十分な練習量による学習効果向上
+#### 🎯 将来対応準備
+- 記述問題での写真アップロード機能（手書き回答のAI採点）
+- チャット形式での対話型回答機能
+- より高度なAI採点アルゴリズム
 
 ---
 
-**Last Updated**: 2025-01-11
-**Version**: 1.1.0
-**Status**: ✅ Enhanced Dynamic Generation
+### v2.0.0 - 学習ログ・保護者レポートシステム実装 (2025-10-12)
+
+#### ✅ 新機能実装
+**追加機能**: 生徒の学習ログ記録と保護者向け週次レポート自動生成システム
+
+#### 🗄️ データベース機能
+- **Cloudflare D1データベース導入**: SQLite ベースの分散データベース
+- **3つのテーブル**: logs（学習ログ）、students（生徒マスター）、master_materials（教材マスター）
+- **自動マイグレーション**: 開発・本番環境の自動スキーマ同期
+
+#### 📊 ログ収集システム
+- **数値正規化**: 全角→半角、文字列→数値の自動変換
+- **タグ推定**: 教材マスターデータに基づく弱点タグ自動推定
+- **時間計算**: 学習開始・終了時刻からの自動時間計算
+- **冪等性保証**: request_id による重複防止機能
+
+#### 📈 レポート生成機能
+- **週次サマリ**: セッション数、学習時間、平均点の自動集計
+- **弱点分析**: 頻度TOP3の弱点タグ自動抽出
+- **推奨アクション**: 学習成果に基づく次回アクション提案
+- **保護者通知**: JSON形式での構造化レポート生成
+
+#### 🔐 セキュリティ機能
+- **Webhook Secret認証**: X-Webhook-Secret ヘッダーによる認証
+- **環境変数管理**: WEBHOOK_SECRET、VERSION の設定
+- **API分離**: 認証不要の学習API と認証必要なログAPI の分離
+
+#### 🔧 技術的改善
+- **TypeScript型安全性**: 全APIの型定義強化
+- **エラーハンドリング**: 包括的なエラー処理とログ出力
+- **開発環境最適化**: PM2 + D1 ローカル環境の構築
+- **ユーティリティ関数**: 再利用可能なログ処理関数群
+
+#### 📋 新しいプレースホルダー機能
+- **英検対策（実装予定）**: 英語能力試験対応学習
+- **小論文対策（実装予定）**: 論文・作文指導機能
+- **インター生用（実装予定）**: 国際学校生向けサポート
+
+#### 🧪 テスト・検証
+- **API動作確認**: ヘルスチェック、ログ収集、週次レポート生成
+- **データ正規化検証**: 「練習３問完了」→ tasks_done=3 の自動変換
+- **タグ推定検証**: MATH2A-25ページ → 「二次方程式」「因数分解」「代数」推定
+- **既存機能保護**: 画像解析・AI学習機能の動作維持確認
+
+---
+
+### v1.1.0 - AI段階学習の動的生成機能強化 (2025-01-11)
+- 段階学習: 4-7ステップの動的生成
+- 類似問題: 5-8問の段階的難易度生成
+- AIプロンプト強化と品質保証機能
+
+---
+
+**Last Updated**: 2025-10-13
+**Version**: 2.1.0
+**Status**: ✅ Mixed Format Similar Problems Implemented & Learning Analytics System Active

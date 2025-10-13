@@ -1,9 +1,25 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
+import { cors } from 'hono/cors'
+// ログシステム用ユーティリティをインポート
+import {
+  normalize,
+  calcMinutes,
+  inferTags,
+  inferTagsAI,
+  mergeWeakTags,
+  debugNums,
+  safeJsonParse,
+  safeJsonStringify,
+  generateRequestId
+} from './utils/logging'
 
 // Cloudflare Bindings の型定義
 type Bindings = {
   OPENAI_API_KEY: string
+  DB: D1Database
+  WEBHOOK_SECRET: string
+  VERSION: string
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -410,6 +426,13 @@ ${studentInfo ?
 - 各ステップは前のステップの理解を前提とした段階的構成
 - 最終ステップは必ず元問題レベルの総合演習にしてください
 
+【CRITICAL: 選択肢問題の強制要件】
+- **全ての段階学習ステップは必ず選択肢問題（type: "choice"）にしてください**
+- **input形式は絶対に使用しないでください**
+- **各ステップには必ず4つの選択肢（A, B, C, D）を作成してください**
+- **選択肢は具体的で教育的価値があるものにしてください**
+- **正解以外の選択肢も学習に有益な内容にしてください**
+
 【類似問題生成ルール】
 - 元画像の問題内容を分析し、5-8問の類似問題を動的生成してください
 - 難易度段階：easy(2-3問)→medium(2-3問)→hard(1-2問)
@@ -417,6 +440,16 @@ ${studentInfo ?
 - 解法は同じで表現形式を変えた問題
 - 一歩発展させた応用問題を含める
 - 各問題は独立して解けるよう設計してください
+
+【類似問題の形式指定】
+- **選択問題と記述問題を混ぜてください**
+- **easy問題の60%**: choice形式（選択肢4つ）
+- **easy問題の40%**: input形式（記述回答）
+- **medium問題の50%**: choice形式（選択肢4つ）
+- **medium問題の50%**: input形式（記述回答）
+- **hard問題の30%**: choice形式（選択肢4つ）  
+- **hard問題の70%**: input形式（記述回答）
+- input形式では具体的な計算過程や解法手順を求める問題にしてください
 
 【回答形式】
 以下のJSON形式で回答してください：
@@ -430,7 +463,7 @@ ${studentInfo ?
     {
       "stepNumber": 0,
       "instruction": "ステップ1の指導内容（問いかけ形式で思考を促す）",
-      "type": "choice|input",
+      "type": "choice",
       "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
       "correctAnswer": "A",
       "explanation": "励ましを含む詳細解説"
@@ -438,16 +471,17 @@ ${studentInfo ?
     {
       "stepNumber": 1,
       "instruction": "ステップ2の指導内容",
-      "type": "choice|input",
+      "type": "choice",
       "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
       "correctAnswer": "B",
       "explanation": "前ステップを踏まえた詳細解説"
     }
     // 問題の複雑さに応じて4-7ステップまで動的生成
+    // 【重要】全てのステップはtype: "choice"で4つの選択肢必須
   ],
   "confirmationProblem": {
     "question": "確認問題の内容（元問題と同レベル）",
-    "type": "choice|input",
+    "type": "choice",
     "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
     "correctAnswer": "A",
     "explanation": "中学生向けの確認問題解説"
@@ -456,7 +490,7 @@ ${studentInfo ?
     {
       "problemNumber": 1,
       "question": "類似問題1（easy）",
-      "type": "choice|input",
+      "type": "choice",
       "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
       "correctAnswer": "A",
       "explanation": "類似問題1の詳細解説",
@@ -464,11 +498,10 @@ ${studentInfo ?
     },
     {
       "problemNumber": 2,
-      "question": "類似問題2（easy）",
-      "type": "choice|input", 
-      "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
-      "correctAnswer": "B",
-      "explanation": "類似問題2の詳細解説",
+      "question": "類似問題2（easy）- 計算過程を示して解答してください",
+      "type": "input", 
+      "correctAnswers": ["正解例1", "正解例2"],
+      "explanation": "類似問題2の詳細解説と解法手順",
       "difficulty": "easy"
     }
     // 5-8問まで動的生成（easy→medium→hardの順）
@@ -496,7 +529,16 @@ ${studentInfo ?
 【品質保証】
 - stepsは最低4個、最大7個まで生成してください（固定1-3個は禁止）
 - similarProblemsは最低5個、最大8個まで生成してください（固定3個は禁止）
-- 各コンテンツは問題の内容・難易度・教科特性に完全に対応させてください`
+- 各コンテンツは問題の内容・難易度・教科特性に完全に対応させてください
+
+【選択肢問題の絶対要件】
+- **段階学習の全ステップは必ずtype: "choice"にしてください**
+- **確認問題も必ずtype: "choice"にしてください**
+- **類似問題はtype: "choice"とtype: "input"を混ぜてください**
+- **choice形式の問題には必ず4つの選択肢（A, B, C, D）を含めてください**
+- **choice形式ではoptionsフィールドが必須で、4要素の配列にしてください**
+- **input形式ではcorrectAnswersフィールドに正解例の配列を含めてください**
+- **段階学習と確認問題では選択肢がない問題は絶対に作らないでください**`
             },
             {
               role: 'user',
@@ -557,22 +599,121 @@ ${studentInfo ?
       let learningData
       if (aiAnalysis.steps && Array.isArray(aiAnalysis.steps)) {
         // AIが完全な学習データを生成した場合
+        console.log('✅ AI generated complete steps:', aiAnalysis.steps.length)
+        console.log('🔍 First step details:', {
+          stepNumber: aiAnalysis.steps[0]?.stepNumber,
+          instruction: aiAnalysis.steps[0]?.instruction?.substring(0, 50) + '...',
+          type: aiAnalysis.steps[0]?.type,
+          optionsCount: aiAnalysis.steps[0]?.options?.length,
+          options: aiAnalysis.steps[0]?.options
+        })
+        
         learningData = {
           analysis: `【AI学習アシスタント分析結果】<br><br>${aiAnalysis.analysis.replace(/。/g, '。<br>').replace(/！/g, '！<br>').replace(/<br><br>+/g, '<br><br>')}<br><br>🎯 **段階的学習を開始します**<br>一緒に問題を解いていきましょう。<br>各ステップで丁寧に説明しながら進めます！`,
-          steps: aiAnalysis.steps.map(step => ({
-            ...step,
-            completed: false,
-            attempts: []
-          })),
-          confirmationProblem: aiAnalysis.confirmationProblem || {
-            question: "確認問題: 学習内容を理解できましたか？",
-            type: "choice",
-            options: ["A) よく理解できた", "B) 少し理解できた", "C) もう一度説明が欲しい", "D) 全く分からない"],
-            correctAnswer: "A",
-            explanation: "素晴らしい！理解が深まりましたね。",
-            attempts: []
-          },
-          similarProblems: aiAnalysis.similarProblems || []
+          steps: aiAnalysis.steps.map(step => {
+            // 選択肢問題でない場合、強制的に選択肢問題に変換
+            if (step.type !== 'choice' || !step.options || !Array.isArray(step.options) || step.options.length < 4) {
+              console.warn(`⚠️ Step ${step.stepNumber} is not choice type or missing options, converting to choice`)
+              return {
+                ...step,
+                type: 'choice',
+                options: [
+                  "A) 基礎的な概念を確認する",
+                  "B) 中程度の理解を示す", 
+                  "C) 応用的な考え方をする",
+                  "D) 発展的な解法を選ぶ"
+                ],
+                correctAnswer: "A",
+                completed: false,
+                attempts: []
+              }
+            }
+            return {
+              ...step,
+              completed: false,
+              attempts: []
+            }
+          }),
+          confirmationProblem: (() => {
+            const confirmation = aiAnalysis.confirmationProblem || {
+              question: "確認問題: 学習内容を理解できましたか？",
+              type: "choice",
+              options: ["A) よく理解できた", "B) 少し理解できた", "C) もう一度説明が欲しい", "D) 全く分からない"],
+              correctAnswer: "A",
+              explanation: "素晴らしい！理解が深まりましたね。",
+              attempts: []
+            }
+            
+            // 確認問題も選択肢問題を強制
+            if (confirmation.type !== 'choice' || !confirmation.options || !Array.isArray(confirmation.options) || confirmation.options.length < 4) {
+              console.warn('⚠️ Confirmation problem is not choice type, converting to choice')
+              confirmation.type = 'choice'
+              confirmation.options = [
+                "A) よく理解できた",
+                "B) 少し理解できた", 
+                "C) もう一度説明が欲しい",
+                "D) 全く分からない"
+              ]
+              confirmation.correctAnswer = "A"
+            }
+            
+            return {
+              ...confirmation,
+              attempts: []
+            }
+          })(),
+          similarProblems: (aiAnalysis.similarProblems || []).map(problem => {
+            // 類似問題は選択肢問題と記述問題の混合を許可
+            if (problem.type === 'choice') {
+              // choice形式の検証
+              if (!problem.options || !Array.isArray(problem.options) || problem.options.length < 4) {
+                console.warn(`⚠️ Similar problem ${problem.problemNumber} is choice type but missing proper options`)
+                return {
+                  ...problem,
+                  type: 'choice',
+                  options: [
+                    "A) 基本的な解法",
+                    "B) 標準的なアプローチ",
+                    "C) 応用的な考え方", 
+                    "D) 発展的な解法"
+                  ],
+                  correctAnswer: "A",
+                  attempts: []
+                }
+              }
+            } else if (problem.type === 'input') {
+              // input形式の検証
+              if (!problem.correctAnswers || !Array.isArray(problem.correctAnswers)) {
+                console.warn(`⚠️ Similar problem ${problem.problemNumber} is input type but missing correctAnswers`)
+                return {
+                  ...problem,
+                  type: 'input',
+                  correctAnswers: ["計算過程を記述してください"],
+                  attempts: []
+                }
+              }
+            } else {
+              // 不明な形式の場合はchoice形式に変換
+              console.warn(`⚠️ Similar problem ${problem.problemNumber} has unknown type, converting to choice`)
+              return {
+                ...problem,
+                type: 'choice',
+                options: [
+                  "A) 基本的な解法",
+                  "B) 標準的なアプローチ",
+                  "C) 応用的な考え方", 
+                  "D) 発展的な解法"
+                ],
+                correctAnswer: "A",
+                attempts: []
+              }
+            }
+            
+            return {
+              ...problem,
+              attempts: []
+            }
+          })
         }
       } else {
         // AIが部分的なデータしか生成しなかった場合のフォールバック
@@ -791,6 +932,15 @@ app.post('/api/confirmation/check', async (c) => {
     if (isCorrect) {
       session.status = 'similar_problems' // 類似問題フェーズに移行
       nextAction = 'similar_problems'
+      
+      // 確認問題完了時のログ記録（中間ログ）
+      try {
+        console.log('📝 Confirmation completed, sending intermediate log for:', sessionId)
+        const { logCompletedSession } = await import('./utils/session-logger')
+        await logCompletedSession(sessionId, learningSessions, {}, c.env)
+      } catch (error) {
+        console.error('❌ Failed to log confirmation completion:', error)
+      }
     }
     
     session.updatedAt = new Date().toISOString()
@@ -2260,6 +2410,15 @@ app.post('/api/similar/check', async (c) => {
         session.status = 'fully_completed'
         nextAction = 'all_completed'
         feedback += '\n\n🎉 すべての類似問題が完了しました！お疲れ様でした！'
+        
+        // 学習完了時のログ記録
+        try {
+          console.log('📝 Session completed, sending log for:', sessionId)
+          const { logCompletedSession } = await import('./utils/session-logger')
+          await logCompletedSession(sessionId, learningSessions, {}, c.env)
+        } catch (error) {
+          console.error('❌ Failed to log completed session:', error)
+        }
       } else {
         nextAction = 'next_problem'
       }
@@ -2787,6 +2946,35 @@ app.get('/study-partner', (c) => {
                     <button id="aiQuestionMainButton" style="width: 100%; border-radius: 0.5rem; padding: 1rem; background-color: #7c3aed; color: white; font-weight: 500; border: none; cursor: pointer; min-height: 56px; font-size: 16px;">
                         <i class="fas fa-robot" style="margin-right: 0.5rem;"></i>
                         🤖 AIに質問
+                    </button>
+                </div>
+
+                <!-- 新機能プレースホルダーボタン -->
+                <div style="margin-bottom: 1rem;">
+                    <button id="eikenTaisaku" disabled style="width: 100%; border-radius: 0.5rem; padding: 1rem; background-color: #9ca3af; color: white; font-weight: 500; border: none; cursor: not-allowed; min-height: 56px; font-size: 16px; opacity: 0.7;">
+                        <i class="fas fa-graduation-cap" style="margin-right: 0.5rem;"></i>
+                        📚 英検対策（実装予定）
+                    </button>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <button id="shoronbunTaisaku" disabled style="width: 100%; border-radius: 0.5rem; padding: 1rem; background-color: #9ca3af; color: white; font-weight: 500; border: none; cursor: not-allowed; min-height: 56px; font-size: 16px; opacity: 0.7;">
+                        <i class="fas fa-pen-fancy" style="margin-right: 0.5rem;"></i>
+                        📝 小論文対策（実装予定）
+                    </button>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <button id="flashcard" disabled style="width: 100%; border-radius: 0.5rem; padding: 1rem; background-color: #9ca3af; color: white; font-weight: 500; border: none; cursor: not-allowed; min-height: 56px; font-size: 16px; opacity: 0.7;">
+                        <i class="fas fa-clone" style="margin-right: 0.5rem;"></i>
+                        🃏 フラッシュカード（実装予定）
+                    </button>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <button id="interSeiYou" disabled style="width: 100%; border-radius: 0.5rem; padding: 1rem; background-color: #9ca3af; color: white; font-weight: 500; border: none; cursor: not-allowed; min-height: 56px; font-size: 16px; opacity: 0.7;">
+                        <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>
+                        🌍 インター生用（実装予定）
                     </button>
                 </div>
 
@@ -3373,6 +3561,13 @@ app.get('/study-partner', (c) => {
         // 段階学習ステップ表示
         function displayLearningStep(result) {
           console.log('📚 Displaying learning step:', result.currentStep.stepNumber);
+          console.log('🔍 Step details:', {
+            stepNumber: result.currentStep.stepNumber,
+            instruction: result.currentStep.instruction,
+            type: result.currentStep.type,
+            options: result.currentStep.options,
+            optionsLength: result.currentStep.options ? result.currentStep.options.length : 'undefined'
+          });
           
           const out = document.getElementById('out');
           if (!out) return;
@@ -3388,12 +3583,23 @@ app.get('/study-partner', (c) => {
           stepHtml += '<p style="margin: 0 0 1.5rem 0; line-height: 1.6; font-size: 1rem;">' + step.instruction + '</p>';
           
           if (step.type === 'choice') {
+            // 選択肢が存在しない場合のフォールバック処理
+            if (!step.options || !Array.isArray(step.options) || step.options.length === 0) {
+              console.error('❌ No options found for choice step, creating fallback options');
+              step.options = [
+                "A) 選択肢が読み込めませんでした",
+                "B) もう一度お試しください", 
+                "C) システムエラーが発生しています",
+                "D) 管理者にお知らせください"
+              ];
+              step.correctAnswer = "A";
+            }
+            
             stepHtml += '<div style="margin-bottom: 1.5rem;">';
             for (let i = 0; i < step.options.length; i++) {
               stepHtml += '<label style="display: block; margin-bottom: 0.75rem; padding: 0.75rem; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; line-height: 1.5; word-wrap: break-word;">';
               stepHtml += '<input type="radio" name="stepChoice" value="' + step.options[i].charAt(0) + '" style="margin-right: 0.5rem; vertical-align: top;">';
               stepHtml += '<span style="display: inline; font-weight: 500;">' + step.options[i] + '</span>';
-              stepHtml += '</label>';
               stepHtml += '</label>';
             }
             stepHtml += '</div>';
@@ -3967,6 +4173,614 @@ app.get('/study-partner', (c) => {
     </html>
   `)
 })
+
+// =====================================
+// 学習ログシステム API エンドポイント
+// =====================================
+
+// Webhook Secret認証ミドルウェア
+const requireSecret = async (c: any, next: any) => {
+  const providedSecret = c.req.header('X-Webhook-Secret')
+  const requiredSecret = c.env.WEBHOOK_SECRET
+  
+  if (!providedSecret || !requiredSecret || providedSecret !== requiredSecret) {
+    console.log('❌ Unauthorized webhook request - invalid secret')
+    return c.json({ ok: false, code: 'unauthorized' }, 401)
+  }
+  
+  return next()
+}
+
+// ヘルスチェックAPI
+app.get('/api/logs/health', (c) => {
+  return c.json({ 
+    ok: true, 
+    version: c.env.VERSION || '1.0.0',
+    service: 'kobeya-logging-system',
+    timestamp: new Date().toISOString()
+  })
+})
+
+// 【廃止済み】マスターデータ取得関数（AIベースのタグ推論に移行済み）
+async function fetchMasterMaterials(c: any): Promise<any[]> {
+  console.log('⚠️ fetchMasterMaterials called but deprecated - using AI-based inference')
+  
+  // AIベースのシステムではマスターデータは不要なので空配列を返す
+  return []
+}
+
+// 重複チェック関数
+async function isDuplicate(c: any, requestId: string): Promise<boolean> {
+  try {
+    const db = c.env.DB
+    const result = await db.prepare(`
+      SELECT id FROM logs WHERE request_id = ?
+    `).bind(requestId).first()
+    
+    return !!result
+  } catch (error) {
+    console.error('❌ Error checking duplicate:', error)
+    return false
+  }
+}
+
+// ログ挿入関数
+async function insertLog(c: any, logData: any): Promise<number | null> {
+  try {
+    const db = c.env.DB
+    
+    // デバッグ用：ログデータを確認
+    console.log('📝 Insert log data (all fields):', {
+      request_id: logData.request_id,
+      student_id: logData.student_id,
+      student_name: logData.student_name,
+      date: logData.date,
+      started_at: logData.started_at,
+      ended_at: logData.ended_at,
+      time_spent_min: logData.time_spent_min,
+      subject: logData.subject,
+      page: logData.page,
+      problem_id: logData.problem_id,
+      error_tags: logData.error_tags,
+      tasks_done: logData.tasks_done,
+      problems_attempted: logData.problems_attempted,
+      correct: logData.correct,
+      incorrect: logData.incorrect,
+      mini_quiz_score: logData.mini_quiz_score,
+      weak_tags: logData.weak_tags,
+      next_action: logData.next_action,
+      flag_teacher_review: logData.flag_teacher_review
+    })
+    
+    // 各パラメータの詳細ログ
+    const bindParams = [
+      logData.request_id,
+      logData.student_id, 
+      logData.student_name,
+      logData.date,
+      logData.started_at,
+      logData.ended_at,
+      logData.time_spent_min,
+      logData.subject,
+      logData.page,
+      logData.problem_id,
+      safeJsonStringify(logData.error_tags || []),
+      logData.tasks_done,
+      logData.problems_attempted,
+      logData.correct,
+      logData.incorrect,
+      logData.mini_quiz_score,
+      safeJsonStringify(logData.weak_tags || []),
+      logData.next_action,
+      logData.flag_teacher_review ? 1 : 0
+    ]
+    
+    console.log('🔍 Bind parameters check:')
+    bindParams.forEach((param, index) => {
+      const fieldNames = [
+        'request_id', 'student_id', 'student_name', 'date', 'started_at', 'ended_at',
+        'time_spent_min', 'subject', 'page', 'problem_id', 'error_tags', 'tasks_done',
+        'problems_attempted', 'correct', 'incorrect', 'mini_quiz_score', 'weak_tags',
+        'next_action', 'flag_teacher_review'
+      ]
+      if (param === undefined) {
+        console.log(`❌ Parameter ${index} (${fieldNames[index]}) is undefined`)
+      } else {
+        console.log(`✅ Parameter ${index} (${fieldNames[index]}): ${typeof param} = ${param}`)
+      }
+    })
+
+    const result = await db.prepare(`
+      INSERT INTO logs (
+        request_id, student_id, student_name, date, started_at, ended_at,
+        time_spent_min, subject, page, problem_id,
+        error_tags, tasks_done, problems_attempted, correct, incorrect,
+        mini_quiz_score, weak_tags, next_action, flag_teacher_review
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(...bindParams).run()
+    
+    return result.meta?.last_row_id || null
+  } catch (error) {
+    console.error('❌ Error inserting log:', error)
+    throw error
+  }
+}
+
+// ログ収集API
+app.post('/api/logs', requireSecret, async (c) => {
+  console.log('📝 Log collection API called')
+  
+  try {
+    const rawBody = await c.req.json()
+    console.log('📝 Raw log data received:', {
+      student_id: rawBody.student_id,
+      subject: rawBody.subject,
+      date: rawBody.date
+    })
+    
+    // データ正規化
+    const normalizedData = normalize(rawBody)
+    
+    // 【新機能】AIベースのタグ推定（教材データベース不要）
+    const inferredTags = inferTagsAI('', normalizedData)
+    normalizedData.weak_tags = mergeWeakTags(normalizedData.weak_tags, inferredTags)
+    
+    console.log('🤖 AI-based tag inference result:', inferredTags)
+    
+    // 時間計算
+    normalizedData.time_spent_min = calcMinutes(normalizedData.started_at, normalizedData.ended_at)
+    
+    // request_idがない場合は生成
+    if (!normalizedData.request_id) {
+      normalizedData.request_id = generateRequestId()
+    }
+    
+    // 重複チェック
+    const isDup = await isDuplicate(c, normalizedData.request_id)
+    if (isDup) {
+      console.log('⚠️ Duplicate request detected:', normalizedData.request_id)
+      return c.json({ ok: false, code: 'duplicate' }, 409)
+    }
+    
+    // ログ挿入
+    const insertedId = await insertLog(c, normalizedData)
+    
+    console.log('✅ Log inserted successfully:', { 
+      id: insertedId, 
+      student_id: normalizedData.student_id,
+      request_id: normalizedData.request_id
+    })
+    
+    return c.json({
+      ok: true,
+      version: c.env.VERSION || '1.0.0',
+      lastRow: insertedId,
+      request_id: normalizedData.request_id,
+      debugNumbers: debugNums(normalizedData)
+    })
+    
+  } catch (error) {
+    console.error('❌ Log collection error:', error)
+    return c.json({
+      ok: false,
+      error: 'log_collection_error',
+      message: error.message || 'ログ収集でエラーが発生しました',
+      timestamp: new Date().toISOString()
+    }, 500)
+  }
+})
+
+// 週次レポート生成用のヘルパー関数
+async function makeWeeklyReport(c: any, options: { student_id: string, start: string, end: string, store: boolean }) {
+  try {
+    const db = c.env.DB
+    const { student_id, start, end, store } = options
+    
+    console.log('📊 Generating weekly report:', { student_id, start, end, store })
+    
+    // 期間内のログデータを取得
+    const logsResult = await db.prepare(`
+      SELECT * FROM logs 
+      WHERE student_id = ? AND date >= ? AND date <= ?
+      ORDER BY date DESC, created_at DESC
+    `).bind(student_id, start, end).all()
+    
+    const logs = logsResult.results || []
+    
+    if (logs.length === 0) {
+      return {
+        ok: true,
+        student_id,
+        period: { start, end },
+        summary: {
+          sessions: 0,
+          minutes: 0,
+          avg_score: 0,
+          weak_tags_top3: []
+        },
+        message: '該当期間にログデータがありません'
+      }
+    }
+    
+    // サマリ計算
+    const sessions = logs.length
+    const minutes = logs.reduce((sum, log) => sum + (log.time_spent_min || 0), 0)
+    const scoresSum = logs.reduce((sum, log) => sum + (log.mini_quiz_score || 0), 0)
+    const avgScore = sessions > 0 ? Math.round(scoresSum / sessions) : 0
+    
+    // 弱点タグ集計
+    const weakTagsFlat: string[] = []
+    logs.forEach(log => {
+      const tags = safeJsonParse(log.weak_tags, [])
+      weakTagsFlat.push(...tags)
+    })
+    
+    const tagCounts = weakTagsFlat.reduce((acc, tag) => {
+      acc[tag] = (acc[tag] || 0) + 1
+      return acc
+    }, {} as Record<string, number>)
+    
+    const weakTagsTop3 = Object.entries(tagCounts)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 3)
+      .map(([tag]) => tag)
+    
+    // 最新の生徒情報取得
+    const latestLog = logs[0]
+    const studentName = latestLog.student_name || student_id
+    const nextAction = latestLog.next_action || '継続して学習を進めてください'
+    
+    const summary = {
+      sessions,
+      minutes,
+      avg_score: avgScore,
+      weak_tags_top3: weakTagsTop3,
+      student_name: studentName,
+      next_action: nextAction
+    }
+    
+    // 必要に応じてレポートをDBに保存（今回は省略）
+    
+    console.log('✅ Weekly report generated:', summary)
+    
+    return {
+      ok: true,
+      student_id,
+      period: { start, end },
+      summary,
+      logs_count: sessions
+    }
+    
+  } catch (error) {
+    console.error('❌ Weekly report generation error:', error)
+    throw error
+  }
+}
+
+// 週次レポート生成API
+app.post('/api/reports/weekly', requireSecret, async (c) => {
+  console.log('📊 Weekly report API called')
+  
+  try {
+    const body = await c.req.json()
+    const { student_id, start, end, store = true } = body
+    
+    if (!student_id || !start || !end) {
+      return c.json({
+        ok: false,
+        error: 'missing_params',
+        message: 'student_id, start, end パラメータが必要です'
+      }, 400)
+    }
+    
+    const result = await makeWeeklyReport(c, { student_id, start, end, store })
+    
+    return c.json(result)
+    
+  } catch (error) {
+    console.error('❌ Weekly report error:', error)
+    return c.json({
+      ok: false,
+      error: 'weekly_report_error',
+      message: error.message || '週次レポート生成でエラーが発生しました'
+    }, 500)
+  }
+})
+
+// =====================================
+// ログダッシュボード
+// =====================================
+
+// ダッシュボード表示（教室スタッフ専用）
+app.get('/dashboard', async (c) => {
+  try {
+    const db = c.env.DB
+    const url = new URL(c.req.url)
+    const limit = Math.min(parseInt(url.searchParams.get('limit') || '50'), 200) // 最大200件まで
+    
+    console.log(`📊 Dashboard access - limit: ${limit}`)
+    
+    // 最新ログを取得
+    const logsResult = await db.prepare(`
+      SELECT 
+        id, created_at, student_id, student_name, subject, 
+        mini_quiz_score, weak_tags, correct, incorrect, tasks_done
+      FROM logs 
+      ORDER BY id DESC 
+      LIMIT ?
+    `).bind(limit).all()
+    
+    const logs = logsResult.results || []
+    
+    // 最新ログの日時を確認（警告表示用）
+    let statusMessage = '✅ 正常動作中'
+    let statusClass = 'status-ok'
+    
+    if (logs.length > 0) {
+      const latestLog = logs[0]
+      const latestTime = new Date(latestLog.created_at)
+      const now = new Date()
+      const hoursDiff = (now.getTime() - latestTime.getTime()) / (1000 * 60 * 60)
+      
+      if (hoursDiff > 24) {
+        statusMessage = '⚠️ ログ受信停止の可能性あり'
+        statusClass = 'status-warning'
+      } else {
+        const timeStr = latestTime.toLocaleString('ja-JP', {
+          year: 'numeric',
+          month: '2-digit', 
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+        statusMessage = `✅ 正常動作中（最新ログ: ${timeStr}）`
+      }
+    } else {
+      statusMessage = '⚠️ ログデータなし'
+      statusClass = 'status-warning'
+    }
+    
+    // weak_tags JSONをパース
+    const processedLogs = logs.map(log => ({
+      ...log,
+      weak_tags_display: (() => {
+        try {
+          const tags = JSON.parse(log.weak_tags || '[]')
+          return Array.isArray(tags) ? tags.join(', ') : log.weak_tags || ''
+        } catch {
+          return log.weak_tags || ''
+        }
+      })(),
+      created_at_display: new Date(log.created_at).toLocaleString('ja-JP', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit', 
+        hour: '2-digit',
+        minute: '2-digit'
+      })
+    }))
+    
+    // HTMLダッシュボードを生成
+    const html = `
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOBEYA Logs Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        .header p {
+            margin: 0;
+            color: #7f8c8d;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        .controls select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tbody tr:hover {
+            background-color: #e8f4f8;
+        }
+        .status {
+            background: white;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+        .status-ok {
+            color: #27ae60;
+            border-left: 4px solid #27ae60;
+        }
+        .status-warning {
+            color: #e67e22;
+            border-left: 4px solid #e67e22;
+        }
+        .score-high { color: #27ae60; font-weight: bold; }
+        .score-mid { color: #f39c12; }
+        .score-low { color: #e74c3c; font-weight: bold; }
+        .tags {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        .student-id {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            table { font-size: 0.9em; }
+            th, td { padding: 8px 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 KOBEYA Logs Dashboard</h1>
+            <p>最新${limit}件のログを表示 | 教室スタッフ専用</p>
+        </div>
+        
+        <div class="controls">
+            <label for="limitSelect">表示件数：</label>
+            <select id="limitSelect" onchange="changeLimit()">
+                <option value="25" ${limit === 25 ? 'selected' : ''}>25件</option>
+                <option value="50" ${limit === 50 ? 'selected' : ''}>50件</option>
+                <option value="100" ${limit === 100 ? 'selected' : ''}>100件</option>
+                <option value="200" ${limit === 200 ? 'selected' : ''}>200件</option>
+            </select>
+            <button onclick="location.reload()" style="margin-left: 10px; padding: 8px 12px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                🔄 更新
+            </button>
+        </div>
+        
+        ${logs.length > 0 ? `
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>受信日時</th>
+                    <th>生徒ID</th>
+                    <th>生徒名</th>
+                    <th>教科</th>
+                    <th>スコア</th>
+                    <th>正答</th>
+                    <th>誤答</th>
+                    <th>課題数</th>
+                    <th>弱点タグ</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${processedLogs.map(log => `
+                <tr>
+                    <td>${log.id}</td>
+                    <td>${log.created_at_display}</td>
+                    <td class="student-id">${log.student_id || '-'}</td>
+                    <td>${log.student_name || '-'}</td>
+                    <td>${log.subject || '-'}</td>
+                    <td class="${log.mini_quiz_score >= 80 ? 'score-high' : log.mini_quiz_score >= 60 ? 'score-mid' : 'score-low'}">
+                        ${log.mini_quiz_score || '-'}
+                    </td>
+                    <td>${log.correct || 0}</td>
+                    <td>${log.incorrect || 0}</td>
+                    <td>${log.tasks_done || 0}</td>
+                    <td class="tags">${log.weak_tags_display || '-'}</td>
+                </tr>
+                `).join('')}
+            </tbody>
+        </table>
+        ` : `
+        <div class="no-data">
+            📝 ログデータがありません
+        </div>
+        `}
+        
+        <div class="status ${statusClass}">
+            ${statusMessage} | 総件数: ${logs.length}件
+        </div>
+    </div>
+    
+    <script>
+        function changeLimit() {
+            const select = document.getElementById('limitSelect');
+            const newLimit = select.value;
+            window.location.href = '/dashboard?limit=' + newLimit;
+        }
+    </script>
+</body>
+</html>`
+    
+    return c.html(html)
+    
+  } catch (error) {
+    console.error('❌ Dashboard error:', error)
+    
+    const errorHtml = `
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>KOBEYA Logs Dashboard - Error</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f8f9fa; }
+        .error { background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="error">
+        <h1>⚠️ DB接続エラー</h1>
+        <p>ダッシュボードのデータを取得できませんでした。</p>
+        <p><strong>エラー詳細:</strong> ${error.message}</p>
+        <button onclick="location.reload()">🔄 再試行</button>
+    </div>
+</body>
+</html>`
+    
+    return c.html(errorHtml, 500)
+  }
+})
+
+// =====================================
+// 既存システム継続
+// =====================================
 
 // Favicon ハンドラー
 app.get('/favicon.ico', (c) => {
