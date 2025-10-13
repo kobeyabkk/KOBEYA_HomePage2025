@@ -433,6 +433,12 @@ ${studentInfo ?
 - **選択肢は具体的で教育的価値があるものにしてください**
 - **正解以外の選択肢も学習に有益な内容にしてください**
 
+【CRITICAL: 正解ランダム化要件】
+- **正解がすべてA（選択肢1）にならないよう、意図的にランダム化してください**
+- **段階学習ステップでは正解をA, B, C, Dにバランスよく分散させてください**
+- **確認問題と類似問題でも正解の位置をランダムにしてください**
+- **Fisher-Yatesシャッフルのように、最初に内容を決めてから選択肢順序をランダム化してください**
+
 【類似問題生成ルール】
 - 元画像の問題内容を分析し、5-8問の類似問題を動的生成してください
 - 難易度段階：easy(2-3問)→medium(2-3問)→hard(1-2問)
@@ -465,7 +471,7 @@ ${studentInfo ?
       "instruction": "ステップ1の指導内容（問いかけ形式で思考を促す）",
       "type": "choice",
       "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
-      "correctAnswer": "A",
+      "correctAnswer": "C",
       "explanation": "励ましを含む詳細解説"
     },
     {
@@ -473,7 +479,7 @@ ${studentInfo ?
       "instruction": "ステップ2の指導内容",
       "type": "choice",
       "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
-      "correctAnswer": "B",
+      "correctAnswer": "D",
       "explanation": "前ステップを踏まえた詳細解説"
     }
     // 問題の複雑さに応じて4-7ステップまで動的生成
@@ -538,7 +544,13 @@ ${studentInfo ?
 - **choice形式の問題には必ず4つの選択肢（A, B, C, D）を含めてください**
 - **choice形式ではoptionsフィールドが必須で、4要素の配列にしてください**
 - **input形式ではcorrectAnswersフィールドに正解例の配列を含めてください**
-- **段階学習と確認問題では選択肢がない問題は絶対に作らないでください**`
+- **段階学習と確認問題では選択肢がない問題は絶対に作らないでください**
+
+【CRITICAL: 正解位置のランダム化】
+- **正解がすべてA（1番目）になることを絶対に避けてください**
+- **段階学習ステップの正解はA, B, C, Dにバランス良く分散させてください**
+- **意図的に正解位置を変更し、1つの問題セットで正解が偏らないようにしてください**
+- **例：step0→C、step1→A、step2→D、step3→B のように多様化してください**`
             },
             {
               role: 'user',
@@ -559,7 +571,7 @@ ${studentInfo ?
               ]
             }
           ],
-          max_tokens: 2000,
+          max_tokens: 8000,
           temperature: 0.3
         })
       })
@@ -571,6 +583,8 @@ ${studentInfo ?
       }
       
       const aiContent = (await openaiResponse.json())?.choices?.[0]?.message?.content || ''
+      console.log('🤖 AI content length:', aiContent.length)
+      console.log('🤖 AI content preview (first 500 chars):', aiContent.substring(0, 500))
       const jsonMatch = aiContent.match(/\{[\s\S]*\}/)
       let aiAnalysis
       
