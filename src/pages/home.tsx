@@ -44,7 +44,7 @@ export const homePage = () => (
           
           <div class="relative">
             <div class="bg-white rounded-2xl shadow-xl p-8">
-              <img src="/static/images/hero-kids-coding.jpg" alt="プログラミングを学ぶ子どもたち" class="w-full h-64 object-cover rounded-lg mb-4" />
+              <img src="/static/images/hero-placeholder.svg" alt="プログラミングを学ぶ子どもたち" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="text-center">
                 <h3 class="font-semibold text-lg text-gray-900 mb-2">楽しく学べる環境</h3>
                 <p class="text-gray-600">フジスーパー2号店2階の明るい教室で、安心して学習できます。</p>

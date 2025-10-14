@@ -82,7 +82,7 @@ export const coursesPage = () => (
           
           <div class="order-1 lg:order-2">
             <div class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl p-8">
-              <img src="/static/images/scratch-course.jpg" alt="Scratchプログラミング" class="w-full h-64 object-cover rounded-lg mb-4" />
+              <img src="/static/images/placeholder.svg" alt="Scratchプログラミング" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-4 text-center">
                   <div class="text-2xl font-bold text-orange-600">1-3年</div>
@@ -111,7 +111,7 @@ export const coursesPage = () => (
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div class="order-1">
             <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-8">
-              <img src="/static/images/roblox-course.jpg" alt="Robloxゲーム制作" class="w-full h-64 object-cover rounded-lg mb-4" />
+              <img src="/static/images/placeholder.svg" alt="Robloxゲーム制作" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-4 text-center">
                   <div class="text-2xl font-bold text-green-600">4年-中学</div>
@@ -248,7 +248,7 @@ export const coursesPage = () => (
           
           <div class="order-1 lg:order-2">
             <div class="bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl p-8">
-              <img src="/static/images/ai-course.jpg" alt="AIコーチング" class="w-full h-64 object-cover rounded-lg mb-4" />
+              <img src="/static/images/placeholder.svg" alt="AIコーチング" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-4 text-center">
                   <div class="text-2xl font-bold text-purple-600">中学生</div>
@@ -277,7 +277,7 @@ export const coursesPage = () => (
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div class="order-1">
             <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-8">
-              <img src="/static/images/study-partner.jpg" alt="学習サポート" class="w-full h-64 object-cover rounded-lg mb-4" />
+              <img src="/static/images/placeholder.svg" alt="学習サポート" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-4 text-center">
                   <div class="text-2xl font-bold text-blue-600">全学年</div>

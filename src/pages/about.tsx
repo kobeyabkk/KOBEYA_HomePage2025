@@ -65,10 +65,10 @@ export const aboutPage = () => (
           </div>
           
           <div class="space-y-6">
-            <img src="/static/images/classroom-interior.jpg" alt="教室の様子" class="w-full h-64 object-cover rounded-lg shadow-lg" />
+            <img src="/static/images/placeholder.svg" alt="教室の様子" class="w-full h-64 object-cover rounded-lg shadow-lg" />
             <div class="grid grid-cols-2 gap-4">
-              <img src="/static/images/students-coding.jpg" alt="生徒たちの様子" class="w-full h-32 object-cover rounded-lg" />
-              <img src="/static/images/teacher-support.jpg" alt="講師のサポート" class="w-full h-32 object-cover rounded-lg" />
+              <img src="/static/images/placeholder.svg" alt="生徒たちの様子" class="w-full h-32 object-cover rounded-lg" />
+              <img src="/static/images/placeholder.svg" alt="講師のサポート" class="w-full h-32 object-cover rounded-lg" />
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ export const aboutPage = () => (
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div class="text-center lg:text-left">
             <div class="inline-block relative mb-6">
-              <img src="/static/images/teacher-suzuki.jpg" alt="鈴木政路先生" class="w-48 h-48 object-cover rounded-full mx-auto shadow-lg" />
+              <img src="/static/images/placeholder.svg" alt="鈴木政路先生" class="w-48 h-48 object-cover rounded-full mx-auto shadow-lg" />
               <div class="absolute -bottom-4 -right-4 bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center">
                 <i class="fas fa-chalkboard-teacher text-2xl"></i>
               </div>
@@ -311,12 +311,12 @@ export const aboutPage = () => (
           </div>
           
           <div class="space-y-4">
-            <img src="/static/images/classroom-overview.jpg" alt="教室全体" class="w-full h-48 object-cover rounded-lg shadow-lg" />
+            <img src="/static/images/placeholder.svg" alt="教室全体" class="w-full h-48 object-cover rounded-lg shadow-lg" />
             <div class="grid grid-cols-2 gap-4">
-              <img src="/static/images/computer-setup.jpg" alt="パソコン環境" class="w-full h-32 object-cover rounded-lg" />
-              <img src="/static/images/teaching-area.jpg" alt="指導エリア" class="w-full h-32 object-cover rounded-lg" />
+              <img src="/static/images/placeholder.svg" alt="パソコン環境" class="w-full h-32 object-cover rounded-lg" />
+              <img src="/static/images/placeholder.svg" alt="指導エリア" class="w-full h-32 object-cover rounded-lg" />
             </div>
-            <img src="/static/images/fuji-supermarket.jpg" alt="フジスーパー外観" class="w-full h-32 object-cover rounded-lg" />
+            <img src="/static/images/placeholder.svg" alt="フジスーパー外観" class="w-full h-32 object-cover rounded-lg" />
           </div>
         </div>
       </div>

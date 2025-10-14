@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/cloudflare-workers'
+import { serveStatic } from 'hono/cloudflare-pages'
 import { cors } from 'hono/cors'
 // ログシステム用ユーティリティをインポート
 import {
@@ -15,6 +15,15 @@ import {
 } from './utils/logging'
 // Study Partner Simple をインポート
 import { studyPartnerSimple } from './study-partner-simple'
+// === KOBEYA site pages (add) ===
+import Layout from './components/Layout'
+import Home from './wrappers/home'
+import Courses from './wrappers/courses'
+import About from './wrappers/about'
+import Contact from './wrappers/contact'
+import News from './wrappers/news'
+// Study Partner UI（export名に合わせて必要なら直す）
+// === KOBEYA site pages (end) ===
 
 // Cloudflare Bindings の型定義
 type Bindings = {
@@ -25,6 +34,9 @@ type Bindings = {
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
+// Study Partner は静的HTMLを返す（public/study-partner.html）
+app.get('/study-partner',   serveStatic({ path: '/study-partner.html' }))
+app.get('/study-partner/*', serveStatic({ path: '/study-partner.html' }))
 
 // 開発モード設定
 const USE_MOCK_RESPONSES = false
@@ -135,7 +147,7 @@ app.options('/api/*', (c) => {
 })
 
 // 静的ファイル配信
-app.use('/static/*', serveStatic({ root: './public' }))
+// app.use('/static/*', serveStatic({ root: './public' }))
 
 // Health check endpoint
 app.get('/api/health', (c) => {
@@ -3028,8 +3040,8 @@ function generateLearningData(problemType) {
 }
 
 // ルートパスハンドラー
-app.get('/', (c) => {
-  return c.redirect('/study-partner', 302)
+app.get('/__disabled_home__', (c) => {
+//   return c.redirect('/study-partner', 302)
 })
 
 // Study Partner Simple - ログイン修正版
@@ -5290,8 +5302,22 @@ app.get('/dashboard', async (c) => {
 
 // Favicon ハンドラー
 app.get('/favicon.ico', (c) => {
-  return c.text('', 204)  // No Content
+  return new Response(null, { status: 204 })  // No Content
 })
+// === KOBEYA routes (add) ===
+const page = (title: string, body: JSX.Element) => (
+  <Layout title={title}>{body}</Layout>
+)
+
+// 公式サイト
+app.get('/',        c => c.html(page('KOBEYA｜ホーム',       <Home />)))
+app.get('/courses', c => c.html(page('講座案内｜KOBEYA',     <Courses />)))
+app.get('/about',   c => c.html(page('教室について｜KOBEYA',  <About />)))
+app.get('/contact', c => c.html(page('お問い合わせ｜KOBEYA',  <Contact />)))
+app.get('/news',    c => c.html(page('ニュース｜KOBEYA',      <News />)))
+
+// Study Partner は /study-partner 配下（SPAのサブルートも許可）
+// === KOBEYA routes (end) ===
 
 // 404ハンドラー
 app.notFound((c) => {

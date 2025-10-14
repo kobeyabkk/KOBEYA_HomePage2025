@@ -37,7 +37,7 @@ export const contactPage = () => (
                 友だち追加
               </a>
               <div class="mt-4">
-                <img src="/static/images/line-qr-code.png" alt="LINE QRコード" class="w-24 h-24 mx-auto" />
+                <img src="/static/images/placeholder.svg" alt="LINE QRコード" class="w-24 h-24 mx-auto" />
                 <p class="text-xs text-gray-500 mt-2">QRコードを読み取り</p>
               </div>
             </div>

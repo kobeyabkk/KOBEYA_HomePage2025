@@ -35,7 +35,7 @@ LINEまたはお電話にてお気軽にお問い合わせください。
     `,
     date: '2024-03-15',
     category: 'キャンペーン',
-    image: '/static/images/news-spring-campaign.jpg'
+    image: '/static/images/placeholder.svg'
   },
   {
     id: 2,
@@ -72,7 +72,7 @@ LINEまたはお電話にてお気軽にお問い合わせください。
     `,
     date: '2024-03-01',
     category: '実績',
-    image: '/static/images/news-contest-results.jpg'
+    image: '/static/images/placeholder.svg'
   },
   {
     id: 3,
@@ -113,7 +113,7 @@ AI時代に求められるスキルについてもお話しします。
     `,
     date: '2024-02-20',
     category: '新コース',
-    image: '/static/images/news-ai-course.jpg'
+    image: '/static/images/placeholder.svg'
   },
   {
     id: 4,
@@ -149,7 +149,7 @@ AI時代に求められるスキルについてもお話しします。
     `,
     date: '2024-02-15',
     category: 'イベント',
-    image: '/static/images/news-showcase.jpg'
+    image: '/static/images/placeholder.svg'
   },
   {
     id: 5,
@@ -188,7 +188,7 @@ LINEまたはお電話にてお申込みください。
     `,
     date: '2024-02-10',
     category: 'イベント',
-    image: '/static/images/news-workshop.jpg'
+    image: '/static/images/placeholder.svg'
   }
 ]
 
