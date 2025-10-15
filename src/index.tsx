@@ -22,6 +22,8 @@ app.use('/api/*', cors())
 
 // Serve static files
 app.use('/static/*', serveStatic({ root: './public' }))
+// Serve images directly
+app.use('/images/*', serveStatic({ root: './public' }))
 
 // Use renderer for all pages
 app.use(renderer)

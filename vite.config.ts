@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [
     build({
       minify: false, // 開発時はminifyを無効化
+      exclude: ['/robots.txt', '/sitemap.xml', '/static/*', '/images/*', '/study-partner.html']
     }),
     devServer({
       adapter,
