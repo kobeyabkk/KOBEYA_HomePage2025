@@ -52,7 +52,7 @@ app.get('/steam-course', (c) => {
 })
 
 app.get('/courses/minecraft', (c) => {
-  return c.render(minecraftCoursePage())
+  return c.html(minecraftCoursePage())
 })
 
 app.get('/courses/toyprogramming', (c) => {
