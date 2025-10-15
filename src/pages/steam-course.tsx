@@ -75,11 +75,28 @@ export const steamCoursePage = () => (
         padding: 1.5rem;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         margin-bottom: 1rem;
+        /* 縦型動画（9:16比率）用の設定 */
+        max-width: 350px; /* 縦型動画の最適な表示幅 */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .video-container .video-embed {
+        position: relative;
+        width: 100%;
+        /* 縦型動画（9:16）の比率 */
+        aspect-ratio: 9 / 16;
+        max-width: 280px; /* iframe自体の最大幅 */
       }
       
       .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 300px;
+        height: 100%;
         border-radius: 0.5rem;
         border: none;
       }
@@ -322,8 +339,11 @@ export const steamCoursePage = () => (
         .container {
           padding: 0 1rem;
         }
-        .video-container iframe {
-          height: 200px;
+        .video-container {
+          max-width: 250px; /* モバイルでの縦型動画幅 */
+        }
+        .video-container .video-embed {
+          max-width: 200px; /* モバイルでのiframe幅 */
         }
       }
     `}</style>
@@ -353,8 +373,10 @@ export const steamCoursePage = () => (
           <div class="hero-video">
             <h3 class="video-title">STEAMコースの授業風景</h3>
             <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/TOinhWWCXVE" 
-                      title="STEAMコース授業動画" allowfullscreen></iframe>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/TOinhWWCXVE" 
+                        title="STEAMコース授業動画" allowfullscreen></iframe>
+              </div>
             </div>
             <p style="color: var(--text-gray); font-size: 0.95rem;">
               実際の授業の様子をご覧ください
