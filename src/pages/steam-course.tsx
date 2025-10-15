@@ -86,9 +86,12 @@ export const steamCoursePage = () => (
       .video-container .video-embed {
         position: relative;
         width: 100%;
-        /* 縦型動画（9:16）の比率 */
-        aspect-ratio: 9 / 16;
         max-width: 280px; /* iframe自体の最大幅 */
+        /* 縦型動画（9:16）の比率 - padding-bottomハック */
+        padding-bottom: 177.78%; /* 16/9 * 100 = 177.78% */
+        height: 0;
+        min-height: 400px; /* 最小高さを保証 */
+        overflow: hidden;
       }
       
       .video-container iframe {
@@ -344,6 +347,7 @@ export const steamCoursePage = () => (
         }
         .video-container .video-embed {
           max-width: 200px; /* モバイルでのiframe幅 */
+          padding-bottom: 177.78%; /* 縦型動画比率の確実な指定 */
         }
       }
     `}</style>
