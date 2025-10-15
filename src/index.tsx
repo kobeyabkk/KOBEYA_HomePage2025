@@ -46,6 +46,11 @@ app.get('/courses/steam', (c) => {
   return c.render(steamCoursePage())
 })
 
+// Alternative route for STEAM course (compatibility)
+app.get('/steam-course', (c) => {
+  return c.render(steamCoursePage())
+})
+
 app.get('/courses/minecraft', (c) => {
   return c.render(minecraftCoursePage())
 })
