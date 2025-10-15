@@ -18,6 +18,7 @@ export function minecraftCoursePage() {
           --hover-gray: #F7FAFC;
           --minecraft-green: #5F8A5F;
           --minecraft-brown: #8B4513;
+          --explosion-orange: #FF6B35;
         }
 
         * {
@@ -176,6 +177,10 @@ export function minecraftCoursePage() {
           font-size: 2.5rem;
           color: var(--minecraft-green);
           margin-bottom: 16px;
+        }
+
+        .skill-card .fa-explosion {
+          color: var(--explosion-orange);
         }
 
         .skill-card h3 {
@@ -528,40 +533,72 @@ export function minecraftCoursePage() {
           <div class="container">
             <div class="overview-grid">
               <div class="overview-content">
-                <h2>遊びながら学ぶプログラミング</h2>
+                <h2>マイクラッチで始めるプログラミング</h2>
                 <p>
-                  子どもたちに大人気のマインクラフトを使って、楽しみながらプログラミングの基礎を学びます。ブロックを組み合わせてコードを作る「マイクラッチ」で、論理的思考力と創造性を同時に育てます。
+                  子どもたちに大人気のマインクラフトを使ってプログラミングを学習していくコースです。大規模な建物を作ったり、アスレチックやTNTを降らせるミニゲームを制作したり、自分だけのダンジョンを完成させていきます。
                 </p>
                 <p>
-                  ゲームの世界で自分だけの作品を作りながら、プログラミングの概念を自然に身につけられる、初心者に最適なコースです。
+                  デジタネが独自に開発したソフト「マイクラッチ」を使用し、ブロックを組み合わせて直感的にプログラミングを学べます。マインクラフトやプログラミングが初めてのお子様でも楽しめるコースです。
                 </p>
               </div>
 
               <div class="overview-features">
                 <div class="feature-item">
                   <i class="fas fa-gamepad"></i>
-                  <span>ゲーム感覚で楽しく学習</span>
+                  <span>マインクラフトでプログラミング</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-puzzle-piece"></i>
-                  <span>ブロック型プログラミング</span>
+                  <i class="fas fa-explosion"></i>
+                  <span>TNT・アスレチック・ダンジョン作成</span>
                 </div>
                 <div class="feature-item">
                   <i class="fas fa-building"></i>
-                  <span>3D空間での創作活動</span>
+                  <span>大規模建物の自動建築</span>
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-puzzle-piece"></i>
+                  <span>ブロック型ビジュアルプログラミング</span>
                 </div>
                 <div class="feature-item">
                   <i class="fas fa-brain"></i>
                   <span>論理的思考力の育成</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-users"></i>
-                  <span>チームワークと協力</span>
-                </div>
-                <div class="feature-item">
                   <i class="fas fa-trophy"></i>
-                  <span>達成感と自信の獲得</span>
+                  <span>全国コンテスト参加</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Three Key Points -->
+        <section class="section">
+          <div class="container">
+            <h2 class="section-title" style="text-align: center;">マイクラッチコース 3つのポイント</h2>
+            <div class="skills-grid">
+              <div class="skill-card" style="border: 3px solid var(--main-yellow);">
+                <i class="fas fa-smile" style="color: var(--main-yellow);"></i>
+                <h3>ポイント1: コンテンツの楽しさ</h3>
+                <p>
+                  マイクラッチコースのテーマは「楽しく学ぶ」です。子どもたちは好きなことには圧倒的な集中力で取り組むので、他のどんな方法よりも学習効率が上がり、理解が進みます。
+                </p>
+              </div>
+
+              <div class="skill-card" style="border: 3px solid var(--minecraft-green);">
+                <i class="fas fa-child" style="color: var(--minecraft-green);"></i>
+                <h3>ポイント2: 小学1年生から対応！</h3>
+                <p>
+                  マイクラに興味を持ちはじめる小学校低学年から、中学生までが推奨学年となっています。小学校入学と同時にプログラミング学習がスタートできます。どの学年にも対応しています。
+                </p>
+              </div>
+
+              <div class="skill-card" style="border: 3px solid var(--minecraft-brown);">
+                <i class="fas fa-trophy" style="color: var(--minecraft-brown);"></i>
+                <h3>ポイント3: コンテストの開催</h3>
+                <p>
+                  作った作品は、日本全国のマイクラッチ学習者が集うコミュニティに投稿することで、たくさんの仲間たちに見てもらうことができます。学びのアウトプットをする場を提供することを目的に、プログラミングコンテストを毎年開催しています。
+                </p>
               </div>
             </div>
           </div>
@@ -570,42 +607,42 @@ export function minecraftCoursePage() {
         <!-- Programming Skills -->
         <section class="skills-section">
           <div class="container">
-            <h2 class="section-title" style="text-align: center; color: var(--text-dark);">身につくスキル</h2>
+            <h2 class="section-title" style="text-align: center; color: var(--text-dark);">学習できる内容</h2>
             <div class="skills-grid">
               <div class="skill-card">
-                <i class="fas fa-code"></i>
-                <h3>プログラミング基礎</h3>
-                <p>順次処理、条件分岐、繰り返しなど、プログラミングの基本的な考え方を学びます。</p>
+                <i class="fas fa-explosion"></i>
+                <h3>TNT爆発プログラム</h3>
+                <p>TNTブロックを配置して爆発させるプログラムを作成。繰り返し処理や座標の概念を学びます。</p>
               </div>
 
               <div class="skill-card">
-                <i class="fas fa-sitemap"></i>
-                <h3>アルゴリズム思考</h3>
-                <p>問題を分解し、効率的な解決手順を考える論理的思考力を育てます。</p>
+                <i class="fas fa-home"></i>
+                <h3>大規模建築の自動化</h3>
+                <p>ピラミッドや城などの大きな建物を自動で建築するプログラムを作成。効率的なアルゴリズムを学びます。</p>
               </div>
 
               <div class="skill-card">
-                <i class="fas fa-lightbulb"></i>
-                <h3>創造力・想像力</h3>
-                <p>自由な発想でマインクラフトの世界に独自の作品を創り出します。</p>
+                <i class="fas fa-subway"></i>
+                <h3>レール・トロッコシステム</h3>
+                <p>レッドストーン回路とトロッコを組み合わせた自動輸送システムを構築。論理回路の基礎を学びます。</p>
               </div>
 
               <div class="skill-card">
-                <i class="fas fa-search"></i>
-                <h3>問題解決能力</h3>
-                <p>バグの発見や修正を通じて、試行錯誤しながら解決策を見つける力を養います。</p>
+                <i class="fas fa-running"></i>
+                <h3>アスレチックコース</h3>
+                <p>ジャンプやパズル要素を含むアスレチックコースを設計。ゲーム制作の基本を学びます。</p>
               </div>
 
               <div class="skill-card">
-                <i class="fas fa-cubes"></i>
-                <h3>空間認識能力</h3>
-                <p>3次元空間でのブロック配置を通じて、立体的な思考力を発達させます。</p>
+                <i class="fas fa-dungeon"></i>
+                <h3>ダンジョン制作</h3>
+                <p>敵やトラップを配置したオリジナルダンジョンを作成。条件分岐とランダム要素を活用します。</p>
               </div>
 
               <div class="skill-card">
-                <i class="fas fa-comments"></i>
-                <h3>プレゼンテーション</h3>
-                <p>作った作品を発表し、他の人に伝える表現力とコミュニケーション能力を育てます。</p>
+                <i class="fas fa-robot"></i>
+                <h3>キャラクター制御</h3>
+                <p>エージェント（キャラクター）を動かして自動作業をさせるプログラムを作成。基本的なAIの概念を学びます。</p>
               </div>
             </div>
           </div>
@@ -672,27 +709,27 @@ export function minecraftCoursePage() {
         <!-- Levels -->
         <section class="levels-section">
           <div class="container">
-            <h2 class="section-title" style="text-align: center; color: var(--text-dark);">レベル・対象年齢</h2>
+            <h2 class="section-title" style="text-align: center; color: var(--text-dark);">対象年齢・推奨学年</h2>
             <div class="levels-grid">
               <div class="level-card">
-                <i class="fas fa-baby"></i>
-                <h4>ビギナー</h4>
-                <div class="age">7〜9歳</div>
-                <p>マインクラフトとプログラミングの基礎から丁寧に学習します。</p>
-              </div>
-
-              <div class="level-card">
                 <i class="fas fa-child"></i>
-                <h4>スタンダード</h4>
-                <div class="age">10〜12歳</div>
-                <p>条件分岐や繰り返しを使った、より複雑なプログラムに挑戦します。</p>
+                <h4>小学1年生〜</h4>
+                <div class="age">6〜12歳</div>
+                <p>マイクラに興味を持ちはじめる小学校低学年から対応。マインクラフトとプログラミングの基礎から丁寧に学習します。</p>
               </div>
 
               <div class="level-card">
                 <i class="fas fa-user-graduate"></i>
-                <h4>アドバンス</h4>
-                <div class="age">13歳〜</div>
-                <p>関数や変数を使った高度なプログラミングテクニックを習得します。</p>
+                <h4>中学生</h4>
+                <div class="age">13〜15歳</div>
+                <p>より高度なプログラミング概念と論理的思考力を身につけ、複雑な作品制作に挑戦します。</p>
+              </div>
+
+              <div class="level-card">
+                <i class="fas fa-heart"></i>
+                <h4>初心者歓迎</h4>
+                <div class="age">全年齢</div>
+                <p>マインクラフトやプログラミングが初めてのお子様でも安心して楽しめるカリキュラムです。</p>
               </div>
             </div>
           </div>
@@ -760,23 +797,71 @@ export function minecraftCoursePage() {
           </div>
         </section>
 
+        <!-- Why Programming Education -->
+        <section class="section">
+          <div class="container">
+            <h2 class="section-title" style="text-align: center;">なぜ今、プログラミング教育が重要なのか</h2>
+            
+            <div class="overview-grid" style="margin-bottom: 60px;">
+              <div class="overview-content">
+                <h3 style="color: var(--minecraft-green); margin-bottom: 16px;">2020年からプログラミング必修化決定！</h3>
+                <p>
+                  あらゆるものが今以上にインターネットでつながる時代（Internet of Things）が進む中、機械に仕事をしてもらうためにはその仕組みや構造を理解しておくことがとても重要です。
+                </p>
+                <p>
+                  プログラミング教育やアプリ開発教育は、その基礎学習となり次世代において非常に重要な"学び"となってきています。
+                </p>
+              </div>
+
+              <div class="overview-content">
+                <h3 style="color: var(--main-yellow); margin-bottom: 16px;">論理的思考力の育成</h3>
+                <p>
+                  児童期にピアノなど音楽を習うことが基礎的音感を発達させるように、水泳や球技などスポーツすることが基礎体力を養うように、プログラミングやアプリ開発教育は、暗記教育とは一線を画した物事を順序立てて論理的に捉える思考力（考える力）を楽しく養うのにとても効果的です。
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); text-align: center;">
+              <h3 style="color: var(--minecraft-brown); margin-bottom: 20px;">雇用の未来、これから必要なのは知識ではなく知恵と問題解決能力</h3>
+              <p style="margin-bottom: 16px;">
+                2013年の英国オックスフォードマーティン大学の調査結果によれば、2034年には、現在存在している仕事の約47%がコンピューターテクノロジーの進化により機械に置き換わると発表しています。
+              </p>
+              <p>
+                これから必要な人材は、知識ではなく自らの知恵を使ったり、ロボットやIT、人工知能をうまく使いこなして問題解決ができる人間です。そのために、まずはロボットやITの仕組みを理解することから始めましょう。
+              </p>
+            </div>
+          </div>
+        </section>
+
         <!-- Call to Action -->
         <section class="cta-section">
           <div class="container">
             <div class="cta-content">
-              <h2 class="cta-title">マインクラフトでプログラミングを始めよう</h2>
+              <h2 class="cta-title">マイクラッチ体験会随時開催中！</h2>
               <p class="cta-description">
-                ゲーム感覚で楽しく学べるマイクラッチコース。お子様の「好き」を「学び」に変えて、プログラミングの世界への第一歩を踏み出しませんか？
+                ゲーム感覚で楽しく学べるマイクラッチコース。お子様の「好き」を「学び」に変えて、プログラミングの世界への第一歩を踏み出しませんか？<br>
+                <strong>体験会の日程はお問い合わせください。</strong>
               </p>
               <div class="cta-buttons">
                 <a href="/contact" class="cta-primary">
-                  <i class="fas fa-play"></i>
-                  無料体験に参加する
+                  <i class="fas fa-calendar-check"></i>
+                  体験会の日程を問い合わせる
                 </a>
                 <a href="/contact" class="cta-secondary">
-                  <i class="fas fa-info-circle"></i>
-                  詳細を問い合わせる
+                  <i class="fas fa-phone"></i>
+                  お電話でのお問い合わせ
                 </a>
+              </div>
+              <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <p style="margin-bottom: 8px;">
+                  <i class="fas fa-map-marker-alt"></i> フジスーパー2号店 2階
+                </p>
+                <p style="margin-bottom: 8px;">
+                  <i class="fas fa-phone"></i> 095-969-4100
+                </p>
+                <p>
+                  <i class="fas fa-envelope"></i> kobeyabkk@gmail.com
+                </p>
               </div>
             </div>
           </div>
