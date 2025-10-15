@@ -374,13 +374,13 @@ export const steamCoursePage = () => (
           <div class="hero-video">
             <h3 class="video-title">スクラッチ初級の制作作品紹介</h3>
             <div class="video-portrait">
-              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem; border-radius: 16px; aspect-ratio: 9/16;">
-                <div>
-                  <div style="font-size: 3rem; margin-bottom: 1rem;">🎮</div>
-                  <h4 style="margin: 0 0 1rem 0; font-size: 1.2rem;">スクラッチ初級作品</h4>
-                  <p style="margin: 0; font-size: 0.95rem; opacity: 0.9;">生徒さんが制作した<br/>ゲーム作品をご紹介<br/>（動画準備中）</p>
-                </div>
-              </div>
+              <iframe
+                src="https://www.youtube.com/embed/k8Mbo7xSahs"
+                title="スクラッチ初級の制作作品紹介"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
             </div>
           </div>
         </div>
