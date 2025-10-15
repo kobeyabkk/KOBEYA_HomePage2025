@@ -3,10 +3,17 @@ import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
 import { homePage } from './pages/home'
-import { coursesPage } from './pages/courses'
 import { aboutPage } from './pages/about'
-import { newsPage } from './pages/news'
 import { contactPage } from './pages/contact'
+// Course pages
+import { steamCoursePage } from './pages/steam-course'
+import { minecraftCoursePage } from './pages/minecraft-course'
+import { toyprogrammingCoursePage } from './pages/toyprogramming-course'
+import { thinkthinkCoursePage } from './pages/thinkthink-course'
+import { unityCoursePage } from './pages/unity-course'
+import { creatorsCoursePage } from './pages/creators-course'
+import { aiCoachingCoursePage } from './pages/ai-coaching-course'
+import { mathCoursePage } from './pages/math-course'
 
 const app = new Hono()
 
@@ -19,30 +26,50 @@ app.use('/static/*', serveStatic({ root: './public' }))
 // Use renderer for all pages
 app.use(renderer)
 
-// Routes
+// Main pages
 app.get('/', (c) => {
   return c.render(homePage())
-})
-
-app.get('/courses', (c) => {
-  return c.render(coursesPage())
 })
 
 app.get('/about', (c) => {
   return c.render(aboutPage())
 })
 
-app.get('/news', (c) => {
-  return c.render(newsPage())
-})
-
-app.get('/news/:slug', (c) => {
-  const slug = c.req.param('slug')
-  return c.render(newsPage(slug))
-})
-
 app.get('/contact', (c) => {
   return c.render(contactPage())
+})
+
+// Course pages
+app.get('/courses/steam', (c) => {
+  return c.render(steamCoursePage())
+})
+
+app.get('/courses/minecraft', (c) => {
+  return c.render(minecraftCoursePage())
+})
+
+app.get('/courses/toyprogramming', (c) => {
+  return c.render(toyprogrammingCoursePage())
+})
+
+app.get('/courses/thinkthink', (c) => {
+  return c.render(thinkthinkCoursePage())
+})
+
+app.get('/courses/unity', (c) => {
+  return c.render(unityCoursePage())
+})
+
+app.get('/courses/creators', (c) => {
+  return c.render(creatorsCoursePage())
+})
+
+app.get('/courses/ai-coaching', (c) => {
+  return c.render(aiCoachingCoursePage())
+})
+
+app.get('/courses/math', (c) => {
+  return c.render(mathCoursePage())
 })
 
 // API route for form submission

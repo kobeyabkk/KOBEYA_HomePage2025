@@ -1,387 +1,538 @@
-import { Header } from '../components/header'
-import { Footer } from '../components/footer'
-import { FloatingCTA } from '../components/floating-cta'
+export function contactPage() {
+  return `
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>お問い合わせ - AI & プログラミングのKOBEYA</title>
+      <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+      <style>
+        :root {
+          --main-yellow: #FFC107;
+          --accent-yellow: #FFD700;
+          --base-white: #FFFFFF;
+          --text-dark: #2D3748;
+          --text-gray: #718096;
+          --border-gray: #E2E8F0;
+          --hover-gray: #F7FAFC;
+        }
 
-export const contactPage = () => (
-  <>
-    <Header />
-    
-    {/* Hero Section */}
-    <section class="bg-gradient-to-br from-blue-50 to-white py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            お問い合わせ・無料体験予約
-          </h1>
-          <p class="text-xl text-gray-600 leading-relaxed mb-8">
-            まずは無料体験から始めませんか？<br />
-            お気軽にお問い合わせください。3営業日以内にご連絡いたします。
-          </p>
-        </div>
-      </div>
-    </section>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-    {/* Contact Methods */}
-    <section class="py-12 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {/* LINE Contact */}
-            <div class="bg-green-50 rounded-xl p-6 text-center">
-              <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fab fa-line text-white text-2xl"></i>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-3">LINE相談（推奨）</h3>
-              <p class="text-gray-600 mb-4">最も早く返信できます。お気軽にメッセージください。</p>
-              <a href="https://line.me/R/ti/p/@kobeya" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition-colors duration-200 inline-block">
-                友だち追加
-              </a>
-              <div class="mt-4">
-                <img src="/static/images/placeholder.svg" alt="LINE QRコード" class="w-24 h-24 mx-auto" />
-                <p class="text-xs text-gray-500 mt-2">QRコードを読み取り</p>
-              </div>
-            </div>
-            
-            {/* Phone Contact */}
-            <div class="bg-blue-50 rounded-xl p-6 text-center">
-              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-phone text-white text-2xl"></i>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-3">お電話</h3>
-              <p class="text-gray-600 mb-4">お急ぎの方はお電話でも承ります。</p>
-              <a href="tel:066-123-4567" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-colors duration-200 inline-block">
-                066-123-4567
-              </a>
-              <div class="mt-4 text-sm text-gray-600">
-                <div>受付時間</div>
-                <div>平日 16:00-20:00</div>
-                <div>土日 9:00-17:00</div>
-              </div>
-            </div>
-            
-            {/* Email Contact */}
-            <div class="bg-yellow-50 rounded-xl p-6 text-center">
-              <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-envelope text-white text-2xl"></i>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-3">メール</h3>
-              <p class="text-gray-600 mb-4">詳しい資料をご希望の方はメールでどうぞ。</p>
-              <a href="mailto:info@kobeya-programming.com" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-6 py-3 rounded-full font-semibold transition-colors duration-200 inline-block">
-                メール送信
-              </a>
-              <div class="mt-4 text-sm text-gray-600">
-                <div>info@kobeya-programming.com</div>
-                <div class="mt-2">返信まで1-2営業日</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        body {
+          font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+          line-height: 1.6;
+          color: var(--text-dark);
+          background-color: var(--base-white);
+        }
 
-    {/* Contact Form */}
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">体験申込フォーム</h2>
-            <p class="text-gray-600">以下のフォームからもお申し込みいただけます。</p>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-lg p-8">
-            <form id="contact-form" class="space-y-6">
-              {/* Parent Information */}
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label for="parent-name" class="block text-sm font-semibold text-gray-900 mb-2">
-                    保護者様お名前 <span class="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    id="parent-name" 
-                    name="parentName" 
-                    required 
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="例：田中 太郎"
-                  />
-                </div>
-                
-                <div>
-                  <label for="phone" class="block text-sm font-semibold text-gray-900 mb-2">
-                    電話番号 <span class="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="tel" 
-                    id="phone" 
-                    name="phone" 
-                    required 
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="例：066-123-4567"
-                  />
-                </div>
-              </div>
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
 
-              <div>
-                <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
-                  メールアドレス <span class="text-red-500">*</span>
-                </label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required 
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="例：tanaka@example.com"
-                />
-              </div>
+        .section {
+          padding: 80px 0;
+        }
 
-              {/* Child Information */}
-              <div class="border-t pt-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">お子様の情報</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label for="child-name" class="block text-sm font-semibold text-gray-900 mb-2">
-                      お子様のお名前 <span class="text-red-500">*</span>
-                    </label>
-                    <input 
-                      type="text" 
-                      id="child-name" 
-                      name="childName" 
-                      required 
-                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="例：田中 花子"
-                    />
+        .section-title {
+          text-align: center;
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--text-dark);
+          margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+          text-align: center;
+          font-size: 1.2rem;
+          color: var(--text-gray);
+          margin-bottom: 40px;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          margin-bottom: 80px;
+        }
+
+        .contact-info {
+          background: var(--hover-gray);
+          padding: 40px;
+          border-radius: 16px;
+          border: 2px solid var(--border-gray);
+        }
+
+        .contact-info h3 {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: var(--text-dark);
+          margin-bottom: 30px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .contact-info h3 i {
+          color: var(--main-yellow);
+        }
+
+        .contact-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          margin-bottom: 24px;
+          padding: 16px;
+          background: var(--base-white);
+          border-radius: 8px;
+          border: 1px solid var(--border-gray);
+        }
+
+        .contact-item i {
+          color: var(--main-yellow);
+          font-size: 1.2rem;
+          width: 24px;
+          flex-shrink: 0;
+          margin-top: 4px;
+        }
+
+        .contact-item-content h4 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--text-dark);
+          margin-bottom: 4px;
+        }
+
+        .contact-item-content p {
+          color: var(--text-gray);
+          line-height: 1.6;
+        }
+
+        .contact-item-content a {
+          color: var(--main-yellow);
+          text-decoration: none;
+          font-weight: 500;
+        }
+
+        .contact-item-content a:hover {
+          text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form {
+          background: var(--base-white);
+          padding: 40px;
+          border-radius: 16px;
+          border: 2px solid var(--border-gray);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .contact-form h3 {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: var(--text-dark);
+          margin-bottom: 30px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .contact-form h3 i {
+          color: var(--main-yellow);
+        }
+
+        .form-group {
+          margin-bottom: 24px;
+        }
+
+        .form-group label {
+          display: block;
+          font-weight: 600;
+          color: var(--text-dark);
+          margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          width: 100%;
+          padding: 12px 16px;
+          border: 2px solid var(--border-gray);
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+          outline: none;
+          border-color: var(--main-yellow);
+        }
+
+        .form-group textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+
+        .submit-btn {
+          background: var(--main-yellow);
+          color: var(--text-dark);
+          padding: 16px 32px;
+          border: none;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .submit-btn:hover {
+          background: var(--accent-yellow);
+          transform: translateY(-2px);
+        }
+
+        /* Access Map */
+        .access-section {
+          background: var(--hover-gray);
+          padding: 60px 0;
+          margin-top: 80px;
+        }
+
+        .map-container {
+          background: var(--base-white);
+          border-radius: 16px;
+          padding: 40px;
+          border: 2px solid var(--border-gray);
+          text-align: center;
+        }
+
+        .map-placeholder {
+          background: var(--border-gray);
+          height: 300px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-gray);
+          margin: 20px 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+          margin-top: 80px;
+        }
+
+        .faq-item {
+          background: var(--base-white);
+          border: 2px solid var(--border-gray);
+          border-radius: 12px;
+          margin-bottom: 16px;
+          overflow: hidden;
+        }
+
+        .faq-question {
+          padding: 24px;
+          background: var(--hover-gray);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: between;
+          gap: 16px;
+          font-weight: 600;
+          color: var(--text-dark);
+        }
+
+        .faq-question i {
+          color: var(--main-yellow);
+          flex-shrink: 0;
+        }
+
+        .faq-answer {
+          padding: 24px;
+          color: var(--text-gray);
+          line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .section {
+            padding: 40px 0;
+          }
+
+          .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+          }
+
+          .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+
+          .contact-info,
+          .contact-form {
+            padding: 24px;
+          }
+
+          .access-section {
+            padding: 40px 0;
+            margin-top: 40px;
+          }
+
+          .map-container {
+            padding: 24px;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <main>
+        <!-- Contact Section -->
+        <section class="section">
+          <div class="container">
+            <h1 class="section-title">お問い合わせ</h1>
+            <p class="section-subtitle">
+              プログラミング教室へのご質問・お申込みはこちらからお気軽にどうぞ
+            </p>
+
+            <div class="contact-grid">
+              <!-- Contact Information -->
+              <div class="contact-info">
+                <h3><i class="fas fa-info-circle"></i>教室情報</h3>
+
+                <div class="contact-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="contact-item-content">
+                    <h4>住所</h4>
+                    <p>
+                      フジスーパー2号店 2階<br>
+                      693 Sukhumvit Road, Wattana,<br>
+                      Bangkok 10110, Thailand
+                    </p>
                   </div>
-                  
-                  <div>
-                    <label for="child-grade" class="block text-sm font-semibold text-gray-900 mb-2">
-                      学年 <span class="text-red-500">*</span>
-                    </label>
-                    <select 
-                      id="child-grade" 
-                      name="childGrade" 
-                      required 
-                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
+                </div>
+
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <div class="contact-item-content">
+                    <h4>電話番号</h4>
+                    <p><a href="tel:+66-xxx-xxx-xxxx">+66-xxx-xxx-xxxx</a></p>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <div class="contact-item-content">
+                    <h4>メールアドレス</h4>
+                    <p><a href="mailto:info@kobeya.com">info@kobeya.com</a></p>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <i class="fas fa-clock"></i>
+                  <div class="contact-item-content">
+                    <h4>受付時間</h4>
+                    <p>
+                      平日: 10:00〜19:00<br>
+                      土日: 9:00〜18:00<br>
+                      （祝日・年末年始除く）
+                    </p>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <i class="fab fa-line"></i>
+                  <div class="contact-item-content">
+                    <h4>LINE公式アカウント</h4>
+                    <p><a href="#">@kobeya-programming</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="contact-form">
+                <h3><i class="fas fa-paper-plane"></i>お問い合わせフォーム</h3>
+
+                <form>
+                  <div class="form-group">
+                    <label for="inquiry-type">お問い合わせ種別</label>
+                    <select id="inquiry-type" name="inquiry-type" required>
                       <option value="">選択してください</option>
-                      <option value="年長">年長</option>
-                      <option value="小学1年">小学1年生</option>
-                      <option value="小学2年">小学2年生</option>
-                      <option value="小学3年">小学3年生</option>
-                      <option value="小学4年">小学4年生</option>
-                      <option value="小学5年">小学5年生</option>
-                      <option value="小学6年">小学6年生</option>
-                      <option value="中学1年">中学1年生</option>
-                      <option value="中学2年">中学2年生</option>
-                      <option value="中学3年">中学3年生</option>
+                      <option value="trial">体験授業のお申込み</option>
+                      <option value="enrollment">入会のお申込み</option>
+                      <option value="course">コースについて</option>
+                      <option value="schedule">スケジュールについて</option>
+                      <option value="fee">料金について</option>
+                      <option value="other">その他</option>
                     </select>
                   </div>
-                </div>
-              </div>
 
-              {/* Course Selection */}
-              <div>
-                <label class="block text-sm font-semibold text-gray-900 mb-3">
-                  ご希望のコース <span class="text-red-500">*</span>
-                </label>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <label class="flex items-center space-x-3 p-4 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                    <input type="radio" name="course" value="scratch" class="text-blue-600" />
-                    <div>
-                      <div class="font-medium">Scratch入門</div>
-                      <div class="text-sm text-gray-600">小1〜3年対象</div>
-                    </div>
-                  </label>
-                  
-                  <label class="flex items-center space-x-3 p-4 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                    <input type="radio" name="course" value="roblox" class="text-blue-600" />
-                    <div>
-                      <div class="font-medium">Robloxゲーム制作</div>
-                      <div class="text-sm text-gray-600">小4〜中学生対象</div>
-                    </div>
-                  </label>
-                  
-                  <label class="flex items-center space-x-3 p-4 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                    <input type="radio" name="course" value="ai-coaching" class="text-blue-600" />
-                    <div>
-                      <div class="font-medium">AI Coaching Lab</div>
-                      <div class="text-sm text-gray-600">中学生対象</div>
-                    </div>
-                  </label>
-                  
-                  <label class="flex items-center space-x-3 p-4 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                    <input type="radio" name="course" value="study-partner" class="text-blue-600" />
-                    <div>
-                      <div class="font-medium">Study Partner</div>
-                      <div class="text-sm text-gray-600">家庭学習サポート</div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              {/* Preferred Schedule */}
-              <div>
-                <label class="block text-sm font-semibold text-gray-900 mb-3">
-                  ご希望の曜日・時間帯
-                </label>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {['平日夕方', '平日夜', '土曜午前', '土曜午後', '日曜午前', '日曜午後', '要相談', 'オンライン希望'].map(time => (
-                    <label key={time} class="flex items-center space-x-2">
-                      <input type="checkbox" name="preferredTime" value={time} class="text-blue-600" />
-                      <span class="text-sm">{time}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Contact Method */}
-              <div>
-                <label class="block text-sm font-semibold text-gray-900 mb-3">
-                  ご希望の連絡方法 <span class="text-red-500">*</span>
-                </label>
-                <div class="flex flex-wrap gap-4">
-                  <label class="flex items-center space-x-2">
-                    <input type="radio" name="contactMethod" value="line" class="text-blue-600" required />
-                    <span>LINE</span>
-                  </label>
-                  <label class="flex items-center space-x-2">
-                    <input type="radio" name="contactMethod" value="phone" class="text-blue-600" required />
-                    <span>電話</span>
-                  </label>
-                  <label class="flex items-center space-x-2">
-                    <input type="radio" name="contactMethod" value="email" class="text-blue-600" required />
-                    <span>メール</span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Message */}
-              <div>
-                <label for="message" class="block text-sm font-semibold text-gray-900 mb-2">
-                  ご質問・ご要望など
-                </label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  rows="4" 
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="プログラミング経験、お子様の興味のあること、送迎の希望など、ご自由にお書きください。"
-                ></textarea>
-              </div>
-
-              {/* Submit Button */}
-              <div class="text-center">
-                <button 
-                  type="submit" 
-                  class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-12 py-4 rounded-full font-bold text-lg transition-colors duration-200"
-                >
-                  無料体験を申し込む
-                </button>
-                <p class="text-sm text-gray-500 mt-3">
-                  送信後、3営業日以内にご連絡いたします。
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Location & Access */}
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">教室案内</h2>
-            <p class="text-gray-600">フジスーパー2号店2階の通いやすい立地です。</p>
-          </div>
-          
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Location Info */}
-            <div class="space-y-6">
-              <div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">アクセス情報</h3>
-                <div class="space-y-4">
-                  <div class="flex items-start space-x-3">
-                    <i class="fas fa-map-marker-alt text-blue-600 text-xl mt-1"></i>
-                    <div>
-                      <div class="font-semibold text-gray-900">住所</div>
-                      <div class="text-gray-700">フジスーパー2号店2階</div>
-                      <div class="text-gray-600">スクンビット・ソイ33/1周辺</div>
-                    </div>
+                  <div class="form-group">
+                    <label for="student-name">生徒様のお名前</label>
+                    <input type="text" id="student-name" name="student-name" required>
                   </div>
-                  
-                  <div class="flex items-start space-x-3">
-                    <i class="fas fa-train text-blue-600 text-xl mt-1"></i>
-                    <div>
-                      <div class="font-semibold text-gray-900">最寄り駅</div>
-                      <div class="text-gray-700">BTS プロンポン駅から徒歩5分</div>
-                    </div>
+
+                  <div class="form-group">
+                    <label for="parent-name">保護者様のお名前</label>
+                    <input type="text" id="parent-name" name="parent-name" required>
                   </div>
-                  
-                  <div class="flex items-start space-x-3">
-                    <i class="fas fa-car text-blue-600 text-xl mt-1"></i>
-                    <div>
-                      <div class="font-semibold text-gray-900">駐車場</div>
-                      <div class="text-gray-700">フジスーパー駐車場利用可能</div>
-                    </div>
+
+                  <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input type="email" id="email" name="email" required>
                   </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">開講時間</h3>
-                <div class="bg-gray-50 rounded-lg p-6">
-                  <div class="space-y-3">
-                    <div class="flex justify-between items-center border-b pb-2">
-                      <span class="font-medium">平日</span>
-                      <span>16:00 - 20:00</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b pb-2">
-                      <span class="font-medium">土曜日</span>
-                      <span>9:00 - 17:00</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b pb-2">
-                      <span class="font-medium">日曜日</span>
-                      <span>9:00 - 17:00</span>
-                    </div>
-                    <div class="flex justify-between items-center text-red-600">
-                      <span class="font-medium">定休日</span>
-                      <span>なし（祝日は要確認）</span>
-                    </div>
+
+                  <div class="form-group">
+                    <label for="phone">電話番号</label>
+                    <input type="tel" id="phone" name="phone">
                   </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Map placeholder */}
-            <div>
-              <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-                <div class="text-center text-gray-600">
-                  <i class="fas fa-map text-6xl mb-4"></i>
-                  <p class="text-lg font-medium">Google Maps</p>
-                  <p class="text-sm">フジスーパー2号店周辺</p>
-                  <p class="text-xs mt-2">実装時にGoogle Maps埋め込み予定</p>
-                </div>
-              </div>
-              
-              <div class="mt-6 text-center">
-                <a 
-                  href="https://maps.google.com/?q=Fuji+Supermarket+2nd+Sukhumvit" 
-                  target="_blank"
-                  class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 inline-block"
-                >
-                  Google Mapsで開く
-                </a>
+
+                  <div class="form-group">
+                    <label for="age">生徒様の年齢</label>
+                    <select id="age" name="age">
+                      <option value="">選択してください</option>
+                      <option value="5-6">5〜6歳</option>
+                      <option value="7-9">小学校低学年（7〜9歳）</option>
+                      <option value="10-12">小学校高学年（10〜12歳）</option>
+                      <option value="13-15">中学生（13〜15歳）</option>
+                      <option value="16-18">高校生（16〜18歳）</option>
+                      <option value="adult">大人</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="course-interest">興味のあるコース</label>
+                    <select id="course-interest" name="course-interest">
+                      <option value="">選択してください</option>
+                      <option value="steam">STEAMコース</option>
+                      <option value="minecraft">マイクラッチコース</option>
+                      <option value="toypro">トイプロ</option>
+                      <option value="thinkthink">シンクシンク</option>
+                      <option value="unity">Unity</option>
+                      <option value="creators">クリエイターズ</option>
+                      <option value="ai-coaching">AIコーチング・ラボ</option>
+                      <option value="math">算数数学個別指導</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">お問い合わせ内容</label>
+                    <textarea id="message" name="message" placeholder="ご質問やご要望をお聞かせください" required></textarea>
+                  </div>
+
+                  <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    送信する
+                  </button>
+                </form>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <FloatingCTA />
-    <Footer />
-  </>
-)
+        <!-- Access Map -->
+        <section class="access-section">
+          <div class="container">
+            <div class="map-container">
+              <h3><i class="fas fa-map"></i> アクセスマップ</h3>
+              <div class="map-placeholder">
+                <div>
+                  <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--main-yellow);"></i>
+                  <p style="margin-top: 16px; font-size: 1.1rem;">
+                    フジスーパー2号店 2階<br>
+                    BTS アソーク駅・MRT スクンビット駅より徒歩5分
+                  </p>
+                </div>
+              </div>
+              <p style="color: var(--text-gray); margin-top: 20px;">
+                ※ 詳細な地図は Google Maps で「フジスーパー2号店」を検索してください
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section faq-section">
+          <div class="container">
+            <h2 class="section-title">よくあるご質問</h2>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <span>体験授業は受けられますか？</span>
+              </div>
+              <div class="faq-answer">
+                はい、各コースで体験授業をご用意しています。お子様の興味や適性を確認していただけるよう、実際の授業内容をお試しいただけます。体験授業は無料ですので、お気軽にお申し込みください。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <span>何歳から受講できますか？</span>
+              </div>
+              <div class="faq-answer">
+                コースによって対象年齢は異なりますが、STEAMコースは5歳から、その他多くのコースは小学生から受講いただけます。算数数学個別指導は小学生から高校生まで対応しています。詳細は各コースページをご確認ください。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <span>オンライン授業はありますか？</span>
+              </div>
+              <div class="faq-answer">
+                はい、リアル授業とオンライン授業の両方を提供しています。お住まいの場所やご都合に合わせてお選びいただけます。オンライン授業でも対面授業と同様の高品質な指導を提供いたします。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <span>日本語での授業ですか？</span>
+              </div>
+              <div class="faq-answer">
+                はい、すべて日本語で行います。在タイ日本人のお子様向けに特化した教室ですので、日本の教育スタイルに慣れたお子様にも安心してご受講いただけます。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <span>月謝制ですか？</span>
+              </div>
+              <div class="faq-answer">
+                はい、基本的に月謝制となっています。コースや受講回数によって料金が異なりますので、詳細は直接お問い合わせください。体験授業後に詳しい料金プランをご案内いたします。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="fas fa-question-circle"></i>
+                <span>駐車場はありますか？</span>
+              </div>
+              <div class="faq-answer">
+                フジスーパー2号店の駐車場をご利用いただけます。授業時間中は駐車料金サービスもございますので、お車でお越しの際も安心です。
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </body>
+    </html>
+  `
+}

@@ -1,53 +1,232 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { FloatingCTA } from '../components/floating-cta'
 
 export const homePage = () => (
   <>
+    <style>{`
+      :root {
+        --main-yellow: #FFC107;
+        --accent-yellow: #FFD700;
+        --base-white: #FFFFFF;
+        --text-dark: #2D3748;
+        --text-gray: #4A5568;
+        --text-light: #718096;
+      }
+      
+      body {
+        font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+      
+      .btn-primary {
+        background: var(--main-yellow);
+        color: var(--text-dark);
+        font-weight: 600;
+        padding: 0.875rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        border: 2px solid transparent;
+      }
+      
+      .btn-primary:hover {
+        background: var(--accent-yellow);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+      }
+      
+      .btn-secondary {
+        background: var(--base-white);
+        color: var(--text-dark);
+        font-weight: 500;
+        padding: 0.875rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        border: 2px solid var(--main-yellow);
+      }
+      
+      .btn-secondary:hover {
+        background: var(--main-yellow);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+      }
+      
+      .course-card {
+        background: var(--base-white);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f7fafc;
+        transition: all 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .course-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
+        border-color: var(--main-yellow);
+      }
+      
+      .course-icon {
+        width: 4rem;
+        height: 4rem;
+        background: var(--main-yellow);
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-dark);
+      }
+      
+      .section {
+        padding: 5rem 0;
+      }
+      
+      .section-alt {
+        background: #fafafa;
+        padding: 5rem 0;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      
+      .grid {
+        display: grid;
+        gap: 2rem;
+      }
+      
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      @media (max-width: 1024px) {
+        .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(2, 1fr); }
+        .grid-2 { grid-template-columns: 1fr; }
+      }
+      
+      @media (max-width: 640px) {
+        .grid-4,
+        .grid-3,
+        .grid-2 { 
+          grid-template-columns: 1fr; 
+        }
+        
+        .container {
+          padding: 0 1rem;
+        }
+        
+        .section,
+        .section-alt {
+          padding: 3rem 0;
+        }
+      }
+      
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
+      
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
+      
+      @media (max-width: 640px) {
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.25rem; }
+      }
+      
+      .hero-section {
+        background: linear-gradient(135deg, var(--base-white) 0%, #fffef7 100%);
+        padding: 6rem 0 5rem;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+      }
+      
+      .stats-card {
+        background: var(--base-white);
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f7fafc;
+      }
+      
+      .stats-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--main-yellow);
+        margin-bottom: 0.5rem;
+      }
+      
+      .stats-label {
+        color: var(--text-gray);
+        font-weight: 500;
+      }
+    `}</style>
+    
     <Header />
     
     {/* Hero Section */}
-    <section class="bg-gradient-to-br from-blue-50 to-white py-20">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              バンコクの日本人小中学生に、<br />
-              <span class="text-blue-600">'できた！'</span>を毎週。
-            </h1>
-            <p class="text-xl text-gray-600 leading-relaxed">
-              スクラッチ／ロブロックス／AIコーチングで、<br />
-              つまずきを分解→定着。
+    <section class="hero-section">
+      <div class="container">
+        <div class="grid grid-2" style="align-items: center;">
+          <div>
+            <h1>バンコクで学ぶ<br />プログラミング教室</h1>
+            <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2.5rem; line-height: 1.7;">
+              AI・プログラミングのKOBEYAでは、お子様の興味と能力に合わせた8つの専門コースをご用意。<br />
+              楽しく学んで、未来のスキルを身につけましょう！
             </p>
-            
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <a href="/contact" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition-colors duration-200 text-center">
-                無料体験を予約
-              </a>
-              <a href="https://line.me/R/ti/p/@kobeya" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors duration-200 text-center flex items-center justify-center space-x-2">
-                <i class="fab fa-line"></i>
-                <span>LINEで相談</span>
-              </a>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="/contact" class="btn-primary">無料体験を申し込む</a>
+              <a href="#courses" class="btn-secondary">コースを見る</a>
             </div>
-            
-            <div class="flex flex-wrap items-center space-x-6 text-sm text-gray-600">
-              <div class="flex items-center space-x-2">
-                <i class="fas fa-users text-blue-600"></i>
-                <span>毎月15名が体験中</span>
-              </div>
-              <div class="flex items-center space-x-2">
-                <i class="fas fa-star text-yellow-500"></i>
-                <span>保護者満足度98%</span>
-              </div>
+            <div style="margin-top: 2.5rem; display: flex; gap: 2rem; flex-wrap: wrap; color: var(--text-light); font-size: 0.9rem;">
+              <div>フジスーパー2号店2階</div>
+              <div>BTS プロンポン駅徒歩5分</div>
+              <div>駐車場完備</div>
             </div>
           </div>
-          
-          <div class="relative">
-            <div class="bg-white rounded-2xl shadow-xl p-8">
-              <img src="/static/images/hero-placeholder.svg" alt="プログラミングを学ぶ子どもたち" class="w-full h-64 object-cover rounded-lg mb-4" />
-              <div class="text-center">
-                <h3 class="font-semibold text-lg text-gray-900 mb-2">楽しく学べる環境</h3>
-                <p class="text-gray-600">フジスーパー2号店2階の明るい教室で、安心して学習できます。</p>
+          <div style="text-align: center;">
+            <div style="background: var(--main-yellow); border-radius: 1rem; padding: 3rem; color: var(--text-dark); box-shadow: 0 8px 24px rgba(255, 193, 7, 0.3);">
+              <h3 style="margin-bottom: 2rem;">🤖 AI & プログラミングのKOBEYA</h3>
+              <div style="background: var(--base-white); border-radius: 0.75rem; padding: 2rem;">
+                <div style="font-size: 3rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">8</div>
+                <div style="color: var(--text-gray); font-weight: 600; font-size: 1.1rem;">専門コース</div>
+                <div style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">5歳〜高校生まで対応</div>
               </div>
             </div>
           </div>
@@ -55,274 +234,145 @@ export const homePage = () => (
       </div>
     </section>
 
-    {/* Achievement Section */}
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">安心の実績</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">多くの保護者様に選ばれ、お子様の成長をサポートしています。</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Stats Cards */}
-          <div class="text-center bg-blue-50 rounded-xl p-6">
-            <div class="text-3xl font-bold text-blue-600 mb-2">150+</div>
-            <div class="text-gray-700 font-medium">総受講生徒数</div>
-          </div>
-          <div class="text-center bg-yellow-50 rounded-xl p-6">
-            <div class="text-3xl font-bold text-yellow-600 mb-2">98%</div>
-            <div class="text-gray-700 font-medium">保護者満足度</div>
-          </div>
-          <div class="text-center bg-green-50 rounded-xl p-6">
-            <div class="text-3xl font-bold text-green-600 mb-2">3年</div>
-            <div class="text-gray-700 font-medium">バンコク運営実績</div>
-          </div>
-        </div>
 
-        {/* Testimonials */}
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-          <div class="bg-gray-50 rounded-xl p-6">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user text-blue-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">田中様（小5保護者）</h4>
-                <div class="text-yellow-500">★★★★★</div>
-              </div>
-            </div>
-            <p class="text-gray-700 italic">"先生が優しく、子どもが毎回楽しみにしています。プログラミングを通じて論理的思考も身についてきました。"</p>
-          </div>
-          
-          <div class="bg-gray-50 rounded-xl p-6">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user text-green-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">佐藤様（中1保護者）</h4>
-                <div class="text-yellow-500">★★★★★</div>
-              </div>
-            </div>
-            <p class="text-gray-700 italic">"Robloxでゲームを作れるようになり、息子の自信がついています。将来の選択肢が広がりそうです。"</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     {/* Courses Section */}
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">コース紹介</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">お子様のレベルと興味に合わせて選べる4つのコース</p>
+    <section id="courses" class="section-alt">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <h2>8つの専門コース</h2>
+          <p style="font-size: 1.125rem; color: var(--text-gray); margin-top: 1rem;">
+            お子様の年齢・興味・目標に合わせて最適なコースをお選びいただけます
+          </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Course Cards */}
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-orange-400 to-orange-500 p-6">
-              <i class="fas fa-cat text-white text-3xl mb-2"></i>
-              <h3 class="text-white font-bold text-lg">Scratch入門</h3>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 mb-4">小学1〜3年生対象。ブロックプログラミングでゲームやアニメーションを作成。</p>
-              <ul class="text-sm text-gray-700 space-y-1 mb-4">
-                <li>• 基本的なプログラミング概念</li>
-                <li>• 簡単なゲーム制作</li>
-                <li>• 創造性の育成</li>
-              </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
-            </div>
+        <div class="grid grid-4">
+          {/* STEAMコース */}
+          <div class="course-card">
+            <div class="course-icon">S</div>
+            <h3>STEAMコース</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              スクラッチやロブロックスをはじめとして30以上の講座から選べる総合コース
+            </p>
+            <a href="/courses/steam" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-green-400 to-green-500 p-6">
-              <i class="fas fa-gamepad text-white text-3xl mb-2"></i>
-              <h3 class="text-white font-bold text-lg">Robloxゲーム制作</h3>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 mb-4">小学4年生〜中学生対象。3Dゲーム制作でプログラミングを実践。</p>
-              <ul class="text-sm text-gray-700 space-y-1 mb-4">
-                <li>• Lua言語の基礎</li>
-                <li>• 3Dゲーム開発</li>
-                <li>• 協調性とチームワーク</li>
-              </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
-            </div>
+          {/* マイクラッチコース */}
+          <div class="course-card">
+            <div class="course-icon">M</div>
+            <h3>マイクラッチコース</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              マイクラ好きならこの講座からスタート。楽しみながらプログラミングの基礎を学習
+            </p>
+            <a href="/courses/minecraft" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-purple-400 to-purple-500 p-6">
-              <i class="fas fa-robot text-white text-3xl mb-2"></i>
-              <h3 class="text-white font-bold text-lg">AI Coaching Lab</h3>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 mb-4">中学生対象。AIと一緒に学ぶ次世代プログラミング。</p>
-              <ul class="text-sm text-gray-700 space-y-1 mb-4">
-                <li>• Python基礎</li>
-                <li>• AI活用方法</li>
-                <li>• 問題解決能力</li>
-              </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
-            </div>
+          {/* トイプロ */}
+          <div class="course-card">
+            <div class="course-icon">P</div>
+            <h3>トイプロ</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              基礎から応用まで本格的にPythonを学べるプログラミング専門コース
+            </p>
+            <a href="/courses/toyprogramming" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-blue-400 to-blue-500 p-6">
-              <i class="fas fa-graduation-cap text-white text-3xl mb-2"></i>
-              <h3 class="text-white font-bold text-lg">Study Partner</h3>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 mb-4">家庭学習支援。プログラミング+算数・数学の総合サポート。</p>
-              <ul class="text-sm text-gray-700 space-y-1 mb-4">
-                <li>• 個別指導</li>
-                <li>• 学校課題サポート</li>
-                <li>• 学習習慣の定着</li>
-              </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
-            </div>
+          {/* シンクシンク */}
+          <div class="course-card">
+            <div class="course-icon">T</div>
+            <h3>シンクシンク</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              算数偏差値+6.9の科学的根拠を持つ思考力育成講座
+            </p>
+            <a href="/courses/thinkthink" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
           </div>
-        </div>
-        
-        <div class="text-center mt-8">
-          <a href="/contact" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-full font-semibold transition-colors duration-200">
-            まずは無料体験から
-          </a>
+
+          {/* Unity */}
+          <div class="course-card">
+            <div class="course-icon">U</div>
+            <h3>Unity</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              元エンジニアが教える本格的なゲーム開発講座
+            </p>
+            <a href="/courses/unity" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
+          </div>
+
+          {/* クリエイターズ */}
+          <div class="course-card">
+            <div class="course-icon">C</div>
+            <h3>クリエイターズ</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              アイデアを形にしてコンテスト出場・上位入賞を目指すアウトプット講座
+            </p>
+            <a href="/courses/creators" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
+          </div>
+
+          {/* AIコーチング・ラボ */}
+          <div class="course-card">
+            <div class="course-icon">A</div>
+            <h3>AIコーチング・ラボ</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              AI先生が教えてくれる最先端の学習システム
+            </p>
+            <a href="/courses/ai-coaching" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
+          </div>
+
+          {/* 算数数学個別指導 */}
+          <div class="course-card">
+            <div class="course-icon">数</div>
+            <h3>算数数学個別指導</h3>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+              お子様のペースに合わせた個別指導で算数・数学の基礎力を向上
+            </p>
+            <a href="/courses/math" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
+          </div>
         </div>
       </div>
     </section>
 
-    {/* Pricing & Schedule Section */}
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">料金・時間割</h2>
-          <p class="text-gray-600">明確な料金設定で安心してご利用いただけます</p>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Pricing */}
+    {/* About Section */}
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2" style="align-items: center; gap: 4rem;">
           <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-6">料金プラン</h3>
-            <div class="space-y-4">
-              <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                <span class="font-medium">月4回コース（週1回）</span>
-                <span class="text-xl font-bold text-blue-600">8,000 THB</span>
-              </div>
-              <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
-                <span class="font-medium">月8回コース（週2回）</span>
-                <span class="text-xl font-bold text-blue-600">15,000 THB</span>
-              </div>
-              <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex justify-between items-center">
-                <span class="font-medium text-yellow-800">体験レッスン</span>
-                <span class="text-xl font-bold text-yellow-600">無料</span>
-              </div>
+            <h2>充実した学習環境</h2>
+            <p style="color: var(--text-gray); margin-bottom: 2rem; font-size: 1.125rem; line-height: 1.7;">
+              フジスーパー2号店2階の明るく清潔な教室で、最新の機材と教材を使用した質の高いプログラミング教育を提供しています。
+              経験豊富な講師陣が、お子様一人ひとりの個性と能力に合わせて丁寧に指導いたします。
+            </p>
+            <div style="margin-bottom: 2rem;">
+              <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">教室の特徴</h3>
+              <ul style="list-style: none; padding: 0; color: var(--text-gray);">
+                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                  <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
+                  BTS プロンポン駅から徒歩5分の好立地
+                </li>
+                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                  <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
+                  最新のPC・タブレット完備
+                </li>
+                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                  <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
+                  少人数制による丁寧な指導
+                </li>
+                <li style="display: flex; align-items: center;">
+                  <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
+                  保護者様への定期的な進捗報告
+                </li>
+              </ul>
             </div>
-            <div class="mt-4 text-sm text-gray-600">
-              ※ 入会金・教材費は不要です<br />
-              ※ 送迎サービス別途相談可
-            </div>
+            <a href="/about" class="btn-secondary">教室についてもっと見る</a>
           </div>
-          
-          {/* Schedule */}
           <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-6">開講時間</h3>
-            <div class="space-y-3">
-              <div class="flex justify-between py-2 border-b">
-                <span class="font-medium">平日</span>
-                <span>16:00 - 20:00</span>
-              </div>
-              <div class="flex justify-between py-2 border-b">
-                <span class="font-medium">土曜日</span>
-                <span>9:00 - 17:00</span>
-              </div>
-              <div class="flex justify-between py-2 border-b">
-                <span class="font-medium">日曜日</span>
-                <span>9:00 - 17:00</span>
-              </div>
-            </div>
-            <div class="mt-4 bg-blue-50 rounded-lg p-4">
-              <h4 class="font-semibold text-blue-900 mb-2">人気の時間帯</h4>
-              <ul class="text-sm text-blue-800 space-y-1">
-                <li>• 平日 17:00-18:00（小学生）</li>
-                <li>• 平日 18:00-19:00（中学生）</li>
-                <li>• 土日 10:00-11:00（小学生）</li>
-                <li>• 土日 14:00-15:00（中学生）</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* FAQ Section */}
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">よくある質問</h2>
-          <p class="text-gray-600">保護者の方からよく寄せられる質問にお答えします</p>
-        </div>
-        
-        <div class="max-w-4xl mx-auto">
-          <div class="space-y-6">
-            <div class="bg-white rounded-lg shadow-sm">
-              <button class="w-full text-left p-6 focus:outline-none faq-toggle">
-                <div class="flex justify-between items-center">
-                  <h3 class="text-lg font-semibold text-gray-900">まったくの初心者でも大丈夫ですか？</h3>
-                  <i class="fas fa-chevron-down text-gray-500"></i>
-                </div>
-              </button>
-              <div class="px-6 pb-6 faq-content hidden">
-                <p class="text-gray-700">はい、大丈夫です。お子様一人ひとりのペースに合わせて丁寧に指導いたします。基礎から段階的に学習していくので、プログラミング未経験でも安心してご参加ください。</p>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-sm">
-              <button class="w-full text-left p-6 focus:outline-none faq-toggle">
-                <div class="flex justify-between items-center">
-                  <h3 class="text-lg font-semibold text-gray-900">途中入会はできますか？</h3>
-                  <i class="fas fa-chevron-down text-gray-500"></i>
-                </div>
-              </button>
-              <div class="px-6 pb-6 faq-content hidden">
-                <p class="text-gray-700">はい、月の途中からでもご入会いただけます。料金は日割り計算いたしますので、いつからでもスタートしていただけます。</p>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-sm">
-              <button class="w-full text-left p-6 focus:outline-none faq-toggle">
-                <div class="flex justify-between items-center">
-                  <h3 class="text-lg font-semibold text-gray-900">体験レッスンの持ち物はありますか？</h3>
-                  <i class="fas fa-chevron-down text-gray-500"></i>
-                </div>
-              </button>
-              <div class="px-6 pb-6 faq-content hidden">
-                <p class="text-gray-700">特別な持ち物は必要ありません。パソコンや教材はすべて教室で用意いたします。お子様には筆記用具をお持ちいただければ十分です。</p>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-sm">
-              <button class="w-full text-left p-6 focus:outline-none faq-toggle">
-                <div class="flex justify-between items-center">
-                  <h3 class="text-lg font-semibold text-gray-900">保護者の見学は可能ですか？</h3>
-                  <i class="fas fa-chevron-down text-gray-500"></i>
-                </div>
-              </button>
-              <div class="px-6 pb-6 faq-content hidden">
-                <p class="text-gray-700">もちろん可能です。初回の体験レッスン時はぜひご見学ください。お子様の学習の様子を直接ご確認いただけます。</p>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-sm">
-              <button class="w-full text-left p-6 focus:outline-none faq-toggle">
-                <div class="flex justify-between items-center">
-                  <h3 class="text-lg font-semibold text-gray-900">送迎サービスはありますか？</h3>
-                  <i class="fas fa-chevron-down text-gray-500"></i>
-                </div>
-              </button>
-              <div class="px-6 pb-6 faq-content hidden">
-                <p class="text-gray-700">スクンビット周辺エリアに限り、送迎サービスをご用意しています。詳細はお問い合わせ時にご相談ください。</p>
+            <div style="background: #f8f9fa; border-radius: 1rem; padding: 3rem; text-align: center;">
+              <div style="font-size: 4rem; margin-bottom: 1rem;">🏢</div>
+              <h3>アクセス良好</h3>
+              <p style="color: var(--text-gray); margin-bottom: 2rem;">
+                フジスーパー2号店2階<br />
+                お買い物ついでに通学可能
+              </p>
+              <div style="background: var(--main-yellow); border-radius: 0.5rem; padding: 1rem; color: var(--text-dark); font-weight: 600;">
+                駐車場完備
               </div>
             </div>
           </div>
@@ -330,63 +380,23 @@ export const homePage = () => (
       </div>
     </section>
 
-    {/* Location Section */}
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">アクセス</h2>
-          <p class="text-gray-600">フジスーパー2号店2階、通いやすい立地です</p>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">教室所在地</h3>
-              <div class="space-y-3">
-                <div class="flex items-start space-x-3">
-                  <i class="fas fa-map-marker-alt text-blue-600 mt-1"></i>
-                  <div>
-                    <div class="font-medium text-gray-900">AI & プログラミングのKOBEYA</div>
-                    <div class="text-gray-700">フジスーパー2号店2階</div>
-                    <div class="text-gray-600 text-sm">スクンビット・ソイ33/1周辺</div>
-                  </div>
-                </div>
-                
-                <div class="flex items-center space-x-3">
-                  <i class="fas fa-train text-blue-600"></i>
-                  <div class="text-gray-700">BTS プロンポン駅から徒歩5分</div>
-                </div>
-                
-                <div class="flex items-center space-x-3">
-                  <i class="fas fa-car text-blue-600"></i>
-                  <div class="text-gray-700">駐車場完備（フジスーパーと共用）</div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-blue-50 rounded-lg p-6">
-              <h4 class="font-semibold text-blue-900 mb-3">アクセスのポイント</h4>
-              <ul class="text-blue-800 space-y-2 text-sm">
-                <li>• 日本人がよく利用するフジスーパー内で安心</li>
-                <li>• BTSプロンポン駅から近く、電車でも通いやすい</li>
-                <li>• 授業の前後にお買い物も可能</li>
-                <li>• 明るく清潔な教室環境</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <div class="text-center text-gray-600">
-              <i class="fas fa-map text-4xl mb-4"></i>
-              <p>Google Maps埋め込み予定地</p>
-              <p class="text-sm">フジスーパー2号店周辺</p>
-            </div>
+    {/* CTA Section */}
+    <section class="section-alt">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+          <h2>まずは無料体験から</h2>
+          <p style="color: var(--text-gray); font-size: 1.125rem; margin: 1.5rem 0 2.5rem;">
+            お子様に最適なコースを見つけるため、まずは無料体験レッスンにお越しください。<br />
+            経験豊富な講師が丁寧にご相談をお受けします。
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/contact" class="btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">無料体験を申し込む</a>
+            <a href="tel:066-123-4567" class="btn-secondary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">電話で相談する</a>
           </div>
         </div>
       </div>
     </section>
 
-    <FloatingCTA />
     <Footer />
   </>
 )

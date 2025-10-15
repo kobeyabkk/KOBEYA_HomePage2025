@@ -1,55 +1,202 @@
 export const Header = () => (
-  <header class="bg-white shadow-sm border-b sticky top-0 z-50">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        {/* Logo */}
-        <div class="flex items-center">
-          <a href="/" class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-              <i class="fas fa-robot text-white text-lg"></i>
-            </div>
-            <div>
-              <div class="font-bold text-lg text-gray-900">AI & プログラミングのKOBEYA</div>
-              <div class="text-xs text-gray-600">バンコク日本人小中学生向け</div>
-            </div>
-          </a>
-        </div>
-
-        {/* Navigation - Desktop */}
-        <nav class="hidden md:flex items-center space-x-8">
-          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium">ホーム</a>
-          <a href="/courses" class="text-gray-700 hover:text-blue-600 font-medium">コース</a>
-          <a href="/about" class="text-gray-700 hover:text-blue-600 font-medium">教室について</a>
-          <a href="/news" class="text-gray-700 hover:text-blue-600 font-medium">お知らせ</a>
-          <a href="/contact" class="text-gray-700 hover:text-blue-600 font-medium">お問い合わせ</a>
+  <>
+    <style>{`
+      .header {
+        background: var(--main-yellow);
+        border-bottom: 3px solid #F57C00;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 12px rgba(255, 193, 7, 0.3);
+      }
+      
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 4rem;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .logo-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        background: var(--base-white);
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: var(--text-dark);
+        border: 2px solid #8B4513;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .nav a {
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.5rem 0;
+        transition: color 0.2s;
+        position: relative;
+      }
+      
+      .nav a:hover,
+      .nav a.active {
+        color: #8B4513;
+      }
+      
+      .nav a:hover::after,
+      .nav a.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: #8B4513;
+        border-radius: 2px;
+      }
+      
+      .header-cta {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .btn-header {
+        background: var(--base-white);
+        color: var(--text-dark);
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.2s;
+        border: 2px solid #8B4513;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .btn-header:hover {
+        background: #8B4513;
+        color: var(--base-white);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+      }
+      
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-dark);
+        cursor: pointer;
+      }
+      
+      .mobile-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--main-yellow);
+        border-bottom: 3px solid #F57C00;
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+      }
+      
+      .mobile-nav.active {
+        display: block;
+      }
+      
+      .mobile-nav .nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .mobile-nav .header-cta {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+      }
+      
+      @media (max-width: 768px) {
+        .nav,
+        .header-cta {
+          display: none;
+        }
+        
+        .mobile-menu-btn {
+          display: block;
+        }
+        
+        .header-container {
+          padding: 0 1rem;
+        }
+      }
+    `}</style>
+    
+    <header class="header">
+      <div class="header-container">
+        <a href="/" class="logo">
+          <div class="logo-icon">🤖</div>
+          AI & プログラミングのKOBEYA
+        </a>
+        
+        <nav class="nav">
+          <a href="/">ホーム</a>
+          <a href="/#courses">コース</a>
+          <a href="/about">教室について</a>
+          <a href="/contact">お問い合わせ</a>
         </nav>
-
-        {/* CTA Button */}
-        <div class="hidden md:flex items-center space-x-4">
-          <a href="/contact" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-2 rounded-full font-semibold transition-colors duration-200">
-            無料体験を予約
-          </a>
+        
+        <div class="header-cta">
+          <a href="tel:066-123-4567" style="color: var(--text-gray); text-decoration: none;">📞 066-123-4567</a>
+          <a href="/contact" class="btn-header">無料体験</a>
         </div>
-
-        {/* Mobile menu button */}
-        <button class="md:hidden p-2" id="mobile-menu-toggle">
-          <i class="fas fa-bars text-gray-700"></i>
-        </button>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
       </div>
-
-      {/* Mobile Navigation */}
-      <nav class="md:hidden hidden border-t py-4" id="mobile-menu">
-        <div class="flex flex-col space-y-4">
-          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium">ホーム</a>
-          <a href="/courses" class="text-gray-700 hover:text-blue-600 font-medium">コース</a>
-          <a href="/about" class="text-gray-700 hover:text-blue-600 font-medium">教室について</a>
-          <a href="/news" class="text-gray-700 hover:text-blue-600 font-medium">お知らせ</a>
-          <a href="/contact" class="text-gray-700 hover:text-blue-600 font-medium">お問い合わせ</a>
-          <a href="/contact" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3 rounded-full font-semibold text-center transition-colors duration-200">
-            無料体験を予約
-          </a>
+      
+      <div id="mobileNav" class="mobile-nav">
+        <nav class="nav">
+          <a href="/">ホーム</a>
+          <a href="/#courses">コース</a>
+          <a href="/about">教室について</a>
+          <a href="/contact">お問い合わせ</a>
+        </nav>
+        <div class="header-cta">
+          <a href="tel:066-123-4567" style="color: var(--text-gray); text-decoration: none;">📞 066-123-4567</a>
+          <a href="/contact" class="btn-header">無料体験</a>
         </div>
-      </nav>
-    </div>
-  </header>
+      </div>
+    </header>
+    
+    <script>{`
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.classList.toggle('active');
+      }
+    `}</script>
+  </>
 )
