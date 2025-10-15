@@ -791,20 +791,34 @@ export const steamCoursePage = () => (
 
     <Footer />
     
-    <script>{`
-      function toggleAccordion(element) {
-        const isActive = element.classList.contains('active');
-        
-        // Close all accordions
-        document.querySelectorAll('.accordion').forEach(acc => {
-          acc.classList.remove('active');
-        });
-        
-        // Open clicked accordion if it wasn't active
-        if (!isActive) {
-          element.classList.add('active');
-        }
-      }
-    `}</script>
+    <script 
+      dangerouslySetInnerHTML={{
+        __html: `
+          console.log('Accordion script loading...');
+          
+          function toggleAccordion(element) {
+            console.log('Accordion clicked:', element);
+            
+            const isActive = element.classList.contains('active');
+            
+            // Close all accordions
+            const accordions = document.querySelectorAll('.accordion');
+            accordions.forEach(function(acc) {
+              acc.classList.remove('active');
+            });
+            
+            // Open clicked accordion if it wasn't active
+            if (!isActive) {
+              element.classList.add('active');
+              console.log('Accordion opened');
+            } else {
+              console.log('All accordions closed');
+            }
+          }
+          
+          console.log('Accordion script loaded successfully');
+        `
+      }}
+    ></script>
   </>
 )
