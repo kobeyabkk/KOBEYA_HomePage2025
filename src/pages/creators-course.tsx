@@ -1,1148 +1,888 @@
-export function creatorsCoursePage() {
-  return `
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>クリエイターズコース - AI & プログラミングのKOBEYA</title>
-      <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-      <style>
-        :root {
-          --main-yellow: #FFC107;
-          --accent-yellow: #FFD700;
-          --base-white: #FFFFFF;
-          --text-dark: #2D3748;
-          --text-gray: #718096;
-          --border-gray: #E2E8F0;
-          --hover-gray: #F7FAFC;
-          --creator-purple: #9C27B0;
-          --creator-pink: #E91E63;
-          --creator-orange: #FF5722;
-          --creator-green: #4CAF50;
-        }
+import { Header } from '../components/header'
+import { Footer } from '../components/footer'
 
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+export const creatorsCoursePage = () => (
+  <>
+    <style>{`
+      :root {
+        --main-yellow: #FFC107;
+        --accent-yellow: #FFD700;
+        --base-white: #FFFFFF;
+        --text-dark: #2D3748;
+        --text-gray: #718096;
+        --border-gray: #E2E8F0;
+        --hover-gray: #F7FAFC;
+        --creator-purple: #9C27B0;
+        --creator-pink: #E91E63;
+        --creator-orange: #FF5722;
+        --creator-teal: #00BCD4;
+      }
 
-        body {
-          font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-          line-height: 1.6;
-          color: var(--text-dark);
-          background-color: var(--base-white);
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
+      body {
+        font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background-color: var(--base-white);
+      }
 
-        .section {
-          padding: 80px 0;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        .section-title {
+      .section {
+        padding: 80px 0;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--main-yellow) 0%, var(--creator-orange) 50%, var(--creator-pink) 100%);
+        padding: 120px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m25 25h50v50h-50z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E") repeat;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-icons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .hero-icon {
+        font-size: 3rem;
+        color: var(--base-white);
+        opacity: 0.9;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .hero-icon:nth-child(1) { animation-delay: 0s; }
+      .hero-icon:nth-child(2) { animation-delay: 0.5s; }
+      .hero-icon:nth-child(3) { animation-delay: 1s; }
+      .hero-icon:nth-child(4) { animation-delay: 1.5s; }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--base-white);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--base-white);
+        margin-bottom: 15px;
+        opacity: 0.95;
+      }
+
+      .hero-description {
+        font-size: 1.2rem;
+        color: var(--base-white);
+        margin-bottom: 40px;
+        opacity: 0.9;
+        line-height: 1.7;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--base-white);
+        color: var(--text-dark);
+        padding: 20px 45px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
+        background: var(--hover-gray);
+      }
+
+      /* Overview Section */
+      .overview-section {
+        background: var(--base-white);
+        padding: 100px 0;
+      }
+
+      .overview-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .overview-text h2 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        line-height: 1.3;
+      }
+
+      .overview-text p {
+        font-size: 1.2rem;
+        color: var(--text-gray);
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+
+      .highlight-features {
+        background: linear-gradient(135deg, var(--creator-purple), var(--creator-pink));
+        padding: 50px;
+        border-radius: 25px;
+        color: var(--base-white);
+        box-shadow: 0 20px 40px rgba(156, 39, 176, 0.2);
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      .feature-item i {
+        margin-right: 15px;
+        font-size: 1.3rem;
+        color: var(--main-yellow);
+      }
+
+      /* Learning Styles */
+      .styles-section {
+        background: var(--hover-gray);
+        padding: 100px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+      }
+
+      .section-subtitle {
+        font-size: 1.3rem;
+        color: var(--text-gray);
+        line-height: 1.7;
+      }
+
+      .styles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+      }
+
+      .style-card {
+        background: var(--base-white);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        border: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .style-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--creator-purple), var(--creator-pink), var(--creator-orange));
+      }
+
+      .style-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        border-color: var(--main-yellow);
+      }
+
+      .style-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--creator-purple), var(--creator-pink));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: var(--base-white);
+        margin: 0 auto 25px;
+      }
+
+      .style-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 15px;
+      }
+
+      .style-description {
+        color: var(--text-gray);
+        line-height: 1.7;
+        font-size: 1.05rem;
+      }
+
+      /* Output Focus */
+      .output-section {
+        background: var(--base-white);
+        padding: 100px 0;
+      }
+
+      .output-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .output-text h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        line-height: 1.3;
+      }
+
+      .output-text p {
+        font-size: 1.1rem;
+        color: var(--text-gray);
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .comparison-box {
+        background: var(--main-yellow);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(255, 193, 7, 0.2);
+      }
+
+      .comparison-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .comparison-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .comparison-item i {
+        margin-right: 15px;
+        font-size: 1.3rem;
+      }
+
+      .input-icon { color: var(--creator-teal); }
+      .output-icon { color: var(--creator-pink); }
+      .synergy-icon { color: var(--creator-purple); }
+
+      /* Skills Section */
+      .skills-section {
+        background: linear-gradient(135deg, var(--creator-purple) 0%, var(--creator-pink) 50%, var(--creator-orange) 100%);
+        color: var(--base-white);
+        padding: 100px 0;
+      }
+
+      .skills-content {
+        text-align: center;
+      }
+
+      .skills-header h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+
+      .skills-header p {
+        font-size: 1.3rem;
+        margin-bottom: 60px;
+        opacity: 0.9;
+        line-height: 1.7;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .skill-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .skill-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .skill-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--main-yellow);
+      }
+
+      .skill-name {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .skill-desc {
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .benefits-list {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 50px;
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        text-align: left;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+        font-size: 1.1rem;
+      }
+
+      .benefit-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .benefit-item i {
+        margin-right: 15px;
+        margin-top: 2px;
+        color: var(--main-yellow);
+        font-size: 1.2rem;
+      }
+
+      /* Schedule Info */
+      .schedule-section {
+        background: var(--hover-gray);
+        padding: 100px 0;
+      }
+
+      .schedule-card {
+        background: var(--base-white);
+        padding: 50px;
+        border-radius: 25px;
+        border: 3px solid var(--main-yellow);
+        position: relative;
+        overflow: hidden;
+        max-width: 600px;
+        margin: 60px auto 0;
+      }
+
+      .schedule-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--creator-purple), var(--creator-pink), var(--creator-orange));
+      }
+
+      .card-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .card-title i {
+        color: var(--main-yellow);
+      }
+
+      .schedule-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 2px solid var(--border-gray);
+      }
+
+      .schedule-item:last-child {
+        border-bottom: none;
+      }
+
+      .schedule-label {
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .schedule-value {
+        color: var(--text-gray);
+        font-weight: 500;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(135deg, var(--main-yellow) 0%, var(--accent-yellow) 100%);
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .cta-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 25px;
+        line-height: 1.3;
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        color: var(--text-gray);
+        margin-bottom: 40px;
+        line-height: 1.7;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 20px 45px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn-primary {
+        background: var(--text-dark);
+        color: var(--base-white);
+        box-shadow: 0 10px 30px rgba(45, 55, 72, 0.2);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(45, 55, 72, 0.3);
+      }
+
+      .btn-secondary {
+        background: var(--base-white);
+        color: var(--text-dark);
+        border: 3px solid var(--text-dark);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-secondary:hover {
+        background: var(--text-dark);
+        color: var(--base-white);
+        transform: translateY(-3px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-title {
           font-size: 2.5rem;
-          font-weight: 700;
-          color: var(--text-dark);
-          margin-bottom: 20px;
         }
 
-        .section-subtitle {
-          font-size: 1.2rem;
-          color: var(--text-gray);
-          margin-bottom: 60px;
-        }
-
-        /* Hero Section */
-        .hero-section {
-          background: linear-gradient(135deg, var(--creator-purple) 0%, var(--creator-pink) 30%, var(--creator-orange) 70%, var(--main-yellow) 100%);
-          color: var(--base-white);
-          text-align: center;
-          padding: 100px 0;
+        .hero-icons {
+          gap: 15px;
         }
 
         .hero-icon {
-          font-size: 4rem;
-          margin-bottom: 20px;
-          opacity: 0.9;
-        }
-
-        .hero-title {
-          font-size: 3rem;
-          font-weight: 700;
-          margin-bottom: 20px;
-        }
-
-        .hero-subtitle {
-          font-size: 1.3rem;
-          margin-bottom: 40px;
-          opacity: 0.9;
-        }
-
-        .cta-button {
-          display: inline-block;
-          background: var(--base-white);
-          color: var(--text-dark);
-          padding: 16px 32px;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 1.1rem;
-          transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-          background: var(--hover-gray);
-          transform: translateY(-2px);
-        }
-
-        /* Course Overview */
-        .overview-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 60px;
-          align-items: center;
-          margin-bottom: 80px;
-        }
-
-        .overview-content h2 {
-          font-size: 2.2rem;
-          font-weight: 600;
-          margin-bottom: 24px;
-          color: var(--text-dark);
-        }
-
-        .overview-content p {
-          font-size: 1.1rem;
-          line-height: 1.8;
-          color: var(--text-gray);
-          margin-bottom: 20px;
-        }
-
-        .overview-features {
-          background: var(--hover-gray);
-          padding: 40px;
-          border-radius: 16px;
-          border: 2px solid var(--border-gray);
-        }
-
-        .feature-item {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 16px;
-        }
-
-        .feature-item i {
-          color: var(--creator-purple);
-          font-size: 1.2rem;
-          width: 20px;
-        }
-
-        .feature-item span {
-          font-weight: 500;
-        }
-
-        /* Creative Areas */
-        .areas-section {
-          background: var(--hover-gray);
-          padding: 60px 0;
-        }
-
-        .areas-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 30px;
-        }
-
-        .area-card {
-          background: var(--base-white);
-          padding: 30px;
-          border-radius: 16px;
-          border: 3px solid transparent;
-          text-align: center;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .area-card:nth-child(1) {
-          border-color: var(--creator-purple);
-        }
-
-        .area-card:nth-child(2) {
-          border-color: var(--creator-pink);
-        }
-
-        .area-card:nth-child(3) {
-          border-color: var(--creator-orange);
-        }
-
-        .area-card:nth-child(4) {
-          border-color: var(--creator-green);
-        }
-
-        .area-card:nth-child(5) {
-          border-color: var(--main-yellow);
-        }
-
-        .area-card:nth-child(6) {
-          border-color: var(--creator-purple);
-        }
-
-        .area-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-        }
-
-        .area-card:nth-child(1)::before { background: var(--creator-purple); }
-        .area-card:nth-child(2)::before { background: var(--creator-pink); }
-        .area-card:nth-child(3)::before { background: var(--creator-orange); }
-        .area-card:nth-child(4)::before { background: var(--creator-green); }
-        .area-card:nth-child(5)::before { background: var(--main-yellow); }
-        .area-card:nth-child(6)::before { background: var(--creator-purple); }
-
-        .area-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .area-card i {
-          font-size: 3rem;
-          margin-bottom: 20px;
-        }
-
-        .area-card:nth-child(1) i { color: var(--creator-purple); }
-        .area-card:nth-child(2) i { color: var(--creator-pink); }
-        .area-card:nth-child(3) i { color: var(--creator-orange); }
-        .area-card:nth-child(4) i { color: var(--creator-green); }
-        .area-card:nth-child(5) i { color: var(--main-yellow); }
-        .area-card:nth-child(6) i { color: var(--creator-purple); }
-
-        .area-card h3 {
-          font-size: 1.4rem;
-          font-weight: 600;
-          margin-bottom: 12px;
-          color: var(--text-dark);
-        }
-
-        .area-card p {
-          color: var(--text-gray);
-          font-size: 0.95rem;
-          line-height: 1.6;
-        }
-
-        /* Tools & Software */
-        .tools-section {
-          padding: 80px 0;
-        }
-
-        .tools-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 30px;
-        }
-
-        .tool-card {
-          background: var(--base-white);
-          padding: 30px;
-          border-radius: 12px;
-          border: 2px solid var(--border-gray);
-          text-align: center;
-          transition: all 0.3s ease;
-        }
-
-        .tool-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .tool-icon {
-          width: 60px;
-          height: 60px;
-          background: linear-gradient(135deg, var(--creator-purple), var(--creator-pink));
-          color: var(--base-white);
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.8rem;
-          margin: 0 auto 20px;
-        }
-
-        .tool-card h4 {
-          font-size: 1.2rem;
-          font-weight: 600;
-          margin-bottom: 8px;
-          color: var(--text-dark);
-        }
-
-        .tool-category {
-          color: var(--creator-purple);
-          font-weight: 600;
-          font-size: 0.9rem;
-          margin-bottom: 12px;
-        }
-
-        .tool-card p {
-          color: var(--text-gray);
-          font-size: 0.9rem;
-          line-height: 1.5;
-        }
-
-        /* Learning Process */
-        .process-section {
-          background: var(--hover-gray);
-          padding: 60px 0;
-        }
-
-        .process-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 40px;
-        }
-
-        .process-step {
-          text-align: center;
-          position: relative;
-        }
-
-        .process-step::after {
-          content: '';
-          position: absolute;
-          top: 40px;
-          right: -20px;
-          width: 40px;
-          height: 2px;
-          background: var(--creator-purple);
-          opacity: 0.3;
-        }
-
-        .process-step:last-child::after {
-          display: none;
-        }
-
-        .step-icon {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 20px;
           font-size: 2rem;
-          color: var(--base-white);
-          position: relative;
         }
 
-        .process-step:nth-child(1) .step-icon {
-          background: linear-gradient(135deg, var(--creator-purple), var(--creator-pink));
-        }
-
-        .process-step:nth-child(2) .step-icon {
-          background: linear-gradient(135deg, var(--creator-pink), var(--creator-orange));
-        }
-
-        .process-step:nth-child(3) .step-icon {
-          background: linear-gradient(135deg, var(--creator-orange), var(--creator-green));
-        }
-
-        .process-step:nth-child(4) .step-icon {
-          background: linear-gradient(135deg, var(--creator-green), var(--main-yellow));
-        }
-
-        .process-step:nth-child(5) .step-icon {
-          background: linear-gradient(135deg, var(--main-yellow), var(--creator-purple));
-        }
-
-        .step-title {
-          font-size: 1.2rem;
-          font-weight: 600;
-          margin-bottom: 12px;
-          color: var(--text-dark);
-        }
-
-        .step-description {
-          color: var(--text-gray);
-          font-size: 0.9rem;
-          line-height: 1.6;
-        }
-
-        /* Portfolio Section */
-        .portfolio-section {
-          padding: 80px 0;
-        }
-
-        .portfolio-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 40px;
-        }
-
-        .portfolio-card {
-          background: var(--base-white);
-          border-radius: 16px;
-          overflow: hidden;
-          border: 2px solid var(--border-gray);
-          transition: all 0.3s ease;
-        }
-
-        .portfolio-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .portfolio-image {
-          height: 200px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--base-white);
-          font-size: 3rem;
-          position: relative;
-        }
-
-        .portfolio-card:nth-child(1) .portfolio-image {
-          background: linear-gradient(135deg, var(--creator-purple), var(--creator-pink));
-        }
-
-        .portfolio-card:nth-child(2) .portfolio-image {
-          background: linear-gradient(135deg, var(--creator-pink), var(--creator-orange));
-        }
-
-        .portfolio-card:nth-child(3) .portfolio-image {
-          background: linear-gradient(135deg, var(--creator-orange), var(--creator-green));
-        }
-
-        .portfolio-card:nth-child(4) .portfolio-image {
-          background: linear-gradient(135deg, var(--creator-green), var(--main-yellow));
-        }
-
-        .portfolio-card:nth-child(5) .portfolio-image {
-          background: linear-gradient(135deg, var(--main-yellow), var(--creator-purple));
-        }
-
-        .portfolio-card:nth-child(6) .portfolio-image {
-          background: linear-gradient(135deg, var(--creator-purple), var(--creator-pink));
-        }
-
-        .portfolio-content {
-          padding: 24px;
-        }
-
-        .portfolio-title {
-          font-size: 1.3rem;
-          font-weight: 600;
-          margin-bottom: 8px;
-          color: var(--text-dark);
-        }
-
-        .portfolio-type {
-          color: var(--creator-purple);
-          font-weight: 600;
-          font-size: 0.9rem;
-          margin-bottom: 12px;
-        }
-
-        .portfolio-description {
-          color: var(--text-gray);
-          font-size: 0.9rem;
-          line-height: 1.6;
-        }
-
-        /* Benefits */
-        .benefits-section {
-          background: var(--hover-gray);
+        .section {
           padding: 60px 0;
         }
 
-        .benefits-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .overview-grid,
+        .output-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .styles-grid,
+        .skills-grid {
+          grid-template-columns: 1fr;
           gap: 30px;
-        }
-
-        .benefit-card {
-          background: var(--base-white);
-          padding: 30px;
-          border-radius: 12px;
-          border: 2px solid var(--border-gray);
-          text-align: center;
-        }
-
-        .benefit-card i {
-          font-size: 2.5rem;
-          color: var(--creator-purple);
-          margin-bottom: 16px;
-        }
-
-        .benefit-card h4 {
-          font-size: 1.2rem;
-          font-weight: 600;
-          margin-bottom: 12px;
-          color: var(--text-dark);
-        }
-
-        .benefit-card p {
-          color: var(--text-gray);
-          font-size: 0.9rem;
-          line-height: 1.6;
-        }
-
-        /* Schedule & Pricing */
-        .info-section {
-          padding: 80px 0;
-        }
-
-        .info-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 60px;
-        }
-
-        .info-card {
-          background: var(--base-white);
-          padding: 40px;
-          border-radius: 16px;
-          border: 2px solid var(--border-gray);
-        }
-
-        .card-title {
-          font-size: 1.8rem;
-          font-weight: 600;
-          margin-bottom: 24px;
-          color: var(--text-dark);
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .card-title i {
-          color: var(--creator-purple);
-        }
-
-        .info-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 16px 0;
-          border-bottom: 1px solid var(--border-gray);
-        }
-
-        .info-item:last-child {
-          border-bottom: none;
-        }
-
-        .info-item span:first-child {
-          font-weight: 500;
-          color: var(--text-dark);
-        }
-
-        .info-item span:last-child {
-          color: var(--text-gray);
-        }
-
-        .price-highlight {
-          color: var(--creator-purple) !important;
-          font-weight: 700 !important;
-          font-size: 1.2rem !important;
-        }
-
-        /* Call to Action */
-        .cta-section {
-          background: linear-gradient(135deg, var(--creator-purple) 0%, var(--creator-pink) 30%, var(--creator-orange) 70%, var(--main-yellow) 100%);
-          color: var(--base-white);
-          padding: 80px 0;
-          text-align: center;
-        }
-
-        .cta-content {
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
-        .cta-title {
-          font-size: 2.2rem;
-          font-weight: 600;
-          margin-bottom: 20px;
-        }
-
-        .cta-description {
-          font-size: 1.1rem;
-          margin-bottom: 40px;
-          line-height: 1.7;
-          opacity: 0.9;
         }
 
         .cta-buttons {
-          display: flex;
-          gap: 20px;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        .cta-primary,
-        .cta-secondary {
-          padding: 16px 32px;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 1.1rem;
-          transition: all 0.3s ease;
-          display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 8px;
         }
 
-        .cta-primary {
-          background: var(--base-white);
-          color: var(--text-dark);
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          max-width: 300px;
+          justify-content: center;
         }
 
-        .cta-primary:hover {
-          background: var(--hover-gray);
-          transform: translateY(-2px);
-        }
 
-        .cta-secondary {
-          background: transparent;
-          color: var(--base-white);
-          border: 2px solid var(--base-white);
-        }
+      }
+    `}</style>
 
-        .cta-secondary:hover {
-          background: var(--base-white);
-          color: var(--text-dark);
-          transform: translateY(-2px);
-        }
+    <Header />
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-          .hero-title {
-            font-size: 2.2rem;
-          }
-
-          .hero-subtitle {
-            font-size: 1.1rem;
-          }
-
-          .section {
-            padding: 40px 0;
-          }
-
-          .section-title {
-            font-size: 2rem;
-          }
-
-          .overview-grid,
-          .info-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-
-          .areas-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-          }
-
-          .tools-grid {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-          }
-
-          .process-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
-          }
-
-          .process-step::after {
-            display: none;
-          }
-
-          .portfolio-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
-          }
-
-          .benefits-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-          }
-
-          .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-          }
-
-          .cta-primary,
-          .cta-secondary {
-            width: 100%;
-            max-width: 300px;
-            justify-content: center;
-          }
-        }
-      </style>
-    </head>
-    <body>
-      <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-          <div class="container">
-            <div class="hero-icon">
-              <i class="fas fa-paint-brush"></i>
+    <main>
+      {/* Hero Section */}
+      <section class="hero-section">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-icons">
+              <div class="hero-icon">
+                <i class="fas fa-paint-brush"></i>
+              </div>
+              <div class="hero-icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <div class="hero-icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <div class="hero-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
             </div>
-            <h1 class="hero-title">クリエイターズコース</h1>
-            <p class="hero-subtitle">
-              デジタルクリエイション全般を学ぶ<br>
-              総合的なクリエイティブスキル習得コース
+            <h1 class="hero-title">クリエイターズ</h1>
+            <p class="hero-subtitle">スクラッチ、マインクラフト、映像作品・・・</p>
+            <p class="hero-description">
+              オリジナル作品を作ってコンテストに応募しよう！<br/>
+              アイデアを形にして、上位入賞を目指すクリエイティブなクラスです。
             </p>
-            <a href="#details" class="cta-button">
+            <a href="#overview" class="cta-button">
               <i class="fas fa-arrow-down"></i>
               コース詳細を見る
             </a>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Course Overview -->
-        <section class="section" id="details">
-          <div class="container">
-            <div class="overview-grid">
-              <div class="overview-content">
-                <h2>創造力を形にする総合学習</h2>
-                <p>
-                  クリエイターズコースは、デジタル時代に必要なクリエイティブスキルを総合的に学ぶコースです。動画編集、グラフィックデザイン、ウェブサイト制作、音楽制作、3Dモデリングなど、幅広い分野を体験できます。
-                </p>
-                <p>
-                  「作りたい」という気持ちを大切にし、プロが使用するツールを使って本格的な作品制作を行います。将来のクリエイター、デザイナー、エンジニアを目指す方に最適なコースです。
-                </p>
-              </div>
-
-              <div class="overview-features">
-                <div class="feature-item">
-                  <i class="fas fa-video"></i>
-                  <span>動画編集・映像制作</span>
-                </div>
-                <div class="feature-item">
-                  <i class="fas fa-palette"></i>
-                  <span>グラフィックデザイン</span>
-                </div>
-                <div class="feature-item">
-                  <i class="fas fa-code"></i>
-                  <span>ウェブサイト制作</span>
-                </div>
-                <div class="feature-item">
-                  <i class="fas fa-music"></i>
-                  <span>音楽・サウンド制作</span>
-                </div>
-                <div class="feature-item">
-                  <i class="fas fa-cube"></i>
-                  <span>3Dモデリング・アニメーション</span>
-                </div>
-                <div class="feature-item">
-                  <i class="fas fa-camera"></i>
-                  <span>写真編集・加工</span>
-                </div>
-              </div>
+      {/* Overview */}
+      <section class="overview-section" id="overview">
+        <div class="container">
+          <div class="overview-grid">
+            <div class="overview-text">
+              <h2>オリジナル作品制作で<br/>コンテスト入賞を目指す</h2>
+              <p>
+                クリエイターズでは、自分のアイデアを形にしてオリジナル作品を制作し、各種コンテストでの上位入賞を目指します。
+              </p>
+              <p>
+                スクラッチ、ロブロックス、映像制作、YouTuber活動など、あらゆるクリエイティブな挑戦を歓迎します。個人でもチームでも、自分に合ったスタイルで参加できます。
+              </p>
             </div>
-          </div>
-        </section>
-
-        <!-- Creative Areas -->
-        <section class="areas-section">
-          <div class="container">
-            <h2 class="section-title" style="text-align: center; color: var(--text-dark);">学習分野</h2>
-            <div class="areas-grid">
-              <div class="area-card">
-                <i class="fas fa-video"></i>
-                <h3>動画編集・映像制作</h3>
-                <p>YouTubeやTikTokで使える動画編集スキル。カット、エフェクト、音楽同期などの基本から応用まで。</p>
-              </div>
-
-              <div class="area-card">
-                <i class="fas fa-palette"></i>
-                <h3>グラフィックデザイン</h3>
-                <p>ポスター、チラシ、ロゴデザインなど。デザインの基本原則と実践的な制作スキルを習得。</p>
-              </div>
-
-              <div class="area-card">
-                <i class="fas fa-globe"></i>
-                <h3>ウェブサイト制作</h3>
-                <p>HTML、CSS、JavaScriptを使った本格的なウェブサイト制作。レスポンシブデザインにも対応。</p>
-              </div>
-
-              <div class="area-card">
-                <i class="fas fa-music"></i>
-                <h3>音楽・サウンド制作</h3>
-                <p>楽曲制作、効果音作成、ポッドキャスト編集など。音の世界での表現技術を学習。</p>
-              </div>
-
-              <div class="area-card">
-                <i class="fas fa-cubes"></i>
-                <h3>3Dモデリング</h3>
-                <p>Blenderを使った3Dオブジェクト制作。アニメーション、レンダリングまでの一連の流れ。</p>
-              </div>
-
-              <div class="area-card">
-                <i class="fas fa-camera"></i>
-                <h3>写真編集・加工</h3>
-                <p>写真の補正、合成、アーティスティックな加工。SNS映えする画像制作技術。</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Tools & Software -->
-        <section class="tools-section">
-          <div class="container">
-            <h2 class="section-title" style="text-align: center;">使用ツール・ソフトウェア</h2>
-            <div class="tools-grid">
-              <div class="tool-card">
-                <div class="tool-icon">
-                  <i class="fas fa-cut"></i>
-                </div>
-                <h4>DaVinci Resolve</h4>
-                <div class="tool-category">動画編集</div>
-                <p>プロレベルの動画編集・カラーグレーディングソフト</p>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-icon">
-                  <i class="fas fa-image"></i>
-                </div>
-                <h4>GIMP / Photoshop</h4>
-                <div class="tool-category">画像編集</div>
-                <p>本格的な画像編集・デザインツール</p>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-icon">
-                  <i class="fas fa-vector-square"></i>
-                </div>
-                <h4>Inkscape / Illustrator</h4>
-                <div class="tool-category">ベクターデザイン</div>
-                <p>ロゴ・イラスト制作用ベクターグラフィックツール</p>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-icon">
-                  <i class="fas fa-cube"></i>
-                </div>
-                <h4>Blender</h4>
-                <div class="tool-category">3D制作</div>
-                <p>3Dモデリング・アニメーション・レンダリング統合ソフト</p>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-icon">
-                  <i class="fas fa-code"></i>
-                </div>
-                <h4>VS Code</h4>
-                <div class="tool-category">ウェブ開発</div>
-                <p>HTML、CSS、JavaScript開発環境</p>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-icon">
-                  <i class="fas fa-music"></i>
-                </div>
-                <h4>Audacity</h4>
-                <div class="tool-category">音声編集</div>
-                <p>音楽制作・ポッドキャスト編集ソフト</p>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-icon">
-                  <i class="fas fa-palette"></i>
-                </div>
-                <h4>Canva</h4>
-                <div class="tool-category">デザイン</div>
-                <p>初心者でも使いやすいデザインプラットフォーム</p>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-icon">
+            
+            <div class="highlight-features">
+              <ul class="feature-list">
+                <li class="feature-item">
+                  <i class="fas fa-user"></i>
+                  個人制作・チーム制作どちらもOK
+                </li>
+                <li class="feature-item">
+                  <i class="fas fa-clock"></i>
+                  毎週参加でなくても大丈夫
+                </li>
+                <li class="feature-item">
                   <i class="fas fa-laptop"></i>
-                </div>
-                <h4>Figma</h4>
-                <div class="tool-category">UI/UXデザイン</div>
-                <p>ウェブサイト・アプリのデザインツール</p>
+                  オンライン受講も可能
+                </li>
+                <li class="feature-item">
+                  <i class="fas fa-palette"></i>
+                  どんなジャンルでも歓迎
+                </li>
+                <li class="feature-item">
+                  <i class="fas fa-award"></i>
+                  コンテスト入賞実績多数
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Styles */}
+      <section class="styles-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">選べる学習スタイル</h2>
+            <p class="section-subtitle">
+              一人ひとりの創作スタイルに合わせて、柔軟な学習環境を提供します
+            </p>
+          </div>
+          
+          <div class="styles-grid">
+            <div class="style-card">
+              <div class="style-icon">
+                <i class="fas fa-user"></i>
+              </div>
+              <h3 class="style-title">個人制作</h3>
+              <p class="style-description">
+                自分のペースで集中して取り組む。アイデアを深く追求し、こだわりの作品を制作できます。
+              </p>
+            </div>
+
+            <div class="style-card">
+              <div class="style-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="style-title">チーム制作</h3>
+              <p class="style-description">
+                数名でチームを組んで協力して制作。役割分担により大規模な作品制作が可能になります。
+              </p>
+            </div>
+
+            <div class="style-card">
+              <div class="style-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <h3 class="style-title">柔軟な参加</h3>
+              <p class="style-description">
+                土曜夕方の時間帯で、毎週参加でなくてもOK。オンライン受講も可能で、自分のスケジュールに合わせられます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Output Focus */}
+      <section class="output-section">
+        <div class="container">
+          <div class="output-content">
+            <div class="output-text">
+              <h2>アウトプット重視の<br/>実践学習</h2>
+              <p>
+                KOBEYAの通常授業は知識のインプットが中心ですが、クリエイターズはアウトプットがメインです。
+              </p>
+              <p>
+                学習効果を最大化するインプット×アウトプットの相乗効果で、理解が深まり、新たな興味と創造力が育まれます。
+              </p>
+            </div>
+            
+            <div class="comparison-box">
+              <div class="comparison-item">
+                <i class="fas fa-download input-icon"></i>
+                通常授業：知識のインプット
+              </div>
+              <div class="comparison-item">
+                <i class="fas fa-upload output-icon"></i>
+                クリエイターズ：作品のアウトプット
+              </div>
+              <div class="comparison-item">
+                <i class="fas fa-sync synergy-icon"></i>
+                相乗効果で理解が深まる！
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Learning Process -->
-        <section class="process-section">
-          <div class="container">
-            <h2 class="section-title" style="text-align: center; color: var(--text-dark);">学習プロセス</h2>
-            <div class="process-grid">
-              <div class="process-step">
-                <div class="step-icon">
+      {/* Skills & Benefits */}
+      <section class="skills-section">
+        <div class="container">
+          <div class="skills-content">
+            <div class="skills-header">
+              <h2>目標設定による実践力育成</h2>
+              <p>
+                コンテスト出品や上位入賞といった明確な目標設定により、<br/>
+                創作活動を通じて実践的なスキルが身につきます。
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <div class="skill-item">
+                <div class="skill-icon">
                   <i class="fas fa-lightbulb"></i>
                 </div>
-                <h4 class="step-title">アイデア発想</h4>
-                <p class="step-description">自分の興味や体験から作品のアイデアを見つけます</p>
+                <div class="skill-name">創造力・発想力</div>
+                <p class="skill-desc">独自のアイデアを生み出し、形にする力</p>
               </div>
 
-              <div class="process-step">
-                <div class="step-icon">
-                  <i class="fas fa-pencil-ruler"></i>
+              <div class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-puzzle-piece"></i>
                 </div>
-                <h4 class="step-title">企画・設計</h4>
-                <p class="step-description">作品の構成や必要な技術を計画します</p>
+                <div class="skill-name">問題解決能力</div>
+                <p class="skill-desc">制作過程で生じる課題を解決する力</p>
               </div>
 
-              <div class="process-step">
-                <div class="step-icon">
-                  <i class="fas fa-tools"></i>
+              <div class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-tasks"></i>
                 </div>
-                <h4 class="step-title">制作・実装</h4>
-                <p class="step-description">適切なツールを使って実際に作品を制作します</p>
+                <div class="skill-name">プロジェクト完遂力</div>
+                <p class="skill-desc">最後まで作品を完成させる責任感</p>
               </div>
 
-              <div class="process-step">
-                <div class="step-icon">
-                  <i class="fas fa-check-circle"></i>
+              <div class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-presentation"></i>
                 </div>
-                <h4 class="step-title">改良・完成</h4>
-                <p class="step-description">フィードバックを受けて作品をブラッシュアップします</p>
+                <div class="skill-name">プレゼンテーション力</div>
+                <p class="skill-desc">作品を魅力的に伝える表現力</p>
               </div>
+            </div>
 
-              <div class="process-step">
-                <div class="step-icon">
-                  <i class="fas fa-share-alt"></i>
-                </div>
-                <h4 class="step-title">発表・共有</h4>
-                <p class="step-description">完成した作品を発表し、経験を共有します</p>
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span><strong>期限管理能力</strong> - コンテスト締切に向けた計画的な制作進行</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-star"></i>
+                <span><strong>品質向上への意識</strong> - より良い作品を目指す向上心</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>完成までのプロジェクト管理</strong> - 企画から完成まで一貫した管理能力</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-medal"></i>
+                <span><strong>自信と達成感</strong> - 作品完成とコンテスト挑戦による成功体験</span>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Portfolio Examples -->
-        <section class="portfolio-section">
-          <div class="container">
-            <h2 class="section-title" style="text-align: center;">制作作品例</h2>
-            <div class="portfolio-grid">
-              <div class="portfolio-card">
-                <div class="portfolio-image">
-                  <i class="fas fa-play"></i>
-                </div>
-                <div class="portfolio-content">
-                  <h4 class="portfolio-title">オリジナル動画作品</h4>
-                  <div class="portfolio-type">動画制作</div>
-                  <p class="portfolio-description">
-                    ストーリー構成から撮影、編集まで一貫して制作したショートムービー作品。
-                  </p>
-                </div>
-              </div>
-
-              <div class="portfolio-card">
-                <div class="portfolio-image">
-                  <i class="fas fa-globe"></i>
-                </div>
-                <div class="portfolio-content">
-                  <h4 class="portfolio-title">個人ウェブサイト</h4>
-                  <div class="portfolio-type">ウェブ制作</div>
-                  <p class="portfolio-description">
-                    レスポンシブデザインで作成した自分だけのポートフォリオサイト。
-                  </p>
-                </div>
-              </div>
-
-              <div class="portfolio-card">
-                <div class="portfolio-image">
-                  <i class="fas fa-image"></i>
-                </div>
-                <div class="portfolio-content">
-                  <h4 class="portfolio-title">デジタルアート</h4>
-                  <div class="portfolio-type">グラフィック</div>
-                  <p class="portfolio-description">
-                    デジタルツールを駆使して制作したオリジナルイラスト・ポスター作品。
-                  </p>
-                </div>
-              </div>
-
-              <div class="portfolio-card">
-                <div class="portfolio-image">
-                  <i class="fas fa-cube"></i>
-                </div>
-                <div class="portfolio-content">
-                  <h4 class="portfolio-title">3Dアニメーション</h4>
-                  <div class="portfolio-type">3D制作</div>
-                  <p class="portfolio-description">
-                    Blenderで制作した3Dキャラクターとアニメーション作品。
-                  </p>
-                </div>
-              </div>
-
-              <div class="portfolio-card">
-                <div class="portfolio-image">
-                  <i class="fas fa-music"></i>
-                </div>
-                <div class="portfolio-content">
-                  <h4 class="portfolio-title">オリジナル楽曲</h4>
-                  <div class="portfolio-type">音楽制作</div>
-                  <p class="portfolio-description">
-                    作詞・作曲から録音・ミックスまで一人で手がけたオリジナル楽曲。
-                  </p>
-                </div>
-              </div>
-
-              <div class="portfolio-card">
-                <div class="portfolio-image">
-                  <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="portfolio-content">
-                  <h4 class="portfolio-title">アプリUI デザイン</h4>
-                  <div class="portfolio-type">UI/UX</div>
-                  <p class="portfolio-description">
-                    スマートフォンアプリの使いやすいユーザーインターフェースデザイン。
-                  </p>
-                </div>
-              </div>
+      {/* Schedule Info */}
+      <section class="schedule-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">クラス詳細</h2>
+            <p class="section-subtitle">
+              オリジナル作品制作に興味がある生徒や、<br/>
+              アウトプットの時間を作りたい方には最適のクラスです。
+            </p>
+          </div>
+          
+          <div class="schedule-card">
+            <h3 class="card-title">
+              <i class="fas fa-calendar-alt"></i>
+              クラススケジュール
+            </h3>
+            <div class="schedule-item">
+              <span class="schedule-label">開催日時</span>
+              <span class="schedule-value">土曜日 夕方</span>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-label">参加頻度</span>
+              <span class="schedule-value">自由選択制</span>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-label">受講方法</span>
+              <span class="schedule-value">対面・オンライン対応</span>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-label">制作スタイル</span>
+              <span class="schedule-value">個人・チーム選択可</span>
+            </div>
+            <div class="schedule-item">
+              <span class="schedule-label">対象ジャンル</span>
+              <span class="schedule-value">プログラミング・映像・YouTube等</span>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Benefits -->
-        <section class="benefits-section">
-          <div class="container">
-            <h2 class="section-title" style="text-align: center; color: var(--text-dark);">身につく能力</h2>
-            <div class="benefits-grid">
-              <div class="benefit-card">
-                <i class="fas fa-lightbulb"></i>
-                <h4>創造性・発想力</h4>
-                <p>新しいアイデアを生み出し、独創的な作品を創造する力を育てます。</p>
-              </div>
-
-              <div class="benefit-card">
-                <i class="fas fa-tools"></i>
-                <h4>技術的スキル</h4>
-                <p>プロが使用するツールを習得し、実践的な制作技術を身につけます。</p>
-              </div>
-
-              <div class="benefit-card">
-                <i class="fas fa-eye"></i>
-                <h4>デザイン思考</h4>
-                <p>美しく機能的なデザインを考える審美眼と設計能力を養います。</p>
-              </div>
-
-              <div class="benefit-card">
-                <i class="fas fa-puzzle-piece"></i>
-                <h4>問題解決能力</h4>
-                <p>技術的な課題に直面した時の解決策を考える力を伸ばします。</p>
-              </div>
-
-              <div class="benefit-card">
-                <i class="fas fa-users"></i>
-                <h4>コミュニケーション力</h4>
-                <p>作品を通して自分の考えを他者に伝える表現力を育てます。</p>
-              </div>
-
-              <div class="benefit-card">
-                <i class="fas fa-trophy"></i>
-                <h4>ポートフォリオ構築</h4>
-                <p>将来の進学・就職で活用できる作品集を制作します。</p>
-              </div>
+      {/* CTA Section */}
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2 class="cta-title">あなたのアイデアを作品にして、コンテストで輝こう！</h2>
+            <p class="cta-description">
+              創造力を発揮し、オリジナル作品でコンテスト入賞を目指しませんか？<br/>
+              まずは無料体験で、クリエイターズの魅力を体感してください。
+            </p>
+            <div class="cta-buttons">
+              <a href="/contact" class="btn-primary">
+                <i class="fas fa-paint-brush"></i>
+                無料体験を申し込む
+              </a>
+              <a href="/contact" class="btn-secondary">
+                <i class="fas fa-phone"></i>
+                詳細を問い合わせる
+              </a>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+    </main>
 
-        <!-- Schedule & Pricing -->
-        <section class="info-section">
-          <div class="container">
-            <h2 class="section-title" style="text-align: center;">スケジュール・料金</h2>
-            <div class="info-grid">
-              <div class="info-card">
-                <h3 class="card-title">
-                  <i class="fas fa-calendar-alt"></i>
-                  クラススケジュール
-                </h3>
-                <div class="info-item">
-                  <span>ベーシッククラス</span>
-                  <span>土 10:00-12:00</span>
-                </div>
-                <div class="info-item">
-                  <span>アドバンスクラス</span>
-                  <span>日 10:00-12:00</span>
-                </div>
-                <div class="info-item">
-                  <span>平日クラス</span>
-                  <span>水・金 17:00-19:00</span>
-                </div>
-                <div class="info-item">
-                  <span>個別指導</span>
-                  <span>月〜金 予約制</span>
-                </div>
-                <div class="info-item">
-                  <span>授業時間</span>
-                  <span>2時間 / 回</span>
-                </div>
-              </div>
-
-              <div class="info-card">
-                <h3 class="card-title">
-                  <i class="fas fa-tag"></i>
-                  料金プラン
-                </h3>
-                <div class="info-item">
-                  <span>入会金</span>
-                  <span>6,000 THB</span>
-                </div>
-                <div class="info-item">
-                  <span>ベーシック（月4回）</span>
-                  <span class="price-highlight">4,200 THB</span>
-                </div>
-                <div class="info-item">
-                  <span>アドバンス（月4回）</span>
-                  <span class="price-highlight">5,200 THB</span>
-                </div>
-                <div class="info-item">
-                  <span>個別指導（1回）</span>
-                  <span class="price-highlight">1,800 THB</span>
-                </div>
-                <div class="info-item">
-                  <span>ソフトウェア使用料</span>
-                  <span>なし</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="cta-section">
-          <div class="container">
-            <div class="cta-content">
-              <h2 class="cta-title">あなたの創造性を形にしよう</h2>
-              <p class="cta-description">
-                クリエイターズコースで多様なデジタル表現技術を学び、自分だけの作品を世界に発信しませんか？プロが使うツールで本格的な制作体験を始めましょう。
-              </p>
-              <div class="cta-buttons">
-                <a href="/contact" class="cta-primary">
-                  <i class="fas fa-palette"></i>
-                  無料体験に参加する
-                </a>
-                <a href="/contact" class="cta-secondary">
-                  <i class="fas fa-question-circle"></i>
-                  詳細を問い合わせる
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </body>
-    </html>
-  `
-}
+    <Footer />
+  </>
+)
