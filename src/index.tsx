@@ -80,9 +80,13 @@ app.get('/courses/math', (c) => {
   return c.render(mathCoursePage())
 })
 
-// Study Partner
+// Study Partner - Redirect to independent deployment
 app.get('/study-partner', (c) => {
-  return studyPartnerSimple(c)
+  return c.redirect('https://study-partner.pages.dev/', 302)
+})
+
+app.get('/study-partner/*', (c) => {
+  return c.redirect('https://study-partner.pages.dev/', 302)
 })
 
 // API route for form submission
