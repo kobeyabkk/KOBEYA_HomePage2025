@@ -14,6 +14,7 @@ import { unityCoursePage } from './pages/unity-course'
 import { creatorsCoursePage } from './pages/creators-course'
 import { aiCoachingCoursePage } from './pages/ai-coaching-course'
 import { mathCoursePage } from './pages/math-course'
+import { studyPartnerSimple } from './study-partner-simple'
 
 const app = new Hono()
 
@@ -77,6 +78,11 @@ app.get('/courses/ai-coaching', (c) => {
 
 app.get('/courses/math', (c) => {
   return c.render(mathCoursePage())
+})
+
+// Study Partner
+app.get('/study-partner', (c) => {
+  return studyPartnerSimple(c)
 })
 
 // API route for form submission
