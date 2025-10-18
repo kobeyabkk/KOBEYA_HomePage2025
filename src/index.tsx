@@ -13,6 +13,25 @@ import {
   safeJsonStringify,
   generateRequestId
 } from './utils/logging'
+// Study Partner Simple をインポート
+import { studyPartnerSimple } from './study-partner-simple'
+
+// ページコンポーネントをインポート
+import { homePage } from './pages/home'
+import { aboutPage } from './pages/about'
+import { contactPage } from './pages/contact'
+import { coursesPage } from './pages/courses'
+import { newsPage } from './pages/news'
+
+// 8つのコースページをインポート
+import { steamCoursePage } from './pages/steam-course'
+import { minecraftCoursePage } from './pages/minecraft-course'
+import { toyprogrammingCoursePage } from './pages/toyprogramming-course'
+import { thinkthinkCoursePage } from './pages/thinkthink-course'
+import { creatorsCoursePage } from './pages/creators-course'
+import { aiCoachingCoursePage } from './pages/ai-coaching-course'
+import { mathCoursePage } from './pages/math-course'
+import { unityCoursePage } from './pages/unity-course'
 
 // Cloudflare Bindings の型定義
 type Bindings = {
@@ -153,15 +172,15 @@ app.get('/api/health', (c) => {
 // ログインAPI（最小限追加）
 app.post('/api/login', async (c) => {
   try {
-    const { appKey, studentId } = await c.req.json()
-    console.log('🔑 Login attempt:', { appKey, studentId })
+    const { appkey, sid } = await c.req.json()
+    console.log('🔑 Login attempt:', { appkey, sid })
     
     const validAppKeys = ['KOBEYA2024', '180418']
-    if (!validAppKeys.includes(appKey)) {
+    if (!validAppKeys.includes(appkey)) {
       return c.json({ success: false, message: 'APP_KEYが正しくありません' }, 401)
     }
     
-    const studentInfo = studentDatabase[studentId]
+    const studentInfo = studentDatabase[sid]
     if (!studentInfo) {
       return c.json({ success: false, message: '生徒IDが見つかりません' }, 404)
     }
@@ -863,9 +882,10 @@ app.post('/api/step/check', async (c) => {
       throw new Error('学習セッションが見つかりません')
     }
     
-    // 現在のステップ取得
-    const currentStep = session.steps[stepNumber]
+    // 現在のステップ取得（stepNumberで検索）
+    const currentStep = session.steps.find(step => step.stepNumber === stepNumber)
     if (!currentStep) {
+      console.error('❌ Step not found:', { stepNumber, availableSteps: session.steps.map(s => s.stepNumber) })
       throw new Error('無効なステップ番号です')
     }
     
@@ -884,16 +904,21 @@ app.post('/api/step/check', async (c) => {
     
     if (isCorrect) {
       currentStep.completed = true
-      session.currentStep = stepNumber + 1
       
-      if (session.currentStep >= session.steps.length) {
+      // 現在のステップインデックスを取得
+      const currentStepIndex = session.steps.findIndex(step => step.stepNumber === stepNumber)
+      const nextStepIndex = currentStepIndex + 1
+      
+      if (nextStepIndex >= session.steps.length) {
         // すべてのステップ完了 → 確認問題に移行
+        session.currentStep = session.steps.length // 全ステップ完了を示す
         session.status = 'confirmation'
         nextAction = 'confirmation'
       } else {
         // 次のステップに進む
+        session.currentStep = nextStepIndex
         nextAction = 'next_step'
-        nextStep = session.steps[session.currentStep]
+        nextStep = session.steps[nextStepIndex]
       }
     }
     
@@ -2410,8 +2435,8 @@ app.post('/api/regenerate-problem', async (c) => {
             {
               type: 'text',
               text: session.originalUserMessage ? 
-                `元の質問: ${session.originalUserMessage}\n\nこの画像の内容を基に、同じ教科・同じレベルで別のアプローチの学習内容を再生成してください。` :
-                'この画像の内容を基に、同じ教科・同じレベルで別のアプローチの学習内容を再生成してください。'
+                `元の質問: ${session.originalUserMessage}\n\n【重要指示】この画像の問題から「教育的青写真」を正確に抽出し、同じ学習価値・同じ難易度を保持したまま、表面的な表現のみを変更した類題を生成してください。定義問題や汎用問題への変更は禁止です。` :
+                '【重要指示】この画像の問題の「教育的核心」（学習目標・難易度・問題構造）を完全に保持し、具体的な文章や例のみを親しみやすく変更した問題を生成してください。'
             },
             {
               type: 'image_url',
@@ -2493,6 +2518,21 @@ app.post('/api/regenerate-problem', async (c) => {
           difficulty: aiAnalysis.difficulty,
           confidence: aiAnalysis.confidence
         })
+        
+        // Phase1改善: 品質チェック機能追加
+        const qualityCheck = evaluateRegenerationQuality(aiAnalysis, session)
+        console.log('📊 Quality evaluation:', qualityCheck)
+        
+        if (qualityCheck.score < 0.7) {
+          console.log('⚠️ Low quality detected, attempting improvement...')
+          // 低品質の場合は改善を試行（1回まで）
+          const improved = await improveRegeneratedContent(aiAnalysis, qualityCheck.issues)
+          if (improved) {
+            aiAnalysis = improved
+            console.log('✨ Content improved successfully')
+          }
+        }
+        
       } catch (parseError) {
         console.error('❌ Regenerated analysis JSON parsing error:', parseError)
         return c.json({
@@ -2537,7 +2577,7 @@ app.post('/api/regenerate-problem', async (c) => {
       steps: session.steps,
       confirmationProblem: session.confirmationProblem,
       similarProblems: session.similarProblems,
-      currentStep: session.steps[0],
+      currentStep: session.steps[0], // steps[0]は既に正しい構造を持っている
       totalSteps: session.steps.length,
       status: 'learning',
       message: '問題を再生成しました',
@@ -2557,41 +2597,61 @@ app.post('/api/regenerate-problem', async (c) => {
 
 // 修正2: 画像ベース再生成用プロンプト作成関数
 function createRegenerationPrompt(session, studentInfo, regenerationType) {
-  const basePrompt = `あなたは中学生向けの学習サポート専門教師です。画像で提示された問題を基に、同じ教科・同じレベルで別のアプローチの学習コンテンツを再生成してください。
+  const basePrompt = `あなたは「プログラミングのKOBEYA」の経験豊富な教師として、バンコク在住の日本人中学生の学習を支援してください。
 
-【重要】画像の内容を正確に理解し、同じ教科の問題として再生成してください
+【教育的青写真の保持原則】
+元問題の「学習価値」を完全に保持し、「表面的要素」のみを適度に変更することが最重要です。
 
 【既存セッション情報】
 問題タイプ: ${session.problemType}
 既存の教科: ${session.analysis ? session.analysis.split('。')[0] : '不明'}
-生徒情報: ${studentInfo.name} (中学${studentInfo.grade}年)
-
-【再生成の要求】
+生徒情報: ${studentInfo.name} (中学${studentInfo.grade}年) - バンコク在住
 再生成タイプ: ${regenerationType}
-${regenerationType === 'full' ? '・画像の問題と同じ教科で、全く異なるアプローチや解法を使用' : '・類似問題のみを新しいパターン・数値・設定に変更'}
 
-【修正2: 画像ベース再生成の必須条件】
-1. 📸 画像で示された問題の教科を正確に判定してください
-2. 🎯 同じ教科の範囲内で、異なる問題パターンを生成してください
-3. 📚 問題のレベル・難易度は元画像と同程度に保ってください
-4. 🔄 解法・アプローチ・説明方法は完全に変更してください
-5. ✨ より分かりやすく、より教育的価値の高い内容にしてください
+${getRegenerationTypeInstructions(regenerationType)}
 
-【絶対に守ること】
-❌ 教科を変更しない（国語→算数など）
-❌ 難易度を大幅に変更しない  
-❌ 元画像の内容を無視しない
-✅ 同じ教科の別のトピック・アプローチで生成
-✅ 元の学習目標を維持しつつ新鮮な視点を提供
+【Phase1改善: 元問題の核心要素を厳密に保持】
+🎯 **不変要素（絶対に変更禁止）**：
+- 学習目標・習得技能（例：文節の区切り方）
+- 認知的レベル・難易度（同等を維持）
+- 問題の深い構造（文型・助詞構成・複雑さ）
+- 教育的文脈・段階性
 
-【必須要件（変更不可）】
-- 段階学習の全ステップは必ずtype: "choice"（選択肢問題）
-- 確認問題もtype: "choice"（選択肢問題）  
-- 類似問題はtype: "choice"とtype: "input"の混合
-- 正解がAに偏らないよう分散させる
+✨ **可変要素（適度な変更OK）**：
+- 具体的な文章内容（同じ構造の別の文）
+- 場面設定・登場人物・状況
+- 表現方法・問いかけ方
+- バンコク生活に親しみやすい例
+
+【厳格な制約条件】
+❌ **絶対禁止**：
+- 「〜とは何ですか？」のような定義問題への変更
+- 汎用的・抽象的な基礎問題への変更  
+- 元問題の具体性・意味のある文脈を失う変更
+- 教科の変更（国語→数学等）
+- 難易度の大幅変更（±1レベル以上）
+
+✅ **推奨される変更**：
+- 同じ文法構造で語彙のみ変更
+- 同じ助詞・文節数を保持した別文
+- バンコクの文化要素を適度に織り込み
+- より親しみやすい例文への変更
+
+【バンコク在住生徒への特別配慮】
+🌟 海外在住への心理的支援を含める
+🌸 「日本でも同じ内容を学習するので安心してね」
+🎌 適度な文化的親しみやすさ（ワット・ポー、チャトゥチャック等）
+💫 励ましと温かい支援の言葉
+
+【技術仕様（変更不可）】
+- 全ステップtype: "choice"（選択肢問題）
+- 確認問題type: "choice"
+- 類似問題はchoice/inputの混合
+- 正解をA-D全体に分散
 - JSON形式での応答必須
 
-以下の元の教育方針とJSON形式を完全に踏襲しつつ、画像の内容に基づいた同一教科での新バリエーションを作成してください：`
+【最重要指示】
+元画像の問題から「教育的価値の核心」を抽出し、その核心を損なわずに、表面的な表現のみを親しみやすく変更してください。「全く新しい問題」ではなく「同じ価値を持つ別バージョン」を作成してください。`
 
   // 元のシステムプロンプトの教育方針部分を再利用
   const educationalPolicyPrompt = `
@@ -2606,19 +2666,171 @@ ${regenerationType === 'full' ? '・画像の問題と同じ教科で、全く�
 - 個別最適化支援：学習履歴と理解度に応じた説明方法の選択
 
 【回答形式】
-以下のJSON形式で回答してください：
+以下の厳密なJSON形式で回答してください（構造を完全に守ること）：
 {
-  "subject": "数学|英語|プログラミング|その他",
+  "subject": "国語",
   "problemType": "custom",
   "difficulty": "basic|intermediate|advanced", 
   "analysis": "【詳細分析】\\n\\n①問題の整理\\n②使う知識\\n③解法のポイント\\n④解答例\\n⑤確認・振り返り",
-  "confidence": 0.0-1.0,
-  "steps": [4-7個の段階学習ステップ],
-  "confirmationProblem": {選択肢問題},
-  "similarProblems": [5-8個の類似問題、choice/inputの混合]
-}`
+  "confidence": 0.85,
+  "steps": [
+    {
+      "stepNumber": 0,
+      "instruction": "ステップ1の指導内容（問いかけ形式で思考を促す）",
+      "type": "choice",
+      "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
+      "correctAnswer": "A",
+      "explanation": "解説文"
+    },
+    {
+      "stepNumber": 1,
+      "instruction": "ステップ2の指導内容",
+      "type": "choice",
+      "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
+      "correctAnswer": "B",
+      "explanation": "解説文"
+    }
+  ],
+  "confirmationProblem": {
+    "question": "確認問題の内容",
+    "type": "choice",
+    "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
+    "correctAnswer": "A",
+    "explanation": "確認問題解説"
+  },
+  "similarProblems": [
+    {
+      "problemNumber": 1,
+      "question": "類似問題1",
+      "type": "choice",
+      "options": ["A) 選択肢1", "B) 選択肢2", "C) 選択肢3", "D) 選択肢4"],
+      "correctAnswer": "A",
+      "explanation": "類似問題1の詳細解説",
+      "difficulty": "easy"
+    }
+  ]
+}
+
+【重要】上記JSON構造を厳密に守り、stepsは必ずオブジェクトの配列にしてください`
 
   return basePrompt + educationalPolicyPrompt
+}
+
+// Phase1改善: 再生成タイプ別指示
+function getRegenerationTypeInstructions(regenerationType) {
+  switch(regenerationType) {
+    case 'similar':
+      return `【🔄 同じような問題 - 等質置換】
+- 元問題と同じ構造・難易度・助詞構成を厳密に保持
+- 語彙・登場人物・状況のみを変更（文節数±1以内）
+- 同じ学習目標で親しみやすい例に変更
+- 例：「君が言うことは〜」→「彼女が書く手紙は〜」`
+      
+    case 'approach':
+      return `【🎯 違うアプローチ - 視点変更】
+- 同じ学習技能を別の問題形式で問う
+- 選択→記述、分析→構成など形式を変更
+- 学習目標・難易度は完全に同一維持
+- より理解が深まる別角度からのアプローチ`
+      
+    case 'full':
+    default:
+      return `【⚡ 完全に新しいパターン - 慎重な変更】
+- 同じ教科・同じ単元で別のトピックを選択
+- 学習価値の核心は絶対に保持
+- 具体性を失わず、定義問題化を厳禁
+- より教育効果の高い内容への改良`
+  }
+}
+
+// Phase1改善: 再生成品質評価関数
+function evaluateRegenerationQuality(regeneratedContent, originalSession) {
+  let score = 1.0
+  const issues = []
+  
+  // 1. 定義問題検出（最重要）
+  const definitionPatterns = [
+    /とは何ですか/,
+    /について説明/,
+    /の定義/,
+    /基本的な概念/,
+    /とはどのような/
+  ]
+  
+  const hasDefinitionProblem = definitionPatterns.some(pattern => 
+    pattern.test(regeneratedContent.analysis || '') ||
+    (regeneratedContent.steps || []).some(step => pattern.test(step.content || ''))
+  )
+  
+  if (hasDefinitionProblem) {
+    score -= 0.4
+    issues.push('definition_problem')
+  }
+  
+  // 2. 汎用化検出
+  const genericPatterns = [
+    /一般的に/,
+    /基本的には/,
+    /通常は/,
+    /文節とは/,
+    /助詞とは/
+  ]
+  
+  const isGeneric = genericPatterns.some(pattern => 
+    pattern.test(regeneratedContent.analysis || '')
+  )
+  
+  if (isGeneric) {
+    score -= 0.2
+    issues.push('too_generic')
+  }
+  
+  // 3. 具体的な問題文の存在確認
+  const hasSpecificContent = (regeneratedContent.steps || []).some(step => {
+    const content = step.content || ''
+    return content.includes('「') && content.includes('」') // 日本語の引用符
+  })
+  
+  if (!hasSpecificContent) {
+    score -= 0.2
+    issues.push('lacks_specific_content')
+  }
+  
+  // 4. 教科一致性チェック
+  if (originalSession.analysis && regeneratedContent.subject) {
+    const originalSubject = extractSubjectFromAnalysis(originalSession.analysis)
+    if (originalSubject && originalSubject !== regeneratedContent.subject) {
+      score -= 0.3
+      issues.push('subject_mismatch')
+    }
+  }
+  
+  return {
+    score: Math.max(0, score),
+    issues,
+    passed: score >= 0.7
+  }
+}
+
+// 簡単な教科抽出関数
+function extractSubjectFromAnalysis(analysis) {
+  if (analysis.includes('文節') || analysis.includes('助詞') || analysis.includes('国語')) return '国語'
+  if (analysis.includes('数学') || analysis.includes('計算') || analysis.includes('方程式')) return '数学'
+  if (analysis.includes('英語') || analysis.includes('English')) return '英語'
+  return null
+}
+
+// Phase1改善: コンテンツ改善関数（簡易版）
+async function improveRegeneratedContent(originalContent, issues) {
+  // 実装は次のフェーズで詳細化
+  // 現在は問題のあるパターンを検出してフラグを立てるのみ
+  console.log('🔧 Content improvement needed for issues:', issues)
+  
+  if (issues.includes('definition_problem')) {
+    console.log('⚠️ Definition problem detected - manual review recommended')
+  }
+  
+  return null // 現在は改善機能なし、警告のみ
 }
 
 // セッション更新関数
@@ -2628,11 +2840,22 @@ function updateSessionWithRegeneratedData(session, aiAnalysis) {
   
   // 段階学習ステップを更新
   if (aiAnalysis.steps && Array.isArray(aiAnalysis.steps)) {
-    session.steps = aiAnalysis.steps.map(step => ({
+    session.steps = aiAnalysis.steps.map((step, index) => ({
       ...step,
+      stepNumber: step.stepNumber !== undefined ? step.stepNumber : index, // stepNumberがない場合はインデックスを使用
       completed: false,
       attempts: []
     }))
+    
+    console.log('🔄 Updated session steps after regeneration:', {
+      stepsCount: session.steps.length,
+      firstStepStructure: {
+        stepNumber: session.steps[0]?.stepNumber,
+        instruction: session.steps[0]?.instruction?.substring(0, 50) + '...',
+        type: session.steps[0]?.type,
+        hasOptions: !!session.steps[0]?.options
+      }
+    })
   }
   
   // 確認問題を更新
@@ -2821,10 +3044,68 @@ function generateLearningData(problemType) {
   throw new Error(`AI分析に失敗しました。問題タイプ「${problemType}」のダミーデータは使用しません。先生にお知らせください。`)
 }
 
-// ルートパスハンドラー
+// ルートパスハンドラー - メインページ
 app.get('/', (c) => {
-  return c.redirect('/study-partner', 302)
+  return c.html(homePage())
 })
+
+// メインページルート
+app.get('/about', (c) => {
+  return c.html(aboutPage())
+})
+
+app.get('/contact', (c) => {
+  return c.html(contactPage())
+})
+
+app.get('/courses', (c) => {
+  return c.html(coursesPage())
+})
+
+app.get('/news', (c) => {
+  return c.html(newsPage())
+})
+
+// 8つのコースページルート
+app.get('/courses/steam', (c) => {
+  return c.html(steamCoursePage())
+})
+
+app.get('/courses/minecraft', (c) => {
+  return c.html(minecraftCoursePage())
+})
+
+app.get('/courses/toyprogramming', (c) => {
+  return c.html(toyprogrammingCoursePage())
+})
+
+app.get('/courses/thinkthink', (c) => {
+  return c.html(thinkthinkCoursePage())
+})
+
+app.get('/courses/creators', (c) => {
+  return c.html(creatorsCoursePage())
+})
+
+app.get('/courses/ai-coaching', (c) => {
+  return c.html(aiCoachingCoursePage())
+})
+
+// AI Coaching Course の互換ルート
+app.get('/ai-coaching-course', (c) => {
+  return c.html(aiCoachingCoursePage())
+})
+
+app.get('/courses/math', (c) => {
+  return c.html(mathCoursePage())
+})
+
+app.get('/courses/unity', (c) => {
+  return c.html(unityCoursePage())
+})
+
+// Study Partner Simple - ログイン修正版
+app.get('/study-partner-simple', studyPartnerSimple)
 
 // Study Partner SPA - 完全復元版
 app.get('/study-partner', (c) => {
@@ -2970,7 +3251,17 @@ app.get('/study-partner', (c) => {
           animation: spin 1s linear infinite;
         }
         
+        /* Font Awesome spinner animation (fallback) */
+        .fa-spin, .fa-spinner {
+          animation: fa-spin 1s linear infinite;
+        }
+        
         @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fa-spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
         }
@@ -3547,35 +3838,36 @@ app.get('/study-partner', (c) => {
             
             console.log('🔍 Credentials:', { appkey, sid });
             
-            // Health endpoint を呼び出してログイン確認
-            const response = await fetch('/api/health', {
-              method: 'GET',
+            // Validate input fields
+            if (!appkey || !sid) {
+              throw new Error('APP_KEY と Student ID を両方入力してください');
+            }
+            
+            // Call the actual login API
+            const response = await fetch('/api/login', {
+              method: 'POST',
               headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Cache-Control': 'no-cache'
-              }
+              },
+              body: JSON.stringify({
+                appkey: appkey,
+                sid: sid
+              })
             });
             
-            console.log('📡 Health check response:', response.status, response.statusText);
+            console.log('📡 Login response:', response.status, response.statusText);
             
-            if (response.ok) {
-              const data = await response.json();
-              console.log('📋 Health check data:', data);
-              
-              if (data.ok && data.status === 'OK') {
-                authenticated = true;
-                alert('✅ ログイン成功!\\n' + 
-                      'Mode: ' + data.mode + '\\n' + 
-                      'APP_KEY: ' + appkey + '\\n' + 
-                      'Student ID: ' + sid);
-              } else {
-                authenticated = false;
-                alert('❌ ログイン失敗: サーバー応答が無効です');
-              }
+            const data = await response.json();
+            console.log('📋 Login data:', data);
+            
+            if (response.ok && data.success) {
+              authenticated = true;
+              alert('✅ ログイン成功!' + String.fromCharCode(10) + 
+                    'APP_KEY: ' + appkey + String.fromCharCode(10) + 
+                    'Student ID: ' + sid);
             } else {
               authenticated = false;
-              alert('❌ ログイン失敗: HTTP ' + response.status);
+              throw new Error(data.message || 'ログインに失敗しました');
             }
           } catch (error) {
             console.error('❌ Login error:', error);
@@ -3661,12 +3953,28 @@ app.get('/study-partner', (c) => {
                 (result.subject || '学習') + 'の問題ですね。<br>' +
                 '段階的に一緒に解いていきましょう！' +
               '</div>' +
-              // Step 2: 再生成ボタンを追加（最小限の変更）
-              '<div style="margin-top: 0.75rem; text-align: center;">' +
-                '<button onclick="regenerateProblem()" id="regenerateButton" ' +
-                'style="background: #f59e0b; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.875rem; font-weight: 500;">' +
-                '<i class="fas fa-sync-alt" style="margin-right: 0.5rem;"></i>🔄 問題を再生成' +
-                '</button>' +
+              // Phase1改善: 再生成タイプ選択UI
+              '<div style="margin-top: 1rem; padding: 1rem; background: rgba(245,158,11,0.1); border-radius: 0.75rem; border: 1px solid #f59e0b;">' +
+                '<div style="text-align: center; margin-bottom: 0.75rem;">' +
+                  '<h4 style="margin: 0; color: #f59e0b; font-size: 0.9rem;">🎯 どのような問題に挑戦したいですか？</h4>' +
+                  '<p style="margin: 0.25rem 0 0 0; font-size: 0.75rem; color: #666;">バンコクで頑張っているあなたを応援します ✨</p>' +
+                '</div>' +
+                '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem;">' +
+                  '<button onclick="regenerateProblem(\\'similar\\')" ' +
+                  'style="background: #10b981; color: white; border: none; padding: 0.5rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.75rem; text-align: center;">' +
+                  '🔄 同じような問題' +
+                  '</button>' +
+                  '<button onclick="regenerateProblem(\\'approach\\')" ' +
+                  'style="background: #3b82f6; color: white; border: none; padding: 0.5rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.75rem; text-align: center;">' +
+                  '🎯 違うアプローチ' +
+                  '</button>' +
+                '</div>' +
+                '<div style="text-align: center;">' +
+                  '<button onclick="regenerateProblem(\\'full\\')" id="regenerateButton" ' +
+                  'style="background: #f59e0b; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.75rem; font-weight: 500;">' +
+                  '<i class="fas fa-sync-alt" style="margin-right: 0.5rem;"></i>完全に新しいパターン' +
+                  '</button>' +
+                '</div>' +
               '</div>';
             analysisContent.innerHTML = studentMessage;
             
@@ -4334,12 +4642,26 @@ app.get('/study-partner', (c) => {
             return;
           }
           
-          // 再生成ボタンを無効化
-          const regenerateButton = document.getElementById('regenerateButton');
-          if (regenerateButton) {
-            regenerateButton.disabled = true;
-            regenerateButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>再生成中...';
-          }
+          // 全ての再生成ボタンを無効化してローディング表示
+          const buttons = document.querySelectorAll('[onclick*="regenerateProblem"]');
+          const originalButtonStates = [];
+          
+          buttons.forEach((button, index) => {
+            originalButtonStates[index] = {
+              innerHTML: button.innerHTML,
+              disabled: button.disabled
+            };
+            button.disabled = true;
+            
+            // ボタンタイプに応じたローディング表示
+            if (button.innerHTML.includes('同じような問題')) {
+              button.innerHTML = '<div class="loading-spinner" style="display: inline-block; margin-right: 0.25rem; width: 16px; height: 16px;"></div>生成中...';
+            } else if (button.innerHTML.includes('違うアプローチ')) {
+              button.innerHTML = '<div class="loading-spinner" style="display: inline-block; margin-right: 0.25rem; width: 16px; height: 16px;"></div>生成中...';
+            } else {
+              button.innerHTML = '<div class="loading-spinner" style="display: inline-block; margin-right: 0.5rem; width: 16px; height: 16px;"></div>再生成中...';
+            }
+          });
           
           try {
             console.log('🔄 Sending regeneration request for session:', currentSession.sessionId);
@@ -4373,15 +4695,19 @@ app.get('/study-partner', (c) => {
               currentSession.similarProblems = result.similarProblems;
               currentSession.currentStep = result.currentStep;
               
+              // 成功時はボタンを元の状態に戻す
+              buttons.forEach((button, index) => {
+                if (originalButtonStates[index]) {
+                  button.innerHTML = originalButtonStates[index].innerHTML;
+                  button.disabled = originalButtonStates[index].disabled;
+                }
+              });
+              
               // 学習システムを新しいデータで再開
               alert('✅ 新しいパターンの問題を生成しました！');
               displayLearningStep(result);
               
-              // 再生成ボタンを隠す（新しい学習フローでは不要）
-              if (regenerateButton) {
-                regenerateButton.style.display = 'none';
-              }
-              
+              return; // 成功時はreturnして、finallyブロックの実行を回避
             } else {
               throw new Error(result.message || '再生成に失敗しました');
             }
@@ -4406,14 +4732,16 @@ app.get('/study-partner', (c) => {
               errorMessage = '❌ 問題の再生成に失敗しました。もう一度お試しいただくか、ページを更新してください。';
             }
             
-            alert(errorMessage + '\n\n（エラー詳細: ' + error.message + '）');
+            alert(errorMessage + String.fromCharCode(10) + String.fromCharCode(10) + '（エラー詳細: ' + error.message + '）');
           } finally {
-            // ボタンを元の状態に戻す
-            if (regenerateButton) {
-              regenerateButton.disabled = false;
-              regenerateButton.innerHTML = '<i class="fas fa-sync-alt" style="margin-right: 0.5rem;"></i>🔄 問題を再生成';
-              regenerateButton.style.display = 'inline-block'; // エラー時もボタンを再表示
-            }
+            // 全てのボタンを元の状態に戻す
+            buttons.forEach((button, index) => {
+              if (originalButtonStates[index]) {
+                button.innerHTML = originalButtonStates[index].innerHTML;
+                button.disabled = originalButtonStates[index].disabled;
+                button.style.display = 'inline-block'; // エラー時もボタンを再表示
+              }
+            });
           }
         }
 

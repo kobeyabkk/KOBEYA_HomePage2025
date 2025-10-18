@@ -128,24 +128,43 @@ export const studyPartnerSimple = (c) => {
                 const appkey = document.getElementById('appkey').value;
                 const sid = document.getElementById('sid').value;
                 
-                const response = await fetch('/api/health');
+                // Validate input fields
+                if (!appkey || !sid) {
+                    throw new Error('APP_KEY と Student ID を両方入力してください');
+                }
+                
+                // Call the actual login API
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        appkey: appkey,
+                        sid: sid
+                    })
+                });
+                
                 const data = await response.json();
                 
-                if (data.ok) {
+                if (response.ok && data.success) {
                     authenticated = true;
+                    currentSession = { appkey, sid };
                     updateStatus('Authenticated - Ready to upload');
                     showSection('uploadSection');
                     
-                    alert('✅ ログイン成功!\\n' +
-                          'APP_KEY: ' + appkey + '\\n' +
+                    alert('✅ ログイン成功!' + String.fromCharCode(10) +
+                          'APP_KEY: ' + appkey + String.fromCharCode(10) +
                           'Student ID: ' + sid);
                 } else {
-                    throw new Error('Authentication failed');
+                    throw new Error(data.message || 'ログインに失敗しました');
                 }
             } catch (error) {
                 console.error('❌ Login error:', error);
                 alert('❌ ログインエラー: ' + error.message);
                 updateStatus('Authentication failed');
+                authenticated = false;
+                currentSession = null;
             }
         }
         
@@ -222,7 +241,7 @@ export const studyPartnerSimple = (c) => {
                     updateStatus('Analysis complete');
                     showSection('resultsSection');
                     
-                    alert('✅ AI解析完了！\\n段階学習を開始します。');
+                    alert('✅ AI解析完了！' + String.fromCharCode(10) + '段階学習を開始します。');
                 } else {
                     throw new Error(result.message || 'Analysis failed');
                 }
@@ -277,7 +296,7 @@ export const studyPartnerSimple = (c) => {
             }
             
             updateStatus('Answer submitted: ' + selected.value);
-            alert('✅ 回答: ' + selected.value + '\\n\\nAIフィードバックシステムが動作中です。');
+            alert('✅ 回答: ' + selected.value + String.fromCharCode(10) + String.fromCharCode(10) + 'AIフィードバックシステムが動作中です。');
         }
         
         // Open AI Chat
