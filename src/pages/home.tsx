@@ -7,16 +7,47 @@ export const homePage = () => (
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     
+    <style>{`
+      :root {
+        --primary-yellow: #FFC107;
+        --accent-yellow: #FFD54F;
+        --light-yellow: #FFF8E1;
+        --dark-yellow: #FF8F00;
+        --pure-white: #FFFFFF;
+        --soft-gray: #F8F9FA;
+        --text-dark: #2D3748;
+        --text-gray: #4A5568;
+        --border-light: #E2E8F0;
+      }
+      
+      .gradient-yellow-hero {
+        background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 50%, #F0F4F8 100%);
+      }
+      
+      .card-shadow {
+        box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+      }
+      
+      .hover-lift {
+        transition: all 0.3s ease;
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+    `}</style>
+    
     <Header />
     
     {/* Hero Section */}
-    <section class="bg-gradient-to-br from-blue-50 to-white py-20">
+    <section class="gradient-yellow-hero py-20">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div class="space-y-6">
             <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
               バンコクの日本人小中学生に、<br />
-              <span class="text-blue-600">'できた！'</span>を毎週。
+              <span style="color: var(--dark-yellow); font-weight: 700;">'できた！'</span>を毎週。
             </h1>
             <p class="text-xl text-gray-600 leading-relaxed">
               スクラッチ／ロブロックス／AIコーチングで、<br />
@@ -35,18 +66,18 @@ export const homePage = () => (
             
             <div class="flex flex-wrap items-center space-x-6 text-sm text-gray-600">
               <div class="flex items-center space-x-2">
-                <i class="fas fa-users text-blue-600"></i>
+                <i class="fas fa-users" style="color: var(--dark-yellow);"></i>
                 <span>毎月15名が体験中</span>
               </div>
               <div class="flex items-center space-x-2">
-                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star" style="color: var(--primary-yellow);"></i>
                 <span>保護者満足度98%</span>
               </div>
             </div>
           </div>
           
           <div class="relative">
-            <div class="bg-white rounded-2xl shadow-xl p-8">
+            <div class="bg-white rounded-2xl card-shadow hover-lift p-8">
               <img src="/static/images/hero-kids-coding.jpg" alt="プログラミングを学ぶ子どもたち" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="text-center">
                 <h3 class="font-semibold text-lg text-gray-900 mb-2">楽しく学べる環境</h3>
@@ -59,7 +90,7 @@ export const homePage = () => (
     </section>
 
     {/* Achievement Section */}
-    <section class="py-16 bg-white">
+    <section class="py-16" style="background-color: var(--soft-gray);">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">安心の実績</h2>
@@ -68,26 +99,26 @@ export const homePage = () => (
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Stats Cards */}
-          <div class="text-center bg-blue-50 rounded-xl p-6">
-            <div class="text-3xl font-bold text-blue-600 mb-2">150+</div>
-            <div class="text-gray-700 font-medium">総受講生徒数</div>
+          <div class="text-center bg-white rounded-xl p-6 card-shadow hover-lift">
+            <div class="text-3xl font-bold mb-2" style="color: var(--dark-yellow);">150+</div>
+            <div style="color: var(--text-dark);" class="font-medium">総受講生徒数</div>
           </div>
-          <div class="text-center bg-yellow-50 rounded-xl p-6">
-            <div class="text-3xl font-bold text-yellow-600 mb-2">98%</div>
-            <div class="text-gray-700 font-medium">保護者満足度</div>
+          <div class="text-center rounded-xl p-6 card-shadow hover-lift" style="background: linear-gradient(135deg, var(--light-yellow), var(--pure-white));">
+            <div class="text-3xl font-bold mb-2" style="color: var(--dark-yellow);">98%</div>
+            <div style="color: var(--text-dark);" class="font-medium">保護者満足度</div>
           </div>
-          <div class="text-center bg-green-50 rounded-xl p-6">
-            <div class="text-3xl font-bold text-green-600 mb-2">3年</div>
-            <div class="text-gray-700 font-medium">バンコク運営実績</div>
+          <div class="text-center bg-white rounded-xl p-6 card-shadow hover-lift">
+            <div class="text-3xl font-bold mb-2" style="color: var(--dark-yellow);">3年</div>
+            <div style="color: var(--text-dark);" class="font-medium">バンコク運営実績</div>
           </div>
         </div>
 
         {/* Testimonials */}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-          <div class="bg-gray-50 rounded-xl p-6">
+          <div class="bg-white rounded-xl p-6 card-shadow">
             <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user text-blue-600"></i>
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--light-yellow);">
+                <i class="fas fa-user" style="color: var(--dark-yellow);"></i>
               </div>
               <div>
                 <h4 class="font-semibold text-gray-900">田中様（小5保護者）</h4>
@@ -97,10 +128,10 @@ export const homePage = () => (
             <p class="text-gray-700 italic">"先生が優しく、子どもが毎回楽しみにしています。プログラミングを通じて論理的思考も身についてきました。"</p>
           </div>
           
-          <div class="bg-gray-50 rounded-xl p-6">
+          <div class="bg-white rounded-xl p-6 card-shadow">
             <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user text-green-600"></i>
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--light-yellow);">
+                <i class="fas fa-user" style="color: var(--dark-yellow);"></i>
               </div>
               <div>
                 <h4 class="font-semibold text-gray-900">佐藤様（中1保護者）</h4>
@@ -114,7 +145,7 @@ export const homePage = () => (
     </section>
 
     {/* Courses Section */}
-    <section class="py-16 bg-gray-50">
+    <section class="py-16" style="background-color: var(--soft-gray);">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">コース紹介</h2>
@@ -123,8 +154,8 @@ export const homePage = () => (
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Course Cards */}
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-orange-400 to-orange-500 p-6">
+          <div class="bg-white rounded-xl card-shadow hover-lift overflow-hidden">
+            <div class="p-6" style="background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));">
               <i class="fas fa-cat text-white text-3xl mb-2"></i>
               <h3 class="text-white font-bold text-lg">Scratch入門</h3>
             </div>
@@ -135,12 +166,12 @@ export const homePage = () => (
                 <li>• 簡単なゲーム制作</li>
                 <li>• 創造性の育成</li>
               </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
+              <a href="/courses" class="font-medium hover:underline" style="color: var(--dark-yellow);">詳細を見る →</a>
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-green-400 to-green-500 p-6">
+          <div class="bg-white rounded-xl card-shadow hover-lift overflow-hidden">
+            <div class="p-6" style="background: linear-gradient(135deg, var(--accent-yellow), var(--primary-yellow));">
               <i class="fas fa-gamepad text-white text-3xl mb-2"></i>
               <h3 class="text-white font-bold text-lg">Robloxゲーム制作</h3>
             </div>
@@ -151,12 +182,12 @@ export const homePage = () => (
                 <li>• 3Dゲーム開発</li>
                 <li>• 協調性とチームワーク</li>
               </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
+              <a href="/courses" class="font-medium hover:underline" style="color: var(--dark-yellow);">詳細を見る →</a>
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-purple-400 to-purple-500 p-6">
+          <div class="bg-white rounded-xl card-shadow hover-lift overflow-hidden">
+            <div class="p-6" style="background: linear-gradient(135deg, var(--dark-yellow), var(--primary-yellow));">
               <i class="fas fa-robot text-white text-3xl mb-2"></i>
               <h3 class="text-white font-bold text-lg">AI Coaching Lab</h3>
             </div>
@@ -167,12 +198,12 @@ export const homePage = () => (
                 <li>• AI活用方法</li>
                 <li>• 問題解決能力</li>
               </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
+              <a href="/courses" class="font-medium hover:underline" style="color: var(--dark-yellow);">詳細を見る →</a>
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="bg-gradient-to-br from-blue-400 to-blue-500 p-6">
+          <div class="bg-white rounded-xl card-shadow hover-lift overflow-hidden">
+            <div class="p-6" style="background: linear-gradient(135deg, var(--accent-yellow), var(--dark-yellow));">
               <i class="fas fa-graduation-cap text-white text-3xl mb-2"></i>
               <h3 class="text-white font-bold text-lg">Study Partner</h3>
             </div>
@@ -183,7 +214,7 @@ export const homePage = () => (
                 <li>• 学校課題サポート</li>
                 <li>• 学習習慣の定着</li>
               </ul>
-              <a href="/courses" class="text-blue-600 hover:text-blue-800 font-medium">詳細を見る →</a>
+              <a href="/courses" class="font-medium hover:underline" style="color: var(--dark-yellow);">詳細を見る →</a>
             </div>
           </div>
         </div>
@@ -197,7 +228,7 @@ export const homePage = () => (
     </section>
 
     {/* Pricing & Schedule Section */}
-    <section class="py-16 bg-white">
+    <section class="py-16" style="background-color: var(--soft-gray);">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">料金・時間割</h2>
@@ -209,13 +240,13 @@ export const homePage = () => (
           <div>
             <h3 class="text-xl font-semibold text-gray-900 mb-6">料金プラン</h3>
             <div class="space-y-4">
-              <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
+              <div class="bg-white rounded-lg p-4 flex justify-between items-center card-shadow">
                 <span class="font-medium">月4回コース（週1回）</span>
-                <span class="text-xl font-bold text-blue-600">8,000 THB</span>
+                <span class="text-xl font-bold" style="color: var(--dark-yellow);">8,000 THB</span>
               </div>
-              <div class="bg-gray-50 rounded-lg p-4 flex justify-between items-center">
+              <div class="bg-white rounded-lg p-4 flex justify-between items-center card-shadow">
                 <span class="font-medium">月8回コース（週2回）</span>
-                <span class="text-xl font-bold text-blue-600">15,000 THB</span>
+                <span class="text-xl font-bold" style="color: var(--dark-yellow);">15,000 THB</span>
               </div>
               <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex justify-between items-center">
                 <span class="font-medium text-yellow-800">体験レッスン</span>
@@ -245,9 +276,9 @@ export const homePage = () => (
                 <span>9:00 - 17:00</span>
               </div>
             </div>
-            <div class="mt-4 bg-blue-50 rounded-lg p-4">
-              <h4 class="font-semibold text-blue-900 mb-2">人気の時間帯</h4>
-              <ul class="text-sm text-blue-800 space-y-1">
+            <div class="mt-4 rounded-lg p-4 card-shadow" style="background: var(--light-yellow);">
+              <h4 class="font-semibold mb-2" style="color: var(--text-dark);">人気の時間帯</h4>
+              <ul class="text-sm space-y-1" style="color: var(--text-gray);">
                 <li>• 平日 17:00-18:00（小学生）</li>
                 <li>• 平日 18:00-19:00（中学生）</li>
                 <li>• 土日 10:00-11:00（小学生）</li>
@@ -260,7 +291,7 @@ export const homePage = () => (
     </section>
 
     {/* FAQ Section */}
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">よくある質問</h2>
@@ -269,7 +300,7 @@ export const homePage = () => (
         
         <div class="max-w-4xl mx-auto">
           <div class="space-y-6">
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg card-shadow hover-lift">
               <button class="w-full text-left p-6 focus:outline-none faq-toggle">
                 <div class="flex justify-between items-center">
                   <h3 class="text-lg font-semibold text-gray-900">まったくの初心者でも大丈夫ですか？</h3>
@@ -281,7 +312,7 @@ export const homePage = () => (
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg card-shadow hover-lift">
               <button class="w-full text-left p-6 focus:outline-none faq-toggle">
                 <div class="flex justify-between items-center">
                   <h3 class="text-lg font-semibold text-gray-900">途中入会はできますか？</h3>
@@ -293,7 +324,7 @@ export const homePage = () => (
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg card-shadow hover-lift">
               <button class="w-full text-left p-6 focus:outline-none faq-toggle">
                 <div class="flex justify-between items-center">
                   <h3 class="text-lg font-semibold text-gray-900">体験レッスンの持ち物はありますか？</h3>
@@ -305,7 +336,7 @@ export const homePage = () => (
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg card-shadow hover-lift">
               <button class="w-full text-left p-6 focus:outline-none faq-toggle">
                 <div class="flex justify-between items-center">
                   <h3 class="text-lg font-semibold text-gray-900">保護者の見学は可能ですか？</h3>
@@ -317,7 +348,7 @@ export const homePage = () => (
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg card-shadow hover-lift">
               <button class="w-full text-left p-6 focus:outline-none faq-toggle">
                 <div class="flex justify-between items-center">
                   <h3 class="text-lg font-semibold text-gray-900">送迎サービスはありますか？</h3>
@@ -334,7 +365,7 @@ export const homePage = () => (
     </section>
 
     {/* Location Section */}
-    <section class="py-16 bg-white">
+    <section class="py-16" style="background-color: var(--soft-gray);">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">アクセス</h2>
@@ -347,7 +378,7 @@ export const homePage = () => (
               <h3 class="text-xl font-semibold text-gray-900 mb-4">教室所在地</h3>
               <div class="space-y-3">
                 <div class="flex items-start space-x-3">
-                  <i class="fas fa-map-marker-alt text-blue-600 mt-1"></i>
+                  <i class="fas fa-map-marker-alt mt-1" style="color: var(--dark-yellow);"></i>
                   <div>
                     <div class="font-medium text-gray-900">AI & プログラミングのKOBEYA</div>
                     <div class="text-gray-700">フジスーパー2号店2階</div>
@@ -356,20 +387,20 @@ export const homePage = () => (
                 </div>
                 
                 <div class="flex items-center space-x-3">
-                  <i class="fas fa-train text-blue-600"></i>
+                  <i class="fas fa-train" style="color: var(--dark-yellow);"></i>
                   <div class="text-gray-700">BTS プロンポン駅から徒歩5分</div>
                 </div>
                 
                 <div class="flex items-center space-x-3">
-                  <i class="fas fa-car text-blue-600"></i>
+                  <i class="fas fa-car" style="color: var(--dark-yellow);"></i>
                   <div class="text-gray-700">駐車場完備（フジスーパーと共用）</div>
                 </div>
               </div>
             </div>
             
-            <div class="bg-blue-50 rounded-lg p-6">
-              <h4 class="font-semibold text-blue-900 mb-3">アクセスのポイント</h4>
-              <ul class="text-blue-800 space-y-2 text-sm">
+            <div class="rounded-lg p-6 card-shadow" style="background: var(--light-yellow);">
+              <h4 class="font-semibold mb-3" style="color: var(--text-dark);">アクセスのポイント</h4>
+              <ul class="space-y-2 text-sm" style="color: var(--text-gray);">
                 <li>• 日本人がよく利用するフジスーパー内で安心</li>
                 <li>• BTSプロンポン駅から近く、電車でも通いやすい</li>
                 <li>• 授業の前後にお買い物も可能</li>

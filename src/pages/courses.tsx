@@ -7,10 +7,41 @@ export const coursesPage = () => (
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     
+    <style>{`
+      :root {
+        --primary-yellow: #FFC107;
+        --accent-yellow: #FFD54F;
+        --light-yellow: #FFF8E1;
+        --dark-yellow: #FF8F00;
+        --pure-white: #FFFFFF;
+        --soft-gray: #F8F9FA;
+        --text-dark: #2D3748;
+        --text-gray: #4A5568;
+        --border-light: #E2E8F0;
+      }
+      
+      .gradient-yellow-hero {
+        background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 50%, #F0F4F8 100%);
+      }
+      
+      .card-shadow {
+        box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+      }
+      
+      .hover-lift {
+        transition: all 0.3s ease;
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+    `}</style>
+    
     <Header />
     
     {/* Hero Section */}
-    <section class="bg-gradient-to-br from-blue-50 to-white py-16">
+    <section class="gradient-yellow-hero py-16">
       <div class="container mx-auto px-4">
         <div class="text-center max-w-4xl mx-auto">
           <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -28,11 +59,11 @@ export const coursesPage = () => (
     </section>
 
     {/* Scratch Course */}
-    <section class="py-16 bg-white">
+    <section class="py-16" style="background-color: var(--soft-gray);">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div class="order-2 lg:order-1">
-            <div class="bg-gradient-to-br from-orange-400 to-orange-500 inline-block p-4 rounded-xl mb-6">
+            <div class="inline-block p-4 rounded-xl mb-6" style="background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));">
               <i class="fas fa-cat text-white text-4xl"></i>
             </div>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Scratch入門コース</h2>
@@ -45,19 +76,19 @@ export const coursesPage = () => (
                 <h3 class="text-xl font-semibold text-gray-900 mb-3">こんなお子様におすすめ</h3>
                 <ul class="space-y-2 text-gray-700">
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>プログラミングが初めて</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>ゲームやアニメが好き</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>創造力を伸ばしたい</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>論理的思考を身につけたい</span>
                   </li>
                 </ul>
@@ -84,15 +115,15 @@ export const coursesPage = () => (
           </div>
           
           <div class="order-1 lg:order-2">
-            <div class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl p-8">
+            <div class="rounded-2xl p-8 card-shadow" style="background: linear-gradient(135deg, var(--light-yellow), var(--pure-white));">
               <img src="/static/images/scratch-course.jpg" alt="Scratchプログラミング" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="grid grid-cols-2 gap-4">
-                <div class="bg-white rounded-lg p-4 text-center">
-                  <div class="text-2xl font-bold text-orange-600">1-3年</div>
+                <div class="bg-white rounded-lg p-4 text-center card-shadow">
+                  <div class="text-2xl font-bold" style="color: var(--dark-yellow);">1-3年</div>
                   <div class="text-sm text-gray-600">対象学年</div>
                 </div>
-                <div class="bg-white rounded-lg p-4 text-center">
-                  <div class="text-2xl font-bold text-orange-600">60分</div>
+                <div class="bg-white rounded-lg p-4 text-center card-shadow">
+                  <div class="text-2xl font-bold" style="color: var(--dark-yellow);">60分</div>
                   <div class="text-sm text-gray-600">授業時間</div>
                 </div>
               </div>
@@ -101,7 +132,7 @@ export const coursesPage = () => (
         </div>
         
         <div class="text-center">
-          <a href="/contact" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition-colors duration-200">
+          <a href="/contact" class="px-8 py-3 rounded-full font-semibold transition-all duration-200 hover-lift" style="background: linear-gradient(135deg, var(--primary-yellow), var(--accent-yellow)); color: var(--text-dark);">
             Scratchコースの体験予約
           </a>
         </div>
@@ -109,11 +140,11 @@ export const coursesPage = () => (
     </section>
 
     {/* Roblox Course */}
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div class="order-1">
-            <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-8">
+            <div class="rounded-2xl p-8 card-shadow" style="background: linear-gradient(135deg, var(--accent-yellow), var(--light-yellow));">
               <img src="/static/images/roblox-course.jpg" alt="Robloxゲーム制作" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-4 text-center">
@@ -129,7 +160,7 @@ export const coursesPage = () => (
           </div>
           
           <div class="order-2">
-            <div class="bg-gradient-to-br from-green-400 to-green-500 inline-block p-4 rounded-xl mb-6">
+            <div class="inline-block p-4 rounded-xl mb-6" style="background: linear-gradient(135deg, var(--accent-yellow), var(--dark-yellow));">
               <i class="fas fa-gamepad text-white text-4xl"></i>
             </div>
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Robloxゲーム制作コース</h2>
@@ -142,19 +173,19 @@ export const coursesPage = () => (
                 <h3 class="text-xl font-semibold text-gray-900 mb-3">習得できるスキル</h3>
                 <ul class="space-y-2 text-gray-700">
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>Lua言語の基礎プログラミング</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>3Dゲームデザインの概念</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>チームでの協力開発</span>
                   </li>
                   <li class="flex items-center space-x-2">
-                    <i class="fas fa-check text-green-500"></i>
+                    <i class="fas fa-check" style="color: var(--dark-yellow);"></i>
                     <span>創造性と問題解決能力</span>
                   </li>
                 </ul>
@@ -283,11 +314,11 @@ export const coursesPage = () => (
               <img src="/static/images/study-partner.jpg" alt="学習サポート" class="w-full h-64 object-cover rounded-lg mb-4" />
               <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-4 text-center">
-                  <div class="text-2xl font-bold text-blue-600">全学年</div>
+                  <div class="text-2xl font-bold" style="color: var(--dark-yellow);">全学年</div>
                   <div class="text-sm text-gray-600">対象学年</div>
                 </div>
                 <div class="bg-white rounded-lg p-4 text-center">
-                  <div class="text-2xl font-bold text-blue-600">個別対応</div>
+                  <div class="text-2xl font-bold" style="color: var(--dark-yellow);">個別対応</div>
                   <div class="text-sm text-gray-600">授業形式</div>
                 </div>
               </div>
