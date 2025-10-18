@@ -686,7 +686,7 @@ export const aiCoachingCoursePage = () => (
               <p class="ai-system-description">
                 最先端のAI学習技術により、一人ひとりの学習状況を分析し、最適な学習プランを提案。生徒の思考・判断・表現のプロセスをAIが見える化します。
               </p>
-              <a href="https://study-partner.pages.dev/" class="study-partner-link" target="_blank">
+              <a href="https://kobeya-studypartner-full.pages.dev/" class="study-partner-link" target="_blank">
                 <i class="fas fa-external-link-alt"></i>
                 Study Partnerにアクセス
               </a>
@@ -901,7 +901,7 @@ export const aiCoachingCoursePage = () => (
                 <i class="fas fa-graduation-cap"></i>
                 無料体験を申し込む
               </a>
-              <a href="https://study-partner.pages.dev/" class="btn-secondary" target="_blank">
+              <a href="https://kobeya-studypartner-full.pages.dev/" class="btn-secondary" target="_blank">
                 <i class="fas fa-external-link-alt"></i>
                 Study Partnerを見る
               </a>
