@@ -15,6 +15,7 @@ import { creatorsCoursePage } from './pages/creators-course'
 import { aiCoachingCoursePage } from './pages/ai-coaching-course'
 import { mathCoursePage } from './pages/math-course'
 import { studyPartnerSimple } from './study-partner-simple'
+import { getCourseBySlug } from './data/courses'
 
 const app = new Hono()
 
@@ -80,13 +81,54 @@ app.get('/courses/math', (c) => {
   return c.render(mathCoursePage())
 })
 
+// Dynamic course routing - RESTful /courses/:slug
+app.get('/courses/:slug', (c) => {
+  const slug = c.req.param('slug')
+  const course = getCourseBySlug(slug)
+  
+  if (!course) {
+    return c.notFound()
+  }
+  
+  // Route to specific course page based on slug
+  switch (slug) {
+    case 'steam':
+      return c.render(steamCoursePage())
+    case 'minecraft':
+      return c.render(minecraftCoursePage())
+    case 'toyprogramming':
+      return c.render(toyprogrammingCoursePage())
+    case 'thinkthink':
+      return c.render(thinkthinkCoursePage())
+    case 'unity':
+      return c.render(unityCoursePage())
+    case 'creators':
+      return c.render(creatorsCoursePage())
+    case 'ai-coaching':
+      return c.render(aiCoachingCoursePage())
+    case 'math':
+      return c.render(mathCoursePage())
+    default:
+      return c.notFound()
+  }
+})
+
 // Study Partner - Redirect to independent deployment
 app.get('/study-partner', (c) => {
-  return c.redirect('https://study-partner.pages.dev/', 302)
+  return c.redirect('https://kobeya-studypartner-full.pages.dev/', 302)
 })
 
 app.get('/study-partner/*', (c) => {
-  return c.redirect('https://study-partner.pages.dev/', 302)
+  return c.redirect('https://kobeya-studypartner-full.pages.dev/', 302)
+})
+
+// API health check
+app.get('/api/health', (c) => {
+  return c.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    message: 'KOBEYA HomePage API is running'
+  })
 })
 
 // API route for form submission
