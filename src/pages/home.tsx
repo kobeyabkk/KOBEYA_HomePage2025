@@ -2,7 +2,23 @@ import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { getAllCoursesSorted } from '../data/courses'
 
-export const homePage = () => (
+// コースアイコンを生成する関数
+const getCourseIcon = (title: string): string => {
+  if (title.includes('STEAM')) return 'S';
+  if (title.includes('マインクラフト')) return 'M';
+  if (title.includes('トイ')) return 'P';
+  if (title.includes('Think')) return 'T';
+  if (title.includes('Unity')) return 'U';
+  if (title.includes('クリエイター')) return 'C';
+  if (title.includes('AI')) return 'A';
+  if (title.includes('算数') || title.includes('数学')) return '数';
+  return title.charAt(0);
+}
+
+export const homePage = () => {
+  const courses = getAllCoursesSorted();
+  
+  return (
   <>
     <style>{`
       :root {
@@ -248,31 +264,16 @@ export const homePage = () => (
         </div>
         
         <div class="grid grid-4">
-          ${getAllCoursesSorted().map(course => {
-            // コースアイコンを最初の文字から生成
-            const getIcon = (title: string): string => {
-              if (title.includes('STEAM')) return 'S';
-              if (title.includes('マインクラフト')) return 'M';
-              if (title.includes('トイ')) return 'P';
-              if (title.includes('Think')) return 'T';
-              if (title.includes('Unity')) return 'U';
-              if (title.includes('クリエイター')) return 'C';
-              if (title.includes('AI')) return 'A';
-              if (title.includes('算数') || title.includes('数学')) return '数';
-              return title.charAt(0);
-            };
-            
-            return `
-              <div class="course-card">
-                <div class="course-icon">${getIcon(course.title)}</div>
-                <h3>${course.shortTitle}</h3>
-                <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-                  ${course.description}
-                </p>
-                <a href="${course.ctaUrl}" class="btn-primary" style="width: 100%; text-align: center;">${course.ctaText}</a>
-              </div>
-            `;
-          }).join('')}
+          {courses.map(course => (
+            <div class="course-card" key={course.id}>
+              <div class="course-icon">{getCourseIcon(course.title)}</div>
+              <h3>{course.shortTitle}</h3>
+              <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+                {course.description}
+              </p>
+              <a href={course.ctaUrl} class="btn-primary" style="width: 100%; text-align: center;">{course.ctaText}</a>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -346,4 +347,5 @@ export const homePage = () => (
 
     <Footer />
   </>
-)
+  )
+}
