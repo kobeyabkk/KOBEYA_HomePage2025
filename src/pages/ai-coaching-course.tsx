@@ -621,6 +621,154 @@ export const aiCoachingCoursePage = () => (
           max-width: 300px;
           justify-content: center;
         }
+
+        .study-partner-big-btn {
+          padding: 20px 40px;
+          font-size: 1.1rem;
+        }
+
+        .spotlight-features {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .spotlight-feature {
+          justify-content: center;
+        }
+      }
+
+      /* Study Partner Spotlight Section */
+      .study-partner-spotlight {
+        background: linear-gradient(135deg, var(--main-yellow) 0%, var(--accent-yellow) 50%, var(--ai-orange) 100%);
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .study-partner-spotlight::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      }
+
+      .spotlight-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .spotlight-icon {
+        font-size: 4rem;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+
+      .spotlight-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      }
+
+      .spotlight-description {
+        font-size: 1.3rem;
+        color: var(--text-dark);
+        margin-bottom: 40px;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .spotlight-features {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+      }
+
+      .spotlight-feature {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-dark);
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .spotlight-feature i {
+        font-size: 1.5rem;
+        color: var(--ai-blue);
+      }
+
+      .study-partner-big-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+        background: var(--text-dark);
+        color: var(--base-white);
+        font-size: 1.25rem;
+        font-weight: 700;
+        padding: 25px 50px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(45, 55, 72, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .study-partner-big-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.6s;
+      }
+
+      .study-partner-big-btn:hover::before {
+        left: 100%;
+      }
+
+      .study-partner-big-btn:hover {
+        background: var(--ai-blue);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(30, 136, 229, 0.4);
+      }
+
+      .study-partner-big-btn i:first-child {
+        font-size: 1.5rem;
+        animation: bounce 2s infinite;
+      }
+
+      .study-partner-big-btn i:last-child {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .study-partner-big-btn:hover i:last-child {
+        transform: translateX(5px);
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-5px); }
+        60% { transform: translateY(-3px); }
       }
     `}</style>
 
@@ -686,9 +834,9 @@ export const aiCoachingCoursePage = () => (
               <p class="ai-system-description">
                 最先端のAI学習技術により、一人ひとりの学習状況を分析し、最適な学習プランを提案。生徒の思考・判断・表現のプロセスをAIが見える化します。
               </p>
-              <a href="https://kobeya-studypartner-full.pages.dev/" class="study-partner-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i>
-                Study Partnerにアクセス
+              <a href="/study-partner" class="study-partner-link">
+                <i class="fas fa-rocket"></i>
+                Study Partnerを体験する
               </a>
             </div>
           </div>
@@ -887,6 +1035,40 @@ export const aiCoachingCoursePage = () => (
         </div>
       </section>
 
+      {/* Study Partner Spotlight Section */}
+      <section class="study-partner-spotlight">
+        <div class="container">
+          <div class="spotlight-content">
+            <div class="spotlight-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h2 class="spotlight-title">AI学習支援システム「Study Partner」</h2>
+            <p class="spotlight-description">
+              最先端のAI技術があなたの学習をサポート。一人ひとりに最適化された学習体験で、「わかる」から「できる」へと導きます。
+            </p>
+            <div class="spotlight-features">
+              <div class="spotlight-feature">
+                <i class="fas fa-brain"></i>
+                <span>個別最適化学習</span>
+              </div>
+              <div class="spotlight-feature">
+                <i class="fas fa-chart-line"></i>
+                <span>リアルタイム分析</span>
+              </div>
+              <div class="spotlight-feature">
+                <i class="fas fa-target"></i>
+                <span>弱点克服サポート</span>
+              </div>
+            </div>
+            <a href="/study-partner" class="study-partner-big-btn">
+              <i class="fas fa-rocket"></i>
+              Study Partnerを今すぐ体験
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section class="cta-section">
         <div class="container">
@@ -901,9 +1083,9 @@ export const aiCoachingCoursePage = () => (
                 <i class="fas fa-graduation-cap"></i>
                 無料体験を申し込む
               </a>
-              <a href="https://kobeya-studypartner-full.pages.dev/" class="btn-secondary" target="_blank">
-                <i class="fas fa-external-link-alt"></i>
-                Study Partnerを見る
+              <a href="/study-partner" class="btn-secondary">
+                <i class="fas fa-rocket"></i>
+                Study Partnerを体験する
               </a>
             </div>
           </div>
