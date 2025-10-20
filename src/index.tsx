@@ -66,7 +66,7 @@ app.get('/courses/thinkthink', (c) => {
 })
 
 app.get('/courses/unity', (c) => {
-  return c.render(unityCoursePage())
+  return c.redirect('https://www.kodomopro.com/', 302)
 })
 
 app.get('/courses/creators', (c) => {
@@ -101,7 +101,7 @@ app.get('/courses/:slug', (c) => {
     case 'thinkthink':
       return c.render(thinkthinkCoursePage())
     case 'unity':
-      return c.render(unityCoursePage())
+      return c.redirect('https://www.kodomopro.com/', 302)
     case 'creators':
       return c.render(creatorsCoursePage())
     case 'ai-coaching':

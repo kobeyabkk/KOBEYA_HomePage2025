@@ -264,16 +264,28 @@ export const homePage = () => {
         </div>
         
         <div class="grid grid-4">
-          {courses.map(course => (
-            <div class="course-card" key={course.id}>
-              <div class="course-icon">{getCourseIcon(course.title)}</div>
-              <h3>{course.shortTitle}</h3>
-              <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-                {course.description}
-              </p>
-              <a href={course.ctaUrl} class="btn-primary" style="width: 100%; text-align: center;">{course.ctaText}</a>
-            </div>
-          ))}
+          {courses.map(course => {
+            // Check if URL is external
+            const isExternal = course.ctaUrl.startsWith('http://') || course.ctaUrl.startsWith('https://');
+            return (
+              <div class="course-card" key={course.id}>
+                <div class="course-icon">{getCourseIcon(course.title)}</div>
+                <h3>{course.shortTitle}</h3>
+                <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+                  {course.description}
+                </p>
+                <a 
+                  href={course.ctaUrl} 
+                  class="btn-primary" 
+                  style="width: 100%; text-align: center;"
+                  {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {course.ctaText}
+                  {isExternal && <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 0.85em;"></i>}
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
