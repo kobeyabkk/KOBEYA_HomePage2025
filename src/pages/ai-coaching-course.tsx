@@ -834,9 +834,10 @@ export const aiCoachingCoursePage = () => (
               <p class="ai-system-description">
                 最先端のAI学習技術により、一人ひとりの学習状況を分析し、最適な学習プランを提案。生徒の思考・判断・表現のプロセスをAIが見える化します。
               </p>
-              <a href="/study-partner" class="study-partner-link">
+              <a href="https://efef1e56.kobeya-study-partner-app.pages.dev/study-partner" class="study-partner-link" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-rocket"></i>
                 Study Partnerを体験する
+                <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 5px;"></i>
               </a>
             </div>
           </div>
@@ -1060,10 +1061,10 @@ export const aiCoachingCoursePage = () => (
                 <span>弱点克服サポート</span>
               </div>
             </div>
-            <a href="/study-partner" class="study-partner-big-btn">
+            <a href="https://efef1e56.kobeya-study-partner-app.pages.dev/study-partner" class="study-partner-big-btn" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-rocket"></i>
               Study Partnerを今すぐ体験
-              <i class="fas fa-arrow-right"></i>
+              <i class="fas fa-external-link-alt" style="margin-left: 5px;"></i>
             </a>
           </div>
         </div>
@@ -1083,9 +1084,10 @@ export const aiCoachingCoursePage = () => (
                 <i class="fas fa-graduation-cap"></i>
                 無料体験を申し込む
               </a>
-              <a href="/study-partner" class="btn-secondary">
+              <a href="https://efef1e56.kobeya-study-partner-app.pages.dev/study-partner" class="btn-secondary" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-rocket"></i>
                 Study Partnerを体験する
+                <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 5px;"></i>
               </a>
             </div>
           </div>
