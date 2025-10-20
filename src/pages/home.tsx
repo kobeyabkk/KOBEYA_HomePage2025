@@ -1,7 +1,24 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
+import { getAllCoursesSorted } from '../data/courses'
 
-export const homePage = () => (
+// コースアイコンを生成する関数
+const getCourseIcon = (title: string): string => {
+  if (title.includes('STEAM')) return 'S';
+  if (title.includes('マインクラフト')) return 'M';
+  if (title.includes('トイ')) return 'P';
+  if (title.includes('Think')) return 'T';
+  if (title.includes('Unity')) return 'U';
+  if (title.includes('クリエイター')) return 'C';
+  if (title.includes('AI')) return 'A';
+  if (title.includes('算数') || title.includes('数学')) return '数';
+  return title.charAt(0);
+}
+
+export const homePage = () => {
+  const courses = getAllCoursesSorted();
+  
+  return (
   <>
     <style>{`
       :root {
@@ -247,85 +264,28 @@ export const homePage = () => (
         </div>
         
         <div class="grid grid-4">
-          {/* STEAMコース */}
-          <div class="course-card">
-            <div class="course-icon">S</div>
-            <h3>STEAMコース</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              スクラッチやロブロックスをはじめとして30以上の講座から選べる総合コース
-            </p>
-            <a href="/courses/steam" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
-
-          {/* マイクラッチコース */}
-          <div class="course-card">
-            <div class="course-icon">M</div>
-            <h3>マイクラッチコース</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              マイクラ好きならこの講座からスタート。楽しみながらプログラミングの基礎を学習
-            </p>
-            <a href="/courses/minecraft" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
-
-          {/* トイプロ */}
-          <div class="course-card">
-            <div class="course-icon">P</div>
-            <h3>トイプロ</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              基礎から応用まで本格的にPythonを学べるプログラミング専門コース
-            </p>
-            <a href="/courses/toyprogramming" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
-
-          {/* シンクシンク */}
-          <div class="course-card">
-            <div class="course-icon">T</div>
-            <h3>シンクシンク</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              算数偏差値+6.9の科学的根拠を持つ思考力育成講座
-            </p>
-            <a href="/courses/thinkthink" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
-
-          {/* Unity */}
-          <div class="course-card">
-            <div class="course-icon">U</div>
-            <h3>Unity</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              元エンジニアが教える本格的なゲーム開発講座
-            </p>
-            <a href="/courses/unity" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
-
-          {/* クリエイターズ */}
-          <div class="course-card">
-            <div class="course-icon">C</div>
-            <h3>クリエイターズ</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              アイデアを形にしてコンテスト出場・上位入賞を目指すアウトプット講座
-            </p>
-            <a href="/courses/creators" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
-
-          {/* AIコーチング・ラボ */}
-          <div class="course-card">
-            <div class="course-icon">A</div>
-            <h3>AIコーチング・ラボ</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              AI先生が教えてくれる最先端の学習システム
-            </p>
-            <a href="/courses/ai-coaching" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
-
-          {/* 算数数学個別指導 */}
-          <div class="course-card">
-            <div class="course-icon">数</div>
-            <h3>算数数学個別指導</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
-              お子様のペースに合わせた個別指導で算数・数学の基礎力を向上
-            </p>
-            <a href="/courses/math" class="btn-primary" style="width: 100%; text-align: center;">詳細を見る</a>
-          </div>
+          {courses.map(course => {
+            // Check if URL is external
+            const isExternal = course.ctaUrl.startsWith('http://') || course.ctaUrl.startsWith('https://');
+            return (
+              <div class="course-card" key={course.id}>
+                <div class="course-icon">{getCourseIcon(course.title)}</div>
+                <h3>{course.shortTitle}</h3>
+                <p style="color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1;">
+                  {course.description}
+                </p>
+                <a 
+                  href={course.ctaUrl} 
+                  class="btn-primary" 
+                  style="width: 100%; text-align: center;"
+                  {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {course.ctaText}
+                  {isExternal && <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 0.85em;"></i>}
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -399,4 +359,5 @@ export const homePage = () => (
 
     <Footer />
   </>
-)
+  )
+}

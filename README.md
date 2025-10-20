@@ -202,6 +202,53 @@ Testing /contact: ✅ OK (200)
 
 ## 🔄 更新履歴
 
+### v3.0.2 - Unityコース外部サイトリダイレクト対応 (2025-10-20)
+
+#### 🔗 Unityコースの外部化
+**目的**: オンライン専門の提携校サイトへの誘導
+
+#### 🎨 変更内容
+- **外部リンク化**: Unityコースを提携校サイト（kodomopro.com）にリダイレクト
+- **説明文更新**: 「オンライン専門の提携校のサイトに移ります」を追加
+- **ボタン変更**: 「詳細を見る」→「提携校サイトへ」+ 外部リンクアイコン
+- **302リダイレクト**: `/courses/unity` → `https://www.kodomopro.com/`
+
+#### 📋 技術実装
+- **data/courses.ts**: ctaUrl, ctaText, description を更新
+- **home.tsx**: 外部リンク判定ロジック追加（target="_blank", rel="noopener noreferrer"）
+- **index.tsx**: `/courses/unity` ルートを302リダイレクトに変更
+- **外部リンクアイコン**: Font Awesome `fa-external-link-alt` 自動表示
+
+#### 🔗 リンク
+- Internal Route: `/courses/unity` → 302 Redirect
+- External URL: https://www.kodomopro.com/
+- Production: https://d52beab2.kobeya-homepage2025.pages.dev/
+
+---
+
+### v3.0.1 - 算数数学個別指導ページ簡素化 (2025-10-20)
+
+#### 📐 算数数学ページの変更
+**目的**: 個別指導は大きく宣伝しない方針に合わせたシンプルなデザイン
+
+#### 🎨 変更内容
+- **シンプルデザイン**: 詳細な統計・実績情報を削除し、基本情報のみに集約
+- **コンパクト化**: 1ページ構成で必要最小限の情報提供
+- **空きコマ情報**: 現在の空き状況を明示（2025.10時点: 空きなし）
+- **お問い合わせ優先**: 詳細は問い合わせで対応する設計
+
+#### 📋 ページ構成
+1. **ヒーローセクション**: コース名のみのシンプル表示
+2. **基本情報カード**: iPadデジタル指導、オンライン推奨、継続学習可能
+3. **空きコマ状況**: 最新の空き状況（要問い合わせ）
+4. **CTAセクション**: お問い合わせフォームへの誘導
+
+#### 🔗 URL
+- Production: https://39266f34.kobeya-homepage2025.pages.dev/courses/math
+- Path: `/courses/math`
+
+---
+
 ### v3.0.0 - 公式ウェブサイトリニューアル完了 (2025-10-15)
 
 #### ✅ 完全リニューアル実装
@@ -247,6 +294,6 @@ Testing /contact: ✅ OK (200)
 
 ---
 
-**Last Updated**: 2025-10-15  
-**Version**: 3.0.0  
-**Status**: ✅ 公式ウェブサイト完成・デプロイ準備完了
+**Last Updated**: 2025-10-20  
+**Version**: 3.0.2  
+**Status**: ✅ 公式ウェブサイト稼働中 | Unity外部リンク対応完了

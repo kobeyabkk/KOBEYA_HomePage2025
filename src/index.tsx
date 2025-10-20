@@ -15,6 +15,7 @@ import { creatorsCoursePage } from './pages/creators-course'
 import { aiCoachingCoursePage } from './pages/ai-coaching-course'
 import { mathCoursePage } from './pages/math-course'
 import { studyPartnerSimple } from './study-partner-simple'
+import { getCourseBySlug } from './data/courses'
 
 const app = new Hono()
 
@@ -42,6 +43,11 @@ app.get('/contact', (c) => {
   return c.render(contactPage())
 })
 
+// AI Coaching Lab page
+app.get('/ai-coaching-course', (c) => {
+  return c.render(aiCoachingCoursePage())
+})
+
 // Course pages
 app.get('/courses/steam', (c) => {
   return c.render(steamCoursePage())
@@ -65,7 +71,7 @@ app.get('/courses/thinkthink', (c) => {
 })
 
 app.get('/courses/unity', (c) => {
-  return c.render(unityCoursePage())
+  return c.redirect('https://www.kodomopro.com/', 302)
 })
 
 app.get('/courses/creators', (c) => {
@@ -77,16 +83,57 @@ app.get('/courses/ai-coaching', (c) => {
 })
 
 app.get('/courses/math', (c) => {
-  return c.render(mathCoursePage())
+  return c.html(mathCoursePage())
+})
+
+// Dynamic course routing - RESTful /courses/:slug
+app.get('/courses/:slug', (c) => {
+  const slug = c.req.param('slug')
+  const course = getCourseBySlug(slug)
+  
+  if (!course) {
+    return c.notFound()
+  }
+  
+  // Route to specific course page based on slug
+  switch (slug) {
+    case 'steam':
+      return c.render(steamCoursePage())
+    case 'minecraft':
+      return c.render(minecraftCoursePage())
+    case 'toyprogramming':
+      return c.render(toyprogrammingCoursePage())
+    case 'thinkthink':
+      return c.render(thinkthinkCoursePage())
+    case 'unity':
+      return c.redirect('https://www.kodomopro.com/', 302)
+    case 'creators':
+      return c.render(creatorsCoursePage())
+    case 'ai-coaching':
+      return c.render(aiCoachingCoursePage())
+    case 'math':
+      return c.html(mathCoursePage())
+    default:
+      return c.notFound()
+  }
 })
 
 // Study Partner - Redirect to independent deployment
 app.get('/study-partner', (c) => {
-  return c.redirect('https://study-partner.pages.dev/', 302)
+  return c.redirect('https://efef1e56.kobeya-study-partner-app.pages.dev/study-partner', 302)
 })
 
 app.get('/study-partner/*', (c) => {
-  return c.redirect('https://study-partner.pages.dev/', 302)
+  return c.redirect('https://efef1e56.kobeya-study-partner-app.pages.dev/study-partner', 302)
+})
+
+// API health check
+app.get('/api/health', (c) => {
+  return c.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    message: 'KOBEYA HomePage API is running'
+  })
 })
 
 // API route for form submission
