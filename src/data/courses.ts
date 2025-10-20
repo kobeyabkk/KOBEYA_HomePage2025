@@ -186,8 +186,8 @@ export const courses: Course[] = [
       '宿題・テスト対策',
       '人×AIの協働学習'
     ],
-    ctaText: 'Study Partnerを見る',
-    ctaUrl: '/study-partner',
+    ctaText: '詳細を見る',
+    ctaUrl: '/ai-coaching-course',
     order: 7,
     category: 'ai',
     difficulty: 'intermediate',

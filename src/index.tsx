@@ -115,11 +115,11 @@ app.get('/courses/:slug', (c) => {
 
 // Study Partner - Redirect to independent deployment
 app.get('/study-partner', (c) => {
-  return c.redirect('https://kobeya-studypartner-full.pages.dev/', 302)
+  return c.redirect('https://efef1e56.kobeya-study-partner-app.pages.dev/study-partner', 302)
 })
 
 app.get('/study-partner/*', (c) => {
-  return c.redirect('https://kobeya-studypartner-full.pages.dev/', 302)
+  return c.redirect('https://efef1e56.kobeya-study-partner-app.pages.dev/study-partner', 302)
 })
 
 // API health check
