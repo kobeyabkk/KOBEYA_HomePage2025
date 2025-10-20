@@ -330,7 +330,7 @@ export function contactPage() {
                   <i class="fas fa-phone"></i>
                   <div class="contact-item-content">
                     <h4>電話番号</h4>
-                    <p><a href="tel:+66-xxx-xxx-xxxx">+66-xxx-xxx-xxxx</a></p>
+                    <p><a href="tel:02-103-6708">02-103-6708</a></p>
                   </div>
                 </div>
 
@@ -338,7 +338,7 @@ export function contactPage() {
                   <i class="fas fa-envelope"></i>
                   <div class="contact-item-content">
                     <h4>メールアドレス</h4>
-                    <p><a href="mailto:info@kobeya.com">info@kobeya.com</a></p>
+                    <p><a href="mailto:kobeyabkk@gmail.com">kobeyabkk@gmail.com</a></p>
                   </div>
                 </div>
 
@@ -347,9 +347,8 @@ export function contactPage() {
                   <div class="contact-item-content">
                     <h4>受付時間</h4>
                     <p>
-                      平日: 10:00〜19:00<br>
-                      土日: 9:00〜18:00<br>
-                      （祝日・年末年始除く）
+                      平日: 9:00〜21:00<br>
+                      土曜: 9:00〜18:00
                     </p>
                   </div>
                 </div>

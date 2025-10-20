@@ -149,22 +149,21 @@ export const Footer = () => (
                 <div class="contact-icon">📍</div>
                 <div>
                   <div style="font-weight: 500;">フジスーパー2号店2階</div>
-                  <div style="font-size: 0.875rem;">BTS プロンポン駅徒歩5分</div>
                 </div>
               </div>
               <div class="contact-item">
                 <div class="contact-icon">📞</div>
-                <div>066-123-4567</div>
+                <div>02-103-6708</div>
               </div>
               <div class="contact-item">
                 <div class="contact-icon">✉️</div>
-                <div>info@kobeya-programming.com</div>
+                <div>kobeyabkk@gmail.com</div>
               </div>
               <div class="contact-item">
                 <div class="contact-icon">🕒</div>
                 <div>
-                  <div>平日 16:00-20:00</div>
-                  <div>土日 9:00-17:00</div>
+                  <div>平日 9:00-21:00</div>
+                  <div>土曜 9:00-18:00</div>
                 </div>
               </div>
             </div>
@@ -219,7 +218,7 @@ export const Footer = () => (
                           color: var(--text-dark); text-decoration: none; font-weight: 600;">
                   L
                 </a>
-                <a href="mailto:info@kobeya-programming.com" 
+                <a href="mailto:kobeyabkk@gmail.com" 
                    style="display: inline-block; width: 2rem; height: 2rem; background: var(--main-yellow); 
                           border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; 
                           color: var(--text-dark); text-decoration: none; font-weight: 600;">

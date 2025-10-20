@@ -171,7 +171,7 @@ export const Header = () => (
         </nav>
         
         <div class="header-cta">
-          <a href="tel:066-123-4567" style="color: var(--text-gray); text-decoration: none;">📞 066-123-4567</a>
+          <a href="tel:02-103-6708" style="color: var(--text-gray); text-decoration: none;">📞 02-103-6708</a>
           <a href="/contact" class="btn-header">無料体験</a>
         </div>
         
@@ -186,7 +186,7 @@ export const Header = () => (
           <a href="/contact">お問い合わせ</a>
         </nav>
         <div class="header-cta">
-          <a href="tel:066-123-4567" style="color: var(--text-gray); text-decoration: none;">📞 066-123-4567</a>
+          <a href="tel:02-103-6708" style="color: var(--text-gray); text-decoration: none;">📞 02-103-6708</a>
           <a href="/contact" class="btn-header">無料体験</a>
         </div>
       </div>
