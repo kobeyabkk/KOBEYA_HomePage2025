@@ -353,11 +353,36 @@ export function contactPage() {
                   </div>
                 </div>
 
-                <div class="contact-item">
-                  <i class="fab fa-line"></i>
-                  <div class="contact-item-content">
-                    <h4>LINE公式アカウント</h4>
-                    <p><a href="#">@kobeya-programming</a></p>
+                <div class="contact-item" style="display: block;">
+                  <div style="margin-bottom: 12px;">
+                    <i class="fas fa-share-alt" style="margin-right: 8px;"></i>
+                    <strong>SNS でもつながりましょう</strong>
+                  </div>
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px;">
+                    <div style="text-align: center;">
+                      <a href="https://twitter.com/kobeya" target="_blank" rel="noopener noreferrer" style="display: block;">
+                        <img src="/images/social/twitter-qr.png" alt="Twitter" 
+                             style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; border: 2px solid var(--border-gray);" />
+                        <div style="margin-top: 8px; font-size: 0.875rem; color: var(--text-gray);">Twitter</div>
+                      </a>
+                    </div>
+                    <div style="text-align: center;">
+                      <a href="https://instagram.com/kobeya" target="_blank" rel="noopener noreferrer" style="display: block;">
+                        <img src="/images/social/instagram-qr.png" alt="Instagram" 
+                             style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; border: 2px solid var(--border-gray);" />
+                        <div style="margin-top: 8px; font-size: 0.875rem; color: var(--text-gray);">Instagram</div>
+                      </a>
+                    </div>
+                    <div style="text-align: center;">
+                      <a href="https://facebook.com/kobeya" target="_blank" rel="noopener noreferrer" style="display: block;">
+                        <img src="/images/social/facebook-qr.png" alt="Facebook" 
+                             style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; border: 2px solid var(--border-gray);" />
+                        <div style="margin-top: 8px; font-size: 0.875rem; color: var(--text-gray);">Facebook</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-gray); font-size: 0.875rem; color: var(--text-gray);">
+                    ※ QRコードをスキャンしてフォローしてください
                   </div>
                 </div>
               </div>

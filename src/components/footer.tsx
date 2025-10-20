@@ -209,19 +209,27 @@ export const Footer = () => (
             
             <div style="margin-top: 1.5rem;">
               <h4 style="font-size: 0.875rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.75rem;">
-                フォロー
+                SNSでフォロー
               </h4>
-              <div style="display: flex; gap: 0.75rem;">
-                <a href="https://line.me/R/ti/p/@kobeya" target="_blank" 
-                   style="display: inline-block; width: 2rem; height: 2rem; background: var(--main-yellow); 
-                          border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; 
-                          color: var(--text-dark); text-decoration: none; font-weight: 600;">
-                  L
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; max-width: 200px;">
+                <a href="https://twitter.com/kobeya" target="_blank" rel="noopener noreferrer"
+                   style="display: block; border-radius: 0.375rem; overflow: hidden; border: 1px solid var(--border-gray); transition: transform 0.2s;">
+                  <img src="/images/social/twitter-qr.png" alt="Twitter QRコード" 
+                       style="width: 100%; height: auto; display: block;" />
                 </a>
-                <a href="mailto:kobeyabkk@gmail.com" 
-                   style="display: inline-block; width: 2rem; height: 2rem; background: var(--main-yellow); 
-                          border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; 
-                          color: var(--text-dark); text-decoration: none; font-weight: 600;">
+                <a href="https://instagram.com/kobeya" target="_blank" rel="noopener noreferrer"
+                   style="display: block; border-radius: 0.375rem; overflow: hidden; border: 1px solid var(--border-gray); transition: transform 0.2s;">
+                  <img src="/images/social/instagram-qr.png" alt="Instagram QRコード" 
+                       style="width: 100%; height: auto; display: block;" />
+                </a>
+                <a href="https://facebook.com/kobeya" target="_blank" rel="noopener noreferrer"
+                   style="display: block; border-radius: 0.375rem; overflow: hidden; border: 1px solid var(--border-gray); transition: transform 0.2s;">
+                  <img src="/images/social/facebook-qr.png" alt="Facebook QRコード" 
+                       style="width: 100%; height: auto; display: block;" />
+                </a>
+                <a href="mailto:kobeyabkk@gmail.com"
+                   style="display: flex; align-items: center; justify-content: center; background: var(--main-yellow); 
+                          border-radius: 0.375rem; border: 1px solid var(--border-gray); min-height: 90px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 2rem;">
                   @
                 </a>
               </div>
