@@ -756,8 +756,8 @@ export const minecraftCoursePage = () => (
             <a href="/contact" className="btn-cta-primary">
               <span>📅 体験会の日程を問い合わせる</span>
             </a>
-            <a href="tel:095-969-4100" className="btn-cta-primary">
-              <span>📞 095-969-4100</span>
+            <a href="tel:02-103-6708" className="btn-cta-primary">
+              <span>📞 02-103-6708</span>
             </a>
           </div>
           <div className="contact-info">

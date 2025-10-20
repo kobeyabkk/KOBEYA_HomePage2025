@@ -208,9 +208,7 @@ export const aboutPage = () => (
               <div style="background: var(--main-yellow); border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem;">
                 <div style="font-weight: 600; color: var(--text-dark);">駐車場完備</div>
               </div>
-              <div style="background: var(--base-white); border-radius: 0.5rem; padding: 1rem;">
-                <div style="font-weight: 600; color: var(--text-dark);">BTS プロンポン駅徒歩5分</div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -234,17 +232,14 @@ export const aboutPage = () => (
               </div>
               
               <div style="border-top: 1px solid #e2e8f0; padding-top: 1.5rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-                  <span style="color: var(--main-yellow);">🚊</span>
-                  <span style="color: var(--text-gray);">BTS プロンポン駅から徒歩5分</span>
-                </div>
+
                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
                   <span style="color: var(--main-yellow);">🚗</span>
                   <span style="color: var(--text-gray);">駐車場完備（フジスーパーと共用）</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                   <span style="color: var(--main-yellow);">📞</span>
-                  <span style="color: var(--text-gray);">066-123-4567</span>
+                  <span style="color: var(--text-gray);">02-103-6708</span>
                 </div>
               </div>
             </div>

@@ -781,8 +781,8 @@ export const steamCoursePage = () => (
             <a href="/contact" class="btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">
               無料体験を申し込む
             </a>
-            <a href="tel:066-123-4567" class="btn-secondary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">
-              📞 066-123-4567
+            <a href="tel:02-103-6708" class="btn-secondary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">
+              📞 02-103-6708
             </a>
           </div>
         </div>

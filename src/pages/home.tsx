@@ -233,7 +233,6 @@ export const homePage = () => {
             </div>
             <div style="margin-top: 2.5rem; display: flex; gap: 2rem; flex-wrap: wrap; color: var(--text-light); font-size: 0.9rem;">
               <div>フジスーパー2号店2階</div>
-              <div>BTS プロンポン駅徒歩5分</div>
               <div>駐車場完備</div>
             </div>
           </div>
@@ -305,7 +304,7 @@ export const homePage = () => {
               <ul style="list-style: none; padding: 0; color: var(--text-gray);">
                 <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
                   <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
-                  BTS プロンポン駅から徒歩5分の好立地
+                  フジスーパー2号店2階の便利な立地
                 </li>
                 <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
                   <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
@@ -351,7 +350,7 @@ export const homePage = () => {
           </p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a href="/contact" class="btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">無料体験を申し込む</a>
-            <a href="tel:066-123-4567" class="btn-secondary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">電話で相談する</a>
+            <a href="tel:02-103-6708" class="btn-secondary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">電話で相談する</a>
           </div>
         </div>
       </div>
