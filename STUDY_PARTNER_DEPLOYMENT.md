@@ -23,13 +23,26 @@
 
 ### 履歴保全のため削除しないが、今後使用禁止
 
-| プロジェクト名 | ステータス | 用途 |
-|--------------|----------|------|
-| kobeya-studypartner-full | 🔴 DEPRECATED | 旧バージョン（Phase 0） |
-| kobeya-study-partner-working | 🔴 DEPRECATED | 開発テスト版 |
-| kobeya-restore-proof | ⚠️ TEMPORARY | 一時的な復元テスト用 |
+| プロジェクト名 | ステータス | 自動デプロイ | 用途 |
+|--------------|----------|----------|------|
+| kobeya-studypartner-full | 🔴 DEPRECATED | ⚠️ 無効化済み | 旧バージョン（Phase 0） |
+| kobeya-study-partner-working | 🔴 DEPRECATED | ⚠️ 無効化済み | 開発テスト版 |
+| kobeya-restore-proof | ⚠️ TEMPORARY | ⚠️ 無効化済み | 一時的な復元テスト用 |
 
 **注意**: これらのプロジェクトは**再デプロイ禁止**。履歴参照のみ。
+
+### 非推奨マーキング方法
+
+**実施済み**: Production branch削除による自動デプロイ無効化
+
+**手順**:
+1. Cloudflare Dashboard → Workers & Pages → Pages
+2. 対象プロジェクトを選択
+3. Settings → Builds & deployments
+4. Build configuration → Production branch を削除（空白に）
+5. Save
+
+**詳細手順書**: `/home/user/restore/sp_final/DEPRECATED_PROJECTS_MANUAL.md`
 
 ---
 
