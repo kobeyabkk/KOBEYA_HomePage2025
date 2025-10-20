@@ -78,7 +78,7 @@ app.get('/courses/ai-coaching', (c) => {
 })
 
 app.get('/courses/math', (c) => {
-  return c.render(mathCoursePage())
+  return c.html(mathCoursePage())
 })
 
 // Dynamic course routing - RESTful /courses/:slug
@@ -107,7 +107,7 @@ app.get('/courses/:slug', (c) => {
     case 'ai-coaching':
       return c.render(aiCoachingCoursePage())
     case 'math':
-      return c.render(mathCoursePage())
+      return c.html(mathCoursePage())
     default:
       return c.notFound()
   }
