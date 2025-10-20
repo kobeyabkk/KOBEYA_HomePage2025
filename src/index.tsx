@@ -43,6 +43,11 @@ app.get('/contact', (c) => {
   return c.render(contactPage())
 })
 
+// AI Coaching Lab page
+app.get('/ai-coaching-course', (c) => {
+  return c.render(aiCoachingCoursePage())
+})
+
 // Course pages
 app.get('/courses/steam', (c) => {
   return c.render(steamCoursePage())
