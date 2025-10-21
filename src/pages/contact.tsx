@@ -6,6 +6,16 @@ export const contactPage = () => (
     <Header />
     
     <style>{`
+      :root {
+        --main-yellow: #FFC107;
+        --accent-yellow: #FFD700;
+        --base-white: #FFFFFF;
+        --text-dark: #2D3748;
+        --text-gray: #4A5568;
+        --text-light: #718096;
+        --border-gray: #E2E8F0;
+      }
+      
       .contact-section {
         padding: 5rem 0;
       }
