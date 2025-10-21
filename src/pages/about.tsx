@@ -143,11 +143,13 @@ export const aboutPage = () => (
         <h2 style="text-align: center; margin-bottom: 3rem;">講師紹介</h2>
         <div style="max-width: 800px; margin: 0 auto;">
           <div style="background: var(--base-white); border-radius: 1rem; padding: 2.5rem; text-align: center;">
-            <div style="width: 120px; height: 120px; background: var(--main-yellow); border-radius: 50%; 
-                        display: flex; align-items: center; justify-content: center; font-size: 3rem; 
-                        color: var(--text-dark); margin: 0 auto 1.5rem; font-weight: 700;">
-              鈴
-            </div>
+            <img 
+              src="/images/instructor/suzuki-masamichi.png" 
+              alt="鈴木政路 講師" 
+              style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; 
+                     margin: 0 auto 1.5rem; display: block; border: 4px solid var(--main-yellow); 
+                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" 
+            />
             <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">鈴木政路（すずき まさみち）</h3>
             <p style="color: var(--text-gray); margin-bottom: 2rem; font-weight: 500;">
               代表・教育者・算数数学指導者
@@ -247,13 +249,16 @@ export const aboutPage = () => (
           </div>
           
           <div>
-            <div style="background: #e2e8f0; border-radius: 1rem; height: 300px; display: flex; 
-                        align-items: center; justify-content: center; color: var(--text-light);">
-              <div style="text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
-                <p>Google Maps埋め込み予定地</p>
-                <p style="font-size: 0.875rem;">フジスーパー2号店周辺</p>
-              </div>
+            <div style="border-radius: 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.6061584930835!2d100.56955177694003!3d13.7422780866486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29fc39012652b%3A0xadcb95519e7638cf!2z44OX44Ot44Kw44Op44Of44Oz44Kw44GuS09CRVlB!5e0!3m2!1sja!2sth!4v1761020424484!5m2!1sja!2sth" 
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
             </div>
           </div>
         </div>
