@@ -94,7 +94,7 @@ export const aboutPage = () => (
               2018年にバンコクで開校した、日本人小中学生を対象としたプログラミング教室です。
               「楽しく、しっかり学ぶ」をモットーに、一人ひとりの個性と能力に合わせた指導を行っています。
             </p>
-            <p style="color: var(--text-gray); margin-bottom: 2rem; line-intensity: 1.7;">
+            <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.7;">
               フジスーパー2号店2階という通いやすい立地で、時代にあった最新のトレンドに沿った教材を開発・使用しています。
               経験豊富な日本人講師がお子様の成長をサポートいたします。
             </p>
