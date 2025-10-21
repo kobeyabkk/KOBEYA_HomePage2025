@@ -397,79 +397,31 @@ export function contactPage() {
               <!-- Contact Form -->
               <div class="contact-form">
                 <h3><i class="fas fa-paper-plane"></i>お問い合わせフォーム</h3>
-
-                <form>
-                  <div class="form-group">
-                    <label for="inquiry-type">お問い合わせ種別</label>
-                    <select id="inquiry-type" name="inquiry-type" required>
-                      <option value="">選択してください</option>
-                      <option value="trial">体験授業のお申込み</option>
-                      <option value="enrollment">入会のお申込み</option>
-                      <option value="course">コースについて</option>
-                      <option value="schedule">スケジュールについて</option>
-                      <option value="fee">料金について</option>
-                      <option value="other">その他</option>
-                    </select>
+                
+                <div style="text-align: center; padding: 40px 20px;">
+                  <div style="margin-bottom: 32px;">
+                    <i class="fas fa-edit" style="font-size: 4rem; color: var(--main-yellow); margin-bottom: 24px;"></i>
+                    <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.7; margin-bottom: 24px;">
+                      体験授業のお申込み、コースに関するご質問など、<br>
+                      お気軽にお問い合わせください。<br>
+                      以下のボタンからフォームを開きます。
+                    </p>
                   </div>
 
-                  <div class="form-group">
-                    <label for="student-name">生徒様のお名前</label>
-                    <input type="text" id="student-name" name="student-name" required>
-                  </div>
+                  <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSftpEbrx-DPE1gvzaDzKy46Zsqq5i9FR9LlY4bEjqMy6WAHfw/viewform?usp=dialog" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="submit-btn"
+                    style="text-decoration: none; max-width: 400px; margin: 0 auto;">
+                    <i class="fas fa-external-link-alt"></i>
+                    お問い合わせフォームを開く
+                  </a>
 
-                  <div class="form-group">
-                    <label for="parent-name">保護者様のお名前</label>
-                    <input type="text" id="parent-name" name="parent-name" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="email">メールアドレス</label>
-                    <input type="email" id="email" name="email" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="phone">電話番号</label>
-                    <input type="tel" id="phone" name="phone">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="age">生徒様の年齢</label>
-                    <select id="age" name="age">
-                      <option value="">選択してください</option>
-                      <option value="5-6">5〜6歳</option>
-                      <option value="7-9">小学校低学年（7〜9歳）</option>
-                      <option value="10-12">小学校高学年（10〜12歳）</option>
-                      <option value="13-15">中学生（13〜15歳）</option>
-                      <option value="16-18">高校生（16〜18歳）</option>
-                      <option value="adult">大人</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="course-interest">興味のあるコース</label>
-                    <select id="course-interest" name="course-interest">
-                      <option value="">選択してください</option>
-                      <option value="steam">STEAMコース</option>
-                      <option value="minecraft">マイクラッチコース</option>
-                      <option value="toypro">トイプロ</option>
-                      <option value="thinkthink">シンクシンク</option>
-                      <option value="unity">Unity</option>
-                      <option value="creators">クリエイターズ</option>
-                      <option value="ai-coaching">AIコーチング・ラボ</option>
-                      <option value="math">算数数学個別指導</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="message">お問い合わせ内容</label>
-                    <textarea id="message" name="message" placeholder="ご質問やご要望をお聞かせください" required></textarea>
-                  </div>
-
-                  <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i>
-                    送信する
-                  </button>
-                </form>
+                  <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 24px;">
+                    ※ 新しいウィンドウでGoogle フォームが開きます
+                  </p>
+                </div>
               </div>
             </div>
           </div>
