@@ -212,6 +212,11 @@ export const Footer = () => (
                 SNSでフォロー
               </h4>
               <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; max-width: 200px;">
+                <a href="https://line.me/R/ti/p/@kobeya" target="_blank" rel="noopener noreferrer"
+                   style="display: block; border-radius: 0.375rem; overflow: hidden; border: 1px solid var(--border-gray); transition: transform 0.2s;">
+                  <img src="/images/social/line-qr.png" alt="LINE QRコード" 
+                       style="width: 100%; height: auto; display: block;" />
+                </a>
                 <a href="https://twitter.com/kobeya" target="_blank" rel="noopener noreferrer"
                    style="display: block; border-radius: 0.375rem; overflow: hidden; border: 1px solid var(--border-gray); transition: transform 0.2s;">
                   <img src="/images/social/twitter-qr.png" alt="Twitter QRコード" 
@@ -226,11 +231,6 @@ export const Footer = () => (
                    style="display: block; border-radius: 0.375rem; overflow: hidden; border: 1px solid var(--border-gray); transition: transform 0.2s;">
                   <img src="/images/social/facebook-qr.png" alt="Facebook QRコード" 
                        style="width: 100%; height: auto; display: block;" />
-                </a>
-                <a href="mailto:kobeyabkk@gmail.com"
-                   style="display: flex; align-items: center; justify-content: center; background: var(--main-yellow); 
-                          border-radius: 0.375rem; border: 1px solid var(--border-gray); min-height: 90px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 2rem;">
-                  @
                 </a>
               </div>
             </div>
