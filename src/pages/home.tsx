@@ -224,7 +224,7 @@ export const homePage = () => {
           <div>
             <h1>バンコクで学ぶ<br />プログラミング教室</h1>
             <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2.5rem; line-height: 1.7;">
-              AI・プログラミングのKOBEYAでは、お子様の興味と能力に合わせた8つの専門コースをご用意。<br />
+              AI&プログラミングのKOBEYAでは、お子様の興味と能力に合わせた8つのコースをご用意。<br />
               楽しく学んで、未来のスキルを身につけましょう！
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
@@ -242,7 +242,7 @@ export const homePage = () => {
               <div style="background: var(--base-white); border-radius: 0.75rem; padding: 2rem;">
                 <div style="font-size: 3rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">8</div>
                 <div style="color: var(--text-gray); font-weight: 600; font-size: 1.1rem;">専門コース</div>
-                <div style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">5歳〜高校生まで対応</div>
+                <div style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">小1〜高校生・社会人まで対応</div>
               </div>
             </div>
           </div>
@@ -296,8 +296,8 @@ export const homePage = () => {
           <div>
             <h2>充実した学習環境</h2>
             <p style="color: var(--text-gray); margin-bottom: 2rem; font-size: 1.125rem; line-height: 1.7;">
-              フジスーパー2号店2階の明るく清潔な教室で、最新の機材と教材を使用した質の高いプログラミング教育を提供しています。
-              経験豊富な講師陣が、お子様一人ひとりの個性と能力に合わせて丁寧に指導いたします。
+              フジスーパー2号店2階にある小部屋のような教室です。様々な分野の質の高い教材を使ったプログラミング教育を提供しています。授業自体はレッスン動画で進みますが、日本人講師が教室にいるので安心です。
+
             </p>
             <div style="margin-bottom: 2rem;">
               <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">教室の特徴</h3>
@@ -308,15 +308,15 @@ export const homePage = () => {
                 </li>
                 <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
                   <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
-                  最新のPC・タブレット完備
+                  PC・タブレット完備
                 </li>
                 <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
                   <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
-                  少人数制による丁寧な指導
+                  自分のペースで進められるレッスン
                 </li>
                 <li style="display: flex; align-items: center;">
                   <span style="display: inline-block; width: 8px; height: 8px; background: var(--main-yellow); border-radius: 50%; margin-right: 0.75rem;"></span>
-                  保護者様への定期的な進捗報告
+                  オンライン授業で自宅からの受講もOK
                 </li>
               </ul>
             </div>
