@@ -78,7 +78,8 @@ export const aboutPage = () => (
         <h1>教室について</h1>
         <p style="font-size: 1.25rem; color: var(--text-gray); max-width: 600px; margin: 0 auto;">
           バンコクの日本人小中学生のための<br />
-          質の高いプログラミング教育を提供しています
+          質の高いプログラミング教育を提供しています<br />
+          オンラインでの受講もOK!
         </p>
       </div>
     </section>
@@ -90,19 +91,19 @@ export const aboutPage = () => (
           <div>
             <h2>AI & プログラミングのKOBEYA</h2>
             <p style="color: var(--text-gray); margin-bottom: 1.5rem; line-height: 1.7;">
-              2021年にバンコクで開校した、日本人小中学生を対象としたプログラミング教室です。
-              「楽しく学ぶ」をモットーに、一人ひとりの個性と能力に合わせた指導を行っています。
+              2018年にバンコクで開校した、日本人小中学生を対象としたプログラミング教室です。
+              「楽しく、しっかり学ぶ」をモットーに、一人ひとりの個性と能力に合わせた指導を行っています。
             </p>
             <p style="color: var(--text-gray); margin-bottom: 2rem; line-intensity: 1.7;">
-              フジスーパー2号店2階という通いやすい立地で、最新の教材と設備を使用し、
-              経験豊富な講師陣がお子様の成長をサポートいたします。
+              フジスーパー2号店2階という通いやすい立地で、時代にあった最新のトレンドに沿った教材を開発・使用しています。
+              経験豊富な日本人講師がお子様の成長をサポートいたします。
             </p>
             
             <div style="background: #f8f9fa; border-radius: 0.75rem; padding: 2rem;">
               <h3 style="color: var(--text-dark); margin-bottom: 1rem;">教室の理念</h3>
               <ul style="color: var(--text-gray); line-height: 1.7; padding-left: 1.5rem;">
                 <li>子どもたちが楽しみながら学べる環境づくり</li>
-                <li>個々の興味と能力を活かした個別指導</li>
+                <li>個々の興味と能力を活かした個別レッスン</li>
                 <li>論理的思考力と創造性の育成</li>
                 <li>将来に役立つ実践的なスキルの習得</li>
               </ul>
@@ -114,20 +115,20 @@ export const aboutPage = () => (
               <h3 style="color: var(--text-dark); margin-bottom: 2rem;">教室の実績</h3>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div style="background: var(--base-white); border-radius: 0.5rem; padding: 1.5rem;">
-                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">150+</div>
-                  <div style="color: var(--text-gray);">受講生徒数</div>
+                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">500+</div>
+                  <div style="color: var(--text-gray);">のべ受講生徒数</div>
                 </div>
                 <div style="background: var(--base-white); border-radius: 0.5rem; padding: 1.5rem;">
-                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">98%</div>
-                  <div style="color: var(--text-gray);">満足度</div>
+                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">98%+</div>
+                  <div style="color: var(--text-gray);">1年以上継続受講</div>
                 </div>
                 <div style="background: var(--base-white); border-radius: 0.5rem; padding: 1.5rem;">
-                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">3年</div>
+                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">7年</div>
                   <div style="color: var(--text-gray);">運営実績</div>
                 </div>
                 <div style="background: var(--base-white); border-radius: 0.5rem; padding: 1.5rem;">
-                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">8</div>
-                  <div style="color: var(--text-gray);">専門コース</div>
+                  <div style="font-size: 2rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">8コース</div>
+                  <div style="color: var(--text-gray);">多彩なコース</div>
                 </div>
               </div>
             </div>
@@ -163,8 +164,8 @@ export const aboutPage = () => (
                 ゲーム制作やコンテスト参加を通じて実践的なスキルを身につけさせる教育方針。
               </p>
               <p style="margin-bottom: 0;">
-                Jr.プログラミング検定での高い合格実績（59名合格、1級13名）を誇り、
-                「楽しく学ぶ」をモットーに子どもたちの創造性と論理的思考力を育成している。
+                Jr.プログラミング検定での高い合格実績（63名合格、1級14名）を誇り、
+                「楽しく、しっかり学ぶ」をモットーに子どもたちの創造性と論理的思考力を育成している。
               </p>
             </div>
           </div>
@@ -180,20 +181,20 @@ export const aboutPage = () => (
           <div>
             <h3 style="color: var(--text-dark); margin-bottom: 1rem;">充実した学習環境</h3>
             <ul style="color: var(--text-gray); line-height: 1.7; padding-left: 1.5rem; margin-bottom: 2rem;">
-              <li>最新のPC・タブレット完備</li>
+              <li>PC・タブレット完備</li>
               <li>高速インターネット環境</li>
-              <li>少人数制のゆったりとした教室</li>
-              <li>明るく清潔な学習スペース</li>
-              <li>保護者様用の待合スペース</li>
+              <li>少人数制の落ち着いた教室</li>
+              <li>講師との距離が近い学習スペース</li>
+              <li>ノートPC、マウス、イヤホンなど持ち込み可</li>
             </ul>
             
             <h3 style="color: var(--text-dark); margin-bottom: 1rem;">教材・ソフトウェア</h3>
             <ul style="color: var(--text-gray); line-height: 1.7; padding-left: 1.5rem;">
               <li>Scratch、Roblox Studio</li>
-              <li>Python開発環境</li>
-              <li>Unity、マイクラッチ</li>
-              <li>シンクシンクアプリ</li>
-              <li>AI学習システム</li>
+              <li>教育版マインクラフト、マイクラッチ</li>
+              <li>Unity、Blender、Canva</li>
+              <li>シンクシンク、トイプロ(Python)</li>
+              <li>AI学習システム〜KOBEYA Study Partner〜</li>
             </ul>
           </div>
           
