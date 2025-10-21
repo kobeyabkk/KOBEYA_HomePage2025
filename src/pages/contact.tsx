@@ -358,7 +358,14 @@ export function contactPage() {
                     <i class="fas fa-share-alt" style="margin-right: 8px;"></i>
                     <strong>SNS でもつながりましょう</strong>
                   </div>
-                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px;">
+                  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px;">
+                    <div style="text-align: center;">
+                      <a href="https://line.me/R/ti/p/@kobeya" target="_blank" rel="noopener noreferrer" style="display: block;">
+                        <img src="/images/social/line-qr.png" alt="LINE" 
+                             style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; border: 2px solid var(--border-gray);" />
+                        <div style="margin-top: 8px; font-size: 0.875rem; color: var(--text-gray);">LINE</div>
+                      </a>
+                    </div>
                     <div style="text-align: center;">
                       <a href="https://twitter.com/kobeya" target="_blank" rel="noopener noreferrer" style="display: block;">
                         <img src="/images/social/twitter-qr.png" alt="Twitter" 
