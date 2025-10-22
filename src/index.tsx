@@ -137,19 +137,90 @@ app.get('/api/health', (c) => {
 })
 
 // API route for form submission
+// Contact form API endpoint with Resend integration
 app.post('/api/contact', async (c) => {
   try {
     const formData = await c.req.json()
+    const { name, email, phone, message } = formData
     
-    // Here you would typically send to your CRM, email service, etc.
-    // For now, just return success
-    console.log('Contact form submission:', formData)
+    // Validate required fields
+    if (!name || !email || !message) {
+      return c.json({ 
+        success: false, 
+        message: '必須項目を入力してください。' 
+      }, 400)
+    }
+    
+    // Get Resend API key from environment
+    const resendApiKey = c.env?.RESEND_API_KEY
+    
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY is not configured')
+      return c.json({ 
+        success: false, 
+        message: 'メール送信設定にエラーがあります。管理者に連絡してください。' 
+      }, 500)
+    }
+    
+    // Prepare email content
+    const emailHtml = `
+      <h2>【KOBEYA】お問い合わせがありました</h2>
+      <hr />
+      <h3>お問い合わせ内容</h3>
+      <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9; font-weight: bold;">お名前</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9; font-weight: bold;">メールアドレス</td>
+          <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${email}">${email}</a></td>
+        </tr>
+        ${phone ? `
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9; font-weight: bold;">電話番号</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">${phone}</td>
+        </tr>
+        ` : ''}
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9; font-weight: bold;">お問い合わせ内容</td>
+          <td style="padding: 10px; border: 1px solid #ddd; white-space: pre-wrap;">${message}</td>
+        </tr>
+      </table>
+      <hr />
+      <p style="color: #666; font-size: 12px;">送信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Bangkok' })}</p>
+    `
+    
+    // Send email via Resend API
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: 'KOBEYA Contact Form <onboarding@resend.dev>',
+        to: ['kobeyabkk@gmail.com'],
+        subject: `【KOBEYA】お問い合わせ：${name}様より`,
+        html: emailHtml
+      })
+    })
+    
+    if (!resendResponse.ok) {
+      const errorData = await resendResponse.json()
+      console.error('Resend API error:', errorData)
+      throw new Error('Failed to send email')
+    }
+    
+    const result = await resendResponse.json()
+    console.log('Email sent successfully:', result)
     
     return c.json({ 
       success: true, 
       message: 'お問い合わせありがとうございます。3営業日以内にご連絡いたします。' 
     })
   } catch (error) {
+    console.error('Contact form error:', error)
     return c.json({ 
       success: false, 
       message: 'エラーが発生しました。しばらくしてから再度お試しください。' 
