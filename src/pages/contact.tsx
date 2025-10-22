@@ -1,4 +1,3 @@
-import { raw } from 'hono/html'
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 
@@ -320,82 +319,7 @@ export const contactPage = () => (
       }
     `}</style>
 
-{raw(`<script>
-      (function() {
-        console.log('Contact form script loaded');
-        
-        // Wait for DOM to be ready
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initForm);
-        } else {
-          initForm();
-        }
-        
-        function initForm() {
-          const form = document.getElementById('contact-form');
-          const submitBtn = document.getElementById('submit-btn');
-          const statusMessage = document.getElementById('status-message');
-          
-          console.log('Form elements:', { form, submitBtn, statusMessage });
-          
-          if (!form || !submitBtn || !statusMessage) {
-            console.error('Required form elements not found');
-            return;
-          }
-          
-          form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            console.log('Form submitted');
-            
-            const formData = {
-              name: document.getElementById('contact-name').value,
-              email: document.getElementById('contact-email').value,
-              phone: document.getElementById('contact-phone').value,
-              message: document.getElementById('contact-message').value
-            };
-            
-            console.log('Form data:', formData);
-            
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.textContent = '送信中...';
-            statusMessage.className = 'status-message status-loading';
-            statusMessage.textContent = 'メールを送信しています...';
-            
-            try {
-              console.log('Sending request to /api/contact');
-              const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-              });
-              
-              console.log('Response status:', response.status);
-              const result = await response.json();
-              console.log('Response data:', result);
-              
-              if (result.success) {
-                statusMessage.className = 'status-message status-success';
-                statusMessage.textContent = result.message;
-                form.reset();
-              } else {
-                statusMessage.className = 'status-message status-error';
-                statusMessage.textContent = result.message;
-              }
-            } catch (error) {
-              console.error('Error submitting form:', error);
-              statusMessage.className = 'status-message status-error';
-              statusMessage.textContent = 'エラーが発生しました。しばらくしてから再度お試しください。';
-            } finally {
-              submitBtn.disabled = false;
-              submitBtn.textContent = '送信する';
-            }
-          });
-        }
-      })();
-    </script>`)}
+<script src="/js/contact-form.js" defer></script>
 
     <Header />
 
