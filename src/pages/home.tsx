@@ -213,6 +213,85 @@ export const homePage = () => {
         color: var(--text-gray);
         font-weight: 500;
       }
+      
+      .consulting-card {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        border-radius: 1rem;
+        padding: 2.5rem;
+        color: white;
+        box-shadow: 0 8px 32px rgba(30, 58, 138, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .consulting-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .consulting-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.95);
+      }
+      
+      .consulting-problems {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .consulting-problems ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .consulting-problems li {
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+        position: relative;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      
+      .consulting-problems li:last-child {
+        margin-bottom: 0;
+      }
+      
+      .consulting-problems li:before {
+        content: "💡";
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      
+      .btn-consulting {
+        background: white;
+        color: #1e3a8a;
+        font-weight: 600;
+        padding: 0.875rem 2rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 2px solid transparent;
+      }
+      
+      .btn-consulting:hover {
+        background: #f0f9ff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
     `}</style>
     
     <Header />
@@ -236,14 +315,28 @@ export const homePage = () => {
               <div>駐車場完備</div>
             </div>
           </div>
-          <div style="text-align: center;">
-            <div style="background: var(--main-yellow); border-radius: 1rem; padding: 3rem; color: var(--text-dark); box-shadow: 0 8px 24px rgba(255, 193, 7, 0.3);">
-              <h3 style="margin-bottom: 2rem;">🤖 AI & プログラミングのKOBEYA</h3>
-              <div style="background: var(--base-white); border-radius: 0.75rem; padding: 2rem;">
-                <div style="font-size: 3rem; font-weight: 700; color: var(--main-yellow); margin-bottom: 0.5rem;">8</div>
-                <div style="color: var(--text-gray); font-weight: 600; font-size: 1.1rem;">専門コース</div>
-                <div style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">小1〜高校生・社会人まで対応</div>
+          <div>
+            <div class="consulting-card">
+              <h3 class="consulting-title">
+                <span style="font-size: 1.5rem;">🤝</span>
+                AIコンサルティング
+              </h3>
+              <p class="consulting-text">
+                AIがすごい！便利！と耳にしますが、みなさま使いこなせていますか?
+              </p>
+              <div class="consulting-problems">
+                <ul>
+                  <li>AIの使い方が分からない</li>
+                  <li>AIを業務にどう活かせるか分からない</li>
+                  <li>既存のAIを自分の仕事・副業などに取り入れたい</li>
+                </ul>
               </div>
+              <p class="consulting-text" style="margin-bottom: 1.75rem;">
+                このような悩みを持つ方はぜひ一度ご相談ください。
+              </p>
+              <a href="https://line.me/R/ti/p/@093dagwm" class="btn-consulting" target="_blank" rel="noopener noreferrer">
+                💬 LINEで相談する
+              </a>
             </div>
           </div>
         </div>
