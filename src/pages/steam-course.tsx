@@ -566,6 +566,9 @@ export const steamCoursePage = () => (
               <ul style="padding-left: 1.5rem;">
                 <li><strong>ビジネス入門</strong>：Excel、Word、Google Sheets、Google Slide</li>
                 <li><strong>Notion講座</strong>：現代的なノートテイキング・プロジェクト管理</li>
+                <li><strong>PowerApps講座</strong></li>
+                <li><strong>Airtable講座</strong></li>
+                <li><strong>Zapier講座</strong></li>
                 <li><strong>生成AI体験（ChatGPT）</strong>：AIツールの活用方法</li>
               </ul>
             </div>
