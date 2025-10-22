@@ -264,12 +264,12 @@ export const contactPage = () => (
         color: white;
       }
       
-      .btn-cta-email {
+      .btn-cta-form {
         background: var(--text-dark);
         color: white;
       }
       
-      .btn-cta-email:hover {
+      .btn-cta-form:hover {
         background: var(--base-white);
         color: var(--text-dark);
       }
@@ -493,13 +493,34 @@ export const contactPage = () => (
           <a href="https://line.me/R/ti/p/@093dagwm" class="btn-cta btn-cta-line" target="_blank" rel="noopener noreferrer">
             💬 LINEで相談
           </a>
-          <a href="mailto:kobeyabkk@gmail.com" class="btn-cta btn-cta-email">
-            ✉️ メールで問い合わせ
+          <a href="#contact-form" class="btn-cta btn-cta-form">
+            📝 お問い合わせ
           </a>
         </div>
       </div>
     </section>
 
     <Footer />
+    
+    <script>{`
+      // Smooth scroll to form when clicking お問い合わせ button
+      document.addEventListener('DOMContentLoaded', function() {
+        const formButtons = document.querySelectorAll('a[href="#contact-form"]');
+        formButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const form = document.getElementById('contact-form');
+            if (form) {
+              form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              // Focus on first input after scroll
+              setTimeout(() => {
+                const firstInput = form.querySelector('input');
+                if (firstInput) firstInput.focus();
+              }, 500);
+            }
+          });
+        });
+      });
+    `}</script>
   </>
 )
