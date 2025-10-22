@@ -226,6 +226,13 @@ export const contactPage = () => (
         margin-right: auto;
       }
       
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
       .btn-cta {
         background: var(--text-dark);
         color: var(--base-white);
@@ -234,7 +241,9 @@ export const contactPage = () => (
         border-radius: 0.5rem;
         text-decoration: none;
         transition: all 0.3s;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
         box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
       }
       
@@ -243,6 +252,26 @@ export const contactPage = () => (
         color: var(--text-dark);
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(45, 55, 72, 0.4);
+      }
+      
+      .btn-cta-line {
+        background: #06C755;
+        color: white;
+      }
+      
+      .btn-cta-line:hover {
+        background: #05B04D;
+        color: white;
+      }
+      
+      .btn-cta-email {
+        background: var(--text-dark);
+        color: white;
+      }
+      
+      .btn-cta-email:hover {
+        background: var(--base-white);
+        color: var(--text-dark);
       }
       
       @media (max-width: 768px) {
@@ -346,15 +375,21 @@ export const contactPage = () => (
             </h2>
             <ul class="info-list">
               <li class="info-item">
-                <span class="info-label">電話</span>
+                <span class="info-label">LINE</span>
                 <span class="info-value">
-                  <a href="tel:021036708">02-103-6708</a>
+                  <a href="https://line.me/R/ti/p/@093dagwm" target="_blank" rel="noopener noreferrer">@093dagwm で友だち追加</a>
                 </span>
               </li>
               <li class="info-item">
                 <span class="info-label">メール</span>
                 <span class="info-value">
                   <a href="mailto:kobeyabkk@gmail.com">kobeyabkk@gmail.com</a>
+                </span>
+              </li>
+              <li class="info-item">
+                <span class="info-label">電話</span>
+                <span class="info-value">
+                  02-103-6708
                 </span>
               </li>
               <li class="info-item">
@@ -454,9 +489,14 @@ export const contactPage = () => (
           実際の授業を体験して、お子様に合ったコースを見つけましょう。<br />
           オンラインでの体験も可能です。
         </p>
-        <a href="tel:021036708" class="btn-cta">
-          📞 今すぐ電話で申し込む
-        </a>
+        <div class="cta-buttons">
+          <a href="https://line.me/R/ti/p/@093dagwm" class="btn-cta btn-cta-line" target="_blank" rel="noopener noreferrer">
+            💬 LINEで相談
+          </a>
+          <a href="mailto:kobeyabkk@gmail.com" class="btn-cta btn-cta-email">
+            ✉️ メールで問い合わせ
+          </a>
+        </div>
       </div>
     </section>
 

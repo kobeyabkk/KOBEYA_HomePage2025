@@ -1240,8 +1240,8 @@ export const toyprogrammingCoursePage = () => (
             <a href="/contact" className="btn-cta-primary">
               <span>📅 体験会の日程を問い合わせる</span>
             </a>
-            <a href="tel:02-103-6708" className="btn-cta-primary">
-              <span>📞 02-103-6708</span>
+            <a href="https://line.me/R/ti/p/@093dagwm" className="btn-cta-primary" target="_blank" rel="noopener noreferrer">
+              <span>💬 LINEで相談</span>
             </a>
           </div>
           <div className="contact-info">
