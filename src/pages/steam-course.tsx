@@ -659,6 +659,10 @@ export const steamCoursePage = () => (
               <span class="course-badge">長期</span>
             </div>
             <div class="course-item">
+              <span>スマホアプリ入門</span>
+              <span class="course-badge">長期</span>
+            </div>
+            <div class="course-item">
               <span>マインクラフトでプログラミング Java</span>
               <span class="course-badge">長期</span>
             </div>
@@ -715,7 +719,15 @@ export const steamCoursePage = () => (
               <span class="course-badge">中期</span>
             </div>
             <div class="course-item">
-              <span>Notion講座</span>
+              <span>プロンプト名人AI体験講座</span>
+              <span class="course-badge">短期</span>
+            </div>
+            <div class="course-item">
+              <span>PowerApps講座</span>
+              <span class="course-badge">長期</span>
+            </div>
+            <div class="course-item">
+              <span>Airtable講座</span>
               <span class="course-badge">中期</span>
             </div>
             <div class="course-item">
