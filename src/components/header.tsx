@@ -80,8 +80,61 @@ export const Header = () => (
       
       .header-cta {
         display: flex;
-        gap: 1rem;
+        gap: 0.75rem;
         align-items: center;
+        flex-wrap: wrap;
+      }
+      
+      .contact-group {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      
+      .btn-contact {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        border: 2px solid transparent;
+        white-space: nowrap;
+      }
+      
+      .btn-line {
+        background: #06C755;
+        color: white;
+        border-color: #06C755;
+      }
+      
+      .btn-line:hover {
+        background: #05B04D;
+        border-color: #05B04D;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(6, 199, 85, 0.3);
+      }
+      
+      .btn-email {
+        background: var(--base-white);
+        color: var(--text-dark);
+        border-color: #E0E0E0;
+      }
+      
+      .btn-email:hover {
+        background: #F5F5F5;
+        border-color: #BDBDBD;
+        transform: translateY(-1px);
+      }
+      
+      .phone-display {
+        color: var(--text-gray);
+        font-size: 0.875rem;
+        font-weight: 600;
+        white-space: nowrap;
       }
       
       .btn-header {
@@ -138,6 +191,23 @@ export const Header = () => (
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid #e2e8f0;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .mobile-nav .contact-group {
+        width: 100%;
+        flex-direction: column;
+      }
+      
+      .mobile-nav .btn-contact {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .mobile-nav .phone-display {
+        text-align: center;
+        padding: 0.5rem;
       }
       
       @media (max-width: 768px) {
@@ -152,6 +222,11 @@ export const Header = () => (
         
         .header-container {
           padding: 0 1rem;
+        }
+        
+        .btn-contact {
+          font-size: 0.8125rem;
+          padding: 0.4rem 0.75rem;
         }
       }
     `}</style>
@@ -171,7 +246,15 @@ export const Header = () => (
         </nav>
         
         <div class="header-cta">
-          <a href="tel:02-103-6708" style="color: var(--text-gray); text-decoration: none;">📞 02-103-6708</a>
+          <div class="contact-group">
+            <a href="https://line.me/R/ti/p/@093dagwm" class="btn-contact btn-line" target="_blank" rel="noopener noreferrer">
+              💬 LINE
+            </a>
+            <a href="mailto:kobeyabkk@gmail.com" class="btn-contact btn-email">
+              ✉️ メール
+            </a>
+            <span class="phone-display">📞 02-103-6708</span>
+          </div>
           <a href="/contact" class="btn-header">無料体験</a>
         </div>
         
@@ -186,7 +269,15 @@ export const Header = () => (
           <a href="/contact">お問い合わせ</a>
         </nav>
         <div class="header-cta">
-          <a href="tel:02-103-6708" style="color: var(--text-gray); text-decoration: none;">📞 02-103-6708</a>
+          <div class="contact-group">
+            <a href="https://line.me/R/ti/p/@093dagwm" class="btn-contact btn-line" target="_blank" rel="noopener noreferrer">
+              💬 LINEで相談
+            </a>
+            <a href="mailto:kobeyabkk@gmail.com" class="btn-contact btn-email">
+              ✉️ メールで問い合わせ
+            </a>
+            <span class="phone-display">📞 02-103-6708</span>
+          </div>
           <a href="/contact" class="btn-header">無料体験</a>
         </div>
       </div>

@@ -350,7 +350,7 @@ export const homePage = () => {
           </p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a href="/contact" class="btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">無料体験を申し込む</a>
-            <a href="tel:02-103-6708" class="btn-secondary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">電話で相談する</a>
+            <a href="https://line.me/R/ti/p/@093dagwm" class="btn-secondary" style="font-size: 1.125rem; padding: 1rem 2.5rem;" target="_blank" rel="noopener noreferrer">💬 LINEで相談する</a>
           </div>
         </div>
       </div>
