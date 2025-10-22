@@ -512,19 +512,23 @@ export const steamCoursePage = () => (
         <div class="accordion" onclick="toggleAccordion(this)">
           <div class="accordion-header">
             <h3 class="accordion-title">
-              💻 プログラミング・開発講座
+              💻 プログラミング・ゲーム開発講座
             </h3>
             <span class="accordion-icon">▼</span>
           </div>
           <div class="accordion-content">
             <div class="accordion-inner">
-              <p>本格的なプログラミング言語とゲーム開発を学べる上級者向け講座群です。</p>
+              <p>本格的なプログラミング言語とゲーム開発を学べる講座群です。</p>
               <ul style="padding-left: 1.5rem;">
                 <li><strong>Unity開発</strong>：本格的なゲーム開発エンジンを学習</li>
-                <li><strong>小学生から楽しむRuby</strong>：プログラミング言語の基礎</li>
                 <li><strong>はじめてのアプリ開発</strong>：モバイルアプリケーション制作</li>
+                <li><strong>スマホアプリ入門</strong></li>
+                <li><strong>はじめてのAppSheet</strong></li>
                 <li><strong>マインクラフトでプログラミング（Java）</strong>：人気ゲームでプログラミング学習</li>
+                <li><strong>マイクラマスター講座</strong></li>
                 <li><strong>Blender入門</strong>：3Dモデリング・アニメーション</li>
+                <li><strong>メタバース講座</strong>：Cluster、Unity使用</li>
+                <li><strong>フォートナイト制作講座</strong>：人気ゲーム内でのクリエイション</li>
               </ul>
             </div>
           </div>
