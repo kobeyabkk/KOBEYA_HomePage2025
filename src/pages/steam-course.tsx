@@ -548,8 +548,6 @@ export const steamCoursePage = () => (
                 <li><strong>動画制作・YouTuber体験</strong>：動画編集とコンテンツ制作</li>
                 <li><strong>VFX体験</strong>：映像エフェクトの基礎</li>
                 <li><strong>動画編集入門（DaVinci Resolve）</strong>：プロレベルの動画編集</li>
-                <li><strong>メタバース講座</strong>：Cluster、Unity使用</li>
-                <li><strong>フォートナイト制作講座</strong>：人気ゲーム内でのクリエイション</li>
               </ul>
             </div>
           </div>
