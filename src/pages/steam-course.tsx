@@ -498,11 +498,12 @@ export const steamCoursePage = () => (
           </div>
           <div class="accordion-content">
             <div class="accordion-inner">
-              <p>デザインの世界で大きな影響力を持つ<strong>Canva</strong>を使った講座群です。初心者でも美しいデザインの制作物を作れるようになります。</p>
+              <img src="https://page.gensparksite.com/v1/base64_upload/6c51801919f9bb2b65172b9f2d2a87ae" alt="Canvaデザイン講座" class="lesson-image" />
+              <p>デザインの世界で大きな影響力を持つ<strong>Canva</strong>などを使った講座群です。初心者でも美しいデザインの制作物を作れるようになります。</p>
               <ul style="padding-left: 1.5rem;">
                 <li><strong>Canva基礎講座</strong>：美しいデザインの制作方法を基礎から学習</li>
                 <li><strong>自分をデザイン講座</strong>：オリジナル作品制作で個性を表現</li>
-                <li><strong>デジタルイラスト講座</strong>：LINEスタンプ制作にチャレンジ</li>
+                <li><strong>デジタルイラスト講座</strong>：LINEスタンプ制作にチャレンジ（MediBang Paint）</li>
               </ul>
             </div>
           </div>
