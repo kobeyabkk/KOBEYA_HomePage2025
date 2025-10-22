@@ -518,6 +518,7 @@ export const steamCoursePage = () => (
           </div>
           <div class="accordion-content">
             <div class="accordion-inner">
+              <img src="https://page.gensparksite.com/v1/base64_upload/a4e97e2df876efdf0abd090a659a7689" alt="プログラミング・ゲーム開発講座" class="lesson-image" />
               <p>本格的なプログラミング言語とゲーム開発を学べる講座群です。</p>
               <ul style="padding-left: 1.5rem;">
                 <li><strong>Unity開発</strong>：本格的なゲーム開発エンジンを学習</li>
@@ -543,6 +544,7 @@ export const steamCoursePage = () => (
           </div>
           <div class="accordion-content">
             <div class="accordion-inner">
+              <img src="https://page.gensparksite.com/v1/base64_upload/3ae91f8e3676947aca640805b530e50b" alt="動画・クリエイティブ講座" class="lesson-image" />
               <p>デジタルクリエイションを楽しみながら学べる講座群です。</p>
               <ul style="padding-left: 1.5rem;">
                 <li><strong>動画制作・YouTuber体験</strong>：動画編集とコンテンツ制作</li>
@@ -562,6 +564,7 @@ export const steamCoursePage = () => (
           </div>
           <div class="accordion-content">
             <div class="accordion-inner">
+              <img src="https://page.gensparksite.com/v1/base64_upload/1678046f27aea79434630f95bcb0e495" alt="ビジネススキル・AI講座" class="lesson-image" />
               <p>実務で役立つスキルとAI技術を学べる講座群です。</p>
               <ul style="padding-left: 1.5rem;">
                 <li><strong>ビジネス入門</strong>：Excel、Word、Google Sheets、Google Slide</li>
