@@ -436,7 +436,6 @@ export const steamCoursePage = () => (
                 <li><strong>スクラッチ入門（小1〜2向け）</strong>：マウス操作、キーボード入力を簡単なイラストで学習</li>
                 <li><strong>スクラッチ初級〜上級</strong>：段階的なスキルアップで最終的にスーパーマリオレベルのゲームを制作</li>
                 <li><strong>Jr.プログラミング検定対応</strong>：教室で受験可能な資格取得サポート</li>
-                <li><strong>英語でプログラミング</strong>：グローバルなプログラミングスキルを習得</li>
               </ul>
               
               <div style="background: #e8f5e8; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
