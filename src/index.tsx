@@ -138,6 +138,7 @@ app.get('/api/health', (c) => {
 
 // API route for form submission
 // Contact form API endpoint with Resend integration
+// Sends email via Resend API to kobeyabkk@gmail.com
 app.post('/api/contact', async (c) => {
   try {
     const formData = await c.req.json()
@@ -154,8 +155,15 @@ app.post('/api/contact', async (c) => {
     // Get Resend API key from environment
     const resendApiKey = c.env?.RESEND_API_KEY
     
+    // Enhanced debug logging
+    console.log('Environment check:', {
+      hasEnv: !!c.env,
+      hasApiKey: !!resendApiKey,
+      envKeys: c.env ? Object.keys(c.env) : 'no env object'
+    })
+    
     if (!resendApiKey) {
-      console.error('RESEND_API_KEY is not configured')
+      console.error('RESEND_API_KEY is not configured in environment')
       return c.json({ 
         success: false, 
         message: 'メール送信設定にエラーがあります。管理者に連絡してください。' 
@@ -192,6 +200,7 @@ app.post('/api/contact', async (c) => {
     `
     
     // Send email via Resend API
+    console.log('Attempting to send email via Resend API...')
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -206,14 +215,16 @@ app.post('/api/contact', async (c) => {
       })
     })
     
+    console.log('Resend API response status:', resendResponse.status)
+    
     if (!resendResponse.ok) {
       const errorData = await resendResponse.json()
-      console.error('Resend API error:', errorData)
-      throw new Error('Failed to send email')
+      console.error('Resend API error details:', JSON.stringify(errorData))
+      throw new Error(`Failed to send email: ${JSON.stringify(errorData)}`)
     }
     
     const result = await resendResponse.json()
-    console.log('Email sent successfully:', result)
+    console.log('Email sent successfully! Response:', JSON.stringify(result))
     
     return c.json({ 
       success: true, 
