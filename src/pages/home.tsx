@@ -334,8 +334,14 @@ export const homePage = () => {
               <p class="consulting-text" style="margin-bottom: 1.75rem;">
                 このような悩みを持つ方はぜひ一度ご相談ください。
               </p>
-              <a href="https://line.me/R/ti/p/@093dagwm" class="btn-consulting" target="_blank" rel="noopener noreferrer">
-                💬 LINEで相談する
+              <a 
+                id="ai-consult-cta" 
+                data-cta="ai-consult" 
+                href="/ai-consult" 
+                class="btn-consulting" 
+                aria-label="AIコンサルの詳細ページへ移動"
+              >
+                🤝 AIコンサルはこちら
               </a>
             </div>
           </div>

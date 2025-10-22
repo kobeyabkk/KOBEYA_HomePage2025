@@ -5,6 +5,7 @@ import { renderer } from './renderer'
 import { homePage } from './pages/home'
 import { aboutPage } from './pages/about'
 import { contactPage } from './pages/contact'
+import { aiConsultPage } from './pages/ai-consult'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
@@ -41,6 +42,11 @@ app.get('/about', (c) => {
 
 app.get('/contact', (c) => {
   return c.render(contactPage())
+})
+
+// AI Consult page
+app.get('/ai-consult', (c) => {
+  return c.render(aiConsultPage())
 })
 
 // AI Coaching Lab page
