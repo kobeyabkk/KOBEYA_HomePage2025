@@ -198,10 +198,41 @@ export const contactPage = () => (
         box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
       }
       
-      .btn-submit:hover {
+      .btn-submit:hover:not(:disabled) {
         background: var(--accent-yellow);
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+      }
+      
+      .btn-submit:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      
+      .status-message {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        text-align: center;
+      }
+      
+      .status-success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      
+      .status-error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      
+      .status-loading {
+        background: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeaa7;
       }
       
       .cta-section {
@@ -354,13 +385,14 @@ export const contactPage = () => (
               <span class="card-icon">✉️</span>
               お問い合わせフォーム
             </h2>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form id="contact-form">
               <div class="form-group">
                 <label class="form-label" htmlFor="contact-name">
                   お名前 <span style="color: #e53e3e;">*</span>
                 </label>
                 <input
                   id="contact-name"
+                  name="name"
                   class="form-input"
                   type="text"
                   placeholder="山田 太郎"
@@ -373,6 +405,7 @@ export const contactPage = () => (
                 </label>
                 <input
                   id="contact-email"
+                  name="email"
                   class="form-input"
                   type="email"
                   placeholder="you@example.com"
@@ -385,6 +418,7 @@ export const contactPage = () => (
                 </label>
                 <input
                   id="contact-phone"
+                  name="phone"
                   class="form-input"
                   type="tel"
                   placeholder="02-123-4567"
@@ -396,14 +430,16 @@ export const contactPage = () => (
                 </label>
                 <textarea
                   id="contact-message"
+                  name="message"
                   class="form-textarea"
                   placeholder="体験レッスンのご希望、コースについてのご質問など、お気軽にご記入ください。"
                   required
                 />
               </div>
-              <button type="submit" class="btn-submit">
+              <button type="submit" class="btn-submit" id="submit-btn">
                 送信する
               </button>
+              <div id="status-message"></div>
             </form>
           </div>
         </div>
@@ -425,5 +461,71 @@ export const contactPage = () => (
     </section>
 
     <Footer />
+    
+    {/* Contact Form Script */}
+    <script dangerouslySetInnerHTML={{__html: `
+      (function() {
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const statusMessage = document.getElementById('status-message');
+        
+        if (form) {
+          form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+              name: document.getElementById('contact-name').value,
+              email: document.getElementById('contact-email').value,
+              phone: document.getElementById('contact-phone').value,
+              message: document.getElementById('contact-message').value
+            };
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
+            statusMessage.className = 'status-message status-loading';
+            statusMessage.textContent = 'メールを送信しています...';
+            
+            try {
+              // Send to API
+              const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+              });
+              
+              const result = await response.json();
+              
+              if (result.success) {
+                // Success
+                statusMessage.className = 'status-message status-success';
+                statusMessage.textContent = result.message;
+                form.reset();
+                submitBtn.textContent = '送信完了！';
+                setTimeout(() => {
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = '送信する';
+                }, 3000);
+              } else {
+                // Error
+                statusMessage.className = 'status-message status-error';
+                statusMessage.textContent = result.message;
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送信する';
+              }
+            } catch (error) {
+              // Network error
+              statusMessage.className = 'status-message status-error';
+              statusMessage.textContent = 'エラーが発生しました。しばらくしてから再度お試しください。';
+              submitBtn.disabled = false;
+              submitBtn.textContent = '送信する';
+            }
+          });
+        }
+      })();
+    `}} />
   </>
 )
