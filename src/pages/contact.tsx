@@ -1,3 +1,4 @@
+import { raw } from 'hono/html'
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 
@@ -319,7 +320,7 @@ export const contactPage = () => (
       }
     `}</style>
 
-    <script dangerouslySetInnerHTML={{__html: `
+{raw(`<script>
       (function() {
         console.log('Contact form script loaded');
         
@@ -394,7 +395,7 @@ export const contactPage = () => (
           });
         }
       })();
-    `}} />
+    </script>`)}
 
     <Header />
 
