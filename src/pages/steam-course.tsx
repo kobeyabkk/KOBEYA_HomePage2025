@@ -426,7 +426,7 @@ export const steamCoursePage = () => (
           </div>
           <div class="accordion-content">
             <div class="accordion-inner">
-              <img src="/images/steam-scratch-lesson.jpg" alt="スクラッチ授業風景" class="lesson-image" />
+              <img src="/images/steam-roblox-lesson.jpg" alt="スクラッチ授業風景" class="lesson-image" />
               <p><strong>初心者はまずここからスタート！</strong></p>
               <p>バンコク日本人学校をはじめ、世界で最も多くの教育機関で利用されているプログラミング学習ソフト「スクラッチ」を使った講座です。小学生でも使いやすく、コードを組み立てることはもちろん、イラストを描いたり、音楽や効果音を入れたりすることも簡単にできます。</p>
               <p>KOBEYAでは、レッスン動画を見ながら毎回ゲーム作品を作っていきます。初心者でも1回の授業で1つの作品を完成させられるので、モチベーションを維持して学習を続けることができるのが魅力です。</p>
@@ -458,7 +458,7 @@ export const steamCoursePage = () => (
           </div>
           <div class="accordion-content">
             <div class="accordion-inner">
-              <img src="/images/steam-roblox-lesson.jpg" alt="ロブロックス授業風景" class="lesson-image" />
+              <img src="/images/steam-scratch-lesson.jpg" alt="ロブロックス授業風景" class="lesson-image" />
               <p><strong>世界で一番遊ばれているゲーム「Roblox」でゲーム制作！</strong></p>
               <p>現在、マインクラフト・フォートナイトの約2倍の時間遊ばれている世界最大のゲームプラットフォーム「Roblox」を使ったゲーム制作講座です。基礎的なプログラミングを学びながらアスレチックゲームなどを作っていきます。</p>
               
