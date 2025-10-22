@@ -459,7 +459,7 @@ export const steamCoursePage = () => (
             <div class="accordion-inner">
               <img src="/images/steam-scratch-lesson.jpg" alt="ロブロックス授業風景" class="lesson-image" />
               <p><strong>世界で一番遊ばれているゲーム「Roblox」でゲーム制作！</strong></p>
-              <p>現在、マインクラフト・フォートナイトの約2倍の時間遊ばれている世界最大のゲームプラットフォーム「Roblox」を使ったゲーム制作講座です。基礎的なプログラミングを学びながらアスレチックゲームなどを作っていきます。</p>
+              <p>毎日1億人以上がプレイし、マインクラフト・フォートナイトの約2倍の時間遊ばれている世界最大のゲームプラットフォーム「Roblox」を使ったゲーム制作講座です。Roblox StudioというRoblox専用の開発ソフトを使います。基礎的なプログラミングを学びながらアスレチックゲームなどを作っていきます。</p>
               
               <div class="grid grid-3" style="margin: 1.5rem 0;">
                 <div style="background: #fff3cd; padding: 1rem; border-radius: 0.5rem;">
