@@ -33,16 +33,20 @@ export const Header = () => (
       .logo-icon {
         width: 2.5rem;
         height: 2.5rem;
-        border-radius: 0.5rem;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: white;
+        padding: 0.2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
       
       .logo-icon img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+        border-radius: 50%;
       }
       
       .nav {

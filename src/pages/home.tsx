@@ -203,6 +203,10 @@ export const homePage = () => {
         width: 150px;
         height: 150px;
         animation: fadeInScale 0.8s ease-out;
+        background: white;
+        border-radius: 50%;
+        padding: 0.5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       }
       
       @keyframes fadeInScale {
@@ -225,18 +229,45 @@ export const homePage = () => {
         font-size: 3rem;
         font-weight: 800;
         color: var(--text-dark);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
         line-height: 1.2;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-gray);
+        margin-top: 0.5rem;
+      }
+      
+      .consulting-target {
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 0.75rem;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1.5rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
+      }
+      
+      .consulting-target strong {
+        font-size: 1.1rem;
+        color: var(--main-yellow);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       }
       
       @media (max-width: 768px) {
         .hero-logo {
           width: 100px;
           height: 100px;
+          padding: 0.35rem;
         }
         
         .hero-title-center h1 {
           font-size: 2rem;
+        }
+        
+        .hero-subtitle {
+          font-size: 1.25rem;
         }
       }
       
@@ -351,7 +382,8 @@ export const homePage = () => {
           <img src="https://page.gensparksite.com/v1/base64_upload/4e54ecb8f3ea7943d9665aad9445acc4" alt="KOBEYA Logo" class="hero-logo" />
         </div>
         <div class="hero-title-center">
-          <h1>バンコクで学ぶプログラミング教室</h1>
+          <h1>AI＆プログラミングのKOBEYA</h1>
+          <div class="hero-subtitle">バンコクで学ぶプログラミング教室</div>
         </div>
         
         {/* Content Grid */}
@@ -376,6 +408,9 @@ export const homePage = () => {
                 <span style="font-size: 1.5rem;">🤝</span>
                 AIコンサルティング
               </h3>
+              <div class="consulting-target">
+                <strong>個人事業主、中小企業の方など</strong>
+              </div>
               <p class="consulting-text">
                 AIがすごい！便利！と耳にしますが、みなさま使いこなせていますか?
               </p>
