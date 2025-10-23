@@ -649,6 +649,21 @@ export const minecraftCoursePage = () => (
             <p>作った作品は、日本全国のマイクラッチ学習者が集うコミュニティに投稿することで、たくさんの仲間たちに見てもらうことができます。プログラミングコンテストも毎年開催しています。</p>
           </div>
         </div>
+        
+        {/* Classroom Photo */}
+        <div style={{textAlign: 'center', marginTop: '4rem', position: 'relative', zIndex: 2}}>
+          <img 
+            src="/images/IMG_1315.JPG" 
+            alt="教室での学習風景" 
+            style={{
+              maxWidth: '800px',
+              width: '100%',
+              borderRadius: '20px',
+              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
+              border: '4px solid white'
+            }} 
+          />
+        </div>
       </div>
     </section>
 
@@ -660,7 +675,7 @@ export const minecraftCoursePage = () => (
           
           <div className="learning-item">
             <div className="learning-image">
-              <img src="/images/MA07.png" alt="マイクラッチプログラミング画面" />
+              <img src="/images/MF10program.png" alt="TNT爆発と大規模建築" />
             </div>
             <div className="learning-content">
               <h3>TNT爆発＆大規模建築</h3>
@@ -675,7 +690,7 @@ export const minecraftCoursePage = () => (
 
           <div className="learning-item">
             <div className="learning-image">
-              <img src="/images/MF10program.png" alt="レッドストーン回路" />
+              <img src="https://page.gensparksite.com/v1/base64_upload/5239a96de027ad60282614bc76f5b170" alt="レッドストーン＆トロッコシステム" />
             </div>
             <div className="learning-content">
               <h3>レッドストーン＆トロッコシステム</h3>
@@ -690,7 +705,7 @@ export const minecraftCoursePage = () => (
 
           <div className="learning-item">
             <div className="learning-image">
-              <img src="/images/IMG_1315.JPG" alt="教室での学習風景" />
+              <img src="https://page.gensparksite.com/v1/base64_upload/bf2cace81276cc0da2c3da10e213e067" alt="アスレチック＆ダンジョン制作" />
             </div>
             <div className="learning-content">
               <h3>アスレチック＆ダンジョン制作</h3>
