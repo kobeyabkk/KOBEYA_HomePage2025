@@ -49,7 +49,7 @@ export const courses: Course[] = [
     id: 2,
     slug: 'minecraft',
     title: 'マインクラフト・プログラミングコース',
-    shortTitle: 'マイクラ',
+    shortTitle: 'マイクラッチ',
     description: '大人気ゲーム「マインクラフト」の世界でプログラミングの基礎を楽しく学びます。',
     image: '/images/courses/minecraft-course.jpg',
     imageAlt: 'マインクラフト・プログラミングコース',
