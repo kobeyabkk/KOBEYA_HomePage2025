@@ -260,183 +260,164 @@ export const toyprogrammingCoursePage = () => (
 
       .features-grid {
         display: grid;
-        gap: 4rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
         position: relative;
         z-index: 2;
       }
 
-      .feature-item {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-        padding: 4rem;
-        border-radius: 30px;
-        background: rgba(255, 255, 255, 0.8);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-        border: 2px solid rgba(255, 193, 7, 0.1);
+      .feature-card {
+        background: var(--base-white);
+        border-radius: 20px;
+        padding: 3rem 2rem;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border: 2px solid rgba(255, 193, 7, 0.2);
+        transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
       }
 
-      .feature-item::before {
+      .feature-card::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.05), transparent);
-        transition: left 0.8s;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, var(--main-yellow) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s;
+        z-index: 1;
       }
 
-      .feature-item:hover::before {
-        left: 100%;
+      .feature-card:hover::before {
+        opacity: 0.1;
       }
 
-      .feature-item:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 40px 80px rgba(255, 215, 0, 0.15);
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(255, 193, 7, 0.25);
         border-color: var(--main-yellow);
       }
 
-      .feature-item:nth-child(1) {
-        background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
-      }
-
-      .feature-item:nth-child(2) {
-        background: linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
-      }
-
-      .feature-item:nth-child(2) .feature-content {
-        order: 2;
-      }
-
-      .feature-item:nth-child(2) .feature-visual {
-        order: 1;
-      }
-
-      .feature-item:nth-child(3) {
-        background: linear-gradient(135deg, rgba(244, 164, 96, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
-      }
-
-      .feature-item:nth-child(4) {
-        background: linear-gradient(135deg, rgba(159, 122, 234, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
-      }
-
-      .feature-item:nth-child(5) {
-        background: linear-gradient(135deg, rgba(72, 187, 120, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
-      }
-
-      .feature-visual {
+      .feature-card * {
         position: relative;
-        min-height: 300px;
-        border-radius: 20px;
-        overflow: hidden;
-        background: linear-gradient(135deg, var(--main-yellow), var(--accent-yellow));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        z-index: 2;
       }
 
-      .feature-visual img {
-        width: 100%;
-        height: auto;
-        border-radius: 20px;
-        transition: transform 0.5s ease;
-      }
-
-      .feature-item:hover .feature-visual img {
-        transform: scale(1.05);
-      }
-
-      .feature-number {
-        position: absolute;
-        top: -20px;
-        left: 20px;
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(45deg, var(--orange-accent), var(--main-yellow));
+      .feature-icon-wrapper {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(45deg, var(--main-yellow), var(--accent-yellow));
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.5rem;
-        font-weight: 900;
+        font-size: 3rem;
         color: white;
-        box-shadow: 0 10px 30px rgba(237, 137, 54, 0.3);
-        z-index: 10;
+        margin: 0 auto 2rem;
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
       }
 
-      .feature-content h3 {
-        font-size: 2.8rem;
-        font-weight: 800;
-        margin-bottom: 2rem;
+      .feature-card h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--text-dark);
+      }
+
+      .feature-card p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--text-gray);
+      }
+
+      /* Learning Items with alternating layout */
+      .learning-items-grid {
+        display: grid;
+        gap: 4rem;
+        margin-top: 4rem;
+      }
+
+      .learning-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        padding: 3rem;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(255, 248, 220, 0.5) 0%, rgba(248, 249, 250, 0.5) 100%);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+      }
+
+      .learning-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+      }
+
+      .learning-item:nth-child(even) {
+        background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 255, 255, 0.8) 100%);
+      }
+
+      .learning-item:nth-child(even) .learning-content {
+        order: 2;
+      }
+
+      .learning-item:nth-child(even) .learning-visual {
+        order: 1;
+      }
+
+      .learning-visual {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, var(--main-yellow), var(--accent-yellow));
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .learning-visual img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .learning-item:hover .learning-visual img {
+        transform: scale(1.05);
+      }
+
+      .learning-content h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
         color: var(--text-dark);
         position: relative;
-        padding-left: 30px;
+        padding-left: 20px;
       }
 
-      .feature-content h3::before {
+      .learning-content h3::before {
         content: '';
         position: absolute;
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        width: 8px;
-        height: 60px;
-        background: linear-gradient(135deg, var(--main-yellow), var(--accent-yellow));
-        border-radius: 4px;
-      }
-
-      .feature-content p {
-        font-size: 1.3rem;
-        line-height: 1.9;
-        color: var(--text-gray);
-        margin-bottom: 2rem;
-      }
-
-      .feature-highlights {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .highlight-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.6);
-        border-radius: 15px;
-        border-left: 5px solid var(--main-yellow);
-        transition: all 0.3s;
-      }
-
-      .highlight-item:hover {
-        background: rgba(255, 215, 0, 0.1);
-        transform: translateX(10px);
-      }
-
-      .highlight-icon {
-        width: 40px;
+        width: 6px;
         height: 40px;
-        background: linear-gradient(45deg, var(--green-accent), var(--main-yellow));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        color: white;
-        flex-shrink: 0;
+        background: linear-gradient(135deg, var(--main-yellow), var(--orange-accent));
+        border-radius: 3px;
       }
 
-      .highlight-text {
+      .learning-content p {
         font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-dark);
+        line-height: 1.8;
+        color: var(--text-gray);
+        margin-bottom: 1.5rem;
       }
 
       /* Info Section */
@@ -663,14 +644,23 @@ export const toyprogrammingCoursePage = () => (
           padding: 0 1rem;
         }
         
-        .feature-item {
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        
+        .learning-items-grid {
+          gap: 2rem;
+        }
+        
+        .learning-item {
           grid-template-columns: 1fr;
           gap: 2rem;
           padding: 2rem;
         }
         
-        .feature-item:nth-child(2) .feature-content,
-        .feature-item:nth-child(2) .feature-visual {
+        .learning-item:nth-child(even) .learning-content,
+        .learning-item:nth-child(even) .learning-visual {
           order: initial;
         }
         
@@ -728,270 +718,110 @@ export const toyprogrammingCoursePage = () => (
     <section className="features-section">
       <div className="container">
         <h2 className="section-title">Pythonを学ぶメリット</h2>
-        <p className="section-subtitle">子どもたちの未来を拓く5つの力</p>
+        <p className="section-subtitle">子どもたちの未来を拓く力</p>
         
         <div className="features-grid">
           
-          <div className="feature-item">
-            <div className="feature-number">1</div>
-            <div className="feature-visual">
-              <div style={{
-                padding: '3rem',
-                textAlign: 'center',
-                color: 'white'
-              }}>
-                <div style={{fontSize: '4rem', marginBottom: '1rem'}}>🧠</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>論理的思考</h4>
-              </div>
-            </div>
-            <div className="feature-content">
-              <h3>論理的思考力の向上</h3>
-              <p>
-                子どもたちがPythonを学ぶことで、論理的思考力と問題解決能力が身につきます。
-                プログラミングを通じて順序立てて考える力を養い、複雑な問題も段階的に解決できるようになります。
-              </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">🎯</div>
-                  <div className="highlight-text">問題解決スキルの向上</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🔄</div>
-                  <div className="highlight-text">順序立てて考える力</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">⚡</div>
-                  <div className="highlight-text">効率的な思考プロセス</div>
-                </div>
-              </div>
-            </div>
+          <div className="feature-card">
+            <div className="feature-icon-wrapper">🧠</div>
+            <h3>論理的思考力</h3>
+            <p>
+              順序立てて考える力を養い、複雑な問題も段階的に解決できる力を身につけます。
+            </p>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-number">2</div>
-            <div className="feature-visual">
-              <div style={{
-                padding: '3rem',
-                textAlign: 'center',
-                color: 'white'
-              }}>
-                <div style={{fontSize: '4rem', marginBottom: '1rem'}}>🎨</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>創造性</h4>
-              </div>
-            </div>
-            <div className="feature-content">
-              <h3>創造性の発達</h3>
-              <p>
-                Pythonは読みやすく、初心者にも理解しやすい言語で、創造性やコンピューターへの興味を育てます。
-                クリエイティブな表現手段を得て創造力を発展させることが可能になります。
-              </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">💡</div>
-                  <div className="highlight-text">アイデアの実現力</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🎭</div>
-                  <div className="highlight-text">表現手段の多様化</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🚀</div>
-                  <div className="highlight-text">想像力の具現化</div>
-                </div>
-              </div>
-            </div>
+          <div className="feature-card">
+            <div className="feature-icon-wrapper">🎨</div>
+            <h3>創造性の発達</h3>
+            <p>
+              読みやすく初心者にも優しいPythonで、クリエイティブな表現手段を獲得します。
+            </p>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-number">3</div>
-            <div className="feature-visual">
-              <div style={{
-                padding: '3rem',
-                textAlign: 'center',
-                color: 'white'
-              }}>
-                <div style={{fontSize: '4rem', marginBottom: '1rem'}}>🏆</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>成就感</h4>
-              </div>
-            </div>
-            <div className="feature-content">
-              <h3>達成感と自信</h3>
-              <p>
-                TOYPROの問題は読解力の向上を目的に、物語調の文章問題になっています。
-                抽象的な算数の問題を、より親しみやすい形で提供することにより、楽しみながら数学・プログラミングの両方の力を養います。
-              </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">📚</div>
-                  <div className="highlight-text">読解力向上</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🎮</div>
-                  <div className="highlight-text">ゲーム感覚で学習</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🌟</div>
-                  <div className="highlight-text">自信の構築</div>
-                </div>
-              </div>
-            </div>
+          <div className="feature-card">
+            <div className="feature-icon-wrapper">🏆</div>
+            <h3>達成感と自信</h3>
+            <p>
+              物語調の問題で楽しく学び、成功体験を積み重ねながら自信を構築します。
+            </p>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-number">4</div>
-            <div className="feature-visual">
-              <div style={{
-                padding: '3rem',
-                textAlign: 'center',
-                color: 'white'
-              }}>
-                <div style={{fontSize: '4rem', marginBottom: '1rem'}}>💼</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>キャリアの準備</h4>
-              </div>
-            </div>
-            <div className="feature-content">
-              <h3>将来のキャリアパス</h3>
-              <p>
-                Pythonは世界中で広く使われているプログラミング言語で、その汎用性の高さが特徴です。
-                Pythonの知識は、データサイエンス、人工知能、アプリ開発など、将来の様々なキャリアに役立ちます。
-              </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">🌍</div>
-                  <div className="highlight-text">グローバルスキル</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🔬</div>
-                  <div className="highlight-text">AI・データサイエンス対応</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">📱</div>
-                  <div className="highlight-text">アプリ開発の基礎</div>
-                </div>
-              </div>
-            </div>
+          <div className="feature-card">
+            <div className="feature-icon-wrapper">💼</div>
+            <h3>将来のキャリア</h3>
+            <p>
+              AI、データサイエンス、アプリ開発など、幅広い分野で活躍できるスキルを習得。
+            </p>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-number">5</div>
-            <div className="feature-visual">
-              <div style={{
-                padding: '3rem',
-                textAlign: 'center',
-                color: 'white'
-              }}>
-                <div style={{fontSize: '4rem', marginBottom: '1rem'}}>📖</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>リテラシー強化</h4>
-              </div>
-            </div>
-            <div className="feature-content">
-              <h3>デジタルリテラシー</h3>
-              <p>
-                テクノロジーが重要となる未来の職業に向けて、早期からの基礎スキル獲得が可能となります。
-                将来的に多様なキャリアパスにつながる貴重なスキルを提供します。
-              </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">💻</div>
-                  <div className="highlight-text">IT基礎スキル</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🎓</div>
-                  <div className="highlight-text">学習の土台作り</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🔮</div>
-                  <div className="highlight-text">未来への投資</div>
-                </div>
-              </div>
-            </div>
+          <div className="feature-card">
+            <div className="feature-icon-wrapper">📖</div>
+            <h3>読解力の向上</h3>
+            <p>
+              物語調の問題文を通じて、プログラミングと同時に読解力も養います。
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <div className="feature-icon-wrapper">🌍</div>
+            <h3>グローバルスキル</h3>
+            <p>
+              世界中で使われるPythonで、国際的に通用する技術力を身につけます。
+            </p>
           </div>
 
         </div>
       </div>
     </section>
 
-    {/* TOYPRO Features Section */}
-    <section className="features-section" style={{background: 'linear-gradient(135deg, #fff 0%, var(--light-yellow) 50%, #f8f9fa 100%)'}}>
+    {/* TOYPRO Features Section - Alternating Layout */}
+    <section className="features-section" style={{background: 'var(--base-white)', padding: '6rem 0'}}>
       <div className="container">
-        <h2 className="section-title">TOYPROの機能</h2>
-        <p className="section-subtitle">充実した学習環境を提供する5つの機能</p>
+        <h2 className="section-title">TOYPROの学習システム</h2>
+        <p className="section-subtitle">充実した学習環境で確実にスキルアップ</p>
         
-        <div className="features-grid">
+        <div className="learning-items-grid">
           
-          <div className="feature-item">
-            <div className="feature-number">①</div>
-            <div className="feature-visual">
+          <div className="learning-item">
+            <div className="learning-visual">
               <div style={{
                 padding: '3rem',
                 textAlign: 'center',
                 color: 'white'
               }}>
                 <div style={{fontSize: '4rem', marginBottom: '1rem'}}>📚</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>Pythonレッスン</h4>
+                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>レッスン</h4>
               </div>
             </div>
-            <div className="feature-content">
-              <h3>Pythonレッスン</h3>
+            <div className="learning-content">
+              <h3>わかりやすいPythonレッスン</h3>
               <p>
-                プログラミングが初めての方向けに、書き方・概念をわかりやすく解説。
-                基礎から応用まで段階的に学習できるカリキュラムを提供します。
+                プログラミング初心者でも安心。書き方から概念まで丁寧に解説し、基礎から応用まで段階的に学習できます。
               </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">📖</div>
-                  <div className="highlight-text">わかりやすい解説</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">📈</div>
-                  <div className="highlight-text">段階的学習</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🎯</div>
-                  <div className="highlight-text">初心者フレンドリー</div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-number">②</div>
-            <div className="feature-visual">
+          <div className="learning-item">
+            <div className="learning-visual">
               <div style={{
                 padding: '3rem',
                 textAlign: 'center',
                 color: 'white'
               }}>
                 <div style={{fontSize: '4rem', marginBottom: '1rem'}}>🤖</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>エラーアドバイザー</h4>
+                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>AIサポート</h4>
               </div>
             </div>
-            <div className="feature-content">
+            <div className="learning-content">
               <h3>エラーアドバイザー</h3>
               <p>
-                プログラムにミスがある場合、エラーの内容がわかるように日本語＆AIがアドバイス。
-                つまずきを素早く解決して学習を継続できます。
+                エラーが発生しても大丈夫。日本語とAIがわかりやすくアドバイスし、つまずきを素早く解決します。
               </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">🇯🇵</div>
-                  <div className="highlight-text">日本語エラー解説</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🤖</div>
-                  <div className="highlight-text">AIサポート</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">⚡</div>
-                  <div className="highlight-text">即座の問題解決</div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-number">③</div>
-            <div className="feature-visual">
+          <div className="learning-item">
+            <div className="learning-visual">
               <div style={{
                 padding: '3rem',
                 textAlign: 'center',
@@ -1001,96 +831,30 @@ export const toyprogrammingCoursePage = () => (
                 <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>練習問題</h4>
               </div>
             </div>
-            <div className="feature-content">
-              <h3>練習問題</h3>
+            <div className="learning-content">
+              <h3>物語調の練習問題</h3>
               <p>
-                ユニークな練習問題を多数用意しています。
-                読解力向上を目的とした物語調の文章問題で、楽しみながら実力をつけることができます。
+                読解力向上を目的とした物語調の問題で、楽しみながらプログラミングと読解力の両方を養います。
               </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">📚</div>
-                  <div className="highlight-text">物語調の問題文</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🎭</div>
-                  <div className="highlight-text">ユニークな内容</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">📖</div>
-                  <div className="highlight-text">読解力向上</div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div className="feature-item">
-            <div className="feature-number">④</div>
-            <div className="feature-visual">
+          <div className="learning-item">
+            <div className="learning-visual">
               <div style={{
                 padding: '3rem',
                 textAlign: 'center',
                 color: 'white'
               }}>
                 <div style={{fontSize: '4rem', marginBottom: '1rem'}}>🏆</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>成績・ランキング</h4>
+                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>ランキング</h4>
               </div>
             </div>
-            <div className="feature-content">
-              <h3>成績・ランキング</h3>
+            <div className="learning-content">
+              <h3>成績・ランキングシステム</h3>
               <p>
-                自分とライバルのランキングを比較したり、ポイントの推移を確認できます。
-                全国の仲間と競い合いながらモチベーションを維持できます。
+                全国の仲間と競い合い、成績を可視化。ライバルと比較しながらモチベーションを維持できます。
               </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">📊</div>
-                  <div className="highlight-text">成績の可視化</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🥇</div>
-                  <div className="highlight-text">全国ランキング</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">🔥</div>
-                  <div className="highlight-text">競争でモチベーションUP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="feature-item">
-            <div className="feature-number">⑤</div>
-            <div className="feature-visual">
-              <div style={{
-                padding: '3rem',
-                textAlign: 'center',
-                color: 'white'
-              }}>
-                <div style={{fontSize: '4rem', marginBottom: '1rem'}}>✅</div>
-                <h4 style={{fontSize: '1.8rem', fontWeight: '700', margin: 0}}>確認テスト</h4>
-              </div>
-            </div>
-            <div className="feature-content">
-              <h3>確認テスト</h3>
-              <p>
-                少しでも多くコードに触れるための確認テストが多数用意されています。
-                定期的な理解度チェックで確実なスキルアップをサポートします。
-              </p>
-              <div className="feature-highlights">
-                <div className="highlight-item">
-                  <div className="highlight-icon">💻</div>
-                  <div className="highlight-text">コーディング機会増加</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">📋</div>
-                  <div className="highlight-text">理解度チェック</div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">📈</div>
-                  <div className="highlight-text">確実なスキルアップ</div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -1140,84 +904,55 @@ export const toyprogrammingCoursePage = () => (
     </section>
 
     {/* Problem Example Section */}
-    <section className="features-section" style={{background: 'var(--base-white)'}}>
+    <section className="features-section" style={{background: 'linear-gradient(135deg, #f8f9fa 0%, var(--light-yellow) 100%)'}}>
       <div className="container">
-        <h2 className="section-title">TOYPRO練習問題例</h2>
-        <p className="section-subtitle">C-080 256810885 10</p>
+        <h2 className="section-title">TOYPROの問題形式</h2>
+        <p className="section-subtitle">3つの力を同時に育てる独自の学習システム</p>
         
         <div style={{
-          maxWidth: '800px',
-          margin: '0 auto',
-          padding: '4rem',
-          background: 'linear-gradient(135deg, var(--light-yellow) 0%, var(--base-white) 100%)',
-          borderRadius: '30px',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)',
-          border: '3px solid var(--main-yellow)',
-          position: 'relative'
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr',
+          gap: '3rem',
+          marginTop: '4rem'
         }}>
           <div style={{
-            position: 'absolute',
-            top: '-15px',
-            left: '30px',
-            background: 'var(--main-yellow)',
-            padding: '0.5rem 2rem',
+            textAlign: 'center',
+            padding: '3rem 2rem',
+            background: 'var(--base-white)',
             borderRadius: '20px',
-            fontWeight: '800',
-            fontSize: '1.1rem',
-            color: 'var(--text-dark)'
-          }}>
-            問題例
+            border: '2px solid var(--accent-yellow)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
+            transition: 'all 0.3s ease'
+          }} className="feature-card">
+            <div style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>📚</div>
+            <h4 style={{fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1rem 0', color: 'var(--text-dark)'}}>読解力</h4>
+            <p style={{fontSize: '1rem', color: 'var(--text-gray)', margin: 0, lineHeight: 1.6}}>物語調の問題文で、楽しみながら読解力を向上</p>
           </div>
-          
           <div style={{
-            fontSize: '1.3rem',
-            lineHeight: '2',
-            color: 'var(--text-dark)',
-            marginTop: '1rem'
-          }}>
-            <p><strong>TOYPROの問題は読解力の向上を目的に、物語調の文章問題になっています。</strong></p>
-            <p>抽象的な算数の問題（中学受験で出題されるような問題）を、より親しみやすい形で提供することにより、楽しみながら数学・プログラミングの両方の力を養います。</p>
+            textAlign: 'center',
+            padding: '3rem 2rem',
+            background: 'var(--base-white)',
+            borderRadius: '20px',
+            border: '2px solid var(--accent-yellow)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
+            transition: 'all 0.3s ease'
+          }} className="feature-card">
+            <div style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>🧮</div>
+            <h4 style={{fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1rem 0', color: 'var(--text-dark)'}}>算数・数学</h4>
+            <p style={{fontSize: '1rem', color: 'var(--text-gray)', margin: 0, lineHeight: 1.6}}>中学受験レベルの抽象的思考力を養成</p>
           </div>
-
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr',
-            gap: '2rem',
-            marginTop: '3rem'
-          }}>
-            <div style={{
-              textAlign: 'center',
-              padding: '2rem',
-              background: 'rgba(255, 255, 255, 0.8)',
-              borderRadius: '20px',
-              border: '2px solid var(--accent-yellow)'
-            }}>
-              <div style={{fontSize: '2.5rem', marginBottom: '1rem'}}>📚</div>
-              <h4 style={{fontSize: '1.2rem', fontWeight: '700', margin: '0 0 0.5rem 0'}}>読解力</h4>
-              <p style={{fontSize: '0.9rem', color: 'var(--text-gray)', margin: 0}}>物語調の問題文</p>
-            </div>
-            <div style={{
-              textAlign: 'center',
-              padding: '2rem',
-              background: 'rgba(255, 255, 255, 0.8)',
-              borderRadius: '20px',
-              border: '2px solid var(--accent-yellow)'
-            }}>
-              <div style={{fontSize: '2.5rem', marginBottom: '1rem'}}>🧮</div>
-              <h4 style={{fontSize: '1.2rem', fontWeight: '700', margin: '0 0 0.5rem 0'}}>算数・数学</h4>
-              <p style={{fontSize: '0.9rem', color: 'var(--text-gray)', margin: 0}}>抽象的思考力</p>
-            </div>
-            <div style={{
-              textAlign: 'center',
-              padding: '2rem',
-              background: 'rgba(255, 255, 255, 0.8)',
-              borderRadius: '20px',
-              border: '2px solid var(--accent-yellow)'
-            }}>
-              <div style={{fontSize: '2.5rem', marginBottom: '1rem'}}>💻</div>
-              <h4 style={{fontSize: '1.2rem', fontWeight: '700', margin: '0 0 0.5rem 0'}}>プログラミング</h4>
-              <p style={{fontSize: '0.9rem', color: 'var(--text-gray)', margin: 0}}>実装スキル</p>
-            </div>
+            textAlign: 'center',
+            padding: '3rem 2rem',
+            background: 'var(--base-white)',
+            borderRadius: '20px',
+            border: '2px solid var(--accent-yellow)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
+            transition: 'all 0.3s ease'
+          }} className="feature-card">
+            <div style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>💻</div>
+            <h4 style={{fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1rem 0', color: 'var(--text-dark)'}}>プログラミング</h4>
+            <p style={{fontSize: '1rem', color: 'var(--text-gray)', margin: 0, lineHeight: 1.6}}>Pythonで実装する実践的なスキル</p>
           </div>
         </div>
       </div>
