@@ -648,21 +648,18 @@ export const minecraftCoursePage = () => (
             <h3>コンテストの開催</h3>
             <p>作った作品は、日本全国のマイクラッチ学習者が集うコミュニティに投稿することで、たくさんの仲間たちに見てもらうことができます。プログラミングコンテストも毎年開催しています。</p>
           </div>
-        </div>
-        
-        {/* Classroom Photo */}
-        <div style={{textAlign: 'center', marginTop: '4rem', position: 'relative', zIndex: 2}}>
-          <img 
-            src="/images/IMG_1315.JPG" 
-            alt="教室での学習風景" 
-            style={{
-              maxWidth: '800px',
-              width: '100%',
-              borderRadius: '20px',
-              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
-              border: '4px solid white'
-            }} 
-          />
+          <div className="point-card" style={{gridColumn: '1 / -1', maxWidth: 'none'}}>
+            <img 
+              src="/images/IMG_1315.JPG" 
+              alt="教室での学習風景" 
+              style={{
+                width: '100%',
+                height: 'auto',
+                borderRadius: '15px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+              }} 
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -745,11 +742,9 @@ export const minecraftCoursePage = () => (
               💰 料金プラン
             </h3>
             <div style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
-              <p><strong>入会金</strong>：5,000 THB</p>
-              <p><strong>月4回コース</strong>：2,800 THB</p>
-              <p><strong>月8回コース</strong>：5,200 THB</p>
+              <p><strong>授業料</strong>：お問い合わせください</p>
               <p><strong>教材費</strong>：なし</p>
-              <p><strong>定員</strong>：6名 / クラス</p>
+              <p><strong>定員</strong>：7名 / クラス</p>
               <p style={{color: 'var(--main-yellow)', fontWeight: '700'}}>※無料体験授業実施中</p>
             </div>
           </div>
