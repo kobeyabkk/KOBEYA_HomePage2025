@@ -66,13 +66,16 @@ export const Footer = () => (
       .footer-logo-icon {
         width: 2rem;
         height: 2rem;
-        background: var(--main-yellow);
         border-radius: 0.375rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-        color: var(--text-dark);
+      }
+      
+      .footer-logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
       
       .footer-bottom {
@@ -137,7 +140,9 @@ export const Footer = () => (
           {/* 教室情報 */}
           <div class="footer-section">
             <div class="footer-logo">
-              <div class="footer-logo-icon">K</div>
+              <div class="footer-logo-icon">
+                <img src="https://page.gensparksite.com/v1/base64_upload/30c0467e3e2ea9da226d61220074b2b4" alt="KOBEYA Logo" />
+              </div>
               AI & プログラミングのKOBEYA
             </div>
             <p style="margin-bottom: 1.5rem;">

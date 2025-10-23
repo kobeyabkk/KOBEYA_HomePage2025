@@ -33,15 +33,16 @@ export const Header = () => (
       .logo-icon {
         width: 2.5rem;
         height: 2.5rem;
-        background: var(--base-white);
         border-radius: 0.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-        color: var(--text-dark);
-        border: 2px solid #8B4513;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
       
       .nav {
@@ -205,7 +206,9 @@ export const Header = () => (
     <header class="header">
       <div class="header-container">
         <a href="/" class="logo">
-          <div class="logo-icon">🤖</div>
+          <div class="logo-icon">
+            <img src="https://page.gensparksite.com/v1/base64_upload/30c0467e3e2ea9da226d61220074b2b4" alt="KOBEYA Logo" />
+          </div>
           AI & プログラミングのKOBEYA
         </a>
         
