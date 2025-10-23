@@ -66,16 +66,20 @@ export const Footer = () => (
       .footer-logo-icon {
         width: 2rem;
         height: 2rem;
-        border-radius: 0.375rem;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: white;
+        padding: 0.15rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       }
       
       .footer-logo-icon img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+        border-radius: 50%;
       }
       
       .footer-bottom {
