@@ -193,6 +193,53 @@ export const homePage = () => {
         align-items: center;
       }
       
+      .hero-logo-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+      
+      .hero-logo {
+        width: 150px;
+        height: 150px;
+        animation: fadeInScale 0.8s ease-out;
+      }
+      
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      
+      .hero-title-center {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .hero-title-center h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+      
+      @media (max-width: 768px) {
+        .hero-logo {
+          width: 100px;
+          height: 100px;
+        }
+        
+        .hero-title-center h1 {
+          font-size: 2rem;
+        }
+      }
+      
       .stats-card {
         background: var(--base-white);
         border-radius: 1rem;
@@ -299,9 +346,17 @@ export const homePage = () => {
     {/* Hero Section */}
     <section class="hero-section">
       <div class="container">
-        <div class="grid grid-2" style="align-items: center;">
+        {/* Logo and Title Section */}
+        <div class="hero-logo-container">
+          <img src="https://page.gensparksite.com/v1/base64_upload/4e54ecb8f3ea7943d9665aad9445acc4" alt="KOBEYA Logo" class="hero-logo" />
+        </div>
+        <div class="hero-title-center">
+          <h1>バンコクで学ぶプログラミング教室</h1>
+        </div>
+        
+        {/* Content Grid */}
+        <div class="grid grid-2" style="align-items: center; gap: 3rem;">
           <div>
-            <h1>バンコクで学ぶ<br />プログラミング教室</h1>
             <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2.5rem; line-height: 1.7;">
               AI&プログラミングのKOBEYAでは、お子様の興味と能力に合わせた8つのコースをご用意。<br />
               楽しく学んで、未来のスキルを身につけましょう！
@@ -311,8 +366,8 @@ export const homePage = () => {
               <a href="#courses" class="btn-secondary">コースを見る</a>
             </div>
             <div style="margin-top: 2.5rem; display: flex; gap: 2rem; flex-wrap: wrap; color: var(--text-light); font-size: 0.9rem;">
-              <div>フジスーパー2号店2階</div>
-              <div>駐車場完備</div>
+              <div>📍 フジスーパー2号店2階</div>
+              <div>🚗 駐車場完備</div>
             </div>
           </div>
           <div>
