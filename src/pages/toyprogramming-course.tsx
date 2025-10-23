@@ -116,13 +116,46 @@ export const toyprogrammingCoursePage = () => (
         font-size: 1.3rem;
         line-height: 1.8;
         color: var(--text-dark);
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         background: rgba(255, 255, 255, 0.9);
         padding: 2.5rem;
         border-radius: 20px;
         backdrop-filter: blur(10px);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .hero-info-badges {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+
+      .info-badge {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border: 2px solid rgba(255, 193, 7, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .info-badge:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(255, 193, 7, 0.3);
+        border-color: var(--main-yellow);
+      }
+
+      .info-badge-icon {
+        font-size: 1.5rem;
       }
       
       .hero-cta {
@@ -644,6 +677,22 @@ export const toyprogrammingCoursePage = () => (
           padding: 0 1rem;
         }
         
+        .hero-info-badges {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: stretch;
+        }
+
+        .info-badge {
+          justify-content: center;
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        .info-badge-icon {
+          font-size: 1.3rem;
+        }
+        
         .features-grid {
           grid-template-columns: 1fr;
           gap: 2rem;
@@ -702,11 +751,21 @@ export const toyprogrammingCoursePage = () => (
             <strong>コードを書いてPythonを学ぶ。TOYPROで新しい学びを体験しよう！</strong><br/>
             競技プログラミング形式の学習システムなので、必ず答えが存在します。Pythonを使って「何か」をするというアイデアが必要ありません。
           </div>
+          <div className="hero-info-badges">
+            <div className="info-badge">
+              <span className="info-badge-icon">🎓</span>
+              <span>対象：小学校中学年以上</span>
+            </div>
+            <div className="info-badge">
+              <span className="info-badge-icon">🏠</span>
+              <span>オンライン完結・家庭学習</span>
+            </div>
+          </div>
           <div className="hero-cta">
             <a href="/contact" className="btn-toypro">
               <span>無料体験に参加</span>
             </a>
-            <a href="#details" className="btn-outline">
+            <a href="#benefits" className="btn-outline">
               詳細を見る
             </a>
           </div>
@@ -715,7 +774,7 @@ export const toyprogrammingCoursePage = () => (
     </section>
 
     {/* Python Learning Benefits Section */}
-    <section className="features-section">
+    <section id="benefits" className="features-section">
       <div className="container">
         <h2 className="section-title">Pythonを学ぶメリット</h2>
         <p className="section-subtitle">子どもたちの未来を拓く力</p>
@@ -898,61 +957,6 @@ export const toyprogrammingCoursePage = () => (
               </ul>
               <p style={{color: 'var(--main-yellow)', fontWeight: '800'}}>子どもたちの未来のための最適なステップです。</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Problem Example Section */}
-    <section className="features-section" style={{background: 'linear-gradient(135deg, #f8f9fa 0%, var(--light-yellow) 100%)'}}>
-      <div className="container">
-        <h2 className="section-title">TOYPROの問題形式</h2>
-        <p className="section-subtitle">3つの力を同時に育てる独自の学習システム</p>
-        
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          gap: '3rem',
-          marginTop: '4rem'
-        }}>
-          <div style={{
-            textAlign: 'center',
-            padding: '3rem 2rem',
-            background: 'var(--base-white)',
-            borderRadius: '20px',
-            border: '2px solid var(--accent-yellow)',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
-            transition: 'all 0.3s ease'
-          }} className="feature-card">
-            <div style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>📚</div>
-            <h4 style={{fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1rem 0', color: 'var(--text-dark)'}}>読解力</h4>
-            <p style={{fontSize: '1rem', color: 'var(--text-gray)', margin: 0, lineHeight: 1.6}}>物語調の問題文で、楽しみながら読解力を向上</p>
-          </div>
-          <div style={{
-            textAlign: 'center',
-            padding: '3rem 2rem',
-            background: 'var(--base-white)',
-            borderRadius: '20px',
-            border: '2px solid var(--accent-yellow)',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
-            transition: 'all 0.3s ease'
-          }} className="feature-card">
-            <div style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>🧮</div>
-            <h4 style={{fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1rem 0', color: 'var(--text-dark)'}}>算数・数学</h4>
-            <p style={{fontSize: '1rem', color: 'var(--text-gray)', margin: 0, lineHeight: 1.6}}>中学受験レベルの抽象的思考力を養成</p>
-          </div>
-          <div style={{
-            textAlign: 'center',
-            padding: '3rem 2rem',
-            background: 'var(--base-white)',
-            borderRadius: '20px',
-            border: '2px solid var(--accent-yellow)',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
-            transition: 'all 0.3s ease'
-          }} className="feature-card">
-            <div style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>💻</div>
-            <h4 style={{fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1rem 0', color: 'var(--text-dark)'}}>プログラミング</h4>
-            <p style={{fontSize: '1rem', color: 'var(--text-gray)', margin: 0, lineHeight: 1.6}}>Pythonで実装する実践的なスキル</p>
           </div>
         </div>
       </div>
