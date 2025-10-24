@@ -136,7 +136,7 @@ export const thinkthinkCoursePage = () => (
         padding: 40px;
         border-radius: 20px;
         text-align: center;
-        transform: rotate(-2deg);
+        transform: rotate(0deg);
         box-shadow: 0 15px 35px rgba(255, 193, 7, 0.2);
       }
 
@@ -440,7 +440,7 @@ export const thinkthinkCoursePage = () => (
         padding: 40px;
         border-radius: 20px;
         text-align: center;
-        transform: rotate(1deg);
+        transform: rotate(0deg);
         box-shadow: 0 15px 35px rgba(255, 193, 7, 0.2);
       }
 
@@ -877,66 +877,12 @@ export const thinkthinkCoursePage = () => (
           <div class="section-header">
             <h2 class="section-title">スケジュール・料金</h2>
             <p class="section-subtitle">
-              4歳から12歳まで、年齢に応じたクラス設定で<br/>
-              お子様の発達段階に最適な思考力育成を提供します。
+              6歳から12歳まで、年齢に応じたクラス設定で<br/>
+              お子様の発達段階に最適な思考力育成を提供します。スケジュール、料金についてはお問い合わせください。
             </p>
           </div>
           
-          <div class="schedule-grid">
-            <div class="schedule-card">
-              <h3 class="card-title">
-                <i class="fas fa-calendar-alt"></i>
-                クラススケジュール
-              </h3>
-              <div class="schedule-item">
-                <span class="schedule-label">対象年齢</span>
-                <span class="schedule-value">4〜12歳</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">グループレッスン</span>
-                <span class="schedule-value">土 14:00-14:45</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">個別指導</span>
-                <span class="schedule-value">平日 16:00-17:00</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">授業時間</span>
-                <span class="schedule-value">45分 / 回</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">1日の学習時間</span>
-                <span class="schedule-value">10分推奨</span>
-              </div>
-            </div>
 
-            <div class="schedule-card">
-              <h3 class="card-title">
-                <i class="fas fa-tag"></i>
-                料金プラン
-              </h3>
-              <div class="schedule-item">
-                <span class="schedule-label">入会金</span>
-                <span class="schedule-value">3,000 THB</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">月謝（月4回）</span>
-                <span class="price-highlight">1,800 THB</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">個別指導（月4回）</span>
-                <span class="price-highlight">3,000 THB</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">アプリ利用料</span>
-                <span class="schedule-value">教室負担</span>
-              </div>
-              <div class="schedule-item">
-                <span class="schedule-label">体験授業</span>
-                <span style="color: var(--think-green); font-weight: 700;">無料</span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
