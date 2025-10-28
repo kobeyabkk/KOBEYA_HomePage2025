@@ -47,6 +47,7 @@ export const Header = () => (
         height: 100%;
         object-fit: contain;
         border-radius: 50%;
+        mix-blend-mode: multiply;
       }
       
       .nav {
