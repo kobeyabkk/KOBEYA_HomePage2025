@@ -1,8 +1,31 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
+import { CourseSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const thinkthinkCoursePage = () => (
   <>
+    <head>
+      <title>Think!Think!思考力育成コース｜KOBEYA（コベヤ）プログラミング教室</title>
+      <meta name="description" content="KOBEYA（コベヤ）のThink!Think!コース。6-12歳対象の思考力育成アプリ。空間認識、論理的思考、試行錯誤を楽しくトレーニング。バンコクのプログラミング教室。" />
+      <meta name="keywords" content="Think!Think!,思考力,コベヤ,KOBEYA,6歳,小学生,バンコク,プログラミング教室,論理的思考" />
+      <meta property="og:title" content="Think!Think!コース｜KOBEYA" />
+      <meta property="og:description" content="思考力を楽しく育成するアプリ学習" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/thinkthink" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/thinkthink" />
+    </head>
+    
+    <CourseSchema 
+      name="Think!Think!思考力育成コース"
+      description="6-12歳向け思考力育成アプリ。空間認識、論理的思考をトレーニング"
+      provider="KOBEYA"
+      url="https://kobeya-programming.pages.dev/courses/thinkthink"
+    />
+    <BreadcrumbSchema items={[
+      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
+      { name: "Think!Think!コース", url: "https://kobeya-programming.pages.dev/courses/thinkthink" }
+    ]} />
+    
     <style>{`
       :root {
         --main-yellow: #FFC107;

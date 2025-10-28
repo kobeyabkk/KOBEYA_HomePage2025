@@ -6,6 +6,9 @@ import { homePage } from './pages/home'
 import { aboutPage } from './pages/about'
 import { contactPage } from './pages/contact'
 import { aiConsultPage } from './pages/ai-consult'
+import { faqPage } from './pages/faq'
+import { supportPage } from './pages/support'
+import { schedulePage } from './pages/schedule'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
@@ -42,6 +45,18 @@ app.get('/about', (c) => {
 
 app.get('/contact', (c) => {
   return c.render(contactPage())
+})
+
+app.get('/faq', (c) => {
+  return c.render(faqPage())
+})
+
+app.get('/support', (c) => {
+  return c.render(supportPage())
+})
+
+app.get('/schedule', (c) => {
+  return c.render(schedulePage())
 })
 
 // AI Consult page

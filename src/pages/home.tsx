@@ -1,6 +1,7 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { getAllCoursesSorted } from '../data/courses'
+import { OrganizationSchema, LocalBusinessSchema, BreadcrumbSchema } from '../components/structured-data'
 
 // コースアイコンを生成する関数
 const getCourseIcon = (title: string): string => {
@@ -20,6 +21,28 @@ export const homePage = () => {
   
   return (
   <>
+    <head>
+      <title>KOBEYA AI＆プログラミング教室｜バンコクで学ぶプログラミング・AI教育</title>
+      <meta name="description" content="バンコクのプログラミング教室KOBEYA（コベヤ）。小学生から中学生向けの8つの専門コース。Scratch、Python、マイクラ、AI、Unity、動画編集など。算数・国語プリントも対応。フジスーパー2号店2階、駐車場完備。無料体験実施中。" />
+      <meta name="keywords" content="バンコク,プログラミング教室,プログラミング コベヤ,KOBEYA,子ども,小学生,中学生,Scratch,Python,マイクラ,AI,Unity,STEAM教育,習い事,日本語,フジスーパー,算数 プリント,国語 プリント" />
+      <meta property="og:title" content="KOBEYA AI＆プログラミング教室｜バンコクで学ぶプログラミング" />
+      <meta property="og:description" content="バンコクのプログラミング教室。8つの専門コースで楽しく学べる。無料体験実施中。" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/" />
+      <meta property="og:image" content="https://page.gensparksite.com/v1/base64_upload/4e54ecb8f3ea7943d9665aad9445acc4" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="KOBEYA プログラミング教室" />
+      <meta name="twitter:description" content="バンコクで学ぶプログラミング教室。8つの専門コース。" />
+      <meta name="twitter:image" content="https://page.gensparksite.com/v1/base64_upload/4e54ecb8f3ea7943d9665aad9445acc4" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/" />
+    </head>
+    
+    <OrganizationSchema />
+    <LocalBusinessSchema />
+    <BreadcrumbSchema items={[
+      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" }
+    ]} />
+    
     <style>{`
       :root {
         --main-yellow: #FFC107;
@@ -203,10 +226,11 @@ export const homePage = () => {
         width: 150px;
         height: 150px;
         animation: fadeInScale 0.8s ease-out;
-        background: white;
+        background: transparent;
         border-radius: 50%;
         padding: 0.5rem;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        mix-blend-mode: multiply;
       }
       
       @keyframes fadeInScale {
@@ -241,18 +265,17 @@ export const homePage = () => {
       }
       
       .consulting-target {
-        background: rgba(255, 255, 255, 0.25);
+        background: #f3e8ff;
         border-radius: 0.75rem;
-        padding: 1rem 1.5rem;
-        margin-bottom: 1.5rem;
-        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: 0.875rem 1.25rem;
+        margin-bottom: 1.25rem;
+        border: 2px solid #7c3aed;
         text-align: center;
       }
       
       .consulting-target strong {
-        font-size: 1.1rem;
-        color: var(--main-yellow);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        font-size: 1rem;
+        color: #7c3aed;
       }
       
       @media (max-width: 768px) {
@@ -260,6 +283,7 @@ export const homePage = () => {
           width: 100px;
           height: 100px;
           padding: 0.35rem;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         .hero-title-center h1 {
@@ -293,38 +317,38 @@ export const homePage = () => {
       }
       
       .consulting-card {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        background: white;
         border-radius: 1rem;
-        padding: 2.5rem;
-        color: white;
-        box-shadow: 0 8px 32px rgba(30, 58, 138, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        color: var(--text-dark);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 3px solid #7c3aed;
+        height: 100%;
       }
       
       .consulting-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 1.25rem;
-        color: white;
+        margin-bottom: 1rem;
+        color: var(--text-dark);
         display: flex;
         align-items: center;
         gap: 0.5rem;
       }
       
       .consulting-text {
-        font-size: 1rem;
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-        color: rgba(255, 255, 255, 0.95);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+        color: var(--text-gray);
       }
       
       .consulting-problems {
-        background: rgba(255, 255, 255, 0.15);
+        background: #f3e8ff;
         border-radius: 0.75rem;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+        border: 1px solid #7c3aed;
       }
       
       .consulting-problems ul {
@@ -334,11 +358,11 @@ export const homePage = () => {
       }
       
       .consulting-problems li {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.65rem;
         padding-left: 1.5rem;
         position: relative;
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
+        line-height: 1.5;
       }
       
       .consulting-problems li:last-child {
@@ -354,21 +378,41 @@ export const homePage = () => {
       
       .btn-consulting {
         background: white;
-        color: #1e3a8a;
+        color: #7c3aed;
         font-weight: 600;
-        padding: 0.875rem 2rem;
+        padding: 0.75rem 1.75rem;
         border-radius: 0.5rem;
         text-decoration: none;
-        display: inline-block;
+        display: block;
+        text-align: center;
         transition: all 0.3s;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         border: 2px solid transparent;
       }
       
       .btn-consulting:hover {
-        background: #f0f9ff;
+        background: #f3e8ff;
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      .btn-consulting-secondary {
+        background: white;
+        color: #7c3aed;
+        font-weight: 600;
+        padding: 0.75rem 1.75rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        transition: all 0.3s;
+        border: 2px solid #7c3aed;
+      }
+      
+      .btn-consulting-secondary:hover {
+        background: #f3e8ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
       }
     `}</style>
     
@@ -387,52 +431,93 @@ export const homePage = () => {
         </div>
         
         {/* Content Grid */}
-        <div class="grid grid-2" style="align-items: center; gap: 3rem;">
+        <div class="grid grid-2" style="align-items: stretch; gap: 3rem;">
           <div>
-            <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2.5rem; line-height: 1.7;">
-              AI&プログラミングのKOBEYAでは、お子様の興味と能力に合わせた8つのコースをご用意。<br />
-              楽しく学んで、未来のスキルを身につけましょう！
-            </p>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a href="/contact" class="btn-primary">無料体験を申し込む</a>
-              <a href="#courses" class="btn-secondary">コースを見る</a>
-            </div>
-            <div style="margin-top: 2.5rem; display: flex; gap: 2rem; flex-wrap: wrap; color: var(--text-light); font-size: 0.9rem;">
-              <div>📍 フジスーパー2号店2階</div>
-              <div>🚗 駐車場完備</div>
+            <div style="background: white; border-radius: 1rem; padding: 2rem; color: var(--text-dark); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 3px solid #fbbf24; height: 100%;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.5rem;">🎓</span>
+                お子様向けプログラミング教室
+              </h3>
+              <div style="background: #fff9e6; border-radius: 0.75rem; padding: 0.875rem 1.25rem; margin-bottom: 1.25rem; border: 2px solid #fbbf24; text-align: center;">
+                <strong style="font-size: 1rem; color: #f59e0b;">小学生〜中学生対象・8つの専門コース</strong>
+              </div>
+              <p style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem; color: var(--text-gray);">
+                お子様の興味と能力に合わせた多彩なコースで、楽しく学んで未来のスキルを身につけましょう！
+              </p>
+              <div style="background: #fff9e6; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.25rem; border: 1px solid #fbbf24;">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                    <span style="position: absolute; left: 0; top: 0;">🎮</span>
+                    Scratch、マイクラッチでゲーム作り
+                  </li>
+                  <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                    <span style="position: absolute; left: 0; top: 0;">🐍</span>
+                    PythonでAI・本格プログラミング
+                  </li>
+                  <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                    <span style="position: absolute; left: 0; top: 0;">🎨</span>
+                    動画編集・デザイン・クリエイティブ
+                  </li>
+                  <li style="margin-bottom: 0; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                    <span style="position: absolute; left: 0; top: 0;">🧠</span>
+                    思考力育成・算数数学個別指導
+                  </li>
+                </ul>
+              </div>
+              <div style="display: flex; gap: 0.75rem; flex-direction: column; margin-bottom: 1.25rem;">
+                <a href="/contact" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); text-align: center;">
+                  🎓 無料体験を申し込む
+                </a>
+                <a href="#courses" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border: 2px solid #fbbf24; text-align: center;">
+                  📚 コースを見る
+                </a>
+              </div>
+              <div style="font-size: 0.85rem; color: var(--text-gray); display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+                <div>📍 フジスーパー2号店2階</div>
+                <div>🚗 駐車場完備</div>
+              </div>
             </div>
           </div>
           <div>
             <div class="consulting-card">
               <h3 class="consulting-title">
                 <span style="font-size: 1.5rem;">🤝</span>
-                AIコンサルティング
+                大人向けAIコンサルティング
               </h3>
               <div class="consulting-target">
-                <strong>個人事業主、中小企業の方など</strong>
+                <strong>個人事業主、中小企業、教育関係、教育ママなど</strong>
               </div>
               <p class="consulting-text">
-                AIがすごい！便利！と耳にしますが、みなさま使いこなせていますか?
+                AIがすごい！便利！と耳にしますが、みなさま使いこなせていますか?<br />
+                仕事、副業、趣味、教育と様々な分野で利用できます。
               </p>
               <div class="consulting-problems">
                 <ul>
                   <li>AIの使い方が分からない</li>
                   <li>AIを業務にどう活かせるか分からない</li>
                   <li>既存のAIを自分の仕事・副業などに取り入れたい</li>
+                  <li>カスタムされた学習プリント作成システムを作ってほしい</li>
                 </ul>
               </div>
-              <p class="consulting-text" style="margin-bottom: 1.75rem;">
-                このような悩みを持つ方はぜひ一度ご相談ください。
-              </p>
-              <a 
-                id="ai-consult-cta" 
-                data-cta="ai-consult" 
-                href="/ai-consult" 
-                class="btn-consulting" 
-                aria-label="AIコンサルの詳細ページへ移動"
-              >
-                🤝 AIコンサルはこちら
-              </a>
+              <div style="display: flex; gap: 0.75rem; flex-direction: column; margin-top: 1.5rem;">
+                <a 
+                  id="ai-consult-cta" 
+                  data-cta="ai-consult" 
+                  href="/ai-consult" 
+                  class="btn-consulting" 
+                  aria-label="AIコンサルの詳細ページへ移動"
+                >
+                  🤝 AIコンサルはこちら
+                </a>
+                <a 
+                  href="#" 
+                  class="btn-consulting-secondary" 
+                  aria-label="販売中のアプリを見る"
+                  onclick="alert('実装予定'); return false;"
+                >
+                  📱 販売中のアプリはこちら（実装予定）
+                </a>
+              </div>
             </div>
           </div>
         </div>

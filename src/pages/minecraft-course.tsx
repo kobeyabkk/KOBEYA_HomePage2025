@@ -1,8 +1,31 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
+import { CourseSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const minecraftCoursePage = () => (
   <>
+    <head>
+      <title>マインクラフトプログラミングコース｜KOBEYA（コベヤ）プログラミング教室</title>
+      <meta name="description" content="KOBEYA（コベヤ）のマイクラッチコース。Minecraftでプログラミングを楽しく学習。小学生に人気のマイクラで論理的思考を育成。バンコクのプログラミング教室。" />
+      <meta name="keywords" content="マインクラフト,マイクラ,プログラミング,コベヤ,KOBEYA,小学生,バンコク,プログラミング教室,マイクラッチ" />
+      <meta property="og:title" content="マイクラプログラミング｜KOBEYA" />
+      <meta property="og:description" content="Minecraftで楽しくプログラミング学習" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/minecraft" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/minecraft" />
+    </head>
+    
+    <CourseSchema 
+      name="マインクラフトプログラミングコース"
+      description="Minecraftの世界でプログラミングを学ぶマイクラッチコース"
+      provider="KOBEYA"
+      url="https://kobeya-programming.pages.dev/courses/minecraft"
+    />
+    <BreadcrumbSchema items={[
+      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
+      { name: "マイクラコース", url: "https://kobeya-programming.pages.dev/courses/minecraft" }
+    ]} />
+    
     <style>{`
       :root {
         --main-yellow: #FFC107;

@@ -1,8 +1,31 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
+import { CourseSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const steamCoursePage = () => (
   <>
+    <head>
+      <title>STEAMプログラミングコース｜KOBEYA（コベヤ）プログラミング教室</title>
+      <meta name="description" content="KOBEYA（コベヤ）のSTEAMプログラミングコース。Science, Technology, Engineering, Art, Mathを統合的に学習。小学生向けScratch入門からゲーム制作まで。バンコクのプログラミング教室。" />
+      <meta name="keywords" content="STEAM,Scratch,プログラミング,コベヤ,KOBEYA,小学生,バンコク,プログラミング教室,ゲーム制作" />
+      <meta property="og:title" content="STEAMプログラミングコース｜KOBEYA" />
+      <meta property="og:description" content="Scratchで楽しく学ぶSTEAMプログラミング" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/steam-course" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/steam-course" />
+    </head>
+    
+    <CourseSchema 
+      name="STEAMプログラミングコース"
+      description="Science, Technology, Engineering, Art, Mathを統合的に学ぶScratchプログラミング"
+      provider="KOBEYA"
+      url="https://kobeya-programming.pages.dev/steam-course"
+    />
+    <BreadcrumbSchema items={[
+      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
+      { name: "STEAMコース", url: "https://kobeya-programming.pages.dev/steam-course" }
+    ]} />
+    
     <style>{`
       :root {
         --main-yellow: #FFC107;
