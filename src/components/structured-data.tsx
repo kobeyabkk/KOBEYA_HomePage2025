@@ -1,4 +1,5 @@
 // Structured Data (Schema.org) for SEO
+import { raw } from 'hono/html'
 
 export const OrganizationSchema = () => {
   const schema = {
@@ -43,9 +44,7 @@ export const OrganizationSchema = () => {
     ]
   }
   
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-  )
+  return raw(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
 }
 
 export const LocalBusinessSchema = () => {
@@ -87,9 +86,7 @@ export const LocalBusinessSchema = () => {
     ]
   }
   
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-  )
+  return raw(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
 }
 
 export const CourseSchema = (courseData: {
@@ -118,9 +115,7 @@ export const CourseSchema = (courseData: {
     }
   }
   
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-  )
+  return raw(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
 }
 
 export const BreadcrumbSchema = (items: Array<{ name: string; url: string }>) => {
@@ -135,9 +130,7 @@ export const BreadcrumbSchema = (items: Array<{ name: string; url: string }>) =>
     }))
   }
   
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-  )
+  return raw(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
 }
 
 export const FAQSchema = (faqs: Array<{ question: string; answer: string }>) => {
@@ -154,9 +147,7 @@ export const FAQSchema = (faqs: Array<{ question: string; answer: string }>) => 
     }))
   }
   
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-  )
+  return raw(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
 }
 
 export const ServiceSchema = (serviceData: {
@@ -202,7 +193,5 @@ export const ServiceSchema = (serviceData: {
     }
   }
   
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-  )
+  return raw(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
 }
