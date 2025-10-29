@@ -19,8 +19,10 @@ export const homePage = () => {
   const courses = getAllCoursesSorted();
   
   return (
-  <>
-    <head>
+  
+     
+<head>
+   <meta name="google-site-verification" content="adkZhcRqu6LT9OTpDkMRaIlWMZhol-uaYdzy7Cw-9gc" />
       <title>KOBEYA AI＆プログラミング教室｜バンコクで学ぶプログラミング・AI教育</title>
       <meta name="description" content="バンコクのプログラミング教室KOBEYA（コベヤ）。小学生から中学生向けの8つの専門コース。Scratch、Python、マイクラ、AI、Unity、動画編集など。算数・国語プリントも対応。フジスーパー2号店2階、駐車場完備。無料体験実施中。" />
       <meta name="keywords" content="バンコク,プログラミング教室,プログラミング コベヤ,KOBEYA,子ども,小学生,中学生,Scratch,Python,マイクラ,AI,Unity,STEAM教育,習い事,日本語,フジスーパー,算数 プリント,国語 プリント" />
