@@ -1,6 +1,5 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { CourseSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const aiCoachingCoursePage = () => (
   <>
@@ -15,16 +14,6 @@ export const aiCoachingCoursePage = () => (
       <link rel="canonical" href="https://kobeya-programming.pages.dev/ai-coaching-course" />
     </head>
     
-    <CourseSchema 
-      name="AI学習コーチングコース"
-      description="AIと日本人講師のハイブリッド指導による個別最適化学習"
-      provider="KOBEYA"
-      url="https://kobeya-programming.pages.dev/ai-coaching-course"
-    />
-    <BreadcrumbSchema items={[
-      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
-      { name: "AI学習コーチング", url: "https://kobeya-programming.pages.dev/ai-coaching-course" }
-    ]} />
     
     <style>{`
       :root {

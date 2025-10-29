@@ -1,6 +1,5 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { CourseSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const toyprogrammingCoursePage = () => (
   <>
@@ -15,16 +14,6 @@ export const toyprogrammingCoursePage = () => (
       <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/toyprogramming" />
     </head>
     
-    <CourseSchema 
-      name="TOYPROプログラミングコース"
-      description="Pythonで競技プログラミングに挑戦。読解力・算数・プログラミングを統合学習"
-      provider="KOBEYA"
-      url="https://kobeya-programming.pages.dev/courses/toyprogramming"
-    />
-    <BreadcrumbSchema items={[
-      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
-      { name: "TOYPROコース", url: "https://kobeya-programming.pages.dev/courses/toyprogramming" }
-    ]} />
     
     <style>{`
       :root {

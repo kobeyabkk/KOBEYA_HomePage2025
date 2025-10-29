@@ -1,6 +1,5 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { ServiceSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const aiConsultPage = () => (
   <>
@@ -20,17 +19,6 @@ export const aiConsultPage = () => (
       <link rel="canonical" href="https://kobeya-programming.pages.dev/ai-consult" />
     </head>
     
-    <ServiceSchema 
-      name="AIコンサルティング"
-      description="ChatGPT・Gemini・Gensparkなどの生成AIを活用した業務効率化支援"
-      serviceType="AI Consulting"
-      provider="KOBEYA"
-      areaServed="Bangkok"
-    />
-    <BreadcrumbSchema items={[
-      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
-      { name: "AIコンサルティング", url: "https://kobeya-programming.pages.dev/ai-consult" }
-    ]} />
     <style>{`
       :root {
         --main-yellow: #FFC107;
