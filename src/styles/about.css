@@ -1,0 +1,64 @@
+:root {
+        --main-yellow: #FFC107;
+        --accent-yellow: #FFD700;
+        --base-white: #FFFFFF;
+        --text-dark: #2D3748;
+        --text-gray: #4A5568;
+        --text-light: #718096;
+      }
+      
+      .section {
+        padding: 4rem 0;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      
+      .hero-section {
+        background: linear-gradient(135deg, var(--base-white) 0%, #fffef7 100%);
+        padding: 4rem 0;
+        text-align: center;
+      }
+      
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+      }
+      
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+      
+      @media (max-width: 768px) {
+        .grid-2 {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        
+        h1 {
+          font-size: 2.25rem;
+        }
+        
+        h2 {
+          font-size: 1.75rem;
+        }
+        
+        .container {
+          padding: 0 1rem;
+        }
+      }
