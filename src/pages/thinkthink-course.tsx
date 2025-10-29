@@ -15,7 +15,7 @@ export const thinkthinkCoursePage = () => (
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD700;
@@ -650,7 +650,7 @@ export const thinkthinkCoursePage = () => (
           transform: rotate(0deg);
         }
       }
-    `}</style>
+    `}} />
 
     <Header />
 

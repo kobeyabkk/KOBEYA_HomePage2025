@@ -15,7 +15,7 @@ export const toyprogrammingCoursePage = () => (
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFD700;
         --accent-yellow: #FFC107;
@@ -746,7 +746,7 @@ export const toyprogrammingCoursePage = () => (
           font-size: 1rem;
         }
       }
-    `}</style>
+    `}} />
     
     <Header />
     

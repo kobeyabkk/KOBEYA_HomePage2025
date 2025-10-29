@@ -19,7 +19,7 @@ export const aiConsultPage = () => (
       <link rel="canonical" href="https://kobeya-programming.pages.dev/ai-consult" />
     </head>
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD700;
@@ -691,7 +691,7 @@ export const aiConsultPage = () => (
           padding: 5rem 0 4rem;
         }
       }
-    `}</style>
+    `}} />
 
     <Header />
 

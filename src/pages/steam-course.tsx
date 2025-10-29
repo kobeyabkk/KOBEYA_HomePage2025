@@ -15,7 +15,7 @@ export const steamCoursePage = () => (
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD700;
@@ -359,7 +359,7 @@ export const steamCoursePage = () => (
           max-width: 280px; /* モバイルでの縦型動画幅 */
         }
       }
-    `}</style>
+    `}} />
     
     <Header />
     

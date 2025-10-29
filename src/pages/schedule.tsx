@@ -15,7 +15,7 @@ export const schedulePage = () => (
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD54F;
@@ -291,7 +291,7 @@ export const schedulePage = () => (
           align-items: center;
         }
       }
-    `}</style>
+    `}} />
 
     <Header />
 

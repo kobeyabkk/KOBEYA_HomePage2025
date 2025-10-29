@@ -3,7 +3,7 @@ import { Footer } from '../components/footer'
 
 export const creatorsCoursePage = () => (
   <>
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD700;
@@ -596,7 +596,7 @@ export const creatorsCoursePage = () => (
 
 
       }
-    `}</style>
+    `}} />
 
     <Header />
 

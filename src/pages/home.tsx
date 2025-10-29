@@ -39,7 +39,7 @@ export const homePage = () => {
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD700;
@@ -410,7 +410,7 @@ export const homePage = () => {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
       }
-    `}</style>
+    `}} />
     
     <Header />
     

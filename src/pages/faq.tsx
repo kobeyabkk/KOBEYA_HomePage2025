@@ -15,7 +15,7 @@ export const faqPage = () => (
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD54F;
@@ -214,7 +214,7 @@ export const faqPage = () => (
           font-size: 1rem;
         }
       }
-    `}</style>
+    `}} />
 
     <Header />
 

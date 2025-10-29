@@ -15,7 +15,7 @@ export const aiCoachingCoursePage = () => (
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD700;
@@ -782,7 +782,7 @@ export const aiCoachingCoursePage = () => (
         40% { transform: translateY(-5px); }
         60% { transform: translateY(-3px); }
       }
-    `}</style>
+    `}} />
 
     <Header />
 

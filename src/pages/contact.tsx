@@ -15,7 +15,7 @@ export const contactPage = () => (
     </head>
     
     
-    <style>{`
+    <style dangerouslySetInnerHTML={{__html: `
       :root {
         --main-yellow: #FFC107;
         --accent-yellow: #FFD700;
@@ -358,7 +358,7 @@ export const contactPage = () => (
         opacity: 0.6;
         cursor: not-allowed;
       }
-    `}</style>
+    `}} />
 
 <script src="/js/contact-form.js" defer></script>
 
