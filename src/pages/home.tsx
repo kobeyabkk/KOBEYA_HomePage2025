@@ -20,24 +20,6 @@ export const homePage = () => {
   
   return (
   <>
-    <head>
-      <title>KOBEYA AI＆プログラミング教室｜バンコクで学ぶプログラミング・AI教育</title>
-      <meta name="google-site-verification" content="adkZhcRqu6LT9OTpDkMRaIlWMZhol-uaYdzy7Cw-9gc" />
-      <meta name="description" content="バンコクのプログラミング教室KOBEYA（コベヤ）。小学生から中学生向けの8つの専門コース。Scratch、Python、マイクラ、AI、Unity、動画編集など。算数・国語プリントも対応。フジスーパー2号店2階、駐車場完備。無料体験実施中。" />
-      <meta name="keywords" content="バンコク,プログラミング教室,プログラミング コベヤ,KOBEYA,子ども,小学生,中学生,Scratch,Python,マイクラ,AI,Unity,STEAM教育,習い事,日本語,フジスーパー,算数 プリント,国語 プリント" />
-      <meta property="og:title" content="KOBEYA AI＆プログラミング教室｜バンコクで学ぶプログラミング" />
-      <meta property="og:description" content="バンコクのプログラミング教室。8つの専門コースで楽しく学べる。無料体験実施中。" />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/" />
-      <meta property="og:image" content="https://page.gensparksite.com/v1/base64_upload/4e54ecb8f3ea7943d9665aad9445acc4" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="KOBEYA プログラミング教室" />
-      <meta name="twitter:description" content="バンコクで学ぶプログラミング教室。8つの専門コース。" />
-      <meta name="twitter:image" content="https://page.gensparksite.com/v1/base64_upload/4e54ecb8f3ea7943d9665aad9445acc4" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/" />
-    </head>
-    
-    
     <style>{`
       :root {
         --main-yellow: #FFC107;
