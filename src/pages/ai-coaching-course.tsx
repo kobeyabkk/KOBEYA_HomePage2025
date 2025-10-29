@@ -3,6 +3,18 @@ import { Footer } from '../components/footer'
 
 export const aiCoachingCoursePage = () => (
   <>
+    <head>
+      <title>AI学習コーチングコース｜KOBEYA（コベヤ）- AI×個別指導</title>
+      <meta name="description" content="KOBEYA（コベヤ）のAI学習コーチングコース。AIと日本人講師のハイブリッド指導。個別最適化された学習プラン、Study Partnerで効率的に学習。バンコクのプログラミング教室。" />
+      <meta name="keywords" content="AI学習,コーチング,個別指導,コベヤ,KOBEYA,Study Partner,バンコク,プログラミング教室,最適化学習" />
+      <meta property="og:title" content="AI学習コーチング｜KOBEYA" />
+      <meta property="og:description" content="AIと講師のハイブリッド個別指導" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/ai-coaching-course" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/ai-coaching-course" />
+    </head>
+    
+    
     <style>{`
       :root {
         --main-yellow: #FFC107;
@@ -834,7 +846,7 @@ export const aiCoachingCoursePage = () => (
               <p class="ai-system-description">
                 最先端のAI学習技術により、一人ひとりの学習状況を分析し、最適な学習プランを提案。生徒の思考・判断・表現のプロセスをAIが見える化します。
               </p>
-              <a href="https://kobeyabkk-studypartner.pages.dev/" class="study-partner-link" target="_blank" rel="noopener noreferrer">
+              <a href="https://kobeyabkk-studypartner.pages.dev/study-partner" class="study-partner-link" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-rocket"></i>
                 Study Partnerを体験する
                 <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 5px;"></i>
@@ -1061,7 +1073,7 @@ export const aiCoachingCoursePage = () => (
                 <span>弱点克服サポート</span>
               </div>
             </div>
-            <a href="https://kobeyabkk-studypartner.pages.dev/" class="study-partner-big-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://kobeyabkk-studypartner.pages.dev/study-partner" class="study-partner-big-btn" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-rocket"></i>
               Study Partnerを今すぐ体験
               <i class="fas fa-external-link-alt" style="margin-left: 5px;"></i>
@@ -1084,7 +1096,7 @@ export const aiCoachingCoursePage = () => (
                 <i class="fas fa-graduation-cap"></i>
                 無料体験を申し込む
               </a>
-              <a href="https://kobeyabkk-studypartner.pages.dev/" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+              <a href="https://kobeyabkk-studypartner.pages.dev/study-partner" class="btn-secondary" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-rocket"></i>
                 Study Partnerを体験する
                 <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 5px;"></i>

@@ -3,6 +3,18 @@ import { Footer } from '../components/footer'
 
 export const aboutPage = () => (
   <>
+    <head>
+      <title>教室について｜KOBEYA プログラミング教室 バンコク</title>
+      <meta name="description" content="KOBEYA（コベヤ）はバンコクのフジスーパー2号店2階にあるプログラミング教室。日本人講師、PC・タブレット完備、駐車場あり。オンライン授業も対応。自分のペースで楽しく学べる環境を提供。" />
+      <meta name="keywords" content="KOBEYA,コベヤ,プログラミング コベヤ,教室紹介,アクセス,フジスーパー,バンコク,日本人講師,オンライン授業,駐車場,設備" />
+      <meta property="og:title" content="教室について｜KOBEYA" />
+      <meta property="og:description" content="バンコクのプログラミング教室KOBEYA。フジスーパー2号店2階。" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/about" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/about" />
+    </head>
+    
+    
     <style>{`
       :root {
         --main-yellow: #FFC107;

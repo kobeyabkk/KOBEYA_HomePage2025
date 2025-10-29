@@ -3,6 +3,18 @@ import { Footer } from '../components/footer'
 
 export const contactPage = () => (
   <>
+    <head>
+      <title>お問い合わせ・無料体験申込｜KOBEYA プログラミング教室</title>
+      <meta name="description" content="KOBEYA（コベヤ）プログラミング教室へのお問い合わせ・無料体験レッスンのお申し込み。LINE、メール、お電話で受付中。バンコクのフジスーパー2号店2階。お気軽にご相談ください。" />
+      <meta name="keywords" content="お問い合わせ,無料体験,申込,相談,LINE,メール,バンコク,プログラミング教室,KOBEYA,コベヤ,プログラミング コベヤ" />
+      <meta property="og:title" content="お問い合わせ｜KOBEYA" />
+      <meta property="og:description" content="無料体験レッスン受付中。LINEやメールでお気軽にご相談ください。" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/contact" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/contact" />
+    </head>
+    
+    
     <style>{`
       :root {
         --main-yellow: #FFC107;

@@ -5,7 +5,14 @@ export function mathCoursePage() {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>算数数学個別指導 - プログラミングのKOBEYA</title>
+      <title>算数数学個別指導｜KOBEYA プログラミング教室 - オーダーメイドプリント対応</title>
+      <meta name="description" content="KOBEYA（コベヤ）の算数数学個別指導。小学生から中学生まで、一人ひとりに合わせたオーダーメイドプリントで学習。算数プリント・国語プリントも対応。バンコクのプログラミング教室。">
+      <meta name="keywords" content="算数,数学,個別指導,算数 プリント,国語 プリント,オーダーメイド,小学生,中学生,バンコク,KOBEYA,コベヤ,プログラミング教室">
+      <meta property="og:title" content="算数数学個別指導｜KOBEYA">
+      <meta property="og:description" content="一人ひとりに合わせたオーダーメイドプリントで学ぶ算数数学個別指導">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/math">
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/math">
       <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
       <style>
         :root {

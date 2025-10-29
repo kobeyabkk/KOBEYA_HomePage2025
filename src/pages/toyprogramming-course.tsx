@@ -3,6 +3,18 @@ import { Footer } from '../components/footer'
 
 export const toyprogrammingCoursePage = () => (
   <>
+    <head>
+      <title>TOYPROプログラミングコース｜KOBEYA（コベヤ）- Python×競技プログラミング</title>
+      <meta name="description" content="KOBEYA（コベヤ）のTOYPROコース。Pythonで競技プログラミングに挑戦。読解力・算数数学・プログラミングを同時に学習。小学生から中学生対応。バンコクのプログラミング教室。" />
+      <meta name="keywords" content="Python,競技プログラミング,TOYPRO,コベヤ,KOBEYA,小学生,中学生,バンコク,プログラミング教室,算数,読解力" />
+      <meta property="og:title" content="TOYPROコース｜KOBEYA" />
+      <meta property="og:description" content="Pythonで学ぶ競技プログラミング" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/toyprogramming" />
+      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/toyprogramming" />
+    </head>
+    
+    
     <style>{`
       :root {
         --main-yellow: #FFD700;
