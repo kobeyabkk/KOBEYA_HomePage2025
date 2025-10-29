@@ -1,6 +1,5 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { CourseSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const minecraftCoursePage = () => (
   <>
@@ -15,16 +14,6 @@ export const minecraftCoursePage = () => (
       <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/minecraft" />
     </head>
     
-    <CourseSchema 
-      name="マインクラフトプログラミングコース"
-      description="Minecraftの世界でプログラミングを学ぶマイクラッチコース"
-      provider="KOBEYA"
-      url="https://kobeya-programming.pages.dev/courses/minecraft"
-    />
-    <BreadcrumbSchema items={[
-      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
-      { name: "マイクラコース", url: "https://kobeya-programming.pages.dev/courses/minecraft" }
-    ]} />
     
     <style>{`
       :root {

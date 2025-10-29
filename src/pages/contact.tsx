@@ -1,6 +1,5 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { BreadcrumbSchema } from '../components/structured-data'
 
 export const contactPage = () => (
   <>
@@ -15,10 +14,6 @@ export const contactPage = () => (
       <link rel="canonical" href="https://kobeya-programming.pages.dev/contact" />
     </head>
     
-    <BreadcrumbSchema items={[
-      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
-      { name: "お問い合わせ", url: "https://kobeya-programming.pages.dev/contact" }
-    ]} />
     
     <style>{`
       :root {

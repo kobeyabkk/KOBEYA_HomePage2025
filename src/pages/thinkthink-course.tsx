@@ -1,6 +1,5 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { CourseSchema, BreadcrumbSchema } from '../components/structured-data'
 
 export const thinkthinkCoursePage = () => (
   <>
@@ -15,16 +14,6 @@ export const thinkthinkCoursePage = () => (
       <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/thinkthink" />
     </head>
     
-    <CourseSchema 
-      name="Think!Think!思考力育成コース"
-      description="6-12歳向け思考力育成アプリ。空間認識、論理的思考をトレーニング"
-      provider="KOBEYA"
-      url="https://kobeya-programming.pages.dev/courses/thinkthink"
-    />
-    <BreadcrumbSchema items={[
-      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" },
-      { name: "Think!Think!コース", url: "https://kobeya-programming.pages.dev/courses/thinkthink" }
-    ]} />
     
     <style>{`
       :root {

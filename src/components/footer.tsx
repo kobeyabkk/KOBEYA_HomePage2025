@@ -80,7 +80,6 @@ export const Footer = () => (
         height: 100%;
         object-fit: contain;
         border-radius: 50%;
-        mix-blend-mode: multiply;
       }
       
       .footer-bottom {
@@ -211,10 +210,10 @@ export const Footer = () => (
           <div class="footer-section">
             <h3>サポート</h3>
             <ul>
-              <li><a href="/faq">よくある質問</a></li>
-              <li><a href="/schedule">授業スケジュール</a></li>
-              <li><a href="/support">サポート</a></li>
-              <li><a href="/contact">お問い合わせ</a></li>
+              <li><a href="/contact#faq">よくある質問</a></li>
+              <li><a href="/contact#schedule">授業スケジュール</a></li>
+              <li><a href="/contact#price">料金案内</a></li>
+              <li><a href="/contact#policy">入会案内</a></li>
             </ul>
             
             <div style="margin-top: 1.5rem;">

@@ -1,7 +1,6 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { getAllCoursesSorted } from '../data/courses'
-import { OrganizationSchema, LocalBusinessSchema, BreadcrumbSchema } from '../components/structured-data'
 
 // コースアイコンを生成する関数
 const getCourseIcon = (title: string): string => {
@@ -23,6 +22,7 @@ export const homePage = () => {
   <>
     <head>
       <title>KOBEYA AI＆プログラミング教室｜バンコクで学ぶプログラミング・AI教育</title>
+      <meta name="google-site-verification" content="adkZhcRqu6LT9OTpDkMRaIlWMZhol-uaYdzy7Cw-9gc" />
       <meta name="description" content="バンコクのプログラミング教室KOBEYA（コベヤ）。小学生から中学生向けの8つの専門コース。Scratch、Python、マイクラ、AI、Unity、動画編集など。算数・国語プリントも対応。フジスーパー2号店2階、駐車場完備。無料体験実施中。" />
       <meta name="keywords" content="バンコク,プログラミング教室,プログラミング コベヤ,KOBEYA,子ども,小学生,中学生,Scratch,Python,マイクラ,AI,Unity,STEAM教育,習い事,日本語,フジスーパー,算数 プリント,国語 プリント" />
       <meta property="og:title" content="KOBEYA AI＆プログラミング教室｜バンコクで学ぶプログラミング" />
@@ -37,11 +37,6 @@ export const homePage = () => {
       <link rel="canonical" href="https://kobeya-programming.pages.dev/" />
     </head>
     
-    <OrganizationSchema />
-    <LocalBusinessSchema />
-    <BreadcrumbSchema items={[
-      { name: "ホーム", url: "https://kobeya-programming.pages.dev/" }
-    ]} />
     
     <style>{`
       :root {
