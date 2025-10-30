@@ -9,6 +9,7 @@ import { aiConsultPage } from './pages/ai-consult'
 import { faqPage } from './pages/faq'
 import { supportPage } from './pages/support'
 import { schedulePage } from './pages/schedule'
+import { pricingPage } from './pages/pricing'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
@@ -57,6 +58,10 @@ app.get('/support', (c) => {
 
 app.get('/schedule', (c) => {
   return c.render(schedulePage())
+})
+
+app.get('/pricing', (c) => {
+  return c.render(pricingPage())
 })
 
 // AI Consult page
