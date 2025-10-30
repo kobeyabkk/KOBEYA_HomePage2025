@@ -346,21 +346,21 @@ export const faqPage = () => (
           <div className="faq-answer">
             <p>以下の方法でお支払いいただけます：</p>
             <ul>
+              <li>Prompt Payによる振込（タイ国内）</li>
               <li>銀行振込（タイ国内）</li>
               <li>現金払い（教室窓口）</li>
-              <li>クレジットカード（オンライン決済）</li>
             </ul>
-            <p>原則として<strong>月初めに翌月分のお支払い</strong>をお願いしております。</p>
+            <p>原則として<strong>月初めにその月のご請求書を発行</strong>します。お支払い後に、振り込み画面のスクリーンショット等をLINEやメールにてお送りいただいております。</p>
           </div>
         </div>
 
         <div className="faq-item">
           <div className="faq-question">
             <span className="faq-q-icon">Q</span>
-            <span>途中退会の場合、返金はありますか？</span>
+            <span>お休みをした場合、返金はありますか？</span>
           </div>
           <div className="faq-answer">
-            <p>月の途中で退会される場合、<strong>未受講分の授業料は日割り計算で返金</strong>いたします。ただし、入会金は返金対象外となります。</p>
+            <p>急なお休みをした場合は、<strong>振替授業にするか次の月で料金調整をするか</strong>を選べます。お休みしても授業料は無駄になりませんのでご安心ください。</p>
           </div>
         </div>
 
@@ -370,7 +370,7 @@ export const faqPage = () => (
             <span>兄弟割引はありますか？</span>
           </div>
           <div className="faq-answer">
-            <p>はい、<strong>ご兄弟で受講される場合は10%割引</strong>を適用いたします。詳しくはお問い合わせください。</p>
+            <p>はい、<strong>ご兄弟で受講される場合は30%割引</strong>を適用いたします。ただし、個別指導では兄弟割引は適用されません。詳しくはお問い合わせください。</p>
           </div>
         </div>
       </div>
@@ -410,10 +410,11 @@ export const faqPage = () => (
           <div className="faq-answer">
             <p>フジスーパー2号店2階にあり、以下の設備を完備しています：</p>
             <ul>
-              <li>高性能パソコン（Windows/Mac対応）</li>
+              <li>パソコン（Windows）</li>
+              <li>タブレット（Android）</li>
+              <li>マウス</li>
+              <li>ヘッドフォン</li>
               <li>高速Wi-Fi環境</li>
-              <li>プロジェクター・大画面モニター</li>
-              <li>快適な学習スペース</li>
             </ul>
           </div>
         </div>
@@ -452,7 +453,7 @@ export const faqPage = () => (
             <span>日本語での対応は可能ですか？</span>
           </div>
           <div className="faq-answer">
-            <p>はい、<strong>講師は全員日本語ネイティブ</strong>ですので、授業からお問い合わせまで、すべて日本語で対応いたします。</p>
+            <p>はい、<strong>講師は日本人</strong>ですので、授業からお問い合わせまで、すべて日本語で対応いたします。</p>
           </div>
         </div>
       </div>
