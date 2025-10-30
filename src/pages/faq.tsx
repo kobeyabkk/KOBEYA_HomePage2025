@@ -316,7 +316,7 @@ export const faqPage = () => (
             <span>振替授業はできますか？</span>
           </div>
           <div className="faq-answer">
-            <p>はい、<strong>事前連絡</strong>（当日もOK）をいただければ、別の日時に振替可能です。急な病気や交通渋滞のひどい日など</p>
+            <p>はい、<strong>事前連絡</strong>（当日もOK）をいただければ、別の日時に振替可能です。急な病気や交通渋滞のひどい日などでも安心です。オンライン授業への変更も可能です。</p>
           </div>
         </div>
 
@@ -326,7 +326,7 @@ export const faqPage = () => (
             <span>オンライン受講は可能ですか？</span>
           </div>
           <div className="faq-answer">
-            <p>はい、<strong>一部のコースはオンライン受講可能</strong>です。特にトイプロ（Python）やAIコーチング・ラボはオンライン完結型です。詳しくはお問い合わせください。</p>
+            <p>はい、<strong>ほぼ全てのコースはオンライン受講可能</strong>です。ただし、リアル授業推奨の講座はあります。詳しくはお問い合わせください。</p>
           </div>
         </div>
       </div>
@@ -360,7 +360,7 @@ export const faqPage = () => (
             <span>途中退会の場合、返金はありますか？</span>
           </div>
           <div className="faq-answer">
-            <p>月の途中で退会される場合、<strong>未受講分の授業料は日割り計算で返金</strong>いたします。ただし、入塾金は返金対象外となります。</p>
+            <p>月の途中で退会される場合、<strong>未受講分の授業料は日割り計算で返金</strong>いたします。ただし、入会金は返金対象外となります。</p>
           </div>
         </div>
 
