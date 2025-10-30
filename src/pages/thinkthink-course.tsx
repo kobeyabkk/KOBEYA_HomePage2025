@@ -890,7 +890,8 @@ export const thinkthinkCoursePage = () => (
             <h2 class="section-title">スケジュール・料金</h2>
             <p class="section-subtitle">
               6歳から12歳まで、年齢に応じたクラス設定で<br/>
-              お子様の発達段階に最適な思考力育成を提供します。スケジュール、料金についてはお問い合わせください。
+              お子様の発達段階に最適な思考力育成を提供します。<br/>
+              スケジュールについては<a href="/schedule" style="color: var(--main-yellow); text-decoration: underline;">授業時間割ページ</a>、料金については<a href="/pricing" style="color: var(--main-yellow); text-decoration: underline;">料金案内ページ</a>をご確認ください。
             </p>
           </div>
           

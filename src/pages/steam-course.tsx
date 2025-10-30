@@ -792,7 +792,8 @@ export const steamCoursePage = () => (
             <div style="text-align: left; margin-top: 1rem;">
               <p><strong>対象年齢</strong>：小学1年生〜高校3年生</p>
               <p><strong>受講形式</strong>：対面・オンライン両対応</p>
-              <p><strong>詳細料金</strong>：お問い合わせください</p>
+              <p><strong>授業時間</strong>：55分</p>
+              <p><strong>詳細料金</strong>：<a href="/pricing" style="color: var(--main-yellow); text-decoration: underline;">料金案内ページをご確認ください</a></p>
               <p style="color: var(--main-yellow); font-weight: 600;">※無料体験授業実施中</p>
             </div>
           </div>
