@@ -250,15 +250,15 @@ export const faqPage = () => (
             <span>何歳から受講できますか？</span>
           </div>
           <div className="faq-answer">
-            <p>コースによって対象年齢が異なります：</p>
+            <p>コースによって対象学年が異なります：</p>
             <ul>
-              <li><strong>シンクシンク：</strong>6歳〜12歳</li>
+              <li><strong>シンクシンク：</strong>小学1年生〜</li>
               <li><strong>STEAMコース（Scratch）：</strong>小学1年生〜</li>
-              <li><strong>マイクラッチ：</strong>小学2年生〜</li>
+              <li><strong>マイクラッチ：</strong>小学1年生〜</li>
               <li><strong>トイプロ（Python）：</strong>小学4年生〜</li>
-              <li><strong>Unity、クリエイターズ：</strong>小学5年生〜</li>
+              <li><strong>Unity、クリエイターズ：</strong>小学4年生〜</li>
             </ul>
-            <p>ただし、お子様の興味や理解度によって柔軟に対応いたしますので、まずはご相談ください。</p>
+            <p>※対象学年は目安です</p>
           </div>
         </div>
 
@@ -278,7 +278,7 @@ export const faqPage = () => (
             <span>入会金や教材費はかかりますか？</span>
           </div>
           <div className="faq-answer">
-            <p>入会金は<strong>10,000バーツ</strong>です。教材費はコースによって異なりますが、基本的にはオンライン教材を使用するため、追加費用は最小限に抑えています。詳しくは無料体験時にご説明いたします。</p>
+            <p>入塾金は<strong>2,000バーツ</strong>です。テキストが必要な講座以外は教材費のご請求はありません。詳しくは無料体験時にご説明いたします。</p>
           </div>
         </div>
       </div>
@@ -296,7 +296,7 @@ export const faqPage = () => (
             <span>1クラスは何人ですか？</span>
           </div>
           <div className="faq-answer">
-            <p>基本的に<strong>少人数制（4〜8名）</strong>で運営しています。一人ひとりに目が届く環境で、質の高い指導を心がけています。個別指導が必要な場合は、マンツーマンレッスンも可能です。</p>
+            <p>基本的に<strong>少人数制（7名以内）</strong>で運営しています。一人ひとりに目が届く環境で、質の高い指導を心がけています。算数数学の個別指導は完全個別（1名）です。</p>
           </div>
         </div>
 
@@ -306,7 +306,7 @@ export const faqPage = () => (
             <span>授業時間はどのくらいですか？</span>
           </div>
           <div className="faq-answer">
-            <p>コースによって異なりますが、<strong>通常60分〜90分</strong>です。お子様の集中力を考慮し、適度な休憩を挟みながら進めます。</p>
+            <p>コースによって異なりますが、<strong>55分もしくは85分</strong>です。お子様の集中力を考慮し、適度な休憩を挟みながら進めます。</p>
           </div>
         </div>
 
@@ -316,7 +316,7 @@ export const faqPage = () => (
             <span>振替授業はできますか？</span>
           </div>
           <div className="faq-answer">
-            <p>はい、<strong>事前連絡</strong>（前日まで）をいただければ、別の日時に振替可能です。ただし、月に2回までとさせていただいております。</p>
+            <p>はい、<strong>事前連絡</strong>（当日もOK）をいただければ、別の日時に振替可能です。急な病気や交通渋滞のひどい日など</p>
           </div>
         </div>
 
@@ -360,7 +360,7 @@ export const faqPage = () => (
             <span>途中退会の場合、返金はありますか？</span>
           </div>
           <div className="faq-answer">
-            <p>月の途中で退会される場合、<strong>未受講分の授業料は日割り計算で返金</strong>いたします。ただし、入会金は返金対象外となります。</p>
+            <p>月の途中で退会される場合、<strong>未受講分の授業料は日割り計算で返金</strong>いたします。ただし、入塾金は返金対象外となります。</p>
           </div>
         </div>
 
