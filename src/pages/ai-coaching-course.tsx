@@ -953,9 +953,9 @@ export const aiCoachingCoursePage = () => (
           </div>
 
           <div class="ai-collaboration">
-            <h3>教室でのAIサポート付き自習</h3>
+            <h3>AIサポート付き自習</h3>
             <p>
-              オンラインでの宿題コーチング・AIによる学習記録の自動保存とフィードバック
+              AIによる宿題コーチング・学習記録の自動保存とフィードバック
             </p>
           </div>
         </div>
@@ -979,7 +979,19 @@ export const aiCoachingCoursePage = () => (
               </h3>
               <div class="target-item">
                 <i class="fas fa-graduation-cap"></i>
-                <span>日本人学校・インター校に通う 中学生（小学生はご相談ください）</span>
+                <span>日本人学校（原則中学生）</span>
+              </div>
+              <div class="target-item">
+                <i class="fas fa-globe"></i>
+                <span>インター校生（原則中学生・高校生）</span>
+              </div>
+              <div class="target-item">
+                <i class="fas fa-wifi"></i>
+                <span>タイ国外からの受講も可能</span>
+              </div>
+              <div class="target-item">
+                <i class="fas fa-info-circle"></i>
+                <span>※小学生はご相談ください</span>
               </div>
             </div>
 
@@ -989,20 +1001,20 @@ export const aiCoachingCoursePage = () => (
                 こんな生徒におすすめ
               </h3>
               <div class="target-item">
-                <i class="fas fa-chart-line"></i>
-                <span>勉強はしているのに成果が見えにくい</span>
+                <i class="fas fa-book-open"></i>
+                <span>宿題のわからないところを解説してほしい</span>
               </div>
               <div class="target-item">
                 <i class="fas fa-target"></i>
                 <span>苦手単元を自分で克服したい</span>
               </div>
               <div class="target-item">
-                <i class="fas fa-robot"></i>
-                <span>AIを使った学びに興味がある</span>
+                <i class="fas fa-pen-fancy"></i>
+                <span>小論文や英検の対策をしたい</span>
               </div>
               <div class="target-item">
-                <i class="fas fa-clock"></i>
-                <span>自分のペースで確実に理解を積み上げたい</span>
+                <i class="fas fa-robot"></i>
+                <span>AIを使った学びに興味がある</span>
               </div>
             </div>
           </div>
@@ -1027,11 +1039,11 @@ export const aiCoachingCoursePage = () => (
             </h3>
             <div class="schedule-item">
               <span class="schedule-label">開催日時</span>
-              <span class="schedule-value">土曜日 夕方</span>
+              <span class="schedule-value">火曜日 18：30〜19：25</span>
             </div>
             <div class="schedule-item">
               <span class="schedule-label">学習形式</span>
-              <span class="schedule-value">教室でのAIサポート付き自習</span>
+              <span class="schedule-value">教室もしくは自宅でのAIサポート付き自習<br/>24時間いつでも利用可能</span>
             </div>
             <div class="schedule-item">
               <span class="schedule-label">オンライン対応</span>
@@ -1043,7 +1055,7 @@ export const aiCoachingCoursePage = () => (
             </div>
             <div class="schedule-item">
               <span class="schedule-label">対象</span>
-              <span class="schedule-value">中学生（小学生要相談）</span>
+              <span class="schedule-value">中学生、高校生（小学生要相談）</span>
             </div>
           </div>
         </div>
