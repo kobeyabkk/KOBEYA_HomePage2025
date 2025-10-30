@@ -745,7 +745,7 @@ export const minecraftCoursePage = () => (
               <p><strong>平日</strong>：火・木 16:00-17:30</p>
               <p><strong>土曜</strong>：10:00-11:30 / 14:00-15:30</p>
               <p><strong>日曜</strong>：13:00-14:30</p>
-              <p><strong>授業時間</strong>：90分 / 回</p>
+              <p><strong>授業時間</strong>：55分 / 回</p>
               <p style={{color: 'var(--main-yellow)', fontWeight: '700'}}>※初心者歓迎・マイクラ未経験でもOK</p>
             </div>
           </div>
@@ -754,7 +754,7 @@ export const minecraftCoursePage = () => (
               💰 料金プラン
             </h3>
             <div style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
-              <p><strong>授業料</strong>：お問い合わせください</p>
+              <p><strong>授業料</strong>：<a href="/pricing" style={{color: 'var(--main-yellow)', textDecoration: 'underline'}}>料金案内ページをご確認ください</a></p>
               <p><strong>教材費</strong>：なし</p>
               <p><strong>定員</strong>：7名 / クラス</p>
               <p style={{color: 'var(--main-yellow)', fontWeight: '700'}}>※無料体験授業実施中</p>
