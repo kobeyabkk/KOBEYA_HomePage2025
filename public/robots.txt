@@ -4,7 +4,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://kobeya-programming.pages.dev/sitemap.xml
+Sitemap: https://kobeyabkk-homepage.pages.dev/sitemap.xml
 
 # Disallow admin or private pages (if any in future)
 # Disallow: /admin/
