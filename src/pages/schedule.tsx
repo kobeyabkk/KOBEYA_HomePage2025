@@ -311,7 +311,7 @@ export const schedulePage = () => (
           <span>重要なお知らせ</span>
         </div>
         <div className="schedule-notice-text">
-          ※通常時の時間割です。8月、12月、3月、4月などと特別時間割に変更されます。<br/>
+          ※通常時の時間割です。8月、12月、3月、4月などは特別時間割に変更されます。<br/>
           ※毎週日曜は休校日です。<br/>
           ※2025年4月現在の時間割です。状況により変更される可能性があります。
         </div>
@@ -358,10 +358,10 @@ export const schedulePage = () => (
           <div className="info-card-title">開講曜日・時間</div>
           <div className="info-card-text">
             <strong>平日（月〜金）：</strong><br/>
-            午前〜夜間まで幅広く開講<br/>
+            9：00〜21：00まで開講<br/>
             <br/>
             <strong>土曜日：</strong><br/>
-            午前〜夕方まで開講<br/>
+            9：00〜18：00まで開講<br/>
             <br/>
             <strong>日曜日：</strong><br/>
             休校日
@@ -373,9 +373,9 @@ export const schedulePage = () => (
           <div className="info-card-title">授業時間</div>
           <div className="info-card-text">
             <ul>
-              <li><strong>STEAMコース・マイクラッチ：</strong>60分</li>
-              <li><strong>個別指導：</strong>60〜90分</li>
-              <li><strong>クリエイターズ：</strong>90分</li>
+              <li><strong>STEAMコース・マイクラッチ：</strong>55分</li>
+              <li><strong>個別指導：</strong>55分または85分</li>
+              <li><strong>クリエイターズ：</strong>85分</li>
             </ul>
             ※コースによって異なります
           </div>
@@ -386,9 +386,9 @@ export const schedulePage = () => (
           <div className="info-card-title">クラス編成</div>
           <div className="info-card-text">
             <ul>
-              <li><strong>少人数制：</strong>4〜8名</li>
-              <li><strong>個別指導：</strong>1〜2名</li>
-              <li><strong>年齢別クラス：</strong>発達段階に応じた編成</li>
+              <li><strong>少人数制：</strong>7名まで</li>
+              <li><strong>個別指導：</strong>1名</li>
+              <li><strong>無学年クラス：</strong>レッスン動画方式</li>
             </ul>
             一人ひとりに目が届く環境です
           </div>
@@ -398,10 +398,10 @@ export const schedulePage = () => (
           <div className="info-card-icon">🔄</div>
           <div className="info-card-title">振替制度</div>
           <div className="info-card-text">
-            <strong>事前連絡で振替可能</strong><br/>
-            前日までにご連絡いただければ、別の日時に振替できます。<br/>
+            <strong>事前連絡（当日でもOK）で振替可能</strong><br/>
+            ご連絡いただければ、別の日時に振替できます。<br/>
             <br/>
-            <small>※月2回まで / 空席状況による</small>
+            <small>※空席状況によってはご希望に添えない場合もあります</small>
           </div>
         </div>
       </div>
