@@ -400,7 +400,7 @@ export const homePage = () => {
       <div class="container">
         {/* Logo and Title Section */}
         <div class="hero-logo-container">
-          <img src="https://page.gensparksite.com/v1/base64_upload/4e54ecb8f3ea7943d9665aad9445acc4" alt="KOBEYA Logo" class="hero-logo" />
+          <img src="https://page.gensparksite.com/v1/base64_upload/12ceead4f987a2269b4144a32d086adb" alt="KOBEYA Logo" class="hero-logo" />
         </div>
         <div class="hero-title-center">
           <h1>AI＆プログラミングのKOBEYA</h1>

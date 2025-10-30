@@ -145,7 +145,7 @@ export const Footer = () => (
           <div class="footer-section">
             <div class="footer-logo">
               <div class="footer-logo-icon">
-                <img src="https://page.gensparksite.com/v1/base64_upload/30c0467e3e2ea9da226d61220074b2b4" alt="KOBEYA Logo" />
+                <img src="https://page.gensparksite.com/v1/base64_upload/12ceead4f987a2269b4144a32d086adb" alt="KOBEYA Logo" />
               </div>
               AI & プログラミングのKOBEYA
             </div>
