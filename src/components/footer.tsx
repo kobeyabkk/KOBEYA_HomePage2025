@@ -213,8 +213,8 @@ export const Footer = () => (
               <li><a href="/support">サポート</a></li>
               <li><a href="/faq">よくある質問</a></li>
               <li><a href="/schedule">授業スケジュール</a></li>
-              <li><a href="/faq">料金案内</a></li>
-              <li><a href="/faq">入会案内</a></li>
+              <li><a href="/pricing">料金案内</a></li>
+              <li><a href="/contact">入会案内</a></li>
             </ul>
             
             <div style="margin-top: 1.5rem;">
