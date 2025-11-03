@@ -32,6 +32,10 @@ app.use('/static/*', serveStatic({ root: './public' }))
 // Serve images directly
 app.use('/images/*', serveStatic({ root: './public' }))
 
+// Serve SEO files directly (sitemap.xml, robots.txt)
+app.get('/sitemap.xml', serveStatic({ path: './public/sitemap.xml' }))
+app.get('/robots.txt', serveStatic({ path: './public/robots.txt' }))
+
 // Use renderer for all pages
 app.use(renderer)
 
