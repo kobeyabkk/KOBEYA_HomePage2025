@@ -20,5 +20,30 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
+# Allow AI crawlers for AI Engine Optimization (AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
 # Crawl-delay (optional, helps prevent server overload)
 # Crawl-delay: 1

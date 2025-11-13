@@ -12,6 +12,49 @@ export const aiCoachingCoursePage = () => (
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://kobeya-programming.pages.dev/ai-coaching-course" />
       <link rel="canonical" href="https://kobeya-programming.pages.dev/ai-coaching-course" />
+      
+      {/* Course Structured Data for AI */}
+      <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Course",
+          "name": "AIコーチング・ラボ",
+          "description": "AI学習支援システム「Study Partner」を活用した個別最適化学習。宿題サポート、苦手単元克服、小論文・英検対策など、一人ひとりに合わせた学習プランで効率的に学力向上。",
+          "provider": {
+            "@type": "EducationalOrganization",
+            "name": "KOBEYA プログラミング教室",
+            "url": "https://kobeya-programming.pages.dev/"
+          },
+          "url": "https://kobeya-programming.pages.dev/ai-coaching-course",
+          "educationalLevel": "中学生、高校生（小学生要相談）",
+          "timeRequired": "55分",
+          "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "student",
+            "audienceType": "日本人学校、インター校の中学生・高校生"
+          },
+          "courseMode": ["対面", "オンライン", "ハイブリッド"],
+          "availableLanguage": ["ja", "th", "en"],
+          "educationalCredentialAwarded": "修了証",
+          "teaches": [
+            "AI学習支援システムの活用",
+            "自主学習能力の向上",
+            "宿題・課題の効率的な取り組み方",
+            "小論文・英検対策",
+            "苦手単元の克服"
+          ],
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "対面・オンライン対応",
+            "courseSchedule": {
+              "@type": "Schedule",
+              "byDay": "火曜日",
+              "startTime": "18:30",
+              "endTime": "19:25"
+            }
+          }
+        }
+      `}</script>
     </head>
     
     

@@ -28,6 +28,102 @@ export const renderer = jsxRenderer(({ children, title = 'AI & プログラミ�
         <meta name="twitter:description" content="バンコクの日本人小中学生向けプログラミング教室。無料体験受付中。" />
         <meta name="twitter:image" content="https://kobeya-programming.pages.dev/static/images/og-image.jpg" />
         
+        {/* AI Crawlers Meta Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="bingbot" content="index, follow" />
+        <meta name="abstract" content="バンコクで日本人小中学生向けのプログラミング教室を運営。STEAM教育、Minecraft、AI学習コーチングなど多様なコースを提供し、子どもたちの創造力と論理的思考力を育成します。" />
+        <link rel="canonical" href="https://kobeya-programming.pages.dev/" />
+        
+        {/* Structured Data for AI (JSON-LD) */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "KOBEYA プログラミング教室",
+            "alternateName": "AI & プログラミングのKOBEYA",
+            "description": "バンコクの日本人小中学生向けプログラミング教室。STEAM教育、Minecraft、AIコーチング、Unity、クリエイターズコースなど多様なプログラムを提供。",
+            "url": "https://kobeya-programming.pages.dev/",
+            "logo": "https://kobeya-programming.pages.dev/static/images/logo.png",
+            "image": "https://kobeya-programming.pages.dev/static/images/og-image.jpg",
+            "telephone": "+66-xxx-xxx-xxxx",
+            "email": "kobeyabkk@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "バンコク",
+              "addressCountry": "TH"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "バンコク"
+            },
+            "audience": {
+              "@type": "EducationalAudience",
+              "educationalRole": "student",
+              "audienceType": "小学生、中学生、高校生"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "STEAMコース",
+                "description": "Science, Technology, Engineering, Art, Mathematicsを統合した学習プログラム"
+              },
+              {
+                "@type": "Offer",
+                "name": "マイクラッチコース",
+                "description": "Minecraftを使ったプログラミング学習"
+              },
+              {
+                "@type": "Offer",
+                "name": "AIコーチング・ラボ",
+                "description": "AI学習支援システムを活用した個別最適化学習"
+              },
+              {
+                "@type": "Offer",
+                "name": "クリエイターズコース",
+                "description": "動画編集、3Dモデリング、ゲーム開発などのクリエイティブスキル習得"
+              }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "コース一覧",
+              "itemListElement": [
+                {
+                  "@type": "Course",
+                  "name": "STEAMコース",
+                  "description": "STEAM教育で創造力と論理的思考を育む",
+                  "provider": {
+                    "@type": "EducationalOrganization",
+                    "name": "KOBEYA プログラミング教室"
+                  }
+                },
+                {
+                  "@type": "Course",
+                  "name": "マイクラッチコース",
+                  "description": "Minecraftでプログラミングの基礎を学ぶ",
+                  "provider": {
+                    "@type": "EducationalOrganization",
+                    "name": "KOBEYA プログラミング教室"
+                  }
+                },
+                {
+                  "@type": "Course",
+                  "name": "AIコーチング・ラボ",
+                  "description": "AI学習支援で効率的に学力向上",
+                  "provider": {
+                    "@type": "EducationalOrganization",
+                    "name": "KOBEYA プログラミング教室"
+                  }
+                }
+              ]
+            },
+            "sameAs": [
+              "https://www.facebook.com/kobeyabkk",
+              "https://line.me/R/ti/p/@kobeyabkk"
+            ]
+          }
+        `}</script>
+        
         {/* Favicon */}
         <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png" />
