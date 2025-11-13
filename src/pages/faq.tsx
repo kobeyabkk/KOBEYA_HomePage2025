@@ -12,6 +12,72 @@ export const faqPage = () => (
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://kobeya-programming.pages.dev/faq" />
       <link rel="canonical" href="https://kobeya-programming.pages.dev/faq" />
+      
+      {/* FAQ Structured Data for AI */}
+      <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "体験授業は無料ですか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "はい、無料体験授業を実施しています。実際の授業を体験していただき、お子様に合うかご確認いただけます。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "オンライン授業はありますか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "はい、ほぼすべてのコースでオンライン授業に対応しています。Zoomを使用し、対面授業と同じ品質の指導を提供します。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "授業料の支払い方法は？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Prompt Payによる振込（タイ国内）、銀行振込（タイ国内）、現金払い（教室窓口）に対応しています。原則として月初めにその月のご請求書を発行します。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "兄弟割引はありますか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "はい、ご兄弟で受講される場合は30%割引を適用いたします。ただし、個別指導では兄弟割引は適用されません。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "欠席した場合の振替はできますか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "はい、事前連絡（当日でもOK）で振替可能です。ご連絡いただければ、別の日時に振替できます。オンラインでの振替も可能です。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "パソコンやタブレットは必要ですか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "教室にはパソコン（Windows）、タブレット（Android）、マウス、ヘッドフォン、高速Wi-Fi環境を完備しています。オンライン受講の場合は、ご自宅でこれらの機器をご用意ください。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "先生はどんな方ですか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "日本人講師、バイリンガル（日本語・タイ語・英語）講師が在籍。プログラミング教育の専門知識と豊富な指導経験を持ち、お子様一人ひとりに合わせた丁寧な指導を行います。"
+              }
+            }
+          ]
+        }
+      `}</script>
     </head>
     
     
