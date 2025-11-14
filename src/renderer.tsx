@@ -44,7 +44,7 @@ export const renderer = jsxRenderer(({ children, title = 'AI & プログラミ�
             "alternateName": "AI & プログラミングのKOBEYA",
             "description": "バンコクの日本人小中学生向けプログラミング教室。STEAM教育、Minecraft、AIコーチング、Unity、クリエイターズコースなど多様なプログラムを提供。",
             "url": "https://kobeya-programming.pages.dev/",
-            "logo": "https://kobeya-programming.pages.dev/static/images/logo.png",
+            "logo": "https://kobeya-programming.pages.dev/images/kobeya-logo.png",
             "image": "https://kobeya-programming.pages.dev/static/images/og-image.jpg",
             "telephone": "+66-xxx-xxx-xxxx",
             "email": "kobeyabkk@gmail.com",
@@ -125,8 +125,9 @@ export const renderer = jsxRenderer(({ children, title = 'AI & プログラミ�
         `}</script>
         
         {/* Favicon */}
-        <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/kobeya-logo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/kobeya-logo.png" />
+        <link rel="apple-touch-icon" href="/images/kobeya-logo.png" />
         
         {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
