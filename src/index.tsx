@@ -10,6 +10,9 @@ import { faqPage } from './pages/faq'
 import { supportPage } from './pages/support'
 import { schedulePage } from './pages/schedule'
 import { pricingPage } from './pages/pricing'
+// Store pages
+import { storePage } from './pages/store'
+import { store100masPage } from './pages/store-100mas'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
@@ -66,6 +69,15 @@ app.get('/schedule', (c) => {
 
 app.get('/pricing', (c) => {
   return c.render(pricingPage())
+})
+
+// Store pages
+app.get('/store', (c) => {
+  return c.render(storePage())
+})
+
+app.get('/store/100mas-calculator', (c) => {
+  return c.render(store100masPage())
 })
 
 // AI Consult page
