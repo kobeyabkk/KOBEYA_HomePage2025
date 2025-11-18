@@ -449,6 +449,23 @@ export const store100masPage = () => (
             <div class="product-image product-image-simple">
               <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px; position: relative; z-index: 10;" />
             </div>
+            
+            {/* YouTube Video */}
+            <div style="margin-top: 30px;">
+              <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <iframe 
+                  src="https://www.youtube.com/embed/8-Dihg_B_Z0" 
+                  title="100マス計算ジェネレーター デモ動画" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
+                ></iframe>
+              </div>
+              <p style="text-align: center; margin-top: 15px; color: var(--text-gray); font-size: 0.9rem;">
+                📹 アプリの使い方を動画で確認
+              </p>
+            </div>
           </div>
 
           {/* Product Info */}
