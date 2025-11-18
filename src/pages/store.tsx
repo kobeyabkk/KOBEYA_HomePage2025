@@ -340,7 +340,7 @@ export const storePage = () => (
                 250<span class="app-card-price-unit">バーツ</span>
               </div>
               <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: -10px; margin-bottom: 15px;">
-                <span style="text-decoration: line-through;">通常 300バーツ</span>
+                <span style="text-decoration: line-through;">通常 350バーツ</span>
                 <span style="color: #FF5722; font-weight: 700; margin-left: 8px;">🔥 今だけ!</span>
               </p>
 
