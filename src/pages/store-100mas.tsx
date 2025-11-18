@@ -439,7 +439,6 @@ export const store100masPage = () => (
           {/* Product Image */}
           <div class="product-image-section">
             <div class="product-image" style="background: none;">
-              <span class="product-badge" style="background: #FF5722; color: white;">期間限定</span>
               <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;" />
             </div>
           </div>

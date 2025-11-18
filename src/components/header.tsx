@@ -2,12 +2,13 @@ export const Header = () => (
   <>
     <style>{`
       .header {
-        background: var(--main-yellow);
+        background: #FFC107;
         border-bottom: 3px solid #F57C00;
         position: sticky;
         top: 0;
         z-index: 50;
         box-shadow: 0 2px 12px rgba(255, 193, 7, 0.3);
+        opacity: 1;
       }
       
       .header-container {
@@ -147,7 +148,7 @@ export const Header = () => (
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--main-yellow);
+        background: #FFC107;
         border-bottom: 3px solid #F57C00;
         padding: 1rem 2rem;
         box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
