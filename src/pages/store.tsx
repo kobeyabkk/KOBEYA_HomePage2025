@@ -350,28 +350,32 @@ export const storePage = () => (
             </div>
           </div>
 
-          {/* 今後のアプリ用のプレースホルダー（3つ表示） */}
+          {/* 今後のアプリ予告（2つ表示） */}
           <div class="app-card" style="opacity: 0.6; cursor: default;">
             <div class="app-card-image">
               <span class="app-card-badge" style="background: #E2E8F0; color: #718096;">近日公開</span>
-              <span class="app-card-icon">📚</span>
+              <span class="app-card-icon">✍️</span>
             </div>
             <div class="app-card-content">
-              <h3 class="app-card-title">次のアプリ</h3>
+              <h3 class="app-card-title">漢字練習ジェネレーター</h3>
               <div class="app-card-meta">
                 <span class="app-card-meta-item">
                   <i class="fas fa-clock"></i>
-                  準備中
+                  開発中
+                </span>
+                <span class="app-card-meta-item">
+                  <i class="fas fa-users"></i>
+                  小1〜中学生
                 </span>
               </div>
               <p class="app-card-description">
-                新しい学習アプリを開発中です。お楽しみに！
+                学年別の漢字練習プリントを自動生成。書き順・読み方も学べる総合練習アプリ。
               </p>
               <div class="app-card-price" style="color: #718096;">
                 近日公開
               </div>
               <button class="app-card-button" style="background: #E2E8F0; color: #718096; cursor: default;" disabled>
-                準備中
+                開発中
               </button>
             </div>
           </div>
@@ -379,24 +383,28 @@ export const storePage = () => (
           <div class="app-card" style="opacity: 0.6; cursor: default;">
             <div class="app-card-image">
               <span class="app-card-badge" style="background: #E2E8F0; color: #718096;">近日公開</span>
-              <span class="app-card-icon">🎮</span>
+              <span class="app-card-icon">📝</span>
             </div>
             <div class="app-card-content">
-              <h3 class="app-card-title">次のアプリ</h3>
+              <h3 class="app-card-title">文章問題ジェネレーター</h3>
               <div class="app-card-meta">
                 <span class="app-card-meta-item">
                   <i class="fas fa-clock"></i>
-                  準備中
+                  開発中
+                </span>
+                <span class="app-card-meta-item">
+                  <i class="fas fa-users"></i>
+                  小1〜中学生
                 </span>
               </div>
               <p class="app-card-description">
-                新しい学習アプリを開発中です。お楽しみに！
+                算数の文章問題を自動生成。レベル別・テーマ別に問題を作成できます。
               </p>
               <div class="app-card-price" style="color: #718096;">
                 近日公開
               </div>
               <button class="app-card-button" style="background: #E2E8F0; color: #718096; cursor: default;" disabled>
-                準備中
+                開発中
               </button>
             </div>
           </div>
