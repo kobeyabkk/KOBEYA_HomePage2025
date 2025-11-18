@@ -314,9 +314,9 @@ export const storePage = () => (
         <div class="apps-grid">
           {/* 100マス計算ジェネレーター */}
           <div class="app-card" onclick="window.location.href='/store/100mas-calculator'">
-            <div class="app-card-image">
-              <span class="app-card-badge">NEW</span>
-              <span class="app-card-icon">🔢</span>
+            <div class="app-card-image" style="background: none;">
+              <span class="app-card-badge" style="background: #FF5722; color: white;">期間限定</span>
+              <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="app-card-content">
               <h3 class="app-card-title">100マス計算ジェネレーター</h3>
@@ -339,6 +339,10 @@ export const storePage = () => (
               <div class="app-card-price">
                 250<span class="app-card-price-unit">バーツ</span>
               </div>
+              <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: -10px; margin-bottom: 15px;">
+                <span style="text-decoration: line-through;">通常 300バーツ</span>
+                <span style="color: #FF5722; font-weight: 700; margin-left: 8px;">🔥 今だけ!</span>
+              </p>
 
               <a href="/store/100mas-calculator" class="app-card-button">
                 詳細を見る →

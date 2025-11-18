@@ -433,9 +433,9 @@ export const store100masPage = () => (
         <div class="product-header">
           {/* Product Image */}
           <div class="product-image-section">
-            <div class="product-image">
-              <span class="product-badge">NEW</span>
-              <span class="product-icon">🔢</span>
+            <div class="product-image" style="background: none;">
+              <span class="product-badge" style="background: #FF5722; color: white;">期間限定</span>
+              <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;" />
             </div>
           </div>
 
@@ -470,8 +470,16 @@ export const store100masPage = () => (
               </div>
             </div>
 
-            <div class="product-price">
-              250<span class="product-price-unit">バーツ</span>
+            <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
+              <div class="product-price" style="margin-bottom: 0;">
+                250<span class="product-price-unit">バーツ</span>
+              </div>
+              <div style="font-size: 1.3rem; color: var(--text-gray); text-decoration: line-through;">
+                300バーツ
+              </div>
+            </div>
+            <div style="display: inline-block; background: #FF5722; color: white; padding: 8px 16px; border-radius: 8px; font-weight: 700; margin-bottom: 15px;">
+              🔥 期間限定！50バーツOFF
             </div>
             <p class="product-price-note">※ 買い切り型（追加料金なし）</p>
 
