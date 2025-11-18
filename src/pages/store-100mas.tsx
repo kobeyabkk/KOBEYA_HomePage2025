@@ -328,6 +328,11 @@ export const store100masPage = () => (
         line-height: 1.7;
       }
 
+      .detail-content h3 {
+        margin-top: 25px;
+        margin-bottom: 15px;
+      }
+
       .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -525,63 +530,292 @@ export const store100masPage = () => (
 
         {/* Product Details */}
         <div class="product-details">
-          {/* Description */}
+          {/* Hero Message */}
+          <div class="detail-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+            <h2 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 20px; color: white;">
+              計算力と「学習の自信」を引き出す
+            </h2>
+            <p style="font-size: 1.5rem; font-weight: 500; color: rgba(255,255,255,0.95);">
+              次世代百ます計算アプリ
+            </p>
+          </div>
+
+          {/* 3つの理由 */}
           <div class="detail-section">
             <h2 class="detail-section-title">
-              <i class="fas fa-info-circle"></i>
-              アプリの説明
+              <i class="fas fa-bolt"></i>
+              このアプリが選ばれる3つの理由
             </h2>
             <div class="detail-content">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
+                【1. 圧倒的な高機能 × 使いやすさ】
+              </h3>
               <p>
-                <strong>100マス計算ジェネレーター</strong>は、算数の基礎力を効率的に鍛えるための学習アプリです。
-                ボタン一つで新しい問題を自動生成し、毎日違う問題で練習することができます。
+                四則演算・負の数・長方形グリッド（3×3〜15×15）・数値範囲の自由設定に完全対応。印刷モードは問題と解答を一発生成。先生や保護者の準備時間はわずか5秒で完了します。デジタル入力モードではタイマー・自動採点・直近10回分の成績記録機能を搭載。もう、ドリルの買い足しや丸付けの手間に時間を割く必要はありません。
               </p>
+
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
+                【2. 1日5分で計算力が2倍に】
+              </h3>
               <p>
-                このアプリは、伝統的な紙ベースの100マス計算と、最新のデジタル技術を組み合わせた「ハイブリッド型」。
-                印刷して紙に書き込むこともでき、画面上で直接入力することもできます。
+                タイムアタック方式で「昨日の自分」と競争。成長が見える化されるから、子どもが自ら机に向かう。1ヶ月後には驚くほどの成長を実感できます。
               </p>
+
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
+                【3. 他アプリと比べて圧倒的な高コスパ】
+              </h3>
               <p>
-                <em>※ 詳細な機能説明は購入後にマニュアルをご確認ください。</em>
+                月額課金なし・買い切り12.99ドル・無限に問題生成・16言語対応・家族全員＆教室OK。市販ドリル($10-30/冊)や月額アプリ($10-20/月)と比べて圧倒的コスパ。アプリ購入後の返金はできません。（GUMROADでご購入の方は、30日間返金保証が付いています）
               </p>
             </div>
           </div>
 
-          {/* Features */}
+          {/* 百ます計算とは */}
+          <div class="detail-section" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
+              🧮 百ます計算とは？
+            </h2>
+            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">
+              40年以上、日本の小学校で愛される「計算力強化メソッド」
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.95);">
+              10×10マスで100問の計算を素早く解く、シンプルで最強の学習法。
+              日本の小学校で40年以上使われ続け、数百万人の子どもの計算力を劇的に伸ばしてきました。
+            </p>
+          </div>
+
+          {/* 毎日5分の効果 */}
           <div class="detail-section">
             <h2 class="detail-section-title">
-              <i class="fas fa-star"></i>
-              主な機能
+              <i class="fas fa-fire"></i>
+              毎日5分で、計算力・正確性・集中力が驚くほど伸びる
             </h2>
-            <div class="features-grid">
-              <div class="feature-card">
-                <div class="feature-icon">🎲</div>
-                <h3 class="feature-title">自動生成</h3>
-                <p class="feature-description">
-                  ボタン一つで新しい問題を無限に生成。毎日違う問題で飽きずに練習できます。
-                </p>
+            <div class="detail-content">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 25px;">
+                🚀 毎日5分の習慣が未来を変える
+              </h3>
+              <p style="font-size: 1.1rem; margin-bottom: 20px; color: var(--text-gray);">
+                計算力・正確性・集中力が"自然に"伸びる設計
+              </p>
+              
+              <div class="features-grid">
+                <div class="feature-card">
+                  <div class="feature-icon">⚡</div>
+                  <h3 class="feature-title">計算速度が速くなる</h3>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">🎯</div>
+                  <h3 class="feature-title">ケアレスミスが減る</h3>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">🧠</div>
+                  <h3 class="feature-title">集中力が上がる</h3>
+                </div>
               </div>
-              <div class="feature-card">
-                <div class="feature-icon">🖨️</div>
-                <h3 class="feature-title">印刷対応</h3>
-                <p class="feature-description">
-                  PDFで出力して紙に印刷可能。従来の学習スタイルでも使えます。
-                </p>
-              </div>
-              <div class="feature-card">
-                <div class="feature-icon">💻</div>
-                <h3 class="feature-title">デジタル入力</h3>
-                <p class="feature-description">
-                  画面上で直接答えを入力。自動採点機能で即座に結果がわかります。
-                </p>
-              </div>
-              <div class="feature-card">
-                <div class="feature-icon">⏱️</div>
-                <h3 class="feature-title">タイマー機能</h3>
-                <p class="feature-description">
-                  計測機能で学習時間を記録。継続的な練習で計算速度が向上します。
-                </p>
+
+              <p style="font-size: 1.1rem; margin-top: 30px; font-weight: 600; color: var(--store-primary);">
+                1ヶ月続ければ、誰でもはっきりと成長を実感できます。
+              </p>
+            </div>
+          </div>
+
+          {/* ゲーム感覚 */}
+          <div class="detail-section" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white;">
+            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
+              🎮 ゲーム感覚で続けられるから、子どもがやめない
+            </h2>
+            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 25px; color: white;">
+              🏆 自己ベスト更新が楽しい
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 15px; line-height: 1.8; color: rgba(255,255,255,0.95);">
+              タイムアタック × 見える化でモチベが続く
+            </p>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 15px; margin-top: 25px;">
+              <ul style="list-style: none; padding: 0; font-size: 1.05rem; line-height: 2;">
+                <li>✅ 「昨日の自分」と勝負</li>
+                <li>✅ ベストタイムを金色バッジで表彰</li>
+                <li>✅ 履歴グラフで成長がわかる</li>
+              </ul>
+            </div>
+
+            <p style="font-size: 1.1rem; margin-top: 25px; font-weight: 600; color: white;">
+              気づけば、お子さまが"自分から"机に向かう習慣が身につきます。
+            </p>
+          </div>
+
+          {/* デジタル × 紙 */}
+          <div class="detail-section">
+            <h2 class="detail-section-title">
+              <i class="fas fa-layer-group"></i>
+              デジタル学習 × 紙の学習、どちらにも完璧対応
+            </h2>
+            <div class="detail-content">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-bottom: 20px;">
+                🖥️ デジタル入力モード
+              </h3>
+              <p style="margin-bottom: 15px; font-size: 1.05rem;">自動採点・タイマー・履歴保存つき</p>
+              <ul style="font-size: 1.05rem; line-height: 1.8;">
+                <li>PC、iPad、スマホで直接入力</li>
+                <li>全デバイスに最適化（スマホ横でテンキー表示）</li>
+                <li>Enterキーの移動方向も設定可能</li>
+                <li>全角→半角自動変換で入力ミス防止</li>
+              </ul>
+
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 40px; margin-bottom: 20px;">
+                🖨️ 印刷モード
+              </h3>
+              <p style="margin-bottom: 15px; font-size: 1.05rem;">A4に問題＋解答を自動レイアウト</p>
+              <ul style="font-size: 1.05rem; line-height: 1.8;">
+                <li>問題は紙で練習したい派にも最適</li>
+                <li>折れば問題と解答が1枚に</li>
+                <li>学校や塾の課題プリントにもそのまま使える</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 16言語対応 */}
+          <div class="detail-section" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
+              🌍 世界72%の人が母国語で学べる 16言語対応
+            </h2>
+            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">
+              🇯🇵🇺🇸🇨🇳🇹🇭 … 全16言語完全対応
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 15px; line-height: 1.8; color: rgba(255,255,255,0.95);">
+              家庭でも、学校でも、世界中どこでも使える
+            </p>
+            <p style="font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.95);">
+              英語・日本語・中国語・韓国語・タイ語・スペイン語…<br/>
+              合計16言語で表示され、UIも完全ローカライズ。
+            </p>
+            <p style="font-size: 1.1rem; margin-top: 20px; font-weight: 600; color: white;">
+              学校・塾・インターナショナルスクールでもすぐ使えます。
+            </p>
+          </div>
+
+          {/* カスタマイズ */}
+          <div class="detail-section">
+            <h2 class="detail-section-title">
+              <i class="fas fa-sliders-h"></i>
+              3×3〜15×15まで、完全自由なカスタマイズ
+            </h2>
+            <div class="detail-content">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-bottom: 20px;">
+                🔢 すべての子に最適な問題を作れる
+              </h3>
+              <p style="margin-bottom: 15px; font-size: 1.05rem;">グリッド・範囲・難易度をフルカスタマイズ</p>
+              <ul style="font-size: 1.05rem; line-height: 1.8;">
+                <li>3×3〜15×15の正方形／長方形に対応</li>
+                <li>数値範囲を自由設定（-999〜999）</li>
+                <li>固定値モードで九九の反復練習も</li>
+                <li>負の数50%ランダム生成にも対応</li>
+                <li>割り算は自動で"割り切れる問題だけ"を生成（解答できるマス6割以上）</li>
+              </ul>
+              <p style="font-size: 1.1rem; margin-top: 25px; font-weight: 600; color: var(--store-primary);">
+                初心者から中学生まで、これ1つで全学年カバー。
+              </p>
+            </div>
+          </div>
+
+          {/* 最強コスパ */}
+          <div class="detail-section" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
+              💰 買い切り・無限生成 "最強コスパ"
+            </h2>
+            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">
+              🏫 家庭用・学校用どちらもこの1つでOK
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 20px; line-height: 1.8; color: rgba(255,255,255,0.95);">
+              市販ドリルとは比べものにならない自由度と耐久性
+            </p>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 15px;">
+              <ul style="list-style: none; padding: 0; font-size: 1.05rem; line-height: 2;">
+                <li>✅ 無限に問題を生成</li>
+                <li>✅ 家族全員で共有OK</li>
+                <li>✅ 授業・塾・家庭教師でも利用可能</li>
+                <li>✅ アプリのようにホーム画面にも追加できる（PWA対応）</li>
+                <li>✅ もちろんオフラインOK</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 教育者が作った */}
+          <div class="detail-section">
+            <h2 class="detail-section-title">
+              <i class="fas fa-graduation-cap"></i>
+              教育者が本気で作った、最高レベルの学習ツール
+            </h2>
+            <div class="detail-content">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-bottom: 20px;">
+                🏫 制作：AI＆プログラミングのKOBEYA
+              </h3>
+              <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                20年以上の教育現場の経験から誕生
+              </p>
+              <p style="font-size: 1.05rem; line-height: 1.8;">
+                実際に教室で使いながら改良を重ね、<br/>
+                「子どもが続ける」「保護者が楽」「先生がすぐ使える」<br/>
+                この3点を最優先に設計しました。
+              </p>
+            </div>
+          </div>
+
+          {/* 使い方 */}
+          <div class="detail-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
+              💻 使い方はたったの3ステップ
+            </h2>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 30px; border-radius: 15px; margin-top: 25px;">
+              <div style="font-size: 1.1rem; line-height: 2.5;">
+                <p><strong>1️⃣</strong> ZIPをダウンロード</p>
+                <p><strong>2️⃣</strong> 解凍して index.html または START.html を開く</p>
+                <p><strong>3️⃣</strong> 言語を選んで「問題を生成」</p>
               </div>
             </div>
+
+            <p style="font-size: 1.1rem; margin-top: 25px; font-weight: 600; color: white;">
+              インストール不要・オフラインOK・デバイス無制限。
+            </p>
+          </div>
+
+          {/* 購入すると手に入るもの */}
+          <div class="detail-section">
+            <h2 class="detail-section-title">
+              <i class="fas fa-gift"></i>
+              購入すると手に入るもの
+            </h2>
+            <div class="detail-content">
+              <div style="background: var(--store-bg); padding: 30px; border-radius: 15px;">
+                <ul style="font-size: 1.05rem; line-height: 2.2;">
+                  <li>✅ 100マス計算ジェネレーター（全デバイス対応完全版）</li>
+                  <li>✅ 16言語対応UI</li>
+                  <li>✅ デジタル入力モード</li>
+                  <li>✅ 印刷モード</li>
+                  <li>✅ 自動採点・タイマー・履歴保存</li>
+                  <li>✅ 無制限の問題生成</li>
+                  <li>✅ 多言語マニュアル</li>
+                  <li>✅ 生涯使用権</li>
+                  <li>✅ 無料アップデート（スマホ・タブレットは自動更新、PCは自己更新）</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* 最後のメッセージ */}
+          <div class="detail-section" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; text-align: center;">
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: white;">
+              🎉 努力に勝る才能なし。毎日5分の努力が、お子さまの未来を変える
+            </h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: rgba(255,255,255,0.95); margin-bottom: 25px;">
+              才能ではなく「続けた量」が力になる。<br/>
+              その環境を、このアプリがすべて用意しています。
+            </p>
+            <p style="font-size: 1.3rem; font-weight: 700; color: white;">
+              今すぐ始めましょう。
+            </p>
           </div>
 
           {/* Target Audience */}
