@@ -487,11 +487,11 @@ export const store100masPage = () => (
                 250<span class="product-price-unit">バーツ</span>
               </div>
               <div style="font-size: 1.3rem; color: var(--text-gray); text-decoration: line-through;">
-                300バーツ
+                350バーツ
               </div>
             </div>
             <div style="display: inline-block; background: #FF5722; color: white; padding: 8px 16px; border-radius: 8px; font-weight: 700; margin-bottom: 15px;">
-              🔥 期間限定！50バーツOFF
+              🔥 期間限定！100バーツOFF
             </div>
             <p class="product-price-note">※ 買い切り型（追加料金なし）</p>
 
