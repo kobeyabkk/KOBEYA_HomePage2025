@@ -487,12 +487,11 @@ export const homePage = () => {
                   🤝 AIコンサルはこちら
                 </a>
                 <a 
-                  href="#" 
+                  href="/store" 
                   class="btn-consulting-secondary" 
                   aria-label="販売中のアプリを見る"
-                  onclick="alert('実装予定'); return false;"
                 >
-                  📱 販売中のアプリはこちら（実装予定）
+                  📱 アプリストアはこちら
                 </a>
               </div>
             </div>
