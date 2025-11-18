@@ -439,7 +439,7 @@ export const store100masPage = () => (
           {/* Product Image */}
           <div class="product-image-section">
             <div class="product-image" style="background: #E8E8E8;">
-              <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;" />
+              <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px;" />
             </div>
           </div>
 
