@@ -4,7 +4,7 @@ import { Footer } from '../components/footer'
 export const store100masPage = () => (
   <>
     <head>
-      <title>100マス計算ジェネレーター｜アプリストア｜KOBEYA</title>
+      <title>100マス計算ジェネレーター｜KOBEYAアプリストア｜KOBEYA</title>
       <meta name="description" content="算数の基礎力を鍛える100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。小学1年生から中学生まで対応。" />
       <meta name="keywords" content="100マス計算,算数,学習アプリ,教材,KOBEYA,バンコク" />
       <meta property="og:title" content="100マス計算ジェネレーター｜KOBEYA" />
@@ -436,7 +436,7 @@ export const store100masPage = () => (
       <div class="breadcrumb">
         <a href="/">ホーム</a>
         <span>/</span>
-        <a href="/store">アプリストア</a>
+        <a href="/store">KOBEYAアプリストア</a>
         <span>/</span>
         <span>100マス計算ジェネレーター</span>
       </div>
@@ -883,7 +883,7 @@ export const store100masPage = () => (
         {/* Back to Store */}
         <a href="/store" class="back-to-store">
           <i class="fas fa-arrow-left"></i>
-          アプリストアに戻る
+          KOBEYAアプリストアに戻る
         </a>
       </div>
     </main>

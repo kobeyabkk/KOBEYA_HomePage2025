@@ -4,10 +4,10 @@ import { Footer } from '../components/footer'
 export const storePage = () => (
   <>
     <head>
-      <title>アプリストア｜KOBEYA プログラミング教室</title>
+      <title>KOBEYAアプリストア｜KOBEYA プログラミング教室</title>
       <meta name="description" content="KOBEYAが開発した学習アプリ。100マス計算ジェネレーターなど、子どもたちの学力向上をサポートするアプリを販売しています。" />
-      <meta name="keywords" content="アプリストア,学習アプリ,100マス計算,教材,KOBEYA,バンコク" />
-      <meta property="og:title" content="アプリストア｜KOBEYA" />
+      <meta name="keywords" content="KOBEYAアプリストア,学習アプリ,100マス計算,教材,KOBEYA,バンコク" />
+      <meta property="og:title" content="KOBEYAアプリストア｜KOBEYA" />
       <meta property="og:description" content="学習アプリの販売。100マス計算ジェネレーターなど。" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://kobeya-programming.pages.dev/store" />
@@ -299,7 +299,7 @@ export const storePage = () => (
       <section class="store-hero">
         <div class="store-hero-content">
           <div class="store-hero-icon">📱</div>
-          <h1 class="store-hero-title">アプリストア</h1>
+          <h1 class="store-hero-title">KOBEYAアプリストア</h1>
           <p class="store-hero-subtitle">
             学習をサポートする高品質なアプリを提供<br/>
             子どもたちの学力向上と効率的な学習を実現

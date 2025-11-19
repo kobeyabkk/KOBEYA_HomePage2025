@@ -712,7 +712,7 @@ export const aiConsultPage = () => (
             <a href="https://line.me/R/ti/p/@093dagwm" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">
               💬 AIコンサルはこちら
             </a>
-            <a href="#" class="btn-hero-secondary" onclick="alert('実装予定'); return false;">
+            <a href="/store" class="btn-hero-secondary">
               📱 販売中のアプリを見る
             </a>
           </div>
