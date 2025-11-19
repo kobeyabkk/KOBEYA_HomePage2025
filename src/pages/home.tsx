@@ -491,7 +491,7 @@ export const homePage = () => {
                   class="btn-consulting-secondary" 
                   aria-label="販売中のアプリを見る"
                 >
-                  📱 アプリストアはこちら
+                  📱 KOBEYAアプリストアはこちら
                 </a>
               </div>
             </div>
