@@ -166,7 +166,7 @@ export const homePage = () => {
       }
       
       h2 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
         font-weight: 600;
         line-height: 1.3;
         margin-bottom: 1rem;
@@ -181,7 +181,7 @@ export const homePage = () => {
       
       @media (max-width: 640px) {
         h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; }
+        h2 { font-size: 1.75rem; }
         h3 { font-size: 1.25rem; }
       }
       
@@ -227,7 +227,7 @@ export const homePage = () => {
       }
       
       .hero-title-center h1 {
-        font-size: 3rem;
+        font-size: 4rem;
         font-weight: 800;
         color: var(--text-dark);
         margin-bottom: 0.75rem;
@@ -264,7 +264,7 @@ export const homePage = () => {
         }
         
         .hero-title-center h1 {
-          font-size: 2rem;
+          font-size: 2.5rem;
         }
         
         .hero-subtitle {
