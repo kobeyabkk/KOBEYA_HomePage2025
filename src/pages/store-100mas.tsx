@@ -558,7 +558,7 @@ export const store100masPage = () => (
                   Gumroadで購入（ドル建て）
                 </a>
                 <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 8px;">
-                  🌍 外部リンク・クレジットカード決済・30日間返金保証
+                  🌍 外部リンク・クレジットカード決済
                 </p>
               </div>
 
