@@ -541,6 +541,27 @@ export const store100masPage = () => (
                 購入について問い合わせる
               </a>
 
+              <div style="margin-top: 20px; text-align: center;">
+                <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 12px;">
+                  こちらからでもご購入できます
+                </p>
+                <a 
+                  href="https://namfonix.gumroad.com/l/igmyye" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="gumroad-button"
+                  style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: #FF90E8; color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 144, 232, 0.3);"
+                  onmouseover="this.style.background='#FF6FD8'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 144, 232, 0.4)'"
+                  onmouseout="this.style.background='#FF90E8'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 144, 232, 0.3)'"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                  Gumroadで購入（ドル建て）
+                </a>
+                <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 8px;">
+                  🌍 外部リンク・クレジットカード決済・30日間返金保証
+                </p>
+              </div>
+
               <div class="purchase-note">
                 <strong>📧 購入の流れ</strong><br/>
                 1. お問い合わせフォームから購入希望をご連絡<br/>
