@@ -570,6 +570,51 @@ export const store100masPage = () => (
                 4. すぐにご利用いただけます
               </div>
             </div>
+
+            {/* License Information */}
+            <div style="margin-top: 30px; padding: 30px; background: linear-gradient(135deg, #FFF9E6 0%, #FFE9D6 100%); border-radius: 15px; border: 2px solid #FF9800;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: #E65100; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                ⚠️ ライセンスと利用範囲について
+              </h3>
+              
+              <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 25px;">
+                本アプリは<strong>「買い切り・ライセンスフリー」</strong>に近い形でお届けしていますが、以下のルールのみお守りください。
+              </p>
+
+              {/* OK Section */}
+              <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #4CAF50;">
+                <h4 style="font-size: 1.2rem; font-weight: 700; color: #2E7D32; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                  ✅ OK（ご家族で使い放題）
+                </h4>
+                <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 12px;">
+                  ご購入いただいた<strong>1家族（同一世帯）内</strong>であれば、PC・スマホ・タブレットなど、<strong>何台にインストールしても構いません</strong>。
+                </p>
+                <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-gray);">
+                  リビングのiPad、お父様のPC、お子様のスマホなど、ご家族皆様で自由にご活用ください。
+                </p>
+              </div>
+
+              {/* NG Section */}
+              <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #F44336;">
+                <h4 style="font-size: 1.2rem; font-weight: 700; color: #C62828; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                  🚫 NG（第三者への譲渡・配布）
+                </h4>
+                <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 12px;">
+                  利用範囲はあくまで<strong>「ご購入者様のご家庭」</strong>に限ります。
+                </p>
+                <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-dark); margin-bottom: 15px;">
+                  友人へのファイル送信、USBでの譲渡、SNSやインターネット上へのアップロード（二次配布）は固くお断りいたします。
+                </p>
+                <div style="background: #FFF3E0; padding: 15px; border-radius: 8px; border-left: 3px solid #FF9800;">
+                  <p style="font-size: 0.9rem; font-weight: 600; color: #E65100; margin-bottom: 8px;">
+                    ※ 教育関係者様へ：
+                  </p>
+                  <p style="font-size: 0.9rem; line-height: 1.7; color: var(--text-dark);">
+                    先生がご自身で購入し、ご自身の管理するクラス・教室内で生徒に使わせることは問題ありません（大歓迎です）。ただし、生徒や保護者にアプリのデータそのものを配布・送信することは禁止です（生徒様ご自身での購入をお願いしてください）。
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
