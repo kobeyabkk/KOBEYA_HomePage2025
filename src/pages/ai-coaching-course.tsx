@@ -996,42 +996,60 @@ export const aiCoachingCoursePage = () => (
               </ul>
             </div>
 
-            {/* 英検練習システムのスクリーンショット */}
+            {/* 英検練習システムのスクリーンショット - 画像準備中 */}
             <div style="margin-bottom: 40px;">
               <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; text-align: center;">
                 📱 実際の画面イメージ
               </h3>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                  <img src="https://www.genspark.ai/api/files/s/51s7mzXw" alt="英検AI練習システム - 問題画面" style="width: 100%; height: auto; display: block;" />
-                  <div style="padding: 15px; background: #F0F4FF;">
-                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">問題を解いている画面</p>
-                    <p style="font-size: 0.85rem; color: var(--text-gray);">選択肢を選んで即座に解説を確認</p>
+              <div style="background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); padding: 60px 40px; border-radius: 15px; text-align: center; border: 2px solid var(--ai-blue);">
+                <div style="font-size: 4rem; margin-bottom: 20px;">📱✨</div>
+                <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 15px;">
+                  システム画面イメージ準備中
+                </p>
+                <p style="font-size: 1.1rem; color: var(--text-dark); line-height: 1.8; margin-bottom: 20px;">
+                  実際の英検AI練習システムの画面をご覧いただけます
+                </p>
+                <div style="display: grid; gap: 15px; max-width: 600px; margin: 0 auto; text-align: left;">
+                  <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                      <span style="font-size: 2rem;">📝</span>
+                      <div>
+                        <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">問題を解いている画面</p>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">選択肢を選んで即座に解説を確認</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                      <span style="font-size: 2rem;">✅</span>
+                      <div>
+                        <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">詳細な解説画面</p>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">なぜ正解なのか、なぜ他が間違いなのかを詳しく説明</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                      <span style="font-size: 2rem;">🔍</span>
+                      <div>
+                        <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">単語マーカー機能</p>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">重要単語をタップして意味を確認</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                      <span style="font-size: 2rem;">📖</span>
+                      <div>
+                        <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">長文読解もバッチリ対応</p>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">日本語訳の表示・非表示も自由自在</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                  <img src="https://www.genspark.ai/api/files/s/5Gd5jK2l" alt="英検AI練習システム - 解説画面" style="width: 100%; height: auto; display: block;" />
-                  <div style="padding: 15px; background: #F0F4FF;">
-                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">詳細な解説画面</p>
-                    <p style="font-size: 0.85rem; color: var(--text-gray);">なぜ正解なのか、なぜ他が間違いなのかを詳しく説明</p>
-                  </div>
-                </div>
-                <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                  <img src="https://www.genspark.ai/api/files/s/U2MjIG61" alt="英検AI練習システム - 単語マーカー機能" style="width: 100%; height: auto; display: block;" />
-                  <div style="padding: 15px; background: #F0F4FF;">
-                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">単語マーカー機能</p>
-                    <p style="font-size: 0.85rem; color: var(--text-gray);">重要単語をタップして意味を確認</p>
-                  </div>
-                </div>
-              </div>
-              <div style="margin-top: 25px; background: white; border: 2px solid var(--ai-blue); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(30, 136, 229, 0.15);">
-                <img src="https://www.genspark.ai/api/files/s/WCJ0aJfW" alt="英検AI練習システム - 長文パッセージ" style="width: 100%; height: auto; display: block;" />
-                <div style="padding: 20px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);">
-                  <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📖 長文読解もバッチリ対応</p>
-                  <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
-                    長文パッセージも読みやすく表示。日本語訳の表示・非表示も自由自在。わからない単語はタップするだけで意味を確認できます。
-                  </p>
-                </div>
+                <p style="margin-top: 30px; font-size: 0.95rem; color: var(--text-dark); font-style: italic;">
+                  💡 詳しい画面イメージは、Study Partner体験ページでご確認いただけます
+                </p>
               </div>
             </div>
 
