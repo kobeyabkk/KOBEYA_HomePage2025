@@ -18,8 +18,8 @@ export const aiCoachingCoursePage = () => (
         {
           "@context": "https://schema.org",
           "@type": "Course",
-          "name": "AIコーチング・ラボ",
-          "description": "AI学習支援システム「Study Partner」を活用した個別最適化学習。宿題サポート、苦手単元克服、小論文・英検対策など、一人ひとりに合わせた学習プランで効率的に学力向上。",
+          "name": "AIコーチング・ラボ - KOBEYA Study Partner",
+          "description": "AI学習支援システム「Study Partner」を活用した個別最適化学習。英検対策、小論文講座、AIに質問、フラッシュカード、インター生用バイリンガル対応の5つの機能で24時間サポート。",
           "provider": {
             "@type": "EducationalOrganization",
             "name": "KOBEYA プログラミング教室",
@@ -37,11 +37,14 @@ export const aiCoachingCoursePage = () => (
           "availableLanguage": ["ja", "th", "en"],
           "educationalCredentialAwarded": "修了証",
           "teaches": [
-            "AI学習支援システムの活用",
+            "AI学習支援システム「Study Partner」の活用",
+            "英検対策（問題画像認識・全選択肢解説）",
+            "小論文対策（即時添削・5つの評価軸）",
+            "全教科対応AIに質問（数学・理科・社会・英語・国語）",
+            "フラッシュカード学習（効率的暗記システム）",
+            "バイリンガル学習（日英完全対応・インター生向け）",
             "自主学習能力の向上",
-            "宿題・課題の効率的な取り組み方",
-            "小論文・英検対策",
-            "苦手単元の克服"
+            "24時間いつでも学習サポート"
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
@@ -899,56 +902,537 @@ export const aiCoachingCoursePage = () => (
         </div>
       </section>
 
-      {/* Features */}
-      <section class="features-section">
+      {/* Study Partner Introduction */}
+      <section class="features-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 0;">
         <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">特徴</h2>
-            <p class="section-subtitle">
-              最先端のAI学習技術と人間の指導を組み合わせた、<br/>
-              新しい学習体験を提供します
+          <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+            <h2 class="section-title" style="color: white; font-size: 2.5rem; margin-bottom: 20px;">
+              🎓 KOBEYA Study Partner - 学習機能のご紹介
+            </h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.95); font-size: 1.2rem;">
+              あなた専用のAI学習パートナーが、24時間いつでもサポート
             </p>
           </div>
-          
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-robot"></i>
-              </div>
-              <h3 class="feature-title">AI学習支援システム「Study Partner」</h3>
-              <p class="feature-description">
-                個別学習サポートによる、一人ひとりに最適化された学習体験
+        </div>
+      </section>
+
+      {/* Feature 1: 英検対策 */}
+      <section class="feature-detail-section" style="padding: 80px 0; background: white;">
+        <div class="container">
+          <div style="max-width: 900px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 50px;">
+              <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-blue); margin-bottom: 20px;">
+                📚 英検対策 - AI完全個別指導で合格を目指そう！
+              </h2>
+              <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px;">
+                あなた専用の英検対策コーチが、24時間いつでもサポート
+              </p>
+              <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
+                英検の問題を写真で撮るだけで、AIが瞬時に解答・解説を提供します。もう分厚い参考書を持ち歩く必要はありません！
               </p>
             </div>
 
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-cloud"></i>
+            <div style="background: #F0F4FF; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 25px;">
+                こんな悩みを解決します
+              </h3>
+              <div style="display: grid; gap: 20px;">
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">❓</span>
+                  <div>
+                    <strong>「この問題、なぜこの答えになるの？」</strong>
+                    <br/>→ 全選択肢に日本語訳と詳細な理由を表示
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">📖</span>
+                  <div>
+                    <strong>「リーディング問題が苦手...」</strong>
+                    <br/>→ 文章構造を図解で分かりやすく解説
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">🌙</span>
+                  <div>
+                    <strong>「夜遅くに勉強したいけど、質問できる人がいない」</strong>
+                    <br/>→ 24時間いつでも質問可能
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">⏰</span>
+                  <div>
+                    <strong>「自分のペースで学習したい」</strong>
+                    <br/>→ 好きな時間に、好きなだけ学習できる
+                  </div>
+                </div>
               </div>
-              <h3 class="feature-title">Cloud学習ログで成長の可視化</h3>
-              <p class="feature-description">
-                学習の進捗と成果をリアルタイムで記録・分析し、成長を見える化
+            </div>
+
+            <div style="background: white; border: 2px solid var(--border-gray); padding: 35px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                主な機能
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 15px;">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>問題画像認識:</strong> スマホのカメラで問題を撮影するだけ
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>全選択肢解説:</strong> 正解だけでなく、なぜ他の選択肢が間違いなのかも詳しく説明
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>日本語完全対応:</strong> すべての選択肢に日本語訳付き
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>文法・語彙解説:</strong> 重要ポイントを分かりやすく図解
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>類似問題提案:</strong> 理解を深めるための類似問題を自動生成
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #FFF9E5; padding: 25px; border-radius: 12px; border-left: 4px solid var(--ai-orange);">
+              <p style="font-style: italic; color: var(--text-dark); line-height: 1.8; margin-bottom: 10px;">
+                <strong>生徒の声:</strong>
+              </p>
+              <p style="color: var(--text-dark); line-height: 1.8;">
+                「分からない問題があったら、すぐに写真を撮って質問できるから、勉強の流れが途切れない！先生に聞くより気軽に何度でも質問できるのが嬉しい」<span style="color: var(--text-gray);">（中学2年生）</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 2: 小論文対策 */}
+      <section class="feature-detail-section" style="padding: 80px 0; background: var(--hover-gray);">
+        <div class="container">
+          <div style="max-width: 900px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 50px;">
+              <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-purple); margin-bottom: 20px;">
+                📝 小論文対策 - プロの添削を超える、AIマンツーマン指導
+              </h2>
+              <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px;">
+                志望校合格を勝ち取る、説得力のある小論文を書けるようになる
+              </p>
+              <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
+                小論文は「書き方」が分かれば、誰でも劇的に上達します。AIコーチがあなたの小論文を多角的に分析し、具体的な改善策を提示します。
               </p>
             </div>
 
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-sync-alt"></i>
+            <div style="background: #F5E6FF; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 25px;">
+                こんな悩みを解決します
+              </h3>
+              <div style="display: grid; gap: 20px;">
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">❓</span>
+                  <div>
+                    <strong>「何を書けばいいか分からない」</strong>
+                    <br/>→ テーマ別の構成例とアイデア出しをサポート
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">🔗</span>
+                  <div>
+                    <strong>「論理展開が弱いと言われる」</strong>
+                    <br/>→ 論理構造を視覚化して、弱点を明確に指摘
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">📚</span>
+                  <div>
+                    <strong>「語彙力が足りない」</strong>
+                    <br/>→ より説得力のある表現を具体的に提案
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">🔄</span>
+                  <div>
+                    <strong>「添削を何度も受けたい」</strong>
+                    <br/>→ 無制限に何度でも添削・フィードバック
+                  </div>
+                </div>
               </div>
-              <h3 class="feature-title">宿題・テスト対策・復習をAIが自動で最適化</h3>
-              <p class="feature-description">
-                個人の学習状況に応じて、自動的に最適な学習プランを生成
+            </div>
+
+            <div style="background: white; border: 2px solid var(--border-gray); padding: 35px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                主な機能
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 15px;">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>即時フィードバック:</strong> 提出後すぐに詳細な添削結果を表示
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>5つの評価軸:</strong> 内容・構成・表現・論理性・独自性を個別評価
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>具体的改善案:</strong> 「ここをこう書き換えるとより良くなる」という実践的アドバイス
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>模範解答例:</strong> 同じテーマの高評価作文例を参考に
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>進捗管理:</strong> 過去の作文と比較して成長を実感
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: white; border: 2px solid var(--ai-purple); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--ai-purple); margin-bottom: 20px;">
+                特長:
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 12px;">
+                <li style="padding-left: 30px; position: relative; color: var(--text-dark);">
+                  <span style="position: absolute; left: 0; color: var(--ai-purple);">🔄</span>
+                  <strong>書き直し放題:</strong> 納得いくまで何度でも書き直して再提出できる
+                </li>
+                <li style="padding-left: 30px; position: relative; color: var(--text-dark);">
+                  <span style="position: absolute; left: 0; color: var(--ai-purple);">⏰</span>
+                  <strong>24時間対応:</strong> 深夜でも早朝でも、書きたい時にすぐ添削
+                </li>
+                <li style="padding-left: 30px; position: relative; color: var(--text-dark);">
+                  <span style="position: absolute; left: 0; color: var(--ai-purple);">🎯</span>
+                  <strong>個別最適化:</strong> あなたの弱点に特化した練習問題を提案
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #FFF9E5; padding: 25px; border-radius: 12px; border-left: 4px solid var(--ai-orange);">
+              <p style="font-style: italic; color: var(--text-dark); line-height: 1.8; margin-bottom: 10px;">
+                <strong>生徒の声:</strong>
+              </p>
+              <p style="color: var(--text-dark); line-height: 1.8;">
+                「最初は200字書くのも大変だったけど、AIのアドバイス通りに直したら、800字の小論文がスラスラ書けるようになった！先生からも『すごく上達したね』って褒められた」<span style="color: var(--text-gray);">（高校3年生）</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 3: AIに質問 */}
+      <section class="feature-detail-section" style="padding: 80px 0; background: white;">
+        <div class="container">
+          <div style="max-width: 900px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 50px;">
+              <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-cyan); margin-bottom: 20px;">
+                🤖 AIに質問 - あなた専用の学習パートナー
+              </h2>
+              <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px;">
+                どんな教科も、どんな問題も。写真を撮るだけで即解決
+              </p>
+              <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
+                数学、理科、社会、英語...すべての教科に対応。宿題も定期テストも、もう一人で悩まなくて大丈夫。
               </p>
             </div>
 
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-handshake"></i>
+            <div style="background: #E0F7FA; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 25px;">
+                こんな悩みを解決します
+              </h3>
+              <div style="display: grid; gap: 20px;">
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">🔢</span>
+                  <div>
+                    <strong>「この数式、どこで間違えたか分からない」</strong>
+                    <br/>→ 計算過程を丁寧に解説
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">📊</span>
+                  <div>
+                    <strong>「図やグラフが読めない」</strong>
+                    <br/>→ 画像認識で図表も完全理解
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">📖</span>
+                  <div>
+                    <strong>「教科書の説明が難しい」</strong>
+                    <br/>→ 中学生・高校生に分かる言葉で説明
+                  </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                  <span style="font-size: 1.5rem;">⚡</span>
+                  <div>
+                    <strong>「すぐに答えを知りたい」</strong>
+                    <br/>→ 30秒以内に詳細な解説を表示
+                  </div>
+                </div>
               </div>
-              <h3 class="feature-title">先生のコーチング × AIの分析</h3>
-              <p class="feature-description">
-                人間の温かい指導とAIの精密な分析で、深い理解を実現
+            </div>
+
+            <div style="background: white; border: 2px solid var(--border-gray); padding: 35px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                主な機能
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 15px;">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>全教科対応:</strong> 数学・理科・社会・英語・国語すべて対応
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>画像解析:</strong> 問題文、図表、グラフもすべて認識
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>ステップバイステップ解説:</strong> 答えまでの道筋を一つずつ丁寧に
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>関連知識の補足:</strong> 理解を深めるための背景知識も説明
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✅</span>
+                  <strong>質問し放題:</strong> 何度でも、何問でも質問できる
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: white; border: 2px solid var(--ai-cyan); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--ai-cyan); margin-bottom: 20px;">
+                特に得意な分野:
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 12px;">
+                <li style="padding-left: 30px; position: relative; color: var(--text-dark);">
+                  <span style="position: absolute; left: 0;">📐</span>
+                  <strong>数学:</strong> 方程式、関数、図形、確率など
+                </li>
+                <li style="padding-left: 30px; position: relative; color: var(--text-dark);">
+                  <span style="position: absolute; left: 0;">🔬</span>
+                  <strong>理科:</strong> 化学式、物理の法則、生物の仕組み
+                </li>
+                <li style="padding-left: 30px; position: relative; color: var(--text-dark);">
+                  <span style="position: absolute; left: 0;">🌍</span>
+                  <strong>社会:</strong> 歴史の因果関係、地理の読み取り
+                </li>
+                <li style="padding-left: 30px; position: relative; color: var(--text-dark);">
+                  <span style="position: absolute; left: 0;">📖</span>
+                  <strong>英語:</strong> 文法解説、長文読解、英作文添削
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #F0F8FF; padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                こんな使い方も:
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 12px; color: var(--text-dark);">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-cyan);">•</span>
+                  授業で分からなかった部分を、帰宅後すぐに復習
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-cyan);">•</span>
+                  宿題を解きながら、分からない問題だけピンポイントで質問
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-cyan);">•</span>
+                  テスト前に苦手分野を集中的に質問攻め
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #FFF9E5; padding: 25px; border-radius: 12px; border-left: 4px solid var(--ai-orange);">
+              <p style="font-style: italic; color: var(--text-dark); line-height: 1.8; margin-bottom: 10px;">
+                <strong>生徒の声:</strong>
               </p>
+              <p style="color: var(--text-dark); line-height: 1.8;">
+                「夜11時に数学の宿題で詰まっても、すぐに質問できるから助かる！親に聞くより詳しく教えてくれるし、何度聞いても嫌な顔されない（笑）」<span style="color: var(--text-gray);">（中学3年生）</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 4: フラッシュカード */}
+      <section class="feature-detail-section" style="padding: 80px 0; background: var(--hover-gray);">
+        <div class="container">
+          <div style="max-width: 900px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 50px;">
+              <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-green); margin-bottom: 20px;">
+                🃏 フラッシュカード - 暗記を科学する、効率学習システム
+              </h2>
+              <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px;">
+                覚えるべきことを、最短で、確実に、あなたの長期記憶に定着
+              </p>
+              <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
+                単語、用語、公式...暗記が必要なすべての学習に対応。脳科学に基づいた復習タイミングで、効率的に記憶を定着させます。
+              </p>
+            </div>
+
+            <div style="background: white; border: 2px solid var(--border-gray); padding: 35px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                特徴
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 15px;">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✨</span>
+                  <strong>自分だけのカードを作成:</strong> 覚えたい内容を自由に登録
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✨</span>
+                  <strong>効率的な復習:</strong> 忘れかけたタイミングで自動的に復習問題を出題
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✨</span>
+                  <strong>進捗可視化:</strong> 「覚えた」「まだ不安」を一目で確認
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">✨</span>
+                  <strong>カテゴリー管理:</strong> 教科別、単元別に整理して学習
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #E8F5E9; padding: 30px; border-radius: 15px;">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                こんな人におすすめ:
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 12px; color: var(--text-dark);">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-green);">•</span>
+                  英単語・熟語を効率よく覚えたい
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-green);">•</span>
+                  歴史の年号や用語を暗記したい
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-green);">•</span>
+                  化学式や公式を完璧にしたい
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-green);">•</span>
+                  定期テスト前の総復習に使いたい
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 5: インター生用 */}
+      <section class="feature-detail-section" style="padding: 80px 0; background: white;">
+        <div class="container">
+          <div style="max-width: 900px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 50px;">
+              <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-teal); margin-bottom: 20px;">
+                🌍 インター生用（Bilingual Learning）- 日英バイリンガル完全対応
+              </h2>
+              <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px;">
+                日本語と英語、両方で理解を深める。インターナショナルスクール生のための特別コース
+              </p>
+              <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
+                すべての解説を日本語と英語の両方で提供。どちらの言語でも深く理解できるから、真の学力が身につきます。
+              </p>
+            </div>
+
+            <div style="background: white; border: 2px solid var(--border-gray); padding: 35px; border-radius: 15px; margin-bottom: 30px;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                特徴
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 15px;">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">🌐</span>
+                  <strong>完全バイリンガル解説:</strong> すべての回答を日本語・英語の両言語で表示
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">🌐</span>
+                  <strong>言語の壁を超える:</strong> 英語で習った内容を日本語でも理解、その逆も可能
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">🌐</span>
+                  <strong>数学・理科に特化:</strong> 専門用語を両言語で完全マスター
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0;">🌐</span>
+                  <strong>大学受験対応:</strong> 日本の大学、海外の大学、どちらにも対応できる学力を
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #E0F2F1; padding: 30px; border-radius: 15px;">
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">
+                こんな人におすすめ:
+              </h3>
+              <ul style="list-style: none; padding: 0; display: grid; gap: 12px; color: var(--text-dark);">
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-teal);">•</span>
+                  インターナショナルスクールに通っている
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-teal);">•</span>
+                  英語で学んでいるが、日本語での説明も欲しい
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-teal);">•</span>
+                  将来、海外の大学を目指している
+                </li>
+                <li style="padding-left: 30px; position: relative;">
+                  <span style="position: absolute; left: 0; color: var(--ai-teal);">•</span>
+                  バイリンガルの学力を身につけたい
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section style="padding: 80px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container">
+          <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 30px; color: white;">
+              💡 今すぐ始めよう！
+            </h2>
+            <p style="font-size: 1.3rem; line-height: 1.8; margin-bottom: 40px; color: rgba(255,255,255,0.95);">
+              すべての機能が、あなたの学習を劇的に変えます。
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 50px;">
+              <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                <div style="font-size: 2rem; margin-bottom: 10px;">⏰</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">24時間いつでも利用可能</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                <div style="font-size: 2rem; margin-bottom: 10px;">📱</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">スマホ一台で完結</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">あなた専用のAIコーチ</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
+                <div style="font-size: 1.1rem; font-weight: 600;">今日から成績アップ</div>
+              </div>
+            </div>
+
+            <p style="font-size: 1.5rem; line-height: 1.8; margin-bottom: 20px; font-weight: 600;">
+              学ぶのが楽しくなる。分かるから、もっと知りたくなる。
+            </p>
+            <p style="font-size: 1.8rem; font-weight: 700; color: white;">
+              KOBEYA Study Partner で、あなたの「学び」が変わります。
+            </p>
+
+            <div style="margin-top: 50px;">
+              <a href="https://kobeyabkk-studypartner.pages.dev/study-partner" class="study-partner-big-btn" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 15px; padding: 25px 50px; background: white; color: var(--ai-purple); text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.4rem; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <i class="fas fa-rocket"></i>
+                Study Partnerを今すぐ体験
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>
