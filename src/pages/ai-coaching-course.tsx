@@ -996,6 +996,45 @@ export const aiCoachingCoursePage = () => (
               </ul>
             </div>
 
+            {/* 英検練習システムのスクリーンショット */}
+            <div style="margin-bottom: 40px;">
+              <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; text-align: center;">
+                📱 実際の画面イメージ
+              </h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                  <img src="https://www.genspark.ai/api/files/s/51s7mzXw" alt="英検AI練習システム - 問題画面" style="width: 100%; height: auto; display: block;" />
+                  <div style="padding: 15px; background: #F0F4FF;">
+                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">問題を解いている画面</p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">選択肢を選んで即座に解説を確認</p>
+                  </div>
+                </div>
+                <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                  <img src="https://www.genspark.ai/api/files/s/5Gd5jK2l" alt="英検AI練習システム - 解説画面" style="width: 100%; height: auto; display: block;" />
+                  <div style="padding: 15px; background: #F0F4FF;">
+                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">詳細な解説画面</p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">なぜ正解なのか、なぜ他が間違いなのかを詳しく説明</p>
+                  </div>
+                </div>
+                <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                  <img src="https://www.genspark.ai/api/files/s/U2MjIG61" alt="英検AI練習システム - 単語マーカー機能" style="width: 100%; height: auto; display: block;" />
+                  <div style="padding: 15px; background: #F0F4FF;">
+                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">単語マーカー機能</p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">重要単語をタップして意味を確認</p>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top: 25px; background: white; border: 2px solid var(--ai-blue); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(30, 136, 229, 0.15);">
+                <img src="https://www.genspark.ai/api/files/s/WCJ0aJfW" alt="英検AI練習システム - 長文パッセージ" style="width: 100%; height: auto; display: block;" />
+                <div style="padding: 20px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);">
+                  <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📖 長文読解もバッチリ対応</p>
+                  <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
+                    長文パッセージも読みやすく表示。日本語訳の表示・非表示も自由自在。わからない単語はタップするだけで意味を確認できます。
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div style="background: #FFF9E5; padding: 25px; border-radius: 12px; border-left: 4px solid var(--ai-orange);">
               <p style="font-style: italic; color: var(--text-dark); line-height: 1.8; margin-bottom: 10px;">
                 <strong>生徒の声:</strong>
