@@ -4,7 +4,7 @@ import { getAllCoursesSorted } from '../data/courses'
 
 // コースアイコンを生成する関数（文字列またはJSX要素を返す）
 const getCourseIcon = (title: string): string | JSX.Element => {
-  if (title.includes('STEAM')) return <img src="/images/scratch-cat.png" alt="STEAM" style="width: 100%; height: 100%; object-fit: contain;" />;
+  if (title.includes('STEAM')) return <img src="/images/scratch-cat.png" alt="STEAM" />;
   if (title.includes('マインクラフト')) return 'M';
   if (title.includes('トイ')) return 'P';
   if (title.includes('Think')) return 'T';
@@ -102,12 +102,16 @@ export const homePage = () => {
         margin-bottom: 1.5rem;
         color: var(--text-dark);
         overflow: hidden;
+        padding: 0.5rem;
       }
       
       .course-icon img {
         background: white;
         border-radius: 0.5rem;
-        padding: 0.25rem;
+        padding: 0.5rem;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
       
       .section {
