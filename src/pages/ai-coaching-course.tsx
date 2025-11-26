@@ -885,7 +885,7 @@ export const aiCoachingCoursePage = () => (
       }
       
       .accordion.active .accordion-content {
-        max-height: 15000px;
+        max-height: 50000px;
         transition: max-height 0.8s ease-in;
       }
       
