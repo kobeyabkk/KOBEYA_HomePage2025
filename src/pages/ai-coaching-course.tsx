@@ -1945,6 +1945,19 @@ export const aiCoachingCoursePage = () => (
             if (!isActive) {
               element.classList.add('active');
               console.log('Accordion opened');
+              
+              // Scroll to accordion header with offset for better visibility
+              setTimeout(function() {
+                const headerHeight = 80; // Header height
+                const offset = 20; // Additional offset for better visual spacing
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - offset;
+                
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              }, 100); // Small delay to allow accordion animation to start
             } else {
               console.log('All accordions closed');
             }
