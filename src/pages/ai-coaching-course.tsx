@@ -1003,21 +1003,21 @@ export const aiCoachingCoursePage = () => (
               </h3>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 25px;">
                 <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                  <img src="https://drive.google.com/uc?export=view&id=1keXxq_2Q0LETJFGD7Uina3ppelIhMFdI" alt="英検AI練習システム - 問題画面" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                  <img src="/images/eiken/screenshot-01-question.png" alt="英検AI練習システム - 問題画面" style="width: 100%; height: auto; display: block;" loading="lazy" />
                   <div style="padding: 15px; background: #F0F4FF;">
                     <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">問題を解いている画面</p>
                     <p style="font-size: 0.85rem; color: var(--text-gray);">選択肢を選んで即座に解説を確認</p>
                   </div>
                 </div>
                 <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                  <img src="https://drive.google.com/uc?export=view&id=1nicygzuouLVbZ8Q8bGQRSvMpanN4wZkD" alt="英検AI練習システム - 解説画面" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                  <img src="/images/eiken/screenshot-02-explanation.png" alt="英検AI練習システム - 解説画面" style="width: 100%; height: auto; display: block;" loading="lazy" />
                   <div style="padding: 15px; background: #F0F4FF;">
                     <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">詳細な解説画面</p>
                     <p style="font-size: 0.85rem; color: var(--text-gray);">なぜ正解なのか、なぜ他が間違いなのかを詳しく説明</p>
                   </div>
                 </div>
                 <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                  <img src="https://drive.google.com/uc?export=view&id=1-0RbECdNF-cMj4kdpmXtyQevfMQjuhBx" alt="英検AI練習システム - 単語マーカー機能" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                  <img src="/images/eiken/screenshot-03-vocabulary.png" alt="英検AI練習システム - 単語マーカー機能" style="width: 100%; height: auto; display: block;" loading="lazy" />
                   <div style="padding: 15px; background: #F0F4FF;">
                     <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">単語マーカー機能</p>
                     <p style="font-size: 0.85rem; color: var(--text-gray);">重要単語をタップして意味を確認</p>
@@ -1025,7 +1025,7 @@ export const aiCoachingCoursePage = () => (
                 </div>
               </div>
               <div style="background: white; border: 2px solid var(--ai-blue); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(30, 136, 229, 0.15);">
-                <img src="https://drive.google.com/uc?export=view&id=1SbKRQp3_tE6R5k6CY6qGbxK8ly4NiOtK" alt="英検AI練習システム - 長文パッセージ1" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                <img src="/images/eiken/screenshot-04-passage1.png" alt="英検AI練習システム - 長文パッセージ1" style="width: 100%; height: auto; display: block;" loading="lazy" />
                 <div style="padding: 20px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);">
                   <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📖 長文読解もバッチリ対応</p>
                   <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
@@ -1034,7 +1034,7 @@ export const aiCoachingCoursePage = () => (
                 </div>
               </div>
               <div style="margin-top: 20px; background: white; border: 2px solid var(--ai-blue); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(30, 136, 229, 0.15);">
-                <img src="https://drive.google.com/uc?export=view&id=1NI-h9HST8QncN-HoHZoVWxYOFfbiSGsk" alt="英検AI練習システム - 長文パッセージ2" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                <img src="/images/eiken/screenshot-05-passage2.png" alt="英検AI練習システム - 長文パッセージ2" style="width: 100%; height: auto; display: block;" loading="lazy" />
                 <div style="padding: 20px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);">
                   <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📚 長文読解モード（日本語訳表示）</p>
                   <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
