@@ -9,9 +9,9 @@ const getCourseIcon = (title: string): string | JSX.Element => {
   if (title.includes('トイ')) return <img src="/images/toypro-logo-new.png" alt="トイプロ" />;
   if (title.includes('Think')) return <img src="/images/thinkthink-logo.png" alt="Think!Think!" />;
   if (title.includes('Unity')) return <img src="/images/unity-logo.png" alt="Unity" />;
-  if (title.includes('クリエイター')) return 'C';
-  if (title.includes('AI')) return 'A';
-  if (title.includes('算数') || title.includes('数学')) return '数';
+  if (title.includes('クリエイター')) return <img src="/images/creators-icon.png" alt="クリエイターズ" />;
+  if (title.includes('AI')) return <img src="/images/ai-coaching-icon.png" alt="AIコーチング・ラボ" />;
+  if (title.includes('算数') || title.includes('数学')) return <img src="/images/math-icon.png" alt="算数・数学" />;
   return title.charAt(0);
 }
 

@@ -172,7 +172,7 @@ export const courses: Course[] = [
     id: 7,
     slug: 'ai-coaching',
     title: 'AIコーチング・ラボ',
-    shortTitle: 'AIコーチング',
+    shortTitle: 'AIコーチング・ラボ',
     description: '最先端のAI学習支援システム「Study Partner」で、一人ひとりの学びをサポートします。',
     image: '/images/courses/ai-coaching-course.jpg',
     imageAlt: 'AIコーチング・ラボ',
