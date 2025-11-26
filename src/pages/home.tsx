@@ -2,9 +2,9 @@ import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { getAllCoursesSorted } from '../data/courses'
 
-// コースアイコンを生成する関数
-const getCourseIcon = (title: string): string => {
-  if (title.includes('STEAM')) return 'S';
+// コースアイコンを生成する関数（文字列またはJSX要素を返す）
+const getCourseIcon = (title: string): string | JSX.Element => {
+  if (title.includes('STEAM')) return <img src="/images/scratch-cat.png" alt="STEAM" style="width: 100%; height: 100%; object-fit: contain;" />;
   if (title.includes('マインクラフト')) return 'M';
   if (title.includes('トイ')) return 'P';
   if (title.includes('Think')) return 'T';
@@ -101,6 +101,13 @@ export const homePage = () => {
         font-size: 2rem;
         margin-bottom: 1.5rem;
         color: var(--text-dark);
+        overflow: hidden;
+      }
+      
+      .course-icon img {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 0.25rem;
       }
       
       .section {
