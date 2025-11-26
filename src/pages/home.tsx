@@ -6,7 +6,7 @@ import { getAllCoursesSorted } from '../data/courses'
 const getCourseIcon = (title: string): string | JSX.Element => {
   if (title.includes('STEAM')) return <img src="/images/scratch-cat.png" alt="STEAM" />;
   if (title.includes('マインクラフト')) return <img src="/images/minecraft-character.png" alt="マインクラフト" />;
-  if (title.includes('トイ')) return 'P';
+  if (title.includes('トイ')) return <img src="/images/toypro-logo.png" alt="トイプロ" />;
   if (title.includes('Think')) return 'T';
   if (title.includes('Unity')) return 'U';
   if (title.includes('クリエイター')) return 'C';
