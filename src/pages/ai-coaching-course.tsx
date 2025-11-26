@@ -1005,8 +1005,8 @@ export const aiCoachingCoursePage = () => (
                 <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                   <img src="/images/eiken/screenshot-01-question.png" alt="英検AI練習システム - 問題画面" style="width: 100%; height: auto; display: block;" loading="lazy" />
                   <div style="padding: 15px; background: #F0F4FF;">
-                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">問題を解いている画面</p>
-                    <p style="font-size: 0.85rem; color: var(--text-gray);">選択肢を選んで即座に解説を確認</p>
+                    <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">短文の語句補充問題の画面</p>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">選択肢を選んで即座に解説を確認できます</p>
                   </div>
                 </div>
                 <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
@@ -1036,9 +1036,9 @@ export const aiCoachingCoursePage = () => (
               <div style="margin-top: 20px; background: white; border: 2px solid var(--ai-blue); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(30, 136, 229, 0.15);">
                 <img src="/images/eiken/screenshot-05-passage2.png" alt="英検AI練習システム - 長文パッセージ2" style="width: 100%; height: auto; display: block;" loading="lazy" />
                 <div style="padding: 20px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);">
-                  <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📚 長文読解モード（日本語訳表示）</p>
+                  <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📚 長文読解モードの問題</p>
                   <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
-                    日本語訳を表示して、英文と対比しながら読解。理解を深めながら学習できます。
+                    英検と同じ4つの選択肢から選びます
                   </p>
                 </div>
               </div>
