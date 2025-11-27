@@ -402,6 +402,27 @@ export const homePage = () => {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
       }
+      
+      .news-item {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border-left: 4px solid var(--main-yellow);
+        transition: all 0.3s;
+      }
+      
+      .news-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(255, 193, 7, 0.2);
+      }
+      
+      @media (max-width: 640px) {
+        .news-item {
+          padding: 1rem;
+        }
+      }
     `}</style>
     
     <Header />
@@ -511,7 +532,45 @@ export const homePage = () => {
       </div>
     </section>
 
-
+    {/* News Section */}
+    <section class="section" style="padding: 3rem 0; background: linear-gradient(to bottom, #fff9e6, #ffffff);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="font-size: 2rem; color: var(--text-dark); margin-bottom: 0.5rem;">📢 最新情報</h2>
+          <div style="width: 60px; height: 3px; background: var(--main-yellow); margin: 0 auto;"></div>
+        </div>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+          {/* News Item 1 */}
+          <div class="news-item">
+            <div style="display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+              <div style="background: #fff9e6; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; white-space: nowrap;">
+                2025.11.27
+              </div>
+              <div style="flex: 1; min-width: 200px;">
+                <div style="font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.5;">
+                  🚀 1月5,6日 未来を先取り！最先端AIクリエイター講座
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* News Item 2 */}
+          <div class="news-item">
+            <div style="display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+              <div style="background: #fff9e6; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; white-space: nowrap;">
+                2025.11.27
+              </div>
+              <div style="flex: 1; min-width: 200px;">
+                <div style="font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.5;">
+                  📚 STEAMコースロブロックス講座、Canva講座にレッスン追加
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     {/* Courses Section */}
     <section id="courses" class="section-alt">
