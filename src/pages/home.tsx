@@ -568,6 +568,20 @@ export const homePage = () => {
               </div>
             </div>
           </div>
+          
+          {/* News Item 3 */}
+          <div class="news-item">
+            <div style="display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+              <div style="background: #fff9e6; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; white-space: nowrap;">
+                2025.11.27
+              </div>
+              <div style="flex: 1; min-width: 200px;">
+                <div style="font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.5;">
+                  🎖️ ジュニアプログラミング検定 63名合格（1級）2025年11月現在
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
