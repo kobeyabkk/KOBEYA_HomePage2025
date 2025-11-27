@@ -1140,6 +1140,16 @@ export const aiCoachingCoursePage = () => (
           <div class="accordion-content">
             <div class="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
+              
+              {/* Infographic Section */}
+              <div style="text-align: center; margin-bottom: 50px;">
+                <img 
+                  src="https://www.genspark.ai/api/files/s/aV2wzj75" 
+                  alt="AIコーチング・ラボ 英検対策システム - AIが君だけの英検問題を無限に生み出す！"
+                  style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); margin-bottom: 30px;"
+                />
+              </div>
+              
               <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-blue); margin-bottom: 20px;">
                   💡 英検AI練習システムって、どんな仕組み？
