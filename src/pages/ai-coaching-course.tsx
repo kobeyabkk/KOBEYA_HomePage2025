@@ -1145,7 +1145,7 @@ export const aiCoachingCoursePage = () => (
               <div style="text-align: center; margin-bottom: 50px;">
                 <img 
                   src="https://www.genspark.ai/api/files/s/aV2wzj75" 
-                  alt="AIコーチング・ラボ 英検対策システム - AIが君だけの英検問題を無限に生み出す！"
+                  alt="AIコーチング・ラボ 英検対策システム"
                   style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); margin-bottom: 30px;"
                 />
               </div>
