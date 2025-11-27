@@ -164,7 +164,7 @@ export const aboutPage = () => (
             />
             <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">鈴木政路（すずき まさみち）</h3>
             <p style="color: var(--text-gray); margin-bottom: 2rem; font-weight: 500;">
-              代表・教育者・算数数学指導者
+              AIエンジニア・教育者・算数数学指導者
             </p>
             
             <div style="text-align: left; color: var(--text-gray); line-height: 1.7;">
