@@ -1486,6 +1486,59 @@ export const aiCoachingCoursePage = () => (
                 </ul>
               </div>
 
+              {/* 国語力アップセクション */}
+              <div style="background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); padding: 35px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #66BB6A;">
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #2E7D32; margin-bottom: 20px; text-align: center;">
+                  📈 実は「現代文」の点数も上がる？小論文は国語力の筋トレ
+                </h3>
+                <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 25px; font-size: 1.05rem;">
+                  小論文は単に文章を書くだけではありません。「読む・考える・書く」を論理的に行うため、国語力そのものが劇的に向上します。
+                </p>
+                <div style="display: grid; gap: 20px;">
+                  <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #66BB6A;">
+                    <h4 style="color: #2E7D32; font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">🧠 読解力が深まる</h4>
+                    <p style="color: var(--text-dark); line-height: 1.7;">
+                      課題文を正しく読み解く訓練が、そのまま現代文（評論文）の読解力アップに直結します。
+                    </p>
+                  </div>
+                  <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #66BB6A;">
+                    <h4 style="color: #2E7D32; font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">⚡ 論理的思考が身につく</h4>
+                    <p style="color: var(--text-dark); line-height: 1.7;">
+                      「感覚」で読むのを卒業し、「論理」で正解を導き出す力が養われます。
+                    </p>
+                  </div>
+                  <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #66BB6A;">
+                    <h4 style="color: #2E7D32; font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">🔄 AIだから「高速」で伸びる</h4>
+                    <p style="color: var(--text-dark); line-height: 1.7;">
+                      インプットとアウトプットの回数を圧倒的に増やせるため、短期間で国語の総合力が底上げされます。
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 一生モノのスキルセクション */}
+              <div style="background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%); padding: 35px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #FF9800;">
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #E65100; margin-bottom: 20px; text-align: center;">
+                  🚀 小論文で手に入る「一生モノの国語力」
+                </h3>
+                <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem;">
+                  小論文の学習は、現代文の成績アップだけでなく、社会に出てからも役立つ「論理的思考力」を育てます。
+                </p>
+                <ul style="list-style: none; padding: 0; display: grid; gap: 15px;">
+                  <li style="padding-left: 30px; position: relative; line-height: 1.7; color: var(--text-dark);">
+                    <span style="position: absolute; left: 0; font-size: 1.2rem;">📖</span>
+                    <strong>筆者の主張を見抜く「精読力」</strong>
+                  </li>
+                  <li style="padding-left: 30px; position: relative; line-height: 1.7; color: var(--text-dark);">
+                    <span style="position: absolute; left: 0; font-size: 1.2rem;">💬</span>
+                    <strong>自分の意見を明確に伝える「言語化能力」</strong>
+                  </li>
+                </ul>
+                <p style="color: var(--text-dark); line-height: 1.8; margin-top: 20px; font-style: italic;">
+                  通常の授業では身につきにくいこれらの力を、AIとの対話的な推敲（リライト）を通じて効率よく習得できます。
+                </p>
+              </div>
+
               <div style="background: white; border: 2px solid var(--ai-purple); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
                 <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--ai-purple); margin-bottom: 20px;">
                   特長:
@@ -1515,7 +1568,7 @@ export const aiCoachingCoursePage = () => (
                 {/* Screenshot 1: テーマ選択画面 - 横長画像 */}
                 <div style="background: white; border: 2px solid var(--ai-purple); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(118, 75, 162, 0.15); margin-bottom: 20px;">
                   <img 
-                    src="https://www.genspark.ai/api/files/s/nBt6qmuK" 
+                    src="/images/essay/screenshot-01-selection.png" 
                     alt="小論文AIコーチ - テーマ選択画面"
                     style="width: 100%; height: auto; display: block;"
                     loading="lazy"
@@ -1533,7 +1586,7 @@ export const aiCoachingCoursePage = () => (
                   {/* Screenshot 2: 小論文指導画面 - 縦長画像 */}
                   <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                     <img 
-                      src="https://www.genspark.ai/api/files/s/gS5T1MIO" 
+                      src="/images/essay/screenshot-02-guidance.png" 
                       alt="小論文AIコーチ - 段階的指導画面"
                       style="width: 100%; height: auto; display: block;"
                       loading="lazy"
@@ -1547,7 +1600,7 @@ export const aiCoachingCoursePage = () => (
                   {/* Screenshot 3: 添削結果画面 - 縦長画像 */}
                   <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                     <img 
-                      src="https://www.genspark.ai/api/files/s/ESYdUPXW" 
+                      src="/images/essay/screenshot-03-feedback.png" 
                       alt="小論文AIコーチ - 詳細な添削結果"
                       style="width: 100%; height: auto; display: block;"
                       loading="lazy"
