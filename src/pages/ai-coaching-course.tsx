@@ -1506,6 +1506,60 @@ export const aiCoachingCoursePage = () => (
                 </ul>
               </div>
 
+              {/* 小論文対策のスクリーンショット */}
+              <div style="margin-bottom: 40px;">
+                <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; text-align: center;">
+                  📱 実際の画面イメージ
+                </h3>
+                
+                {/* Screenshot 1: テーマ選択画面 - 横長画像 */}
+                <div style="background: white; border: 2px solid var(--ai-purple); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(118, 75, 162, 0.15); margin-bottom: 20px;">
+                  <img 
+                    src="https://www.genspark.ai/api/files/s/nBt6qmuK" 
+                    alt="小論文AIコーチ - テーマ選択画面"
+                    style="width: 100%; height: auto; display: block;"
+                    loading="lazy"
+                  />
+                  <div style="padding: 20px; background: linear-gradient(135deg, #F5E6FF 0%, #E1BEE7 100%);">
+                    <p style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">📚 学習スタイルを選択</p>
+                    <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.6;">
+                      対象レベル、問題設定、学習スタイル、授業形式を自由に選べます。AIにおまかせモードでは、最適なテーマを自動選択します。
+                    </p>
+                  </div>
+                </div>
+
+                {/* Screenshot 2 & 3: 2カラムレイアウト */}
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                  {/* Screenshot 2: 小論文指導画面 - 縦長画像 */}
+                  <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <img 
+                      src="https://www.genspark.ai/api/files/s/gS5T1MIO" 
+                      alt="小論文AIコーチ - 段階的指導画面"
+                      style="width: 100%; height: auto; display: block;"
+                      loading="lazy"
+                    />
+                    <div style="padding: 15px; background: #F0F4FF;">
+                      <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">💡 段階的な指導</p>
+                      <p style="font-size: 0.85rem; color: var(--text-gray);">テーマの読み込みから、理解確認、執筆まで、ステップバイステップで進みます</p>
+                    </div>
+                  </div>
+
+                  {/* Screenshot 3: 添削結果画面 - 縦長画像 */}
+                  <div style="background: white; border: 2px solid var(--border-gray); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <img 
+                      src="https://www.genspark.ai/api/files/s/ESYdUPXW" 
+                      alt="小論文AIコーチ - 詳細な添削結果"
+                      style="width: 100%; height: auto; display: block;"
+                      loading="lazy"
+                    />
+                    <div style="padding: 15px; background: #F0F4FF;">
+                      <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px;">✨ 詳細な添削結果</p>
+                      <p style="font-size: 0.85rem; color: var(--text-gray);">良かった点、改善点、次のステップを具体的に提示します</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div style="background: #FFF9E5; padding: 25px; border-radius: 12px; border-left: 4px solid var(--ai-orange);">
                 <p style="font-style: italic; color: var(--text-dark); line-height: 1.8; margin-bottom: 10px;">
                   <strong>生徒の声:</strong>
