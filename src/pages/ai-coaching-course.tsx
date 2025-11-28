@@ -1161,6 +1161,15 @@ export const aiCoachingCoursePage = () => (
               5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。<strong style="color: #1976D2;">英検対策をしながら英語の成績もアップ！</strong>
             </p>
           </div>
+
+          {/* Infographic - Always visible outside accordion */}
+          <div style="text-align: center; margin-bottom: 30px; padding: 0 20px;">
+            <img 
+              src="/images/eiken/infographic-system.png" 
+              alt="AIコーチング・ラボ 英検対策システム"
+              style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);"
+            />
+          </div>
           
           <div class="accordion-content">
             <div class="accordion-inner">
