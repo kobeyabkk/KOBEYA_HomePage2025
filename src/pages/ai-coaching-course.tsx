@@ -995,7 +995,7 @@ export const aiCoachingCoursePage = () => (
           
           {/* Always visible preview */}
           <div style="padding: 25px 35px; background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%); border-left: 6px solid var(--ai-cyan); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(0, 188, 212, 0.15); border-radius: 8px;">
-            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
+            <p style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; line-height: 1.4;">
               どんな教科も、どんな問題も。写真を撮るだけで即解決
             </p>
             <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
@@ -1140,11 +1140,11 @@ export const aiCoachingCoursePage = () => (
           
           {/* Always visible preview */}
           <div style="padding: 25px 35px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-left: 6px solid var(--ai-blue); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(33, 150, 243, 0.15); border-radius: 8px;">
-            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
+            <p style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; line-height: 1.4;">
               AIが君だけの英検問題を無限に生み出す！
             </p>
             <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
-              5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。
+              5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。<strong style="color: #1976D2;">英検対策をしながら英語の成績もアップ！</strong>
             </p>
           </div>
           
@@ -1421,11 +1421,11 @@ export const aiCoachingCoursePage = () => (
           
           {/* Always visible preview */}
           <div style="padding: 25px 35px; background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%); border-left: 6px solid var(--ai-purple); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(156, 39, 176, 0.15); border-radius: 8px;">
-            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
+            <p style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; line-height: 1.4;">
               志望校合格を勝ち取る、説得力のある小論文を書けるようになる
             </p>
             <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
-              小論文は「書き方」が分かれば、誰でも劇的に上達します。AIコーチがあなたの小論文を多角的に分析し、具体的な改善策を提示します。現代文の成績も向上！
+              小論文は「書き方」が分かれば、誰でも劇的に上達します。AIコーチがあなたの小論文を多角的に分析し、具体的な改善策を提示します。<strong style="color: #7B1FA2;">現代文の成績も向上！国語力が確実にアップ！</strong>
             </p>
           </div>
           
