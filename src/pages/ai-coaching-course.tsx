@@ -869,8 +869,20 @@ export const aiCoachingCoursePage = () => (
         color: var(--text-dark);
       }
       
+      .accordion-toggle-hint {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 500;
+        margin-right: 8px;
+        white-space: nowrap;
+      }
+      
       .accordion.active .accordion-icon {
         transform: rotate(180deg);
+      }
+      
+      .accordion.active .accordion-toggle-hint {
+        display: none;
       }
       
       .accordion-content {
@@ -990,6 +1002,7 @@ export const aiCoachingCoursePage = () => (
             <h3 class="accordion-title">
               🤖 AIに質問 - あなた専用の学習パートナー
             </h3>
+            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
             <span class="accordion-icon">▼</span>
           </div>
           
@@ -1135,6 +1148,7 @@ export const aiCoachingCoursePage = () => (
             <h3 class="accordion-title">
               📚 英検対策 - AI完全個別指導で合格を目指そう！
             </h3>
+            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
             <span class="accordion-icon">▼</span>
           </div>
           
@@ -1416,6 +1430,7 @@ export const aiCoachingCoursePage = () => (
             <h3 class="accordion-title">
               📝 小論文対策 - プロの添削を超える、AIマンツーマン指導
             </h3>
+            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
             <span class="accordion-icon">▼</span>
           </div>
           
@@ -1644,6 +1659,7 @@ export const aiCoachingCoursePage = () => (
             <h3 class="accordion-title">
               🃏 フラッシュカード - 暗記を科学する、効率学習システム
             </h3>
+            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
             <span class="accordion-icon">▼</span>
           </div>
           
@@ -1731,6 +1747,7 @@ export const aiCoachingCoursePage = () => (
             <h3 class="accordion-title">
               🌍 インター生用（Bilingual Learning）- 日英バイリンガル完全対応
             </h3>
+            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
             <span class="accordion-icon">▼</span>
           </div>
           
