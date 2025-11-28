@@ -994,11 +994,11 @@ export const aiCoachingCoursePage = () => (
           </div>
           
           {/* Always visible preview */}
-          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-cyan); margin-bottom: 15px;">
-            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+          <div style="padding: 25px 35px; background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%); border-left: 6px solid var(--ai-cyan); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(0, 188, 212, 0.15); border-radius: 8px;">
+            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
               どんな教科も、どんな問題も。写真を撮るだけで即解決
             </p>
-            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+            <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
               数学、理科、社会、英語...すべての教科に対応。宿題も定期テストも、もう一人で悩まなくて大丈夫。
             </p>
           </div>
@@ -1139,11 +1139,11 @@ export const aiCoachingCoursePage = () => (
           </div>
           
           {/* Always visible preview */}
-          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-blue); margin-bottom: 15px;">
-            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+          <div style="padding: 25px 35px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-left: 6px solid var(--ai-blue); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(33, 150, 243, 0.15); border-radius: 8px;">
+            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
               AIが君だけの英検問題を無限に生み出す！
             </p>
-            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+            <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
               5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。
             </p>
           </div>
@@ -1420,11 +1420,11 @@ export const aiCoachingCoursePage = () => (
           </div>
           
           {/* Always visible preview */}
-          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-purple); margin-bottom: 15px;">
-            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+          <div style="padding: 25px 35px; background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%); border-left: 6px solid var(--ai-purple); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(156, 39, 176, 0.15); border-radius: 8px;">
+            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
               志望校合格を勝ち取る、説得力のある小論文を書けるようになる
             </p>
-            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+            <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
               小論文は「書き方」が分かれば、誰でも劇的に上達します。AIコーチがあなたの小論文を多角的に分析し、具体的な改善策を提示します。現代文の成績も向上！
             </p>
           </div>
@@ -1648,11 +1648,11 @@ export const aiCoachingCoursePage = () => (
           </div>
           
           {/* Always visible preview */}
-          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-orange); margin-bottom: 15px;">
-            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+          <div style="padding: 25px 35px; background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%); border-left: 6px solid var(--ai-orange); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(255, 152, 0, 0.15); border-radius: 8px;">
+            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
               忘れる前に復習。脳科学に基づく効率的な暗記システム
             </p>
-            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+            <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
               英単語、歴史年表、数学公式...覚えたいことを登録するだけで、AIが最適なタイミングで復習問題を出題。効率的に長期記憶に定着させます。
             </p>
           </div>
@@ -1735,11 +1735,11 @@ export const aiCoachingCoursePage = () => (
           </div>
           
           {/* Always visible preview */}
-          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-teal); margin-bottom: 15px;">
-            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+          <div style="padding: 25px 35px; background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%); border-left: 6px solid var(--ai-teal); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(0, 150, 136, 0.15); border-radius: 8px;">
+            <p style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4;">
               日本語・英語、どちらでも完璧に学べる
             </p>
-            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+            <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
               インターナショナルスクール生向けの特別コース。日本語と英語、両言語で深く理解できます。Math・Scienceに特に強く、大学受験もサポート。
             </p>
           </div>
