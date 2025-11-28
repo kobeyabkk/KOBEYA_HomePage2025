@@ -1036,8 +1036,8 @@ export const aiCoachingCoursePage = () => (
                   <div style="display: flex; gap: 15px; align-items: start;">
                     <span style="font-size: 1.5rem;">⚡</span>
                     <div>
-                      <strong>「すぐに答えを知りたい」</strong>
-                      <br/>→ 30秒以内に詳細な解説を表示
+                      <strong>「わからない問題を教えて欲しい」</strong>
+                      <br/>→ 答えを教えるのではなく、解き方を段階的に解説します
                     </div>
                   </div>
                 </div>
