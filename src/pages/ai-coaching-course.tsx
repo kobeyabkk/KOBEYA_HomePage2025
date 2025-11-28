@@ -985,27 +985,27 @@ export const aiCoachingCoursePage = () => (
         <div class="container">
 
           {/* Feature 1: AIに質問 */}
-            <div class="accordion" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
+            <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
             <h3 class="accordion-title">
               🤖 AIに質問 - あなた専用の学習パートナー
             </h3>
             <span class="accordion-icon">▼</span>
           </div>
+          
+          {/* Always visible preview */}
+          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-cyan); margin-bottom: 15px;">
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+              どんな教科も、どんな問題も。写真を撮るだけで即解決
+            </p>
+            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+              数学、理科、社会、英語...すべての教科に対応。宿題も定期テストも、もう一人で悩まなくて大丈夫。
+            </p>
+          </div>
+          
           <div class="accordion-content">
             <div class="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
-              <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-cyan); margin-bottom: 20px;">
-                  🤖 AIに質問 - あなた専用の学習パートナー
-                </h2>
-                <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px;">
-                  どんな教科も、どんな問題も。写真を撮るだけで即解決
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
-                  数学、理科、社会、英語...すべての教科に対応。宿題も定期テストも、もう一人で悩まなくて大丈夫。
-                </p>
-              </div>
 
               <div style="background: #E0F7FA; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
                 <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 25px;">
@@ -1130,13 +1130,24 @@ export const aiCoachingCoursePage = () => (
 
 
         {/* Feature 2: 英検対策 */}
-        <div class="accordion" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
             <h3 class="accordion-title">
               📚 英検対策 - AI完全個別指導で合格を目指そう！
             </h3>
             <span class="accordion-icon">▼</span>
           </div>
+          
+          {/* Always visible preview */}
+          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-blue); margin-bottom: 15px;">
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+              AIが君だけの英検問題を無限に生み出す！
+            </p>
+            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+              5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。
+            </p>
+          </div>
+          
           <div class="accordion-content">
             <div class="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
@@ -1400,27 +1411,27 @@ export const aiCoachingCoursePage = () => (
 
 
         {/* Feature 3: 小論文対策 */}
-        <div class="accordion" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
             <h3 class="accordion-title">
               📝 小論文対策 - プロの添削を超える、AIマンツーマン指導
             </h3>
             <span class="accordion-icon">▼</span>
           </div>
+          
+          {/* Always visible preview */}
+          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-purple); margin-bottom: 15px;">
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+              志望校合格を勝ち取る、説得力のある小論文を書けるようになる
+            </p>
+            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+              小論文は「書き方」が分かれば、誰でも劇的に上達します。AIコーチがあなたの小論文を多角的に分析し、具体的な改善策を提示します。現代文の成績も向上！
+            </p>
+          </div>
+          
           <div class="accordion-content">
             <div class="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
-              <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-purple); margin-bottom: 20px;">
-                  📝 小論文対策 - プロの添削を超える、AIマンツーマン指導
-                </h2>
-                <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px;">
-                  志望校合格を勝ち取る、説得力のある小論文を書けるようになる
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
-                  小論文は「書き方」が分かれば、誰でも劇的に上達します。AIコーチがあなたの小論文を多角的に分析し、具体的な改善策を提示します。
-                </p>
-              </div>
 
               <div style="background: #F5E6FF; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
                 <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 25px;">
@@ -1628,13 +1639,24 @@ export const aiCoachingCoursePage = () => (
 
 
         {/* Feature 4: フラッシュカード */}
-        <div class="accordion" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
             <h3 class="accordion-title">
               🃏 フラッシュカード - 暗記を科学する、効率学習システム
             </h3>
             <span class="accordion-icon">▼</span>
           </div>
+          
+          {/* Always visible preview */}
+          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-orange); margin-bottom: 15px;">
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+              忘れる前に復習。脳科学に基づく効率的な暗記システム
+            </p>
+            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+              英単語、歴史年表、数学公式...覚えたいことを登録するだけで、AIが最適なタイミングで復習問題を出題。効率的に長期記憶に定着させます。
+            </p>
+          </div>
+          
           <div class="accordion-content">
             <div class="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
@@ -1704,13 +1726,24 @@ export const aiCoachingCoursePage = () => (
 
 
         {/* Feature 5: インター生用 */}
-        <div class="accordion" onclick="toggleAccordion(this)">
-          <div class="accordion-header">
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
             <h3 class="accordion-title">
               🌍 インター生用（Bilingual Learning）- 日英バイリンガル完全対応
             </h3>
             <span class="accordion-icon">▼</span>
           </div>
+          
+          {/* Always visible preview */}
+          <div style="padding: 20px 30px; background: #f8f9fa; border-left: 4px solid var(--ai-teal); margin-bottom: 15px;">
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">
+              日本語・英語、どちらでも完璧に学べる
+            </p>
+            <p style="font-size: 1rem; color: var(--text-gray); line-height: 1.7;">
+              インターナショナルスクール生向けの特別コース。日本語と英語、両言語で深く理解できます。Math・Scienceに特に強く、大学受験もサポート。
+            </p>
+          </div>
+          
           <div class="accordion-content">
             <div class="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
