@@ -16,7 +16,8 @@
     "db:reset": "rm -rf .wrangler/state/v3/d1 && npm run db:migrate:local"
   },
   "dependencies": {
-    "hono": "^4.9.9"
+    "hono": "^4.9.9",
+    "react-zoom-pan-pinch": "^3.7.0"
   },
   "devDependencies": {
     "@hono/vite-build": "^1.2.0",

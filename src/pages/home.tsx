@@ -197,59 +197,140 @@ export const homePage = () => {
       }
       
       .hero-section {
-        background: linear-gradient(135deg, var(--base-white) 0%, #fffef7 100%);
-        padding: 6rem 0 5rem;
-        min-height: 70vh;
+        background: linear-gradient(180deg, #001a33 0%, #003d66 100%);
+        padding: 6rem 0 4rem;
+        min-height: 500px;
         display: flex;
         align-items: center;
+        position: relative;
+        overflow: hidden;
       }
       
-      .hero-logo-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
+      /* Hero illustration below title */
+      .hero-illustration {
+        width: 100%;
+        max-width: 900px;
+        margin: 2rem auto 0;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       }
       
-      .hero-logo {
-        width: 150px;
-        height: 150px;
-        animation: fadeInScale 0.8s ease-out;
-        background: transparent;
+      .hero-illustration img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      @keyframes pulseGlow {
+        0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+        50% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+      }
+      
+      /* Bangkok Skyline SVG Pattern */
+      .hero-skyline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        opacity: 0.3;
+        pointer-events: none;
+      }
+      
+      /* Neural Network Nodes */
+      .neural-network {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 900px;
+        height: 400px;
+        opacity: 0.2;
+        pointer-events: none;
+      }
+      
+      .neural-node {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #FFC107;
         border-radius: 50%;
-        padding: 0.5rem;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        mix-blend-mode: multiply;
+        box-shadow: 0 0 20px rgba(255, 193, 7, 0.6), 0 0 40px rgba(255, 193, 7, 0.3);
+        animation: nodeGlow 3s ease-in-out infinite;
       }
       
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
+      .neural-node.blue {
+        background: #3B82F6;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+      }
+      
+      @keyframes nodeGlow {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.3); opacity: 1; }
+      }
+      
+      .neural-line {
+        position: absolute;
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(255, 193, 7, 0.3));
+        height: 2px;
+        transform-origin: left center;
+        animation: lineFlow 4s ease-in-out infinite;
+      }
+      
+      @keyframes lineFlow {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.7; }
       }
       
       .hero-title-center {
         text-align: center;
-        margin-bottom: 3rem;
+        position: relative;
+        z-index: 10;
+      }
+      
+      .hero-section .container {
+        position: relative;
+        z-index: 10;
       }
       
       .hero-title-center h1 {
         font-size: 4rem;
         font-weight: 800;
-        color: var(--text-dark);
-        margin-bottom: 0.75rem;
+        color: #FFFFFF;
+        margin-bottom: 1rem;
         line-height: 1.2;
+        text-shadow: 
+          0 0 30px rgba(255, 193, 7, 0.8),
+          0 0 60px rgba(255, 193, 7, 0.6),
+          0 4px 20px rgba(0, 0, 0, 0.8);
+        animation: goldGlow 3s ease-in-out infinite;
+      }
+      
+      @keyframes goldGlow {
+        0%, 100% { 
+          text-shadow: 
+            0 0 30px rgba(255, 193, 7, 0.8),
+            0 0 60px rgba(255, 193, 7, 0.6),
+            0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        50% { 
+          text-shadow: 
+            0 0 40px rgba(255, 193, 7, 1),
+            0 0 80px rgba(255, 193, 7, 0.8),
+            0 4px 20px rgba(0, 0, 0, 0.8);
+        }
       }
       
       .hero-subtitle {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         font-weight: 600;
-        color: var(--text-gray);
+        color: #FFFFFF;
         margin-top: 0.5rem;
+        text-shadow: 
+          0 0 20px rgba(255, 193, 7, 0.6),
+          0 2px 10px rgba(0, 0, 0, 0.8);
       }
       
       .consulting-target {
@@ -267,19 +348,21 @@ export const homePage = () => {
       }
       
       @media (max-width: 768px) {
-        .hero-logo {
-          width: 100px;
-          height: 100px;
-          padding: 0.35rem;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        .hero-section {
+          padding: 4rem 0 3rem;
+          min-height: 400px;
         }
         
         .hero-title-center h1 {
-          font-size: 2.5rem;
+          font-size: 2.2rem;
         }
         
         .hero-subtitle {
-          font-size: 1.25rem;
+          font-size: 1.2rem;
+        }
+        
+        .hero-illustration {
+          margin: 1.5rem auto 0;
         }
       }
       
@@ -430,13 +513,12 @@ export const homePage = () => {
     {/* Hero Section */}
     <section class="hero-section">
       <div class="container">
-        {/* Logo and Title Section */}
-        <div class="hero-logo-container">
-          <img src="https://page.gensparksite.com/v1/base64_upload/12ceead4f987a2269b4144a32d086adb" alt="KOBEYA Logo" class="hero-logo" />
-        </div>
         <div class="hero-title-center">
           <h1>AI＆プログラミングのKOBEYA</h1>
           <div class="hero-subtitle">バンコクで学ぶプログラミング教室</div>
+          <div class="hero-illustration">
+            <img src="/images/ai-brain-cityscape.jpg" alt="AI＆プログラミングのKOBEYA - バンコクで学ぶ未来の教育" />
+          </div>
         </div>
         
         {/* Content Grid */}
