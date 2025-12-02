@@ -1,7 +1,7 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export const aiCoachingCoursePage = () => {
   const [modalImage, setModalImage] = useState<string | null>(null)
@@ -15,6 +15,17 @@ export const aiCoachingCoursePage = () => {
     setModalImage(null)
     document.body.style.overflow = 'auto'
   }
+
+  // ESC key to close modal
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && modalImage) {
+        closeImageModal()
+      }
+    }
+    window.addEventListener('keydown', handleEsc)
+    return () => window.removeEventListener('keydown', handleEsc)
+  }, [modalImage])
 
   return (
   <>
@@ -1184,17 +1195,49 @@ export const aiCoachingCoursePage = () => {
               {/* Infographic Section with Pinch Zoom */}
               <div style="text-align: center; margin-bottom: 50px;">
                 <div 
-                  style="position: relative; cursor: pointer; display: inline-block;"
-                  onclick={() => openImageModal('/images/eiken/infographic-system.png')}
-                  onmouseover="this.querySelector('img').style.transform='scale(1.02)'; this.querySelector('img').style.boxShadow='0 12px 48px rgba(0, 0, 0, 0.15)';"
-                  onmouseout="this.querySelector('img').style.transform='scale(1)'; this.querySelector('img').style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.1)';"
+                  style={{
+                    position: 'relative',
+                    cursor: 'pointer',
+                    display: 'inline-block'
+                  }}
+                  onClick={() => openImageModal('/images/eiken/infographic-system.png')}
+                  onMouseOver={(e) => {
+                    const img = e.currentTarget.querySelector('img')
+                    if (img) {
+                      img.style.transform = 'scale(1.02)'
+                      img.style.boxShadow = '0 12px 48px rgba(0, 0, 0, 0.15)'
+                    }
+                  }}
+                  onMouseOut={(e) => {
+                    const img = e.currentTarget.querySelector('img')
+                    if (img) {
+                      img.style.transform = 'scale(1)'
+                      img.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)'
+                    }
+                  }}
                 >
                   <img 
                     src="/images/eiken/infographic-system.png" 
                     alt="AIコーチング・ラボ 英検対策システム"
-                    style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;"
+                    style={{
+                      maxWidth: '100%',
+                      height: 'auto',
+                      borderRadius: '15px',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                      transition: 'all 0.3s ease'
+                    }}
                   />
-                  <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0, 0, 0, 0.7); color: white; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 600;">
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '15px',
+                    right: '15px',
+                    background: 'rgba(0, 0, 0, 0.7)',
+                    color: 'white',
+                    padding: '8px 16px',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    fontWeight: '600'
+                  }}>
                     🔍 クリックで拡大
                   </div>
                 </div>
@@ -2204,9 +2247,23 @@ export const aiCoachingCoursePage = () => {
           minScale={0.5}
           maxScale={4}
           centerOnInit={true}
-          wheel={{ step: 0.1 }}
-          pinch={{ step: 5 }}
-          doubleClick={{ disabled: false }}
+          wheel={{
+            step: 0.1,
+            wheelDisabled: false,
+            touchPadDisabled: false
+          }}
+          pinch={{
+            step: 5,
+            disabled: false
+          }}
+          doubleClick={{
+            disabled: false,
+            step: 0.7
+          }}
+          panning={{
+            disabled: false,
+            velocityDisabled: false
+          }}
         >
           <TransformComponent
             wrapperStyle={{
