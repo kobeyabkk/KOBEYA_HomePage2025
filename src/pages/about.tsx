@@ -108,11 +108,18 @@ export const aboutPage = () => (
         </div>
         
         <div style="background: var(--base-white); border-radius: 1rem; padding: 2rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); max-width: 1000px; margin: 0 auto;">
-          <img 
-            src="/images/welcome/bangkok-learning-map-2025.png" 
-            alt="バンコク習い事マップ 2025 - お子様のやりたいを応援！バンコクの習い事ガイド"
-            style="max-width: 100%; height: auto; border-radius: 0.75rem; display: block; margin: 0 auto;"
-          />
+          <div style="position: relative; cursor: pointer;" onclick="openImageModal('/images/welcome/bangkok-learning-map-2025.png')">
+            <img 
+              src="/images/welcome/bangkok-learning-map-2025.png" 
+              alt="バンコク習い事マップ 2025 - お子様のやりたいを応援！バンコクの習い事ガイド"
+              style="max-width: 100%; height: auto; border-radius: 0.75rem; display: block; margin: 0 auto; transition: transform 0.3s, box-shadow 0.3s;"
+              onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 24px rgba(0, 0, 0, 0.15)';"
+              onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+            />
+            <div style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.6); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; pointer-events: none;">
+              🔍 クリックで拡大
+            </div>
+          </div>
           
           <div style="margin-top: 2rem; padding: 1.5rem; background: #FFF9C4; border-radius: 0.75rem; border-left: 4px solid var(--main-yellow);">
             <p style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem;">✨ KOBEYAの特徴</p>
@@ -316,6 +323,51 @@ export const aboutPage = () => (
         </div>
       </div>
     </section>
+
+    {/* Image Modal */}
+    <div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); overflow: auto; padding: 20px;" onclick="closeImageModal()">
+      <span style="position: absolute; top: 20px; right: 40px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='#bbb';" onmouseout="this.style.color='#f1f1f1';">&times;</span>
+      <img id="modalImage" style="margin: auto; display: block; max-width: 95%; max-height: 95vh; animation: zoom 0.3s;" />
+      <div style="text-align: center; color: #ccc; padding: 20px; font-size: 1.1rem;">
+        画像をクリックまたはESCキーで閉じる
+      </div>
+    </div>
+
+    <script>{`
+      function openImageModal(imageSrc) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        modal.style.display = 'block';
+        modalImg.src = imageSrc;
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // ESC key to close modal
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeImageModal();
+        }
+      });
+
+      // Add zoom animation
+      const style = document.createElement('style');
+      style.textContent = \`
+        @keyframes zoom {
+          from {transform: scale(0.5); opacity: 0;}
+          to {transform: scale(1); opacity: 1;}
+        }
+        #modalImage {
+          cursor: zoom-out;
+        }
+      \`;
+      document.head.appendChild(style);
+    `}</script>
 
     <Footer />
   </>
