@@ -1153,14 +1153,16 @@ export const aiCoachingCoursePage = () => (
           </div>
           
           {/* Always visible preview */}
-          <div style="padding: 25px 35px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-left: 6px solid var(--ai-blue); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(33, 150, 243, 0.15); border-radius: 8px;">
-            <p style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; line-height: 1.4;">
-              AIが君だけの英検問題を無限に生み出す！
-            </p>
-            <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
-              5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。<strong style="color: #1976D2;">英検対策をしながら英語の成績もアップ！</strong>
-            </p>
-          </div>
+          <div dangerouslySetInnerHTML={{__html: `
+            <div style="padding: 25px 35px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-left: 6px solid var(--ai-blue); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(33, 150, 243, 0.15); border-radius: 8px;">
+              <p style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; line-height: 1.4;">
+                AIが君だけの英検問題を無限に生み出す！
+              </p>
+              <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
+                5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。<strong style="color: #1976D2;">英検対策をしながら英語の成績もアップ！</strong>
+              </p>
+            </div>
+          `}} />
           
           <div class="accordion-content">
             <div class="accordion-inner">
