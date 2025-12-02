@@ -1,33 +1,7 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
-import { useState, useEffect } from 'react'
 
-export const aboutPage = () => {
-  const [modalImage, setModalImage] = useState<string | null>(null)
-
-  const openImageModal = (src: string) => {
-    setModalImage(src)
-    document.body.style.overflow = 'hidden'
-  }
-
-  const closeImageModal = () => {
-    setModalImage(null)
-    document.body.style.overflow = 'auto'
-  }
-
-  // ESC key to close modal
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && modalImage) {
-        closeImageModal()
-      }
-    }
-    window.addEventListener('keydown', handleEsc)
-    return () => window.removeEventListener('keydown', handleEsc)
-  }, [modalImage])
-
-  return (
+export const aboutPage = () => (
   <>
     <head>
       <title>教室について｜KOBEYA プログラミング教室 バンコク</title>
@@ -134,47 +108,11 @@ export const aboutPage = () => {
         </div>
         
         <div style="background: var(--base-white); border-radius: 1rem; padding: 2rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); max-width: 1000px; margin: 0 auto;">
-          <div 
-            style={{
-              position: 'relative',
-              cursor: 'pointer'
-            }}
-            onClick={() => openImageModal('/images/welcome/bangkok-learning-map-2025.png')}
-          >
-            <img 
-              src="/images/welcome/bangkok-learning-map-2025.png" 
-              alt="バンコク習い事マップ 2025 - お子様のやりたいを応援！バンコクの習い事ガイド"
-              style={{
-                maxWidth: '100%',
-                height: 'auto',
-                borderRadius: '0.75rem',
-                display: 'block',
-                margin: '0 auto',
-                transition: 'transform 0.3s, box-shadow 0.3s'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'scale(1.02)'
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.15)'
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'scale(1)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-            />
-            <div style={{
-              position: 'absolute',
-              top: '10px',
-              right: '10px',
-              background: 'rgba(0, 0, 0, 0.6)',
-              color: 'white',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.5rem',
-              fontSize: '0.9rem',
-              pointerEvents: 'none'
-            }}>
-              🔍 クリックで拡大
-            </div>
-          </div>
+          <img 
+            src="/images/welcome/bangkok-learning-map-2025.png" 
+            alt="バンコク習い事マップ 2025 - お子様のやりたいを応援！バンコクの習い事ガイド"
+            style="max-width: 100%; height: auto; border-radius: 0.75rem; display: block; margin: 0 auto;"
+          />
           
           <div style="margin-top: 2rem; padding: 1.5rem; background: #FFF9C4; border-radius: 0.75rem; border-left: 4px solid var(--main-yellow);">
             <p style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem;">✨ KOBEYAの特徴</p>
@@ -379,113 +317,6 @@ export const aboutPage = () => {
       </div>
     </section>
 
-    {/* Image Modal with Pinch Zoom */}
-    {modalImage && (
-      <div 
-        style={{
-          display: 'block',
-          position: 'fixed',
-          zIndex: 9999,
-          left: 0,
-          top: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.9)',
-          overflow: 'hidden',
-          padding: '20px'
-        }}
-        onClick={closeImageModal}
-      >
-        <span 
-          style={{
-            position: 'absolute',
-            top: '20px',
-            right: '40px',
-            color: '#f1f1f1',
-            fontSize: '40px',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            transition: '0.3s',
-            zIndex: 10000
-          }}
-          onMouseOver={(e) => e.currentTarget.style.color = '#bbb'}
-          onMouseOut={(e) => e.currentTarget.style.color = '#f1f1f1'}
-          onClick={(e) => {
-            e.stopPropagation()
-            closeImageModal()
-          }}
-        >
-          &times;
-        </span>
-        
-        <TransformWrapper
-          initialScale={1}
-          minScale={0.5}
-          maxScale={4}
-          centerOnInit={true}
-          wheel={{
-            step: 0.1,
-            wheelDisabled: false,
-            touchPadDisabled: false
-          }}
-          pinch={{
-            step: 5,
-            disabled: false
-          }}
-          doubleClick={{
-            disabled: false,
-            step: 0.7
-          }}
-          panning={{
-            disabled: false,
-            velocityDisabled: false
-          }}
-        >
-          <TransformComponent
-            wrapperStyle={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            contentStyle={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <img 
-              src={modalImage}
-              alt="拡大画像"
-              style={{
-                maxWidth: '95%',
-                maxHeight: '95vh',
-                objectFit: 'contain',
-                userSelect: 'none'
-              }}
-              onClick={(e) => e.stopPropagation()}
-            />
-          </TransformComponent>
-        </TransformWrapper>
-        
-        <div style={{
-          position: 'absolute',
-          bottom: '20px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          textAlign: 'center',
-          color: '#ccc',
-          fontSize: '1.1rem',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          padding: '10px 20px',
-          borderRadius: '8px'
-        }}>
-          📱 ピンチで拡大縮小 | 🖱️ ホイールでズーム | 背景または✕で閉じる
-        </div>
-      </div>
-    )}
-
     <Footer />
   </>
-)}
+)
