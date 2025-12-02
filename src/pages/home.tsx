@@ -586,6 +586,30 @@ export const homePage = () => {
       </div>
     </section>
 
+    {/* Bangkok Welcome Guide Banner */}
+    <section style="padding: 3rem 0; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #FFF9C4 100%);">
+      <div class="container">
+        <a href="/about#bangkok-guide" style="text-decoration: none; display: block;">
+          <div style="background: var(--base-white); border-radius: 1rem; padding: 2.5rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; max-width: 900px; margin: 0 auto;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 48px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.1)';">
+            <div style="text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+              <h3 style="color: var(--text-dark); font-size: 1.75rem; margin-bottom: 1rem; font-weight: 700;">
+                バンコクに来たばかりの皆様へ
+              </h3>
+              <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                お子様の「やりたい」を応援！<br />
+                <strong style="color: var(--text-dark);">バンコク習い事マップ 2025</strong> をご用意しました
+              </p>
+              <div style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--main-yellow); border-radius: 2rem; color: var(--text-dark); font-weight: 600; font-size: 1.1rem;">
+                <span>詳しく見る</span>
+                <span style="font-size: 1.25rem;">→</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
     {/* Courses Section */}
     <section id="courses" class="section-alt">
       <div class="container">
