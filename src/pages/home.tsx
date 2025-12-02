@@ -197,28 +197,29 @@ export const homePage = () => {
       }
       
       .hero-section {
-        background-image: url('/images/hero-bg-ai-bangkok.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        padding: 8rem 0 6rem;
-        min-height: 600px;
+        background: linear-gradient(180deg, #001a33 0%, #003d66 100%);
+        padding: 6rem 0 4rem;
+        min-height: 500px;
         display: flex;
         align-items: center;
         position: relative;
         overflow: hidden;
       }
       
-      /* Dark overlay for better text readability */
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
-        z-index: 1;
+      /* Hero illustration below title */
+      .hero-illustration {
+        width: 100%;
+        max-width: 900px;
+        margin: 2rem auto 0;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      
+      .hero-illustration img {
+        width: 100%;
+        height: auto;
+        display: block;
       }
       
       @keyframes pulseGlow {
@@ -348,8 +349,8 @@ export const homePage = () => {
       
       @media (max-width: 768px) {
         .hero-section {
-          padding: 5rem 0 4rem;
-          min-height: 500px;
+          padding: 4rem 0 3rem;
+          min-height: 400px;
         }
         
         .hero-title-center h1 {
@@ -360,9 +361,8 @@ export const homePage = () => {
           font-size: 1.2rem;
         }
         
-        .neural-network {
-          max-width: 100%;
-          height: 300px;
+        .hero-illustration {
+          margin: 1.5rem auto 0;
         }
       }
       
@@ -516,6 +516,9 @@ export const homePage = () => {
         <div class="hero-title-center">
           <h1>AI＆プログラミングのKOBEYA</h1>
           <div class="hero-subtitle">バンコクで学ぶプログラミング教室</div>
+          <div class="hero-illustration">
+            <img src="/images/ai-brain-cityscape.jpg" alt="AI＆プログラミングのKOBEYA - バンコクで学ぶ未来の教育" />
+          </div>
         </div>
         
         {/* Content Grid */}
