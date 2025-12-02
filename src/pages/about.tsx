@@ -96,6 +96,43 @@ export const aboutPage = () => (
       </div>
     </section>
 
+    {/* Bangkok Learning Map Section */}
+    <section id="bangkok-guide" class="section" style="background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #FFF9C4 100%); padding: 3rem 0;">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="color: var(--text-dark); margin-bottom: 1rem;">🎉 バンコクに来たばかりの皆様へ 🎉</h2>
+          <p style="font-size: 1.2rem; color: var(--text-gray); max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            お子様の「やりたい」を応援！バンコクの習い事ガイドをご用意しました。<br />
+            日本語サポートがある教室や、KOBEYAの特徴もご紹介しています。
+          </p>
+        </div>
+        
+        <div style="background: var(--base-white); border-radius: 1rem; padding: 2rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); max-width: 1000px; margin: 0 auto;">
+          <img 
+            src="/images/welcome/bangkok-learning-map-2025.png" 
+            alt="バンコク習い事マップ 2025 - お子様のやりたいを応援！バンコクの習い事ガイド"
+            style="max-width: 100%; height: auto; border-radius: 0.75rem; display: block; margin: 0 auto;"
+          />
+          
+          <div style="margin-top: 2rem; padding: 1.5rem; background: #FFF9C4; border-radius: 0.75rem; border-left: 4px solid var(--main-yellow);">
+            <p style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem;">✨ KOBEYAの特徴</p>
+            <ul style="color: var(--text-gray); line-height: 1.8; padding-left: 1.5rem; margin: 0;">
+              <li><strong>PCレンタル無料！</strong> 手ぶらでOK（持ち込みも可）</li>
+              <li><strong>ほとんどの授業でオンライン受講も可能</strong></li>
+              <li><strong>周辺施設充実</strong> フジスーパー、マッサージ店、飲食店、ラーメン屋が近隣</li>
+              <li><strong>柔軟なサポート</strong> 急なお休みでも振替・フレックス対応が可能です</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+          <p style="color: var(--text-gray); font-size: 0.95rem;">
+            円安ですが...タイの物価に合わせて『質』を落とさず運営しています。未来への投資をバンコクで！
+          </p>
+        </div>
+      </div>
+    </section>
+
     {/* About Section */}
     <section class="section">
       <div class="container">
