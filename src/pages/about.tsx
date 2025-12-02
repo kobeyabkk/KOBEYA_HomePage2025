@@ -333,41 +333,44 @@ export const aboutPage = () => (
       </div>
     </div>
 
-    <script>{`
-      function openImageModal(imageSrc) {
+    <script dangerouslySetInnerHTML={{__html: `
+      window.openImageModal = function(imageSrc) {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
         modal.style.display = 'block';
         modalImg.src = imageSrc;
         document.body.style.overflow = 'hidden';
-      }
+      };
 
-      function closeImageModal() {
+      window.closeImageModal = function() {
         const modal = document.getElementById('imageModal');
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
-      }
+      };
 
       // ESC key to close modal
       document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-          closeImageModal();
+        if (event.key === 'Escape' && document.getElementById('imageModal').style.display === 'block') {
+          window.closeImageModal();
         }
       });
 
       // Add zoom animation
-      const style = document.createElement('style');
-      style.textContent = \`
-        @keyframes zoom {
-          from {transform: scale(0.5); opacity: 0;}
-          to {transform: scale(1); opacity: 1;}
-        }
-        #modalImage {
-          cursor: zoom-out;
-        }
-      \`;
-      document.head.appendChild(style);
-    `}</script>
+      if (!document.getElementById('modal-zoom-style')) {
+        const style = document.createElement('style');
+        style.id = 'modal-zoom-style';
+        style.textContent = \`
+          @keyframes zoom {
+            from {transform: scale(0.5); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+          }
+          #modalImage {
+            cursor: zoom-out;
+          }
+        \`;
+        document.head.appendChild(style);
+      }
+    `}} />
 
     <Footer />
   </>
