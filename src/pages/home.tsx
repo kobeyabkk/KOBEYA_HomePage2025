@@ -197,29 +197,37 @@ export const homePage = () => {
       }
       
       .hero-section {
-        background: linear-gradient(180deg, #001a33 0%, #003d66 100%);
-        padding: 6rem 0 4rem;
+        padding: 8rem 0 6rem;
         min-height: 500px;
         display: flex;
         align-items: center;
+        justify-content: center;
         position: relative;
         overflow: hidden;
       }
       
-      /* Hero illustration below title */
-      .hero-illustration {
+      /* Hero background image */
+      .hero-bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         width: 100%;
-        max-width: 900px;
-        margin: 2rem auto 0;
-        border-radius: 1rem;
-        overflow: hidden;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
       }
       
-      .hero-illustration img {
-        width: 100%;
-        height: auto;
-        display: block;
+      /* Dark overlay for better text readability */
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+        z-index: 1;
       }
       
       @keyframes pulseGlow {
@@ -349,7 +357,7 @@ export const homePage = () => {
       
       @media (max-width: 768px) {
         .hero-section {
-          padding: 4rem 0 3rem;
+          padding: 5rem 0 4rem;
           min-height: 400px;
         }
         
@@ -360,10 +368,12 @@ export const homePage = () => {
         .hero-subtitle {
           font-size: 1.2rem;
         }
-        
-        .hero-illustration {
-          margin: 1.5rem auto 0;
-        }
+      }
+      
+      /* Introduction Section */
+      .intro-section {
+        padding: 5rem 0;
+        background: white;
       }
       
       .stats-card {
@@ -512,16 +522,19 @@ export const homePage = () => {
     
     {/* Hero Section */}
     <section class="hero-section">
+      <img src="/images/ai-brain-cityscape.jpg" alt="AI & Programming Background" class="hero-bg-image" />
+      <div class="hero-overlay"></div>
       <div class="container">
         <div class="hero-title-center">
           <h1>AI＆プログラミングのKOBEYA</h1>
           <div class="hero-subtitle">バンコクで学ぶプログラミング教室</div>
-          <div class="hero-illustration">
-            <img src="/images/ai-brain-cityscape.jpg" alt="AI＆プログラミングのKOBEYA - バンコクで学ぶ未来の教育" />
-          </div>
         </div>
-        
-        {/* Content Grid */}
+      </div>
+    </section>
+
+    {/* Introduction Section - Two Main Offerings */}
+    <section class="intro-section">
+      <div class="container">
         <div class="grid grid-2" style="align-items: stretch; gap: 3rem;">
           <div>
             <div style="background: white; border-radius: 1rem; padding: 2rem; color: var(--text-dark); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 3px solid #fbbf24; height: 100%;">
