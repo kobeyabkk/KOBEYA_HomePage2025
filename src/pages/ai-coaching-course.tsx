@@ -1023,13 +1023,13 @@ export const aiCoachingCoursePage = () => {
         <div class="container">
 
           {/* Feature 1: AIに質問 */}
-            <div class="accordion">
-          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
-            <h3 class="accordion-title">
+            <div className="accordion">
+          <div className="accordion-header" onclick="toggleAccordion(this.parentElement)">
+            <h3 className="accordion-title">
               🤖 AIに質問 - あなた専用の学習パートナー
             </h3>
-            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
-            <span class="accordion-icon">▼</span>
+            <span className="accordion-toggle-hint">クリックして詳細を見る</span>
+            <span className="accordion-icon">▼</span>
           </div>
           
           {/* Always visible preview */}
@@ -1042,8 +1042,8 @@ export const aiCoachingCoursePage = () => {
             </p>
           </div>
           
-          <div class="accordion-content">
-            <div class="accordion-inner">
+          <div className="accordion-content">
+            <div className="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
 
               <div style="background: #E0F7FA; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
@@ -1169,31 +1169,52 @@ export const aiCoachingCoursePage = () => {
 
 
         {/* Feature 2: 英検対策 */}
-        <div class="accordion">
-          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
-            <h3 class="accordion-title">
+        <div className="accordion">
+          <div className="accordion-header" onclick="toggleAccordion(this.parentElement)">
+            <h3 className="accordion-title">
               📚 英検対策 - AI完全個別指導で合格を目指そう！
             </h3>
-            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
-            <span class="accordion-icon">▼</span>
+            <span className="accordion-toggle-hint">クリックして詳細を見る</span>
+            <span className="accordion-icon">▼</span>
           </div>
           
           {/* Always visible preview */}
-          <div style="padding: 25px 35px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-left: 6px solid var(--ai-blue); margin-bottom: 20px; box-shadow: 0 3px 12px rgba(33, 150, 243, 0.15); border-radius: 8px;">
-            <p style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; line-height: 1.4;">
+          <div style={{
+            padding: '25px 35px',
+            background: 'linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%)',
+            borderLeft: '6px solid var(--ai-blue)',
+            marginBottom: '20px',
+            boxShadow: '0 3px 12px rgba(33, 150, 243, 0.15)',
+            borderRadius: '8px'
+          }}>
+            <p style={{
+              fontSize: '1.4rem',
+              fontWeight: 800,
+              background: 'linear-gradient(135deg, #2196F3 0%, #1976D2 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              marginBottom: '12px',
+              lineHeight: 1.4
+            }}>
               AIが君だけの英検問題を無限に生み出す！
             </p>
-            <p style="font-size: 1.05rem; color: #2D3748; line-height: 1.8; font-weight: 500;">
-              5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。<strong style="color: #1976D2;">英検対策をしながら英語の成績もアップ！</strong>
+            <p style={{
+              fontSize: '1.05rem',
+              color: '#2D3748',
+              lineHeight: 1.8,
+              fontWeight: 500
+            }}>
+              5級〜1級まで完全対応。三重のチェックシステムで質の高い問題を提供し、瞬時に採点・詳しい解説で確実に実力アップ。<strong style={{ color: '#1976D2' }}>英検対策をしながら英語の成績もアップ！</strong>
             </p>
           </div>
           
-          <div class="accordion-content">
-            <div class="accordion-inner">
-              <div style="max-width: 900px; margin: 0 auto;">
+          <div className="accordion-content">
+            <div className="accordion-inner">
+              <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
               {/* Infographic Section with Pinch Zoom */}
-              <div style="text-align: center; margin-bottom: 50px;">
+              <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                 <div 
                   style={{
                     position: 'relative',
@@ -1493,13 +1514,13 @@ export const aiCoachingCoursePage = () => {
 
 
         {/* Feature 3: 小論文対策 */}
-        <div class="accordion">
-          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
-            <h3 class="accordion-title">
+        <div className="accordion">
+          <div className="accordion-header" onclick="toggleAccordion(this.parentElement)">
+            <h3 className="accordion-title">
               📝 小論文対策 - プロの添削を超える、AIマンツーマン指導
             </h3>
-            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
-            <span class="accordion-icon">▼</span>
+            <span className="accordion-toggle-hint">クリックして詳細を見る</span>
+            <span className="accordion-icon">▼</span>
           </div>
           
           {/* Always visible preview */}
@@ -1512,8 +1533,8 @@ export const aiCoachingCoursePage = () => {
             </p>
           </div>
           
-          <div class="accordion-content">
-            <div class="accordion-inner">
+          <div className="accordion-content">
+            <div className="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
 
               <div style="background: #F5E6FF; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
@@ -1722,13 +1743,13 @@ export const aiCoachingCoursePage = () => {
 
 
         {/* Feature 4: フラッシュカード */}
-        <div class="accordion">
-          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
-            <h3 class="accordion-title">
+        <div className="accordion">
+          <div className="accordion-header" onclick="toggleAccordion(this.parentElement)">
+            <h3 className="accordion-title">
               🃏 フラッシュカード - 暗記を科学する、効率学習システム
             </h3>
-            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
-            <span class="accordion-icon">▼</span>
+            <span className="accordion-toggle-hint">クリックして詳細を見る</span>
+            <span className="accordion-icon">▼</span>
           </div>
           
           {/* Always visible preview */}
@@ -1741,8 +1762,8 @@ export const aiCoachingCoursePage = () => {
             </p>
           </div>
           
-          <div class="accordion-content">
-            <div class="accordion-inner">
+          <div className="accordion-content">
+            <div className="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
               <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-green); margin-bottom: 20px;">
@@ -1810,13 +1831,13 @@ export const aiCoachingCoursePage = () => {
 
 
         {/* Feature 5: インター生用 */}
-        <div class="accordion">
-          <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
-            <h3 class="accordion-title">
+        <div className="accordion">
+          <div className="accordion-header" onclick="toggleAccordion(this.parentElement)">
+            <h3 className="accordion-title">
               🌍 インター生用（Bilingual Learning）- 日英バイリンガル完全対応
             </h3>
-            <span class="accordion-toggle-hint">クリックして詳細を見る</span>
-            <span class="accordion-icon">▼</span>
+            <span className="accordion-toggle-hint">クリックして詳細を見る</span>
+            <span className="accordion-icon">▼</span>
           </div>
           
           {/* Always visible preview */}
@@ -1829,8 +1850,8 @@ export const aiCoachingCoursePage = () => {
             </p>
           </div>
           
-          <div class="accordion-content">
-            <div class="accordion-inner">
+          <div className="accordion-content">
+            <div className="accordion-inner">
               <div style="max-width: 900px; margin: 0 auto;">
               <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--ai-teal); margin-bottom: 20px;">
