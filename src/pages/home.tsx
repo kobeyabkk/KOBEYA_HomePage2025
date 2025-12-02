@@ -197,7 +197,10 @@ export const homePage = () => {
       }
       
       .hero-section {
-        background: linear-gradient(180deg, #0a1628 0%, #1a2f4d 50%, #2a4a6d 100%);
+        background-image: url('/images/hero-bg-ai-bangkok.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         padding: 8rem 0 6rem;
         min-height: 600px;
         display: flex;
@@ -206,17 +209,16 @@ export const homePage = () => {
         overflow: hidden;
       }
       
-      /* Neural Network Background Animation */
+      /* Dark overlay for better text readability */
       .hero-section::before {
         content: '';
         position: absolute;
-        top: -50%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-        animation: pulseGlow 4s ease-in-out infinite;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+        z-index: 1;
       }
       
       @keyframes pulseGlow {
@@ -284,7 +286,12 @@ export const homePage = () => {
       .hero-title-center {
         text-align: center;
         position: relative;
-        z-index: 2;
+        z-index: 10;
+      }
+      
+      .hero-section .container {
+        position: relative;
+        z-index: 10;
       }
       
       .hero-title-center h1 {
@@ -293,21 +300,36 @@ export const homePage = () => {
         color: #FFFFFF;
         margin-bottom: 1rem;
         line-height: 1.2;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 193, 7, 0.3);
-        animation: titleGlow 3s ease-in-out infinite;
+        text-shadow: 
+          0 0 30px rgba(255, 193, 7, 0.8),
+          0 0 60px rgba(255, 193, 7, 0.6),
+          0 4px 20px rgba(0, 0, 0, 0.8);
+        animation: goldGlow 3s ease-in-out infinite;
       }
       
-      @keyframes titleGlow {
-        0%, 100% { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 193, 7, 0.3); }
-        50% { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 193, 7, 0.5); }
+      @keyframes goldGlow {
+        0%, 100% { 
+          text-shadow: 
+            0 0 30px rgba(255, 193, 7, 0.8),
+            0 0 60px rgba(255, 193, 7, 0.6),
+            0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        50% { 
+          text-shadow: 
+            0 0 40px rgba(255, 193, 7, 1),
+            0 0 80px rgba(255, 193, 7, 0.8),
+            0 4px 20px rgba(0, 0, 0, 0.8);
+        }
       }
       
       .hero-subtitle {
         font-size: 1.75rem;
         font-weight: 600;
-        color: #FFC107;
+        color: #FFFFFF;
         margin-top: 0.5rem;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        text-shadow: 
+          0 0 20px rgba(255, 193, 7, 0.6),
+          0 2px 10px rgba(0, 0, 0, 0.8);
       }
       
       .consulting-target {
@@ -490,73 +512,6 @@ export const homePage = () => {
     
     {/* Hero Section */}
     <section class="hero-section">
-      {/* Neural Network Background */}
-      <div class="neural-network">
-        {/* Top layer nodes */}
-        <div class="neural-node" style="top: 10%; left: 30%; animation-delay: 0s;"></div>
-        <div class="neural-node blue" style="top: 15%; left: 50%; animation-delay: 0.5s;"></div>
-        <div class="neural-node" style="top: 12%; left: 70%; animation-delay: 1s;"></div>
-        <div class="neural-node blue" style="top: 8%; left: 40%; animation-delay: 1.5s;"></div>
-        <div class="neural-node" style="top: 18%; left: 60%; animation-delay: 2s;"></div>
-        
-        {/* Middle layer nodes */}
-        <div class="neural-node blue" style="top: 35%; left: 20%; animation-delay: 0.3s;"></div>
-        <div class="neural-node" style="top: 38%; left: 45%; animation-delay: 0.8s;"></div>
-        <div class="neural-node blue" style="top: 32%; left: 65%; animation-delay: 1.3s;"></div>
-        <div class="neural-node" style="top: 40%; left: 80%; animation-delay: 1.8s;"></div>
-        
-        {/* Connecting lines */}
-        <div class="neural-line" style="top: 12%; left: 30%; width: 150px; transform: rotate(20deg);"></div>
-        <div class="neural-line" style="top: 15%; left: 50%; width: 130px; transform: rotate(-15deg);"></div>
-        <div class="neural-line" style="top: 35%; left: 20%; width: 180px; transform: rotate(5deg);"></div>
-        <div class="neural-line" style="top: 38%; left: 45%; width: 140px; transform: rotate(-10deg);"></div>
-      </div>
-      
-      {/* Bangkok Skyline SVG */}
-      <svg class="hero-skyline" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="skylineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.6" />
-            <stop offset="100%" style="stop-color:#FFC107;stop-opacity:0.4" />
-          </linearGradient>
-        </defs>
-        {/* Wat Arun (Temple) */}
-        <path d="M 150 200 L 150 100 L 170 80 L 190 100 L 190 200 Z" fill="url(#skylineGradient)" stroke="#3B82F6" stroke-width="1" />
-        <path d="M 160 80 L 170 50 L 180 80 Z" fill="url(#skylineGradient)" stroke="#FFC107" stroke-width="1" />
-        
-        {/* Building 1 */}
-        <rect x="250" y="120" width="60" height="80" fill="url(#skylineGradient)" stroke="#3B82F6" stroke-width="1" />
-        <rect x="260" y="110" width="40" height="10" fill="#FFC107" opacity="0.6" />
-        
-        {/* Building 2 (Tall) */}
-        <rect x="350" y="60" width="50" height="140" fill="url(#skylineGradient)" stroke="#3B82F6" stroke-width="1" />
-        <circle cx="375" cy="50" r="8" fill="#FFC107" opacity="0.8" />
-        
-        {/* Building 3 */}
-        <rect x="450" y="100" width="70" height="100" fill="url(#skylineGradient)" stroke="#3B82F6" stroke-width="1" />
-        
-        {/* Temple/Pagoda */}
-        <path d="M 580 200 L 580 120 L 600 100 L 620 120 L 620 200 Z" fill="url(#skylineGradient)" stroke="#FFC107" stroke-width="1" />
-        <path d="M 590 100 L 600 70 L 610 100 Z" fill="#FFC107" opacity="0.7" />
-        
-        {/* Modern Building 1 */}
-        <rect x="700" y="80" width="55" height="120" fill="url(#skylineGradient)" stroke="#3B82F6" stroke-width="1" />
-        <rect x="710" y="70" width="35" height="10" fill="#FFC107" opacity="0.6" />
-        
-        {/* Modern Building 2 (Very Tall) */}
-        <rect x="800" y="30" width="45" height="170" fill="url(#skylineGradient)" stroke="#3B82F6" stroke-width="1" />
-        <circle cx="822" cy="20" r="10" fill="#FFC107" opacity="0.9" />
-        
-        {/* Building 4 */}
-        <rect x="900" y="110" width="60" height="90" fill="url(#skylineGradient)" stroke="#3B82F6" stroke-width="1" />
-        
-        {/* Circuit lines at bottom */}
-        <path d="M 0 200 L 100 200 L 120 190 L 180 190 L 200 200 L 300 200" stroke="#3B82F6" stroke-width="2" fill="none" opacity="0.5" />
-        <path d="M 300 200 L 400 200 L 420 195 L 480 195 L 500 200 L 600 200" stroke="#FFC107" stroke-width="2" fill="none" opacity="0.5" />
-        <path d="M 600 200 L 700 200 L 720 190 L 780 190 L 800 200 L 900 200" stroke="#3B82F6" stroke-width="2" fill="none" opacity="0.5" />
-        <path d="M 900 200 L 1000 200 L 1020 195 L 1080 195 L 1100 200 L 1200 200" stroke="#FFC107" stroke-width="2" fill="none" opacity="0.5" />
-      </svg>
-      
       <div class="container">
         <div class="hero-title-center">
           <h1>AI＆プログラミングのKOBEYA</h1>
