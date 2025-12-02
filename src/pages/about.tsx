@@ -325,11 +325,11 @@ export const aboutPage = () => (
     </section>
 
     {/* Image Modal */}
-    <div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); overflow: auto; padding: 20px;" onclick="closeImageModal()">
-      <span style="position: absolute; top: 20px; right: 40px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='#bbb';" onmouseout="this.style.color='#f1f1f1';">&times;</span>
-      <img id="modalImage" style="margin: auto; display: block; max-width: 95%; max-height: 95vh; animation: zoom 0.3s;" />
+    <div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); overflow: auto; padding: 20px;" onclick="window.closeImageModal()">
+      <span style="position: absolute; top: 20px; right: 40px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 10000;" onmouseover="this.style.color='#bbb';" onmouseout="this.style.color='#f1f1f1';" onclick="event.stopPropagation(); window.closeImageModal();">&times;</span>
+      <img id="modalImage" style="margin: auto; display: block; max-width: 95%; max-height: 95vh; animation: zoom 0.3s;" onclick="event.stopPropagation();" />
       <div style="text-align: center; color: #ccc; padding: 20px; font-size: 1.1rem;">
-        画像をクリックまたはESCキーで閉じる
+        背景または✕ボタンをクリック、ESCキーで閉じる
       </div>
     </div>
 
