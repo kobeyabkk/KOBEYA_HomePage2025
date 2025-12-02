@@ -365,7 +365,7 @@ export const aboutPage = () => (
             to {transform: scale(1); opacity: 1;}
           }
           #modalImage {
-            cursor: zoom-out;
+            cursor: default;
           }
         \`;
         document.head.appendChild(style);
