@@ -676,7 +676,7 @@ export const homePage = () => {
               </div>
               <div style="flex: 1; min-width: 200px;">
                 <div style="font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.5;">
-                  🎖️ ジュニアプログラミング検定 63名合格（1級）2025年11月現在
+                  🎖️ ジュニアプログラミング検定 63名合格（1級14名含む）2025年11月現在
                 </div>
               </div>
             </div>
