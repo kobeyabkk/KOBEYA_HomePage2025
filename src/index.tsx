@@ -22,6 +22,8 @@ import { unityCoursePage } from './pages/unity-course'
 import { creatorsCoursePage } from './pages/creators-course'
 import { aiCoachingCoursePage } from './pages/ai-coaching-course'
 import { mathCoursePage } from './pages/math-course'
+// Special event pages
+import { newYearAIWorkshopPage } from './pages/new-year-ai-workshop'
 import { studyPartnerSimple } from './study-partner-simple'
 import { getCourseBySlug } from './data/courses'
 
@@ -88,6 +90,11 @@ app.get('/ai-consult', (c) => {
 // AI Coaching Lab page
 app.get('/ai-coaching-course', (c) => {
   return c.render(aiCoachingCoursePage())
+})
+
+// Special Event pages
+app.get('/new-year-ai-workshop', (c) => {
+  return c.render(newYearAIWorkshopPage())
 })
 
 // Course pages
