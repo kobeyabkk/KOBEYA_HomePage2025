@@ -640,11 +640,15 @@ export const homePage = () => {
           <div class="news-item">
             <div style="display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
               <div style="background: #fff9e6; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; white-space: nowrap;">
-                2025.11.27
+                2025.12.25
               </div>
               <div style="flex: 1; min-width: 200px;">
-                <div style="font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.5;">
-                  🚀 1月5,6日 未来を先取り！最先端AIクリエイター講座
+                <div style="font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-bottom: 0.5rem;">
+                  🎉 新春特別講座　生成AIの現在地！AIクリエイター体験講座
+                </div>
+                <div style="font-size: 0.9rem; color: var(--text-gray); line-height: 1.6;">
+                  • 1月5日(月)11：00〜　新年の誓いポスター＆4コマ漫画作り<br />
+                  • 1月6日(火)11：00〜　プログラミング不要！AIで作るオリジナルゲーム制作
                 </div>
               </div>
             </div>
