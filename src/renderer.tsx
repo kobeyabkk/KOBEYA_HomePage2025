@@ -6,7 +6,7 @@ export const renderer = jsxRenderer(({ children, title = 'AI & プログラミ�
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="google-site-verification" content="adkZhcRqu6LT9OTpDkMRaIlWMZhol-uaYdzy7Cw-9gc" />
+        <meta name="google-site-verification" content="fdf58fbf4e77384d" />
         <title>{title}</title>
         
         {/* SEO Meta Tags */}
@@ -18,22 +18,22 @@ export const renderer = jsxRenderer(({ children, title = 'AI & プログラミ�
         <meta property="og:title" content={title} />
         <meta property="og:description" content="バンコクの日本人小中学生向けプログラミング教室。Scratch、Roblox、AIコーチングで、楽しく学べる環境を提供。" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kobeya-programming.pages.dev/" />
-        <meta property="og:image" content="https://kobeya-programming.pages.dev/static/images/og-image.jpg" />
+        <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/" />
+        <meta property="og:image" content="https://kobeyabkk-homepage.pages.dev/static/images/og-image.jpg" />
         <meta property="og:locale" content="ja_JP" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content="バンコクの日本人小中学生向けプログラミング教室。無料体験受付中。" />
-        <meta name="twitter:image" content="https://kobeya-programming.pages.dev/static/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://kobeyabkk-homepage.pages.dev/static/images/og-image.jpg" />
         
         {/* AI Crawlers Meta Tags */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="googlebot" content="index, follow" />
         <meta name="bingbot" content="index, follow" />
         <meta name="abstract" content="バンコクで日本人小中学生向けのプログラミング教室を運営。STEAM教育、Minecraft、AI学習コーチングなど多様なコースを提供し、子どもたちの創造力と論理的思考力を育成します。" />
-        <link rel="canonical" href="https://kobeya-programming.pages.dev/" />
+        <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/" />
         
         {/* Structured Data for AI (JSON-LD) */}
         <script type="application/ld+json">{`
@@ -43,9 +43,9 @@ export const renderer = jsxRenderer(({ children, title = 'AI & プログラミ�
             "name": "KOBEYA プログラミング教室",
             "alternateName": "AI & プログラミングのKOBEYA",
             "description": "バンコクの日本人小中学生向けプログラミング教室。STEAM教育、Minecraft、AIコーチング、Unity、クリエイターズコースなど多様なプログラムを提供。",
-            "url": "https://kobeya-programming.pages.dev/",
-            "logo": "https://kobeya-programming.pages.dev/images/kobeya-logo.png",
-            "image": "https://kobeya-programming.pages.dev/static/images/og-image.jpg",
+            "url": "https://kobeyabkk-homepage.pages.dev/",
+            "logo": "https://kobeyabkk-homepage.pages.dev/images/kobeya-logo.png",
+            "image": "https://kobeyabkk-homepage.pages.dev/static/images/og-image.jpg",
             "telephone": "+66-xxx-xxx-xxxx",
             "email": "kobeyabkk@gmail.com",
             "address": {
