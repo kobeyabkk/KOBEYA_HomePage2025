@@ -10,8 +10,8 @@ export const supportPage = () => (
       <meta property="og:title" content="サポート｜KOBEYA" />
       <meta property="og:description" content="お問い合わせ方法、営業時間のご案内" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/support" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/support" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/support" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/support" />
     </head>
     
     

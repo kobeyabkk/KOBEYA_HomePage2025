@@ -10,8 +10,8 @@ export const toyprogrammingCoursePage = () => (
       <meta property="og:title" content="TOYPROコース｜KOBEYA" />
       <meta property="og:description" content="Pythonで学ぶ競技プログラミング" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/toyprogramming" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/toyprogramming" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/courses/toyprogramming" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/courses/toyprogramming" />
     </head>
     
     

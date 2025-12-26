@@ -10,8 +10,8 @@ export const store100masPage = () => (
       <meta property="og:title" content="100マス計算ジェネレーター｜KOBEYA" />
       <meta property="og:description" content="算数の基礎力を鍛える100マス計算アプリ。印刷もデジタル入力も可能。" />
       <meta property="og:type" content="product" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/store/100mas-calculator" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/store/100mas-calculator" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/store/100mas-calculator" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/store/100mas-calculator" />
     </head>
     
     <style>{`

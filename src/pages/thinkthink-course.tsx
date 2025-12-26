@@ -10,8 +10,8 @@ export const thinkthinkCoursePage = () => (
       <meta property="og:title" content="Think!Think!コース｜KOBEYA" />
       <meta property="og:description" content="思考力を楽しく育成するアプリ学習" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/thinkthink" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/thinkthink" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/courses/thinkthink" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/courses/thinkthink" />
     </head>
     
     

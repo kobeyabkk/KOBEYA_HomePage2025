@@ -10,8 +10,8 @@ export const storePage = () => (
       <meta property="og:title" content="KOBEYAアプリストア｜KOBEYA" />
       <meta property="og:description" content="学習アプリの販売。100マス計算ジェネレーターなど。" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/store" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/store" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/store" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/store" />
     </head>
     
     <style>{`

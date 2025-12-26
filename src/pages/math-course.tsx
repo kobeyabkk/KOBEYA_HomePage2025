@@ -11,8 +11,8 @@ export function mathCoursePage() {
       <meta property="og:title" content="算数数学個別指導｜KOBEYA">
       <meta property="og:description" content="一人ひとりに合わせたオーダーメイドプリントで学ぶ算数数学個別指導">
       <meta property="og:type" content="website">
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/math">
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/math">
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/courses/math">
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/courses/math">
       <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
       <style>
         :root {
