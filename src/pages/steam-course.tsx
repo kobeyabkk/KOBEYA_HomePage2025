@@ -10,8 +10,8 @@ export const steamCoursePage = () => (
       <meta property="og:title" content="STEAMプログラミングコース｜KOBEYA" />
       <meta property="og:description" content="Scratchで楽しく学ぶSTEAMプログラミング" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/steam-course" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/steam-course" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/courses/steam" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/courses/steam" />
     </head>
     
     

@@ -10,8 +10,8 @@ export const contactPage = () => (
       <meta property="og:title" content="お問い合わせ｜KOBEYA" />
       <meta property="og:description" content="無料体験レッスン受付中。LINEやメールでお気軽にご相談ください。" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/contact" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/contact" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/contact" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/contact" />
     </head>
     
     

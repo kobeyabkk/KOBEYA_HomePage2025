@@ -10,13 +10,13 @@ export const aiConsultPage = () => (
       <meta property="og:title" content="AIコンサルティング｜KOBEYA - AIを、もっとあなたの味方に。" />
       <meta property="og:description" content="ChatGPT・Gemini・Gensparkなど、生成AIを仕事・教育・日常に活かすための実践サポート。" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/ai-consult" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/ai-consult" />
       <meta property="og:image" content="https://page.gensparksite.com/v1/base64_upload/12ceead4f987a2269b4144a32d086adb" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="AIコンサルティング｜KOBEYA" />
       <meta name="twitter:description" content="生成AIを仕事・教育・日常に活かすための実践サポート" />
       <meta name="twitter:image" content="https://page.gensparksite.com/v1/base64_upload/12ceead4f987a2269b4144a32d086adb" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/ai-consult" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/ai-consult" />
     </head>
     
     <style>{`

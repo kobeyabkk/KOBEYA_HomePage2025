@@ -102,9 +102,9 @@ app.get('/courses/steam', (c) => {
   return c.render(steamCoursePage())
 })
 
-// Alternative route for STEAM course (compatibility)
+// Alternative route for STEAM course (301 redirect to canonical URL)
 app.get('/steam-course', (c) => {
-  return c.render(steamCoursePage())
+  return c.redirect('/courses/steam', 301)
 })
 
 app.get('/courses/minecraft', (c) => {

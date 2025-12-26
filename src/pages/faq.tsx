@@ -10,8 +10,8 @@ export const faqPage = () => (
       <meta property="og:title" content="よくある質問｜KOBEYA" />
       <meta property="og:description" content="KOBEYAプログラミング教室のFAQ。料金、スケジュール、入会方法など。" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/faq" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/faq" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/faq" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/faq" />
       
       {/* FAQ Structured Data for AI */}
       <script type="application/ld+json">{`

@@ -10,8 +10,8 @@ export const aiCoachingCoursePage = () => (
       <meta property="og:title" content="AI学習コーチング｜KOBEYA" />
       <meta property="og:description" content="AIと講師のハイブリッド個別指導" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/ai-coaching-course" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/ai-coaching-course" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/ai-coaching-course" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/ai-coaching-course" />
       
       {/* Course Structured Data for AI */}
       <script type="application/ld+json">{`
@@ -23,9 +23,9 @@ export const aiCoachingCoursePage = () => (
           "provider": {
             "@type": "EducationalOrganization",
             "name": "KOBEYA プログラミング教室",
-            "url": "https://kobeya-programming.pages.dev/"
+            "url": "https://kobeyabkk-homepage.pages.dev/"
           },
-          "url": "https://kobeya-programming.pages.dev/ai-coaching-course",
+          "url": "https://kobeyabkk-homepage.pages.dev/ai-coaching-course",
           "educationalLevel": "中学生、高校生（小学生要相談）",
           "timeRequired": "55分",
           "audience": {

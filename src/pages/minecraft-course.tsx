@@ -10,8 +10,8 @@ export const minecraftCoursePage = () => (
       <meta property="og:title" content="マイクラプログラミング｜KOBEYA" />
       <meta property="og:description" content="Minecraftで楽しくプログラミング学習" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/courses/minecraft" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/courses/minecraft" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/courses/minecraft" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/courses/minecraft" />
     </head>
     
     

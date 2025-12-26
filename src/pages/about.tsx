@@ -10,8 +10,8 @@ export const aboutPage = () => (
       <meta property="og:title" content="教室について｜KOBEYA" />
       <meta property="og:description" content="バンコクのプログラミング教室KOBEYA。フジスーパー2号店2階。" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/about" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/about" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/about" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/about" />
     </head>
     
     

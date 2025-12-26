@@ -10,8 +10,8 @@ export const schedulePage = () => (
       <meta property="og:title" content="2025年度スケジュール｜KOBEYA" />
       <meta property="og:description" content="2025年度の開講スケジュールを確認いただけます" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeya-programming.pages.dev/schedule" />
-      <link rel="canonical" href="https://kobeya-programming.pages.dev/schedule" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/schedule" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/schedule" />
     </head>
     
     
