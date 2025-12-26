@@ -6,7 +6,7 @@ export const renderer = jsxRenderer(({ children, title = 'AI & プログラミ�
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="google-site-verification" content="fdf58fbf4e77384d" />
+        <meta name="google-site-verification" content="JayFzmrc1vBA-h4bVgrx5oQ-4kCE7Uo-zA7q8S-2eMA" />
         <title>{title}</title>
         
         {/* SEO Meta Tags */}
