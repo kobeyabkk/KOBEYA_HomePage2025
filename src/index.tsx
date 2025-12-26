@@ -41,6 +41,11 @@ app.use('/images/*', serveStatic({ root: './public' }))
 app.get('/sitemap.xml', serveStatic({ path: './public/sitemap.xml' }))
 app.get('/robots.txt', serveStatic({ path: './public/robots.txt' }))
 
+// Google Search Console verification file
+app.get('/googlefdf58fbf4e77384d.html', (c) => {
+  return c.text('google-site-verification: googlefdf58fbf4e77384d.html')
+})
+
 // Use renderer for all pages
 app.use(renderer)
 
