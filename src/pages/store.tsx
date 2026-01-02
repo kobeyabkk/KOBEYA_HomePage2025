@@ -333,7 +333,7 @@ export const storePage = () => (
               </div>
 
               <p class="app-card-description">
-                算数の基礎力を鍛える100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。
+                たす・ひく・かける・わるの四則計算に対応した100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。
               </p>
 
               <div class="app-card-price">

@@ -5,10 +5,10 @@ export const store100masPage = () => (
   <>
     <head>
       <title>100マス計算ジェネレーター｜KOBEYAアプリストア｜KOBEYA</title>
-      <meta name="description" content="算数の基礎力を鍛える100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。小学1年生から中学生まで対応。" />
+      <meta name="description" content="たす・ひく・かける・わるの四則計算に対応した100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。小学1年生から中学生まで対応。" />
       <meta name="keywords" content="100マス計算,算数,学習アプリ,教材,KOBEYA,バンコク" />
       <meta property="og:title" content="100マス計算ジェネレーター｜KOBEYA" />
-      <meta property="og:description" content="算数の基礎力を鍛える100マス計算アプリ。印刷もデジタル入力も可能。" />
+      <meta property="og:description" content="たす・ひく・かける・わるの四則計算に対応した100マス計算アプリ。印刷もデジタル入力も可能。" />
       <meta property="og:type" content="product" />
       <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/store/100mas-calculator" />
       <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/store/100mas-calculator" />
