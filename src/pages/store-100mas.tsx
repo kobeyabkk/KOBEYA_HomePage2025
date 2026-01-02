@@ -472,7 +472,7 @@ export const store100masPage = () => (
           <div class="product-info">
             <h1 class="product-title">100マス計算ジェネレーター</h1>
             <p class="product-subtitle">
-              算数の基礎力を鍛える100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。
+              たす・ひく・かける・わるの四則計算に対応した100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。
             </p>
 
             <div class="product-meta">
