@@ -24,6 +24,7 @@ import { aiCoachingCoursePage } from './pages/ai-coaching-course'
 import { mathCoursePage } from './pages/math-course'
 // Special event pages
 import { newYearAIWorkshopPage } from './pages/new-year-ai-workshop'
+import { m5LabPage } from './pages/m5-lab'
 import { studyPartnerSimple } from './study-partner-simple'
 import { getCourseBySlug } from './data/courses'
 
@@ -100,6 +101,10 @@ app.get('/ai-coaching-course', (c) => {
 // Special Event pages
 app.get('/new-year-ai-workshop', (c) => {
   return c.render(newYearAIWorkshopPage())
+})
+
+app.get('/m5-lab', (c) => {
+  return c.render(m5LabPage())
 })
 
 // Course pages
