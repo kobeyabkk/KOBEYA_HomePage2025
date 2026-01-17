@@ -638,7 +638,42 @@ export const homePage = () => {
         </div>
         
         <div style="max-width: 900px; margin: 0 auto;">
-          {/* News Item 1 */}
+          {/* News Item 1 - M5 Lab */}
+          <a href="/m5-lab" style="text-decoration: none; display: block;">
+            <div class="news-item">
+              <div style="display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;">
+                <div style="flex-shrink: 0;">
+                  <img src="/images/m5-lab-announcement.jpg" alt="テノヒラメキ！M5ラボ" style="width: 180px; height: 180px; object-fit: cover; border-radius: 0.75rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" />
+                </div>
+                <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <div style="background: #fff9e6; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; width: fit-content;">
+                    2025.01.17 NEW
+                  </div>
+                  <div style="font-size: 1.15rem; font-weight: 700; color: var(--text-dark); line-height: 1.4;">
+                    💡 新講座「テノヒラメキ！M5ラボ」スタート！
+                  </div>
+                  <div style="font-size: 0.95rem; color: var(--text-gray); line-height: 1.7; font-weight: 500;">
+                    ― テノヒラサイズのひらめきが、動き出す ―
+                  </div>
+                  <div style="font-size: 0.9rem; color: var(--text-gray); line-height: 1.6;">
+                    君のひらめきが、手のひらサイズのマシンで動き出す！ 小さな『M5Stick』をプログラミングして、光る・鳴る・反応する自分だけのガジェットを発明しよう。求む、未来の発明家！
+                  </div>
+                  <div style="margin-top: 0.5rem; padding: 1rem; background: linear-gradient(135deg, #E3F2FD 0%, #FFF9C4 100%); border-radius: 0.5rem; border-left: 4px solid var(--main-yellow);">
+                    <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem;">
+                      🎪 開講記念ワークショップ開催！
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.6;">
+                      <strong>「キミだけのスマートウォッチ発明ワークショップ」</strong><br />
+                      M5Stickをプログラミングして、バンドをつけて腕時計に！<br />
+                      参加費：M5Stick代込みで <strong style="color: #e53e3e;">1,800B</strong> の超お得価格 🎉
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          
+          {/* News Item 2 */}
           <a href="/new-year-ai-workshop" style="text-decoration: none; display: block;">
             <div class="news-item">
               <div style="display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
