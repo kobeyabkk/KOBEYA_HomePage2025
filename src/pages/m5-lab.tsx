@@ -70,15 +70,27 @@ export const m5LabPage = () => (
         margin: 0 auto;
         position: relative;
         z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .hero-image-wrapper {
+        flex: 0 0 auto;
       }
 
       .hero-image {
-        max-width: 450px;
-        width: 100%;
-        margin: 0 auto 1.5rem;
+        max-width: 400px;
+        width: 400px;
         border-radius: 1.5rem;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         animation: float 3s ease-in-out infinite;
+        display: block;
+      }
+
+      .hero-text {
+        flex: 1;
+        text-align: left;
       }
 
       @keyframes float {
@@ -87,26 +99,33 @@ export const m5LabPage = () => (
       }
 
       .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         font-weight: 800;
         color: white;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1rem;
         text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        letter-spacing: 0.05em;
+        text-align: left;
       }
 
       .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         color: rgba(255, 255, 255, 0.95);
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         font-weight: 500;
+        font-style: italic;
+        text-align: left;
       }
 
       .hero-description {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         color: rgba(255, 255, 255, 0.9);
-        max-width: 800px;
-        margin: 0 auto 1.5rem;
-        line-height: 1.8;
+        line-height: 2;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem 2rem;
+        border-radius: 1rem;
+        backdrop-filter: blur(10px);
+        text-align: left;
       }
 
       .container {
@@ -372,12 +391,32 @@ export const m5LabPage = () => (
       }
 
       @media (max-width: 768px) {
+        .hero-content {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .hero-image {
+          max-width: 100%;
+          width: 100%;
+        }
+
+        .hero-text {
+          text-align: center;
+        }
+
         .hero-title {
           font-size: 1.6rem;
+          text-align: center;
         }
 
         .hero-subtitle {
           font-size: 1rem;
+          text-align: center;
+        }
+
+        .hero-description {
+          text-align: center;
         }
 
         .intro-grid {
@@ -405,14 +444,18 @@ export const m5LabPage = () => (
       {/* Hero Section */}
       <section class="hero-section">
         <div class="hero-content">
-          <img src="/images/m5-lab-announcement.jpg" alt="テノヒラメキ！M5ラボ" class="hero-image" />
-          <h1 class="hero-title">💡 テノヒラメキ！M5ラボ</h1>
-          <p class="hero-subtitle">― テノヒラサイズのひらめきが、動き出す ―</p>
-          <p class="hero-description">
-            手のひらサイズの小さなマシンで、君のアイデアを形にしよう！<br />
-            プログラミングで光らせたり、音を鳴らしたり、動かしたり。<br />
-            楽しく作って、すごいものを生み出そう！
-          </p>
+          <div class="hero-image-wrapper">
+            <img src="/images/m5-lab-announcement.jpg" alt="テノヒラメキ！M5ラボ" class="hero-image" />
+          </div>
+          <div class="hero-text">
+            <h1 class="hero-title">💡 テノヒラメキ！M5ラボ</h1>
+            <p class="hero-subtitle">― テノヒラサイズのひらめきが、動き出す ―</p>
+            <p class="hero-description">
+              手のひらサイズの小さなマシンで、君のアイデアを形にしよう！<br />
+              プログラミングで光らせたり、音を鳴らしたり、動かしたり。<br />
+              楽しく作って、すごいものを生み出そう！
+            </p>
+          </div>
         </div>
       </section>
 
