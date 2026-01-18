@@ -376,6 +376,21 @@ export const homePage = () => {
         background: white;
       }
       
+      /* Mobile responsive for course grid */
+      @media (max-width: 768px) {
+        .intro-section [style*="grid-template-columns: repeat(2, 1fr)"] {
+          grid-template-columns: 1fr !important;
+        }
+        
+        .intro-section [style*="display: flex"][style*="justify-content: center"] {
+          flex-direction: column !important;
+        }
+        
+        .intro-section [style*="display: flex"][style*="justify-content: center"] a {
+          width: 100% !important;
+        }
+      }
+      
       .stats-card {
         background: var(--base-white);
         border-radius: 1rem;
@@ -550,36 +565,28 @@ export const homePage = () => {
               お子様の興味と能力に合わせた多彩なコースで、楽しく学んで未来のスキルを身につけましょう！
             </p>
             <div style="background: #fff9e6; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.25rem; border: 1px solid #fbbf24;">
-              <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                  <span style="position: absolute; left: 0; top: 0;">🎮</span>
-                  Scratch、マイクラッチでゲーム作り
-                </li>
-                <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                  <span style="position: absolute; left: 0; top: 0;">🐍</span>
-                  PythonでAI・本格プログラミング
-                </li>
-                <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                  <span style="position: absolute; left: 0; top: 0;">🎨</span>
-                  動画編集・デザイン・クリエイティブ
-                </li>
-                <li style="margin-bottom: 0; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                  <span style="position: absolute; left: 0; top: 0;">🧠</span>
-                  思考力育成・算数数学個別指導
-                </li>
-              </ul>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;">
+                <div style="padding: 0.5rem; text-align: center; font-size: 0.9rem; line-height: 1.5;">
+                  🎮 Scratch、マイクラッチでゲーム作り
+                </div>
+                <div style="padding: 0.5rem; text-align: center; font-size: 0.9rem; line-height: 1.5;">
+                  🐍 PythonでAI・本格プログラミング
+                </div>
+                <div style="padding: 0.5rem; text-align: center; font-size: 0.9rem; line-height: 1.5;">
+                  🎨 動画編集・デザイン・クリエイティブ
+                </div>
+                <div style="padding: 0.5rem; text-align: center; font-size: 0.9rem; line-height: 1.5;">
+                  🧠 思考力育成・算数数学個別指導
+                </div>
+              </div>
             </div>
-            <div style="display: flex; gap: 0.75rem; flex-direction: column; margin-bottom: 1.25rem;">
+            <div style="display: flex; gap: 0.75rem; justify-content: center;">
               <a href="/contact" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); text-align: center;">
                 🎓 無料体験を申し込む
               </a>
               <a href="#courses" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border: 2px solid #fbbf24; text-align: center;">
                 📚 コースを見る
               </a>
-            </div>
-            <div style="font-size: 0.85rem; color: var(--text-gray); display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
-              <div>📍 フジスーパー2号店2階</div>
-              <div>🚗 駐車場完備</div>
             </div>
           </div>
         </div>
