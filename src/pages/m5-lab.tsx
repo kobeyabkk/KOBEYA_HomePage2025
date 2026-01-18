@@ -445,7 +445,7 @@ export const m5LabPage = () => (
       <section class="hero-section">
         <div class="hero-content">
           <div class="hero-image-wrapper">
-            <img src="/images/m5-lab-announcement.jpg" alt="テノヒラメキ！M5ラボ" class="hero-image" />
+            <img src="/images/m5-lab-logo-square.jpg" alt="テノヒラメキ！M5ラボ" class="hero-image" />
           </div>
           <div class="hero-text">
             <h1 class="hero-title">💡 テノヒラメキ！M5ラボ</h1>
