@@ -534,95 +534,52 @@ export const homePage = () => {
       </div>
     </section>
 
-    {/* Introduction Section - Two Main Offerings */}
+    {/* Introduction Section - Main Offering */}
     <section class="intro-section">
       <div class="container">
-        <div class="grid grid-2" style="align-items: stretch; gap: 3rem;">
-          <div>
-            <div style="background: white; border-radius: 1rem; padding: 2rem; color: var(--text-dark); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 3px solid #fbbf24; height: 100%;">
-              <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                <span style="font-size: 1.5rem;">🎓</span>
-                お子様向けプログラミング教室
-              </h3>
-              <div style="background: #fff9e6; border-radius: 0.75rem; padding: 0.875rem 1.25rem; margin-bottom: 1.25rem; border: 2px solid #fbbf24; text-align: center;">
-                <strong style="font-size: 1rem; color: #f59e0b;">小学生〜中学生対象・8つの専門コース</strong>
-              </div>
-              <p style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem; color: var(--text-gray);">
-                お子様の興味と能力に合わせた多彩なコースで、楽しく学んで未来のスキルを身につけましょう！
-              </p>
-              <div style="background: #fff9e6; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.25rem; border: 1px solid #fbbf24;">
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                  <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                    <span style="position: absolute; left: 0; top: 0;">🎮</span>
-                    Scratch、マイクラッチでゲーム作り
-                  </li>
-                  <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                    <span style="position: absolute; left: 0; top: 0;">🐍</span>
-                    PythonでAI・本格プログラミング
-                  </li>
-                  <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                    <span style="position: absolute; left: 0; top: 0;">🎨</span>
-                    動画編集・デザイン・クリエイティブ
-                  </li>
-                  <li style="margin-bottom: 0; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
-                    <span style="position: absolute; left: 0; top: 0;">🧠</span>
-                    思考力育成・算数数学個別指導
-                  </li>
-                </ul>
-              </div>
-              <div style="display: flex; gap: 0.75rem; flex-direction: column; margin-bottom: 1.25rem;">
-                <a href="/contact" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); text-align: center;">
-                  🎓 無料体験を申し込む
-                </a>
-                <a href="#courses" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border: 2px solid #fbbf24; text-align: center;">
-                  📚 コースを見る
-                </a>
-              </div>
-              <div style="font-size: 0.85rem; color: var(--text-gray); display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
-                <div>📍 フジスーパー2号店2階</div>
-                <div>🚗 駐車場完備</div>
-              </div>
+        <div style="max-width: 900px; margin: 0 auto;">
+          <div style="background: white; border-radius: 1rem; padding: 2rem; color: var(--text-dark); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 3px solid #fbbf24;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+              <span style="font-size: 1.5rem;">🎓</span>
+              お子様向けプログラミング教室
+            </h3>
+            <div style="background: #fff9e6; border-radius: 0.75rem; padding: 0.875rem 1.25rem; margin-bottom: 1.25rem; border: 2px solid #fbbf24; text-align: center;">
+              <strong style="font-size: 1rem; color: #f59e0b;">小学生〜中学生対象・8つの専門コース</strong>
             </div>
-          </div>
-          <div>
-            <div class="consulting-card">
-              <h3 class="consulting-title">
-                <span style="font-size: 1.5rem;">🤝</span>
-                大人向けAIコンサルティング
-              </h3>
-              <div class="consulting-target">
-                <strong>個人事業主、中小企業、教育関係、教育ママなど</strong>
-              </div>
-              <p class="consulting-text">
-                AIがすごい！便利！と耳にしますが、みなさま使いこなせていますか?<br />
-                仕事、副業、趣味、教育と様々な分野で利用できます。
-              </p>
-              <div class="consulting-problems">
-                <ul>
-                  <li>AIの使い方が分からない</li>
-                  <li>AIを業務にどう活かせるか分からない</li>
-                  <li>既存のAIを自分の仕事・副業などに取り入れたい</li>
-                  <li>カスタムされた学習プリント作成システムを作ってほしい</li>
-                </ul>
-              </div>
-              <div style="display: flex; gap: 0.75rem; flex-direction: column; margin-top: 1.5rem;">
-                <a 
-                  id="ai-consult-cta" 
-                  data-cta="ai-consult" 
-                  href="/ai-consult" 
-                  class="btn-consulting" 
-                  aria-label="AIコンサルの詳細ページへ移動"
-                >
-                  🤝 AIコンサルはこちら
-                </a>
-                <a 
-                  href="/store" 
-                  class="btn-consulting-secondary" 
-                  aria-label="販売中のアプリを見る"
-                >
-                  📱 KOBEYAアプリストアはこちら
-                </a>
-              </div>
+            <p style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem; color: var(--text-gray); text-align: center;">
+              お子様の興味と能力に合わせた多彩なコースで、楽しく学んで未来のスキルを身につけましょう！
+            </p>
+            <div style="background: #fff9e6; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.25rem; border: 1px solid #fbbf24;">
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                  <span style="position: absolute; left: 0; top: 0;">🎮</span>
+                  Scratch、マイクラッチでゲーム作り
+                </li>
+                <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                  <span style="position: absolute; left: 0; top: 0;">🐍</span>
+                  PythonでAI・本格プログラミング
+                </li>
+                <li style="margin-bottom: 0.65rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                  <span style="position: absolute; left: 0; top: 0;">🎨</span>
+                  動画編集・デザイン・クリエイティブ
+                </li>
+                <li style="margin-bottom: 0; padding-left: 1.5rem; position: relative; font-size: 0.9rem; line-height: 1.5;">
+                  <span style="position: absolute; left: 0; top: 0;">🧠</span>
+                  思考力育成・算数数学個別指導
+                </li>
+              </ul>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-direction: column; margin-bottom: 1.25rem;">
+              <a href="/contact" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); text-align: center;">
+                🎓 無料体験を申し込む
+              </a>
+              <a href="#courses" style="background: white; color: #f59e0b; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border: 2px solid #fbbf24; text-align: center;">
+                📚 コースを見る
+              </a>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-gray); display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+              <div>📍 フジスーパー2号店2階</div>
+              <div>🚗 駐車場完備</div>
             </div>
           </div>
         </div>

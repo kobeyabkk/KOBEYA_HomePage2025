@@ -221,6 +221,8 @@ export const Header = () => (
           <a href="/">ホーム</a>
           <a href="/#courses">コース</a>
           <a href="/about">教室について</a>
+          <a href="/ai-consult">AIコンサル</a>
+          <a href="/store">ストア</a>
           <a href="/contact">お問い合わせ</a>
         </nav>
         
@@ -239,6 +241,8 @@ export const Header = () => (
           <a href="/">ホーム</a>
           <a href="/#courses">コース</a>
           <a href="/about">教室について</a>
+          <a href="/ai-consult">AIコンサル</a>
+          <a href="/store">ストア</a>
           <a href="/contact">お問い合わせ</a>
         </nav>
         <div class="header-cta">
