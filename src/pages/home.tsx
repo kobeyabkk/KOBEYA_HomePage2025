@@ -629,7 +629,7 @@ export const homePage = () => {
                     <div style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.6;">
                       <strong>「キミだけのスマートウォッチ発明ワークショップ」</strong><br />
                       M5Stickをプログラミングして、バンドをつけて腕時計に！<br />
-                      参加費：M5Stick代込みで <strong style="color: #e53e3e;">1,800B</strong> の超お得価格 🎉
+                      参加費：M5Stick代（約1200B）込みで <strong style="color: #e53e3e;">1,800B</strong> の超お得価格 🎉
                     </div>
                   </div>
                 </div>

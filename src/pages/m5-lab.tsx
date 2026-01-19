@@ -688,7 +688,7 @@ export const m5LabPage = () => (
             </p>
 
             <div class="price-highlight">
-              <p style="font-size: 1.1rem; margin: 0;">M5Stick本体代込み</p>
+              <p style="font-size: 1.1rem; margin: 0;">M5Stick本体代（約1200B）込み</p>
               <div class="price">1,800 THB</div>
               <p style="font-size: 0.95rem; opacity: 0.9;">超お得な特別価格！</p>
             </div>
