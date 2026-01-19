@@ -16,7 +16,6 @@ import { store100masPage } from './pages/store-100mas'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
-import { toyprogrammingCoursePage } from './pages/toyprogramming-course'
 import { thinkthinkCoursePage } from './pages/thinkthink-course'
 import { unityCoursePage } from './pages/unity-course'
 import { creatorsCoursePage } from './pages/creators-course'
@@ -121,10 +120,6 @@ app.get('/courses/minecraft', (c) => {
   return c.render(minecraftCoursePage())
 })
 
-app.get('/courses/toyprogramming', (c) => {
-  return c.render(toyprogrammingCoursePage())
-})
-
 app.get('/courses/thinkthink', (c) => {
   return c.render(thinkthinkCoursePage())
 })
@@ -160,8 +155,8 @@ app.get('/courses/:slug', (c) => {
       return c.render(steamCoursePage())
     case 'minecraft':
       return c.render(minecraftCoursePage())
-    case 'toyprogramming':
-      return c.render(toyprogrammingCoursePage())
+    case 'm5-lab':
+      return c.render(m5LabPage())
     case 'thinkthink':
       return c.render(thinkthinkCoursePage())
     case 'unity':
