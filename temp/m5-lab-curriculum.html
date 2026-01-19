@@ -1,0 +1,3693 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M5StickC PLUS2とUIFlow 2.0プログラミング入門ガイド</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #000;
+        line-height: 1.6;
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background-color: #fff;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      h1 {
+        font-size: 28px;
+        color: #2c3e50;
+        border-bottom: 2px solid #2c3e50;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 22px;
+        color: #2c3e50;
+        border-left: 6px solid #3498db;
+        padding-left: 12px;
+        margin-top: 50px;
+        margin-bottom: 25px;
+        font-weight: 700;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+      }
+
+      h3 {
+        font-size: 18px;
+        color: #444;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      h4 {
+        font-size: 16px;
+        color: #555;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 700;
+        text-decoration: underline;
+      }
+
+      p {
+        margin-bottom: 15px;
+        text-align: justify;
+        font-size: 11pt;
+      }
+
+      ul,
+      ol {
+        margin-bottom: 20px;
+        padding-left: 25px;
+      }
+
+      li {
+        margin-bottom: 8px;
+        font-size: 11pt;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-size: 11pt;
+        border: 1px solid #ccc;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background-color: #f0f0f0;
+        font-weight: 700;
+        color: #333;
+        width: 30%;
+      }
+
+      .box-info {
+        background-color: #e3f2fd;
+        border: 1px solid #90caf9;
+        padding: 15px;
+        margin-bottom: 20px;
+        color: #0d47a1;
+      }
+
+      .box-warning {
+        background-color: #fff3e0;
+        border: 1px solid #ffcc80;
+        padding: 15px;
+        margin-bottom: 20px;
+        color: #e65100;
+      }
+
+      .code-block {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 10pt;
+        margin-bottom: 20px;
+        color: #333;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .step-number {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        text-align: center;
+        line-height: 22px;
+        font-size: 12px;
+        margin-right: 8px;
+        font-weight: bold;
+      }
+
+      .toc {
+        background-color: #fafafa;
+        border: 1px solid #ddd;
+        padding: 20px 40px;
+        margin-bottom: 50px;
+      }
+
+      .toc h3 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+
+      .toc ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .toc > ul > li {
+        font-weight: bold;
+        margin-top: 10px;
+        border-bottom: 1px dotted #ccc;
+      }
+
+      .toc ul ul {
+        padding-left: 20px;
+        font-weight: normal;
+      }
+
+      .footer {
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #ccc;
+        text-align: center;
+        font-size: 10pt;
+        color: #666;
+      }
+
+      strong {
+        font-weight: 700;
+        color: #222;
+      }
+    </style>
+  </head>
+  <body style="">
+    <h1>テノヒラメキ！M5ラボ<br>― テノヒラサイズのひらめきが、動き出す ―</h1>
+    <div style="text-align: center; margin-bottom: 30px; font-size: 16px; color: #666;">
+      M5StickC PLUS2とUIFlow 2.0プログラミング入門ガイド
+    </div>
+
+    <div class="box-info">
+      <strong>はじめに</strong><br>
+      このガイドは、M5StickC PLUS2と最新の開発環境UIFlow 2.0 (v2.4.0)
+      を使用して、IoTプログラミングの基礎を学ぶためのテキストです。初心者の方でも安心して学習できるように、ステップバイステップで丁寧に解説しています。<br>
+      <br>
+      <em>※本ガイドの情報は2026年1月時点のものです。UIFlowやファームウェアのバージョンアップにより、画面や手順が変更される場合があります。</em>
+    </div>
+
+    <div class="toc">
+      <h3>目次</h3>
+      <ul>
+        <li>
+          <strong>第1章:基礎知識編</strong>
+          <ul>
+            <li>①M5StickC PLUS2とは
+              <ul>
+                <li>M5StickC PLUS2の特徴</li>
+                <li>M5StickC PLUS2の詳細仕様</li>
+                <li>ボタンとLEDの配置</li>
+                <li>M5StickC PLUS2でできること</li>
+              </ul>
+            </li>
+            <li>②UIFlow 2.0とは
+              <ul>
+                <li>ビジュアルプログラミングとは</li>
+                <li>UIFlow 2.0の特徴</li>
+                <li>UIFlow 1.0との主な違い</li>
+                <li>なぜUIFlow 2.0を使うのか</li>
+              </ul>
+            </li>
+            <li>③セットアップ(初期設定)
+              <ul>
+                <li>必要なもの</li>
+                <li>USBドライバのインストール</li>
+                <li>M5Burnerのインストール</li>
+                <li>ファームウェアの書き込みとWi-Fi設定</li>
+              </ul>
+            </li>
+            <li>④UIFlow 2.0の使い方
+              <ul>
+                <li>UIFlow 2.0の起動</li>
+                <li>デバイスの接続方法(USB接続を推奨)</li>
+                <li>UIFlow 2.0の画面構成(詳細版)</li>
+                <li>プログラミングの基本操作</li>
+                <li>Hello World(文字列の表示)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>第2章:作例実践編</strong>
+          <ul>
+            <li>第1回「時計をつくる」(変数と論理演算)
+              <ul>
+                <li>完成イメージ</li>
+                <li>ステップ1:変数の作成</li>
+                <li>ステップ2:Labelの配置</li>
+                <li>ステップ3:初期設定(Setupブロック)</li>
+                <li>ステップ4:メインプログラム(Loopブロック)</li>
+                <li>ステップ5:プログラムの実行</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第2回「グラフィック描画」(座標と乱数)
+              <ul>
+                <li>完成イメージ</li>
+                <li>座標系を理解しよう</li>
+                <li>ステップ1:プログラムの準備</li>
+                <li>ステップ2:初期設定(Setupブロック)</li>
+                <li>ステップ3:ランダムな円を描く(Loopブロック)</li>
+                <li>ステップ4:画面クリア機能を追加(ボタンイベント)</li>
+                <li>ステップ5:プログラムの実行</li>
+                <li>ステップ6:描画の一時停止機能を追加(ボタンBイベント)</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第3回「加速度センサーを使ってみる」
+              <ul>
+                <li>完成イメージ</li>
+                <li>加速度センサーとは</li>
+                <li>ステップ1:Labelの配置</li>
+                <li>ステップ2:初期設定(Setupブロック)</li>
+                <li>ステップ3:センサー値の取得と表示(Loopブロック)</li>
+                <li>ステップ4:条件分岐の追加(閾値判定)</li>
+                <li>ステップ5:プログラムの実行</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第4回「デジタル名刺」
+              <ul>
+                <li>完成イメージ</li>
+                <li>リスト(配列)とは</li>
+                <li>ステップ1:変数とリストの作成</li>
+                <li>ステップ2:Labelの配置</li>
+                <li>ステップ3:初期設定(Setupブロック)</li>
+                <li>ステップ4:ボタンイベントの作成</li>
+                <li>ステップ5:プログラムの実行</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第5回「玉よけゲーム」
+              <ul>
+                <li>完成イメージ</li>
+                <li>ゲームの仕組みを理解しよう</li>
+                <li>ステップ1:変数の作成</li>
+                <li>ステップ2:Labelの配置</li>
+                <li>ステップ3:初期設定(Setupブロック)</li>
+                <li>ステップ4:メインゲームループ(Loopブロック)</li>
+                <li>ステップ5:ボタンで操作する</li>
+                <li>ステップ6:プログラムの実行</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第6回「メロディを作ろう」
+              <ul>
+                <li>完成イメージ</li>
+                <li>音階と周波数について</li>
+                <li>ステップ1:変数とリストの作成</li>
+                <li>ステップ2:Labelの配置</li>
+                <li>ステップ3:初期設定(Setupブロック)</li>
+                <li>ステップ4:メロディ再生関数の作成</li>
+                <li>ステップ5:プログラムの実行</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第7回「回転速度ゲーム」
+              <ul>
+                <li>完成イメージ</li>
+                <li>ジャイロセンサーとは</li>
+                <li>ステップ1:変数の作成</li>
+                <li>ステップ2:Labelの配置</li>
+                <li>ステップ3:初期設定(Setupブロック)</li>
+                <li>ステップ4:Timerイベントの作成</li>
+                <li>ステップ5:メインループ(Loopブロック)</li>
+                <li>ステップ6:ボタンイベント(ゲーム開始)</li>
+                <li>ステップ7:プログラムの実行</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第8回「データロガー」
+              <ul>
+                <li>完成イメージ</li>
+                <li>NVS(不揮発性ストレージ)とは</li>
+                <li>ステップ1:変数の作成</li>
+                <li>ステップ2:Labelの配置</li>
+                <li>ステップ3:初期設定(Setupブロック)</li>
+                <li>ステップ4:メインループ(Loopブロック)</li>
+                <li>ステップ5:ボタンAイベント(記録開始/停止)</li>
+                <li>ステップ6:ボタンBイベント(データ表示)</li>
+                <li>ステップ7:プログラムの実行</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第9回「赤外線リモコンを作ろう」
+              <ul>
+                <li>完成イメージ</li>
+                <li>赤外線（IR）とは（NEC方式）</li>
+                <li>ステップ1: IRの初期化（Init IR）</li>
+                <li>ステップ2: ボタンでIR送信（addr / data）</li>
+                <li>ステップ3: 送信チェック（教室：送信できたことを確認）</li>
+                <li>ステップ4: IRコードの調べ方（検索・AI／16進0x..）</li>
+                <li>（コラム）32bitコードを addr/data に分解する</li>
+                <li>（コラム）10進と16進（0x..）の違い</li>
+                <li>ステップ5: 家のテレビ/エアコン用に調整</li>
+                <li>（コラム）教室で動かなくてもOK：家で完成させよう</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第10回「画像でゲームをパワーアップ」
+              <ul>
+                <li>完成イメージ</li>
+                <li>ステップ1: 画像（Image）部品を配置</li>
+                <li>ステップ2: 画像のサイズと作り方</li>
+                <li>ステップ3: 画像を切り替える（状態変数）</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第11回「タイマーでゲームを制御」
+              <ul>
+                <li>完成イメージ</li>
+                <li>ステップ1: Timer（PERIODIC）を設定</li>
+                <li>ステップ2: カウントダウン/スポーン制御</li>
+                <li>ステップ3: 難易度調整</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+            <li>第12回「インベーダー風ゲーム」
+              <ul>
+                <li>完成イメージ</li>
+                <li>ステップ1: 自機の移動（ボタン/タッチ）</li>
+                <li>ステップ2: 弾の発射（リストで管理）</li>
+                <li>ステップ3: 敵の動き（タイマー/ループ）</li>
+                <li>ステップ4: 当たり判定とスコア</li>
+                <li>ステップ5: 効果音と演出</li>
+                <li>ステップ6: スコア保存（NVS）</li>
+                <li>プログラムの仕組みを理解しよう</li>
+                <li>応用してみよう</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- 第1章 -->
+    <h2>第1章:基礎知識編</h2>
+
+    <h3>①M5StickC PLUS2とは</h3>
+
+    <h4>M5StickC PLUS2の特徴</h4>
+    <p>
+      M5StickC
+      PLUS2は、M5Stack社が開発したスティック型の小型IoT開発ボードです。非常にコンパクトながら、Wi-FiやBluetooth通信機能、カラー液晶画面、各種センサー、バッテリーを内蔵しており、これ1台ですぐにプログラミング学習や電子工作を始めることができます。
+    </p>
+    <p>
+      ケースに入っているため、基板がむき出しのマイコンと違い、持ち運びや取り扱いが安全です。お子様のプログラミング学習にも最適です。
+    </p>
+
+    <h4>M5StickC PLUS2の詳細仕様</h4>
+    <table>
+      <tbody>
+        <tr>
+          <th>項目</th>
+          <th>仕様</th>
+        </tr>
+        <tr>
+          <td>SoC (メインチップ)</td>
+          <td>ESP32-PICO-V3-02 (240MHz dual-core)</td>
+        </tr>
+        <tr>
+          <td>ディスプレイ</td>
+          <td>1.14インチ カラーTFT液晶 (135x240ピクセル)</td>
+        </tr>
+        <tr>
+          <td>メモリ</td>
+          <td>Flash 8MB / PSRAM 2MB</td>
+        </tr>
+        <tr>
+          <td>バッテリー</td>
+          <td>200mAh (内蔵)</td>
+        </tr>
+        <tr>
+          <td>通信機能</td>
+          <td>Wi-Fi (2.4GHz), Bluetooth</td>
+        </tr>
+        <tr>
+          <td>内蔵センサー</td>
+          <td>6軸IMU (加速度・ジャイロ), マイク, RTC (時計)</td>
+        </tr>
+        <tr>
+          <td>その他機能</td>
+          <td>赤外線送信 (IR), ブザー</td>
+        </tr>
+        <tr>
+          <td>インターフェース</td>
+          <td>USB Type-C, Groveポート (HY2.0-4P)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>ボタンとLEDの配置</h4>
+    <ul>
+      <li>
+        <strong>ボタンA (M5ボタン)</strong>:
+        本体正面の画面下にある大きなボタン。「M5」のロゴが印字されています。プログラムで制御可能です。
+      </li>
+      <li><strong>ボタンB</strong>: 本体右側面（上側）にあるボタン。こちらもプログラムで制御可能です。</li>
+      <li>
+        <strong>電源ボタン (ボタンC)</strong>: 本体左側面（下側）にあるボタン。
+        <ul>
+          <li><strong>2秒長押し</strong>: 電源ON</li>
+          <li><strong>6秒長押し</strong>: 電源OFF</li>
+          <li><strong>短く1回押し</strong>: リセット（再起動）</li>
+        </ul>
+      </li>
+      <li><strong>LED</strong>: 本体上部に赤色のLEDが1つ内蔵されています（GPIO19で制御）。</li>
+    </ul>
+
+    <h4>M5StickC PLUS2でできること</h4>
+    <p>この小さなデバイス1つで、以下のようなことができます：</p>
+    <ul>
+      <li><strong>センサー計測</strong>: 内蔵の加速度センサーで動きを検知したり、マイクで音を拾ったりできます。</li>
+      <li><strong>インタラクティブな操作</strong>: ボタンを押して画面の表示を変えたり、LEDを光らせたりできます。</li>
+      <li>
+        <strong>通信</strong>:
+        Wi-Fiを使ってインターネット上の情報を取得したり、Bluetoothで他の機器と通信したりできます。
+      </li>
+      <li><strong>リモコン作成</strong>: 赤外線送信機能を使って、テレビやエアコンのリモコンを作ることができます。</li>
+      <li>
+        <strong>ウェアラブル</strong>:
+        バッテリー内蔵で小型なので、腕時計型バンド（別売）を使って腕に装着し、歩数計などを作ることも可能です。
+      </li>
+    </ul>
+
+    <h3>②UIFlow 2.0とは</h3>
+
+    <h4>ビジュアルプログラミングとは</h4>
+    <p>
+      ビジュアルプログラミングとは、英語のコードをキーボードで打ち込む代わりに、「ブロック」と呼ばれるパーツをマウスでドラッグ＆ドロップして組み立てることでプログラムを作る方法です。Scratch（スクラッチ）などが有名です。
+    </p>
+    <p>
+      「もし〜なら」「〜を繰り返す」といった日本語のブロックをパズルのように組み合わせるだけで、本格的なプログラムを作成できます。裏側では「MicroPython」という本格的なプログラミング言語が動いています。
+    </p>
+
+    <h4>UIFlow 2.0の特徴</h4>
+    <p>UIFlow 2.0は、M5Stack社が提供する最新の開発環境です。</p>
+    <ul>
+      <li>
+        <strong>ブラウザで動作</strong>: Google
+        Chromeなどのブラウザがあれば、専用ソフトをインストールしなくても動きます。
+      </li>
+      <li>
+        <strong>ハイブリッド接続</strong>:
+        Wi-Fi経由での書き込みに加え、USBケーブルで繋いだまま直接操作できる機能（WebSerial）が強力です。
+      </li>
+      <li><strong>リアルタイム実行</strong>: 「Run」ボタンを押すと、瞬時にプログラムがデバイスで動きます。</li>
+    </ul>
+
+    <h4>UIFlow 1.0との主な違い</h4>
+    <p>以前のバージョン（UIFlow 1.0）からの主な進化点は以下の通りです。</p>
+    <table>
+      <tbody>
+        <tr>
+          <th>機能</th>
+          <th>UIFlow 1.0</th>
+          <th>UIFlow 2.0 (最新)</th>
+        </tr>
+        <tr>
+          <td>接続方法</td>
+          <td>主にWi-Fi経由</td>
+          <td><strong>Wi-Fi または USB (WebSerial) で簡単接続</strong></td>
+        </tr>
+        <tr>
+          <td>画面デザイン</td>
+          <td>シンプル</td>
+          <td><strong>モダンで機能的に整理されている</strong></td>
+        </tr>
+        <tr>
+          <td>ブロック構成</td>
+          <td>独自カテゴリー</td>
+          <td><strong>標準的なカテゴリー分けに改善</strong></td>
+        </tr>
+        <tr>
+          <td>対応デバイス</td>
+          <td>旧機種中心</td>
+          <td><strong>最新機種（S3シリーズなど）にも完全対応</strong></td>
+        </tr>
+        <tr>
+          <td>デバッグ</td>
+          <td>限定的</td>
+          <td><strong>エラーメッセージなどが確認しやすい</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>なぜUIFlow 2.0を使うのか</h4>
+    <p>
+      UIFlow
+      2.0は、M5Stack開発の新しい標準です。特に<strong>「USB接続（WebSerial）」機能</strong>のおかげで、Wi-Fi環境がない場所や、Wi-Fi設定でつまずきやすい初心者の方でも、スムーズに学習を始められるようになりました。
+    </p>
+
+    <h3>③セットアップ(初期設定)</h3>
+
+    <h4>必要なもの</h4>
+    <ul>
+      <li>M5StickC PLUS2 本体</li>
+      <li>USB Type-C ケーブル（<strong>データ通信対応のもの</strong>）※充電専用は不可</li>
+      <li>パソコン（Windows, Mac, Linux）※Google Chromeブラウザ推奨</li>
+      <li>
+        Wi-Fi環境（2.4GHz帯）※USB接続のみで行う場合は必須ではありませんが、ファームウェア書き込み時にあると便利です
+      </li>
+    </ul>
+
+    <h4>USBドライバのインストール</h4>
+    <p>
+      初めてパソコンに接続する場合は、USBドライバが必要です。M5Stack公式サイトからドライバをダウンロードしてインストールしてください。
+    </p>
+    <div class="code-block">https://docs.m5stack.com/en/download</div>
+
+    <div class="box-info">
+      <strong>ドライバの選択（M5StickC PLUS2用）:</strong>
+      <ul>
+        <li><strong>Windowsの場合:</strong> 「CH9102_VCP_SER_Windows」</li>
+        <li>
+          <strong>Macの場合:</strong> 「CH9102_VCP_SER_MacOS v1.7」<br>
+          ※Apple Silicon (M1/M2/M3) の場合は「CH9102 MacOS(M1 Silicon)」でも可
+        </li>
+      </ul>
+    </div>
+
+    <h4>M5Burnerのインストール</h4>
+    <p>
+      ファームウェア（基本ソフト）を書き込むためのツール「M5Burner」を公式サイトからダウンロードし、インストールします。
+    </p>
+
+    <div class="box-warning">
+      <strong>Macユーザーへの注意:</strong><br>
+      インストール後、起動時に「"m5burner.app"は開いていません」というセキュリティ警告が出ることがあります。<br>
+      その場合は、アイコンを<strong>右クリック（またはControl+クリック）して「開く」</strong>を選択し、表示されるダイアログで再度「開く」を押してください。
+    </div>
+
+    <h4>ファームウェアの書き込みとWi-Fi設定</h4>
+    <p>M5Burnerを使って、デバイスに「UIFlow 2.0」をインストールします。</p>
+
+    <div class="box-warning">
+      <strong>重要: M5Stack Communityアカウントが必要です</strong><br>
+      UIFlow 2.0の使用にはログインが必須です。M5Burner右上の人形アイコンからログイン（または新規登録）を行ってください。
+    </div>
+
+    <ol>
+      <li>M5StickC PLUS2をUSBケーブルでパソコンに接続します。</li>
+      <li>M5Burner左メニューから<strong>「STICKC」</strong>を選択します。</li>
+      <li><strong>「UIFlow2.0 StickC Plus2」</strong>を探し、「Download」ボタンを押します。</li>
+      <li>ダウンロード完了後、「Burn」ボタンを押します。</li>
+      <li>設定画面が表示されます。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>「Get mac failed」や通信エラーが出る場合:</strong><br>
+      設定画面上部の「COM」選択を確認してください。<br>
+      ❌ <code>Hy.Bluetooth-Incoming-Port</code> (Windows) / <code>/dev/tty.Bluetooth...</code> (Mac)<br>
+      ✅ <strong>COM3, COM4...</strong> (Windows) / <strong>/dev/cu.usbserial-...</strong> (Mac)<br>
+      <strong>Bluetoothポートではなく、必ずUSBシリアルポートを選択してください。</strong>
+    </div>
+
+    <p>設定画面では以下を確認・入力して「Start」を押します。</p>
+    <ul>
+      <li><strong>COM</strong>: 正しいUSBポートを選択</li>
+      <li>
+        <strong>WIFI SSID / Password</strong>: Wi-Fiを使用する場合は入力（「Configure」でPCのWi-Fi設定をコピー可能）
+      </li>
+      <li><strong>Boot Option</strong>: 初回は「Show startup menu and network setup」推奨</li>
+    </ul>
+
+    <div class="box-info">
+      <strong>「bind your account」の警告:</strong><br>
+      書き込み開始時にアカウント紐付けの確認が出たら<strong>「Yes」</strong>を押し、次の画面で<strong>「Next」</strong>を押してください。
+    </div>
+
+    <h3>④UIFlow 2.0の使い方</h3>
+
+    <h4>UIFlow 2.0の起動</h4>
+    <p>Google Chromeブラウザで以下のURLにアクセスします。</p>
+    <div class="code-block">https://uiflow2.m5stack.com/</div>
+
+    <h4>デバイスの接続方法(USB接続を推奨)</h4>
+    <div class="box-info">
+      <strong>USB接続（WebSerial）を強く推奨します！</strong><br>
+      Wi-Fi接続は環境によって不安定な場合があります。USBケーブルで繋いだまま操作する「WebSerial」機能を使えば、Wi-Fi設定不要で、安定してすぐにプログラミングを始められます。
+    </div>
+
+    <p><strong>接続手順:</strong></p>
+    <ol>
+      <li>M5StickC PLUS2をPCにUSB接続します。</li>
+      <li>UIFlow 2.0画面下部のステータスバーにある<strong>USBアイコン（WebSerial）</strong>をクリックします。</li>
+      <li>
+        ブラウザのポップアップが出るので、正しいポート（<code>/dev/cu.usbserial...</code> や
+        <code>COM...</code>）を選択して「接続」を押します。
+      </li>
+      <li>画面下に「Connected」と表示されれば成功です。</li>
+    </ol>
+
+    <h4>UIFlow 2.0の画面構成(詳細版)</h4>
+
+    <h4>1. 左端エリア（部品パネル）</h4>
+    <p>
+      アイコンが縦に並んでいます。Label、Button、Switchなどの部品（Widget）を選択できます。<br>
+      ここから部品をデバイス表示エリアにドラッグ＆ドロップして配置します。
+    </p>
+
+    <h4>2. 左側エリア（カテゴリーツリー / ブロックパレット）</h4>
+    <p>
+      システム、論理、ハードウェア、M5GFXなどのカテゴリーが並んでいます。<br>
+      ここからプログラミングに使うブロックを選択して、中央のプログラミングエリアにドラッグ＆ドロップします。
+    </p>
+
+    <h4>3. 中央左エリア（デバイス表示エリア）</h4>
+    <p>
+      M5StickC
+      PLUS2の画面イメージが表示されます。ここに「Label（文字）」などの部品を、ドラッグ＆ドロップで配置して画面デザインを作ります。
+    </p>
+
+    <h4>4. 中央右〜右側エリア（プログラミングエリア）</h4>
+    <p>ブロックを組み立てる作業スペースです。通常、以下の2つのブロックが配置されています。</p>
+    <ul>
+      <li><strong>Setup</strong>: プログラム開始時に<strong>1回だけ</strong>実行される処理（初期設定など）。</li>
+      <li><strong>Loop</strong>: プログラム実行中、<strong>ずっと繰り返し</strong>実行される処理。</li>
+    </ul>
+
+    <div class="box-info">
+      <strong>ブロックカテゴリー一覧:</strong>
+      <p><strong>▼ System (システム)</strong></p>
+      <ul>
+        <li><strong>Time (時間)</strong>: タイマー、待機処理（秒/ミリ秒/マイクロ秒 停止）、UTC/ローカル時刻取得</li>
+        <li><strong>BLE UART</strong>: Bluetooth通信（Server/Client）</li>
+        <li><strong>WLAN</strong>: Wi-Fi設定（Station/Access Point）</li>
+        <li><strong>ESP-NOW</strong>: デバイス間通信</li>
+        <li><strong>NVS</strong>: データ保存（Non-Volatile Storage）</li>
+        <li><strong>Power (電源)</strong>: バッテリー管理、省電力モード</li>
+      </ul>
+      <p><strong>▼ Logic &amp; Data (基本ロジックとデータ構造)</strong></p>
+      <ul>
+        <li><strong>Variables (変数)</strong>: 数値や文字を保存する箱</li>
+        <li><strong>Math (数学)</strong>: 四則演算、乱数、三角関数、ビット演算など</li>
+        <li><strong>Loops (ループ)</strong>: 繰り返し処理（繰り返す、〜の間、各要素について）</li>
+        <li><strong>Logic (論理)</strong>: 条件分岐（もし/そうでなければ）、比較演算（=, !=, &lt;, &gt;）、And/Or</li>
+        <li><strong>Functions (関数)</strong>: 処理のまとまりを作る</li>
+        <li><strong>Text (テキスト)</strong>: 文字列の操作（結合、分割、変換）</li>
+        <li><strong>Lists (リスト)</strong>: 複数のデータを扱う配列</li>
+        <li><strong>Tuple / Map / JSON</strong>: 高度なデータ構造</li>
+        <li><strong>Bytes / Bytearray</strong>: バイナリデータの操作</li>
+      </ul>
+      <p><strong>▼ Hardware (ハードウェア)</strong></p>
+      <ul>
+        <li>
+          <strong>Button (ボタン)</strong>: ボタンA, B, C（電源ボタン）の操作
+          <ul>
+            <li>状態チェック: Is holding, Pressed, Released, Clicked, Double Clicked</li>
+            <li><strong>イベント: When [Btn] [clicked/pressed/etc] do</strong> ← ボタンが押されたときの処理</li>
+          </ul>
+        </li>
+        <li><strong>Pin Button</strong>: 外部GPIOピンに接続したボタンの制御</li>
+        <li>
+          <strong>IMU (慣性計測)</strong>: 加速度センサー（IMUの加速度を X [ ] Y [ ] Z [ ] で取得）、ジャイロセンサー（IMUのジャイロを X [ ] Y [ ] Z [ ] で取得）
+        </li>
+        <li><strong>Speaker (スピーカー)</strong>: ブザー音の再生（Play tone [freq] duration [ms]）、WAV/PCM再生</li>
+        <li><strong>Timer (タイマー)</strong>: 定期実行イベント（PERIODIC/ONE_SHOT）</li>
+        <li><strong>IR (赤外線)</strong>: 赤外線通信（Send address/data）</li>
+      </ul>
+      <p><strong>▼ M5GFX (グラフィックス)</strong></p>
+      <ul>
+        <li><strong>LCD</strong>: 画面描画制御（Draw pixel, line, circle, rect, text, QRコード）</li>
+        <li><strong>Screen (画面)</strong>: 画面全体の設定（Set brightness, background color, rotation）</li>
+        <li>
+          <strong>Label (ラベル)</strong>: テキスト表示部品
+          <ul>
+            <li><strong>[label] を設定：テキスト [string]</strong> ← 文字を変更</li>
+            <li><strong>[label] を設定：x [0] y [0]</strong> ← 位置を変更</li>
+            <li><strong>[label] を設定：テキストの色 [Palette] 背景の色 [Palette]</strong> ← 色を変更</li>
+            <li><strong>表示状態：[label] [show/hide]</strong> ← 表示/非表示</li>
+          </ul>
+          <em>※Labelを画面に配置すると、このカテゴリーが自動的に表示されます</em>
+        </li>
+      </ul>
+      <p><strong>▼ IoT Devices (外部デバイス)</strong></p>
+      <ul>
+        <li><strong>SwitchC6</strong>: M5Stack IoTスイッチの制御</li>
+        <li>その他の拡張ユニット</li>
+      </ul>
+    </div>
+
+    <h4>5. 上部バー（ツールバー）</h4>
+    <ul>
+      <li><strong>💾 Save</strong>: プロジェクトをクラウドに保存します（ログインが必要）。</li>
+    </ul>
+
+    <h4>6. 下部バー（実行コントロール）</h4>
+    <ul>
+      <li><strong>▶ Run</strong>: 作ったプログラムをデバイスに転送して実行します（一時的な実行）。</li>
+      <li><strong>⬇ Download</strong>: プログラムをデバイスの内部メモリに保存します（電源を切っても消えません）。</li>
+      <li><strong>USB/Wi-Fiアイコン</strong>: デバイスとの接続状態を表示・設定します。</li>
+    </ul>
+
+    <div class="box-warning">
+      <strong>Run と Download の違い：</strong><br>
+      - <strong>▶ Run</strong>: プログラムを実行しますが、電源を切ると消えます（テスト用）。<br>
+      - <strong>⬇ Download</strong>: デバイスの起動時に自動実行されるプログラムとして保存されます（本番用）。<br>
+      <br>
+      開発中は「Run」で何度もテストし、完成したら「Download」で保存するのがおすすめです。
+    </div>
+
+    <h4>プログラミングの基本操作</h4>
+
+    <h4>ブロックの扱い方</h4>
+    <ol>
+      <li>
+        <strong>取り出す</strong>:
+        右側のパレットのカテゴリーをクリックし、欲しいブロックを中央へドラッグ＆ドロップします。
+      </li>
+      <li><strong>つなぐ</strong>: ブロックの凹凸を近づけると、ハイライトされてカチッとつながります。</li>
+      <li><strong>削除する</strong>: ブロックを選択してDeleteキーを押すか、ゴミ箱アイコンへドラッグします。</li>
+      <li><strong>複製する</strong>: ブロックを右クリックして「Duplicate（複製）」を選ぶとコピーできます。</li>
+    </ol>
+
+    <h4>Hello World(文字列の表示)</h4>
+
+    <div class="box-info">
+      <strong>この作例で学ぶこと：</strong><br>
+      - Labelの使い方（画面に文字を表示）<br>
+      - Loopブロックの使い方（繰り返し処理）<br>
+      - Waitブロックの使い方（待機処理）<br>
+      - プログラムの転送と実行
+    </div>
+
+    <h4>完成イメージ</h4>
+    <p>M5StickC PLUS2の画面に「M5」と「World」という文字が1秒ごとに交互に表示されるプログラムを作ります。</p>
+
+    <h4>ステップ1：Labelの配置</h4>
+    <p><strong>画面にラベル（文字表示エリア）を作成します。</strong></p>
+
+    <div class="box-info">
+      <strong>重要：Labelの配置方法</strong><br>
+      UIFlow
+      2.0では、部品（Widget）をデバイス画面に配置すると、対応するブロックカテゴリーが自動的に表示される仕組みになっています。
+    </div>
+
+    <ol>
+      <li>
+        <strong>画面構成を確認</strong>：UIFlow 2.0の画面を見てください。
+        <ul>
+          <li>左端：部品パネル（アイコンが縦に並んでいます）</li>
+          <li>左側：カテゴリーツリー（System、Logic、Hardware、M5GFXなど）← ここからブロックを選択</li>
+          <li>中央左：デバイス表示エリア（M5StickC PLUS2の画面イメージ）</li>
+          <li>中央右〜右側：プログラミングエリア（ブロックを組み立てる場所）</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>UIエディターを開く（推奨）</strong>：
+        <ul>
+          <li>デバイス表示エリア（M5StickC PLUS2の画面イメージ）の<strong>右上</strong>を見てください。</li>
+          <li><strong>バッテンマーク（×のようなアイコン）</strong>があります。</li>
+          <li>このアイコンをクリックすると、<strong>UIエディター</strong>が開きます。</li>
+          <li>UIエディターが開くと、デバイス画面が拡大表示され、部品の配置がより簡単になります。</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Labelを配置する</strong>：
+        <div class="box-info">
+          <strong>方法1: UIエディター内で配置（推奨）⭐</strong>
+          UIエディターが開いている状態で：
+          <ul>
+            <li>左側に「タイトル」「ラベル」「円」「四角形」などの部品一覧が表示されます。</li>
+            <li>「<strong>ラベル</strong>」を選択します。</li>
+            <li>デバイス画面上の好きな位置にドラッグ＆ドロップすると、Labelが配置されます。</li>
+            <li>右側のプロパティパネルで、位置・サイズ・色などを調整できます。</li>
+          </ul>
+
+          <strong>方法2: デバイス表示エリア内で配置</strong>
+          UIエディターを使わない場合：
+          <ul>
+            <li>画面左端の部品パネルを見てください。</li>
+            <li>上から2番目あたりに<strong>「左上向き矢印のような形」のアイコン</strong>があります。</li>
+            <li>これが<strong>「Label（ラベル）」</strong>の部品です。</li>
+            <li>
+              Labelアイコンを中央のデバイス画面エリア（黒い画面部分）に<strong>ドラッグ＆ドロップ</strong>します。
+            </li>
+          </ul>
+        </div>
+        <p>どちらの方法でも、画面上に「label0」という文字が表示されます。これでLabelの配置が完了です。</p>
+      </li>
+
+      <li>
+        <strong>カテゴリーツリーに「Label」が表示される</strong>：
+        <ul>
+          <li>Labelを配置すると、左側のカテゴリーツリーに変化が起きます。</li>
+          <li><strong>「M5GFX」</strong>カテゴリーを展開してください。</li>
+          <li>その下に<strong>「ラベル」</strong>というカテゴリーが新しく表示されているはずです。</li>
+          <li>ここにLabel操作用のブロック（文字変更、位置変更、表示/非表示など）が格納されています。</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>ポイント：部品を配置しないとブロックは表示されない！</strong><br>
+      UIFlow 2.0では、デバイス画面に部品を配置して初めて、対応するブロックカテゴリーが表示されます。<br>
+      「Labelのブロックが見つからない！」という場合は、まず左側のパネルからLabelをデバイス画面にドラッグ＆ドロップしてください。
+    </div>
+
+    <div class="box-info">
+      <strong>Labelのプロパティ設定（任意）：</strong>
+      配置したLabelをクリックすると、右側にプロパティパネルが表示されます。ここで以下の設定ができます：&nbsp; &nbsp;
+      &nbsp; &nbsp; -&nbsp;<span style="font-weight: 700; color: rgb(34, 34, 34)">x, y</span>: 画面上の位置座標 -
+      <strong>Text</strong>: 初期表示文字（例：「Hello」） - <strong>Font Size</strong>: 文字サイズ（例：24） -
+      <strong>Color</strong>: 文字色（例：白） - <strong>x, y</strong>: 画面上の位置座標
+      ※この作例ではプログラムで文字を変更するため、初期値のままでOKです。
+    </div>
+
+    <h4>ステップ2：プログラムの作成</h4>
+    <p><strong>「M5」と「World」を交互に表示するプログラムを組み立てます。</strong></p>
+
+    <p><span class="step-number">1</span> <strong>Loopブロックを確認</strong></p>
+    <p>
+      中央のプログラミングエリアに、黄色い「<strong>Loop</strong>」ブロックがあることを確認してください。<br>
+      このブロックの中に入れた処理は、プログラム実行中ずっと繰り返されます。
+    </p>
+
+    <p><span class="step-number">2</span> <strong>「を設定：テキスト」ブロックを取り出す</strong></p>
+    <ol>
+      <li>左側のカテゴリーツリーから<strong>「M5GFX」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「ラベル」</strong>グループを展開します（ステップ1でLabelを配置したため表示されています）。</li>
+      <li><strong>「[label1] を設定：テキスト」</strong>ブロックを見つけます。</li>
+      <li>このブロックを中央の「Loop」ブロックの中にドラッグ＆ドロップします。</li>
+    </ol>
+
+    <p><span class="step-number">3</span> <strong>表示文字を設定</strong></p>
+    <p>
+      ドラッグしたブロックの右側にある白い入力欄（デフォルトで「string」または「text」と書かれている）をクリックし、<strong>「M5」</strong>と入力します。
+    </p>
+
+    <p><span class="step-number">4</span> <strong>「秒 停止」（待機）ブロックを追加</strong></p>
+    <ol>
+      <li>左側のカテゴリーツリーから<strong>「システム」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「時間」</strong>グループを展開します。</li>
+      <li><strong>「[1] 秒 停止」</strong>ブロックを見つけます。</li>
+      <li>このブロックを「label1 を設定：テキスト "M5"」ブロックの下にドラッグしてつなげます。</li>
+      <li>数値の部分が「<strong>1</strong>」になっていることを確認します（1秒待機）。</li>
+    </ol>
+
+    <p><span class="step-number">5</span> <strong>2つ目の「を設定：テキスト」ブロックを追加</strong></p>
+    <ol>
+      <li>もう一度「M5GFX」→「ラベル」から<strong>「[label1] を設定：テキスト」</strong>ブロックを取り出します。</li>
+      <li>「1 秒 停止」ブロックの下につなげます。</li>
+      <li>テキスト欄に<strong>「World」</strong>と入力します。</li>
+    </ol>
+
+    <p><span class="step-number">6</span> <strong>2つ目の「秒 停止」ブロックを追加</strong></p>
+    <ol>
+      <li>「システム」→「時間」カテゴリーから<strong>「[1] 秒 停止」</strong>ブロックをもう1つ取り出します。</li>
+      <li>「label1 を設定：テキスト "World"」ブロックの下につなげます。</li>
+      <li>こちらも「<strong>1</strong>」秒に設定します。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したブロックの構成：</strong><br>
+      <pre>Loop（緑色）
+├─ label1 を設定：テキスト "M5"
+├─ 1 秒 停止
+├─ label1 を設定：テキスト "World"
+└─ 1 秒 停止
+      </pre>
+    </div>
+
+    <!-- 第2章 -->
+    <h2>第2章:作例実践編</h2>
+
+    <h3>第1回「時計をつくる」(変数と論理演算)</h3>
+
+    <div class="box-warning">
+      <strong>新規プロジェクトの作成</strong><br>
+      1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+      2. 画面左上の「新規Project」ボタンをクリックします<br>
+      3. プロジェクト名を「<strong>clock</strong>」と入力します（時計）<br>
+      4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+      5. 「Confirm」ボタンを押してプロジェクトを作成します
+    </div>
+
+    <div class="box-info">
+      <strong>この作例で学ぶこと：</strong><br>
+      - 変数の使い方（数値を保存する）<br>
+      - 条件分岐（If文）の使い方<br>
+      - 論理演算（比較）の使い方<br>
+      - 複数のLabelを扱う方法
+    </div>
+
+    <h4>完成イメージ</h4>
+    <p>
+      M5StickC PLUS2の画面に「時:分:秒」形式のデジタル時計を表示します。<br>
+      秒が60になったら分が増え、分が60になったら時が増え、時が24になったら0にリセットされる本格的な時計プログラムです。<br>
+      LEDが0.5秒ごとに点滅して、秒針のように動作します。
+    </p>
+
+    <h4>ステップ1:変数の作成</h4>
+    <p><strong>時、分、秒を保存するための「変数」を3つ作ります。</strong></p>
+
+    <div class="box-info">
+      <strong>変数とは？</strong><br>
+      変数は、数値や文字を保存しておく「箱」のようなものです。<br>
+      例えば「h」という変数に「12」を保存すると、後でその値を取り出したり、変更したりできます。
+    </div>
+
+    <ol>
+      <li>右側のブロックパレットから<strong>「変数（Variables）」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「変数の作成...」</strong>ボタンをクリックします。</li>
+      <li>変数名の入力画面が出るので、<strong>「s」</strong>と入力して「OK」を押します（秒用の変数）。</li>
+      <li>同じ手順で、<strong>「m」</strong>（分用）と<strong>「h」</strong>（時用）の変数も作成します。</li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>変数名の注意点：</strong><br>
+      変数名は英数字で作成してください。日本語は使えません。<br>
+      今回は簡潔に「s（秒）」「m（分）」「h（時）」としていますが、「seconds」「minutes」「hours」など分かりやすい名前でもOKです。
+    </div>
+
+    <h4>ステップ2:Labelの配置(デバイス表示エリア or UIエディター)</h4>
+    <p><strong>時、分、秒を表示するためのLabelを3つ配置します。</strong></p>
+
+    <ol>
+      <li>画面左のデバイス表示エリアににおいて、左端の部品パネルから<strong>「ラベル」アイコン</strong>を、デバイス画面エリアにドラッグ＆ドロップします（1つ目）。
+      </li>
+      <li>同じ手順で、さらに2つのLabelを配置します（合計3つ）。</li>
+      <li>
+        配置されたLabelの名前を確認します：
+        <ul>
+          <li>1つ目：<strong>label0</strong>（時間表示用）</li>
+          <li>2つ目：<strong>label1</strong>（分表示用）</li>
+          <li>3つ目：<strong>label2</strong>（秒表示用）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-info">
+      <strong>Labelの位置調整（任意）：</strong>
+      配置したLabelをダブルクリックすると、UIエディターが表示されます。
+      「x」「y」の値を変更することで、画面上の位置を調整できます。 例： - label0（時）: x = 10, y = 30 - label1（分）: x
+      = 60, y = 30 - label2（秒）: x = 110, y = 30 ※この設定は後からでも変更できます。
+    </div>
+
+    <h4>ステップ3:初期設定(Setupブロック)</h4>
+    <p><strong>プログラム開始時に、3つの変数を0に設定します。</strong></p>
+
+    <ol>
+      <li>中央のプログラミングエリアにある<strong>「Setup」</strong>ブロック（黄色）を確認します。「内蔵ハードウェアの初期化」ブロック（緑色）は<meta charset="utf-8">「
+<meta charset="utf-8">Setup」ブロックの中の一番上に置いたままにしておきます。</li>
+      <li>右側のブロックパレットから<strong>「変数（Variables）」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「[s] を [0] にする」</strong>ブロックを見つけます。</li>
+      <li>このブロックを「Setup」ブロックの中にドラッグ＆ドロップします。</li>
+      <li>同じ手順で、「[m] を [0] にする」と「[h] を [0] にする」ブロックも追加します。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したSetupブロックの構成：</strong><br>
+      <pre>Setup（黄色）
+├─ 内蔵ハードウェアの初期化
+├─ s を 0 にする
+├─ m を 0 にする
+└─ h を 0 にする
+      </pre>
+      これで、プログラム開始時に時計が「0:0:0」からスタートします。
+    </div>
+
+    <h4>ステップ4:メインプログラム(Loopブロック)</h4>
+    <p><strong>時計を動かすメインプログラムを組み立てます。</strong></p>
+
+    <h4>4-1. Labelに変数の値を表示</h4>
+    <ol>
+      <li>
+        「M5GFX」→「ラベル」カテゴリーから<strong>「[label0] を設定：テキスト」</strong>ブロックを3つ取り出します。
+      </li>
+      <li>それぞれを<strong>「Loop」ブロック（黄色）</strong>の中に配置します。<meta charset="utf-8"><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">「ループ中でボタンやタッチパネルなどの状態を更新」ブロックは</span><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">「</span><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  "><span>&nbsp;</span></span><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">Loop」</span><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">ブロックの中の一番上に置いたままにしておきます。</span>
+</li>
+      <li>
+        各ブロックの右側の入力欄を、以下のように変更します：
+        <ul>
+          <li>
+            1つ目：「変数（Variables）」カテゴリーから<strong>「s」</strong>ブロックをドラッグして入力欄にはめ込む
+          </li>
+          <li>2つ目：同じく<strong>「m」</strong>ブロックをはめ込む</li>
+          <li>3つ目：同じく<strong>「h」</strong>ブロックをはめ込む</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h4>4-2. 秒を1増やす</h4>
+    <ol>
+      <li>「変数（Variables）」カテゴリーから<strong>「[s] を [1] 増やす」</strong>ブロックを取り出します。</li>
+      <li>「label2 を設定：テキスト s」ブロックの下につなげます。</li>
+    </ol>
+
+    <h4>4-3. 秒表示の点滅（文字色変更）</h4>
+    <ol>
+      <li>「M5GFX」→「ラベル」カテゴリーから<strong>「[label2] を設定：テキストの色 [Palette] 背景の色 [Palette]」</strong>ブロックを取り出します。</li>
+      <li>「s を 1 増やす」ブロックの下につなげます。</li>
+      <li>テキストの色を<strong>「白（White）」</strong>、背景の色を<strong>「黒（Black）」</strong>に設定します。</li>
+      <li>「システム」→「時間」から<strong>「[1] 秒 停止」</strong>ブロックを追加し、<meta charset="utf-8"><strong style="
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    font-weight: 700;
+    color: rgb(34, 34, 34);
+    background-attachment: initial !important;
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+  ">[1] 秒<span>&nbsp;</span></strong>&nbsp;を<meta charset="utf-8"><strong style="
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    font-weight: 700;
+    color: rgb(34, 34, 34);
+    background-attachment: initial !important;
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+  ">[0.5] 秒<span>&nbsp;</span></strong>&nbsp;にします。</li>
+      <li>もう一度「[label2] を設定：テキストの色 [Palette] 背景の色 [Palette]」ブロックを取り出します。</li>
+      <li>テキストの色を<strong>「黒（Black）」</strong>、背景の色を<strong>「黒（Black）」</strong>に設定します（文字を見えなくする）。</li>
+      <li>さらに<strong>「[0.5] 秒 停止」</strong>ブロックを追加します。</li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>文字色変更による点滅の仕組み：</strong><br>
+      - <strong>文字色を白にする</strong>：秒の数字が見える（表示）<br>
+      - <strong>文字色を黒にする</strong>：秒の数字が背景色と同じになり見えなくなる（非表示）<br>
+      - これを0.5秒ごとに繰り返すことで、秒表示が点滅しているように見えます。<br>
+      <br>
+      ※LEDブロックが見つからない場合は、この方法で視覚的なフィードバックを与えることができます。
+    </div>
+
+    <div class="box-info">
+      <strong>この時点でのLoopブロックの構成：</strong><br>
+      <pre>Loop（緑色）
+├─ ループ中でボタンやタッチパネルなどの状態を更新
+├─ label0 を設定：テキスト h
+├─ label1 を設定：テキスト m
+├─ label2 を設定：テキスト s
+├─ s を 1 増やす
+├─ label2 を設定：テキストの色 白（White） 背景の色 黒（Black）
+├─ 0.5 秒 停止
+├─ label2 を設定：テキストの色 黒（Black） 背景の色 黒（Black）
+└─ 0.5 秒 停止
+      </pre>
+    </div>
+
+    <h4>4-4. 条件分岐（If文）の追加</h4>
+    <p>
+      <strong>秒が60になったら分を増やし、分が60になったら時を増やし、時が24になったら0にリセットする処理を追加します。</strong>
+    </p>
+
+    <p><span class="step-number">1</span> <strong>秒が60以上になったら分を増やす</strong></p>
+    <ol>
+      <li>「論理」カテゴリーから<strong>「もし [ ] do」</strong>ブロックを取り出します。</li>
+      <li>「0.5秒 停止」ブロックの下につなげます。</li>
+      <li>「論理」カテゴリーから<strong>比較演算ブロック「[ ] ≥ [ ]」</strong>（以上）を取り出します。</li>
+      <li>このブロックを「If」ブロックの条件を入れる穴にはめ込みます。</li>
+      <li>
+        左側に「変数（Variables）」から<strong>「s」</strong>ブロック、右側に<strong>「60」</strong>と入力します。
+      </li>
+      <li>
+        「If」ブロックの中に以下のブロックを配置：
+        <ul>
+          <li>「変数（Variables）」から<strong>「[s] を [0] にする」</strong>（秒をリセット）</li>
+          <li>「変数（Variables）」から<strong>「[m] を [1] 増やす」</strong>（分を1増やす）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p><span class="step-number">2</span> <strong>分が60以上になったら時を増やす</strong></p>
+    <ol>
+      <li>同じ手順で、時間も増やしてみましょう。今作った「もし [ ] do」ブロックのかたまりを右クリックして「ブロックを複製」をクリックします。</li>
+      <li>条件部分を<strong>「m ≥ 60」</strong>に設定します。</li>
+      <li>複製した「もし」ブロックの中で：
+        <ul>
+          <li>「[m] を [0] にする」（分をリセット）</li>
+          <li>「[h] を [1] 増やす」（時を1増やす）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p><span class="step-number">3</span> <strong>時が24以上になったらリセット</strong></p>
+    <ol>
+      <li>さらにもう一度「もし [ ] do」ブロックのかたまりを複製します。</li>
+      <li>条件部分を<strong>「h ≥ 24」</strong>に設定します。</li>
+      <li>
+        「If」ブロックの中に：
+        <ul>
+          <li>「[h] を [0] にする」（時をリセット）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-info">
+      <strong>最終的なLoopブロックの完成形：</strong><br>
+      <pre>Loop（緑色）
+├─ ループ中でボタンやタッチパネルなどの状態を更新
+├─ label0 を設定：テキスト h
+├─ label1 を設定：テキスト m
+├─ label2 を設定：テキスト s
+├─ s を 1 増やす
+├─ label2 を設定：テキストの色 白（White） 背景の色 黒（Black）
+├─ 0.5 秒 停止
+├─ label2 を設定：テキストの色 黒（Black） 背景の色 黒（Black）
+├─ 0.5 秒 停止
+├─ もし s ≥ 60 なら
+│  ├─ s を 0 にする
+│  └─ m を 1 増やす
+├─ もし m ≥ 60 なら
+│  ├─ m を 0 にする
+│  └─ h を 1 増やす
+└─ もし h ≥ 24 なら
+   └─ h を 0 にする
+      </pre>
+    </div>
+
+    <h4>ステップ5:プログラムの実行</h4>
+    <ol>
+      <li>M5StickC PLUS2がPCにUSB接続されていることを確認します。</li>
+      <li>画面上部の<strong>「▶ Run」</strong>ボタンをクリックします。</li>
+      <li>画面に「0:0:0」から始まる時計が表示され、1秒ごとに秒が増えていけば成功です！</li>
+      <li>秒表示（label2）が0.5秒ごとに点滅（表示/非表示）することも確認してください。</li>
+    </ol>
+
+    <h4>プログラムの仕組みを理解しよう</h4>
+    <p>このプログラムは以下のような流れで動作しています：</p>
+    <ol>
+      <li><strong>Setup（初期設定）</strong>: s, m, h の3つの変数を0に設定</li>
+      <li>
+        <strong>Loop（繰り返し）</strong>:
+        <ol>
+          <li>label0, label1, label2に現在の時、分、秒を表示</li>
+          <li>秒（s）を1増やす</li>
+          <li>LEDを点滅させる（ON → 0.5秒待つ → OFF → 0.5秒待つ）</li>
+          <li><strong>条件判定1</strong>: もし秒が60以上なら → 秒を0にして、分を1増やす</li>
+          <li><strong>条件判定2</strong>: もし分が60以上なら → 分を0にして、時を1増やす</li>
+          <li><strong>条件判定3</strong>: もし時が24以上なら → 時を0にする</li>
+          <li>最初に戻る（繰り返し）</li>
+        </ol>
+      </li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>重要な概念：条件分岐（If文）</strong><br>
+      「もし〜なら」という条件によって、処理を実行するかどうかを決めることができます。<br>
+      今回の例では、<strong>「If s ≥ 60」（もし秒が60以上なら）</strong>という条件で、秒が60を超えた瞬間に分を増やす処理を実行しています。<br>
+      <br>
+      <strong>論理演算（比較）の種類：</strong><br>
+      - <strong>≥</strong>: 以上（例：s ≥ 60 は「sが60以上」）<br>
+      - <strong>=</strong>: 等しい（例：s = 60 は「sが60と等しい」）<br>
+      - <strong>&gt;</strong>: より大きい（例：s &gt; 60 は「sが60より大きい」）<br>
+      - <strong>≤</strong>: 以下<br>
+      - <strong>&lt;</strong>: より小さい<br>
+      - <strong>≠</strong>: 等しくない
+    </div>
+
+    <h4>応用してみよう</h4>
+    <p>基本ができたら、以下のような改造に挑戦してみましょう：</p><p><span style="line-height: 1.5;">・文字の色を変える</span></p><p><span style="line-height: 1.5;">・文字の大きさを変える</span></p><p><span style="line-height: 1.5;">・フォントを変える</span></p><p><span style="line-height: 1.5;"><br></span></p>
+
+    <h3>第2回「グラフィック描画」(座標と乱数)</h3>
+
+    <div class="box-warning">
+      <strong>新規プロジェクトの作成</strong><br>
+      1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+      2. 画面左上の「新規Project」ボタンをクリックします<br>
+      3. プロジェクト名を「<strong>shapes</strong>」と入力します（図形）<br>
+      4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+      5. 「Confirm」ボタンを押してプロジェクトを作成します
+    </div>
+
+    <div class="box-info">
+      <strong>この作例で学ぶこと：</strong><br>
+      - 座標系の理解（x, y座標）<br>
+      - 乱数の使い方（ランダムな値を生成）<br>
+      - LCDの描画ブロックの使い方<br>
+      - 図形の描画（円、四角形、線）
+    </div>
+
+    <h4>完成イメージ</h4>
+    <p>
+      M5StickC PLUS2の画面に、ランダムな位置・色・大きさの図形（円や四角形）を次々と描画するプログラムを作ります。<br>
+      ボタンを押すと画面をクリアして、また新しい図形が描かれ続けます。<br>
+      座標の概念と乱数を使うことで、毎回違うパターンが生成される面白いプログラムです。
+    </p>
+
+    <h4>座標系を理解しよう</h4>
+    <div class="box-info">
+      <strong>画面の座標系とは？</strong><br>
+      M5StickC PLUS2の画面は、左上が原点（0, 0）です。<br>
+      - <strong>x座標</strong>: 左から右へ 0 〜 135 ピクセル<br>
+      - <strong>y座標</strong>: 上から下へ 0 〜 240 ピクセル<br>
+      <br>
+      例：<br>
+      - (0, 0) = 左上の角<br>
+      - (67, 120) = 画面の中央<br>
+      - (135, 240) = 右下の角
+    </div>
+
+    <h4>ステップ1:プログラムの準備</h4>
+    <p><strong>今回はLabel部品は使わず、直接LCDに図形を描画します。</strong></p>
+
+    <div class="box-warning">
+      <strong>重要：Label部品は配置しません</strong><br>
+      この作例では、画面に直接図形を描くため、Label部品は不要です。<br>
+      もし前の作例でLabelを配置している場合は、削除するか新しいプロジェクトを作成してください。
+    </div>
+
+    <h4>ステップ2:初期設定(Setupブロック)</h4>
+    <p><strong>画面の背景色を黒にします。</strong></p>
+
+    <ol>
+      <li>右側のブロックパレットから<strong>「M5GFX」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「画面」</strong>グループを展開します。</li>
+      <li><strong>「画面の背景色を設定 [Palette]」</strong>ブロックを見つけます。</li>
+      <li>このブロックを「Setup」ブロックの中にドラッグ＆ドロップします。</li>
+      <li>色のドロップダウンをクリックして、<strong>「黒（Black）」</strong>を選択します。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したSetupブロックの構成：</strong><br>
+      <pre>Setup（黄色）
+├─ 内蔵ハードウェアの初期化
+└─ 画面の背景色を設定 黒（Black）
+      </pre>
+    </div>
+
+    <h4>ステップ3:ランダムな円を描く(Loopブロック)</h4>
+    <p><strong>画面上のランダムな位置に、ランダムな色と大きさの円を描画します。</strong></p>
+
+    <h4>3-1. 乱数を使ってランダムな値を生成</h4>
+    <p>まず、円の座標（x, y）と半径（r）をランダムに決めます。</p>
+
+    <ol>
+      <li>
+        「M5GFX」→「LCD」カテゴリーのDraw Graphicsから<strong>「LCD <meta charset="utf-8"><strong style="
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    font-weight: 700;
+    color: rgb(34, 34, 34);
+    background-attachment: initial !important;
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+  ">draw<span>&nbsp;</span></strong>
+ circle with x [0] y [0] radius [10] color [Palette]」</strong>ブロックを見つけます。
+      </li>
+      <li>このブロックを「Loop」ブロックの中にドラッグ＆ドロップします。</li>
+      <li>次に、「数学」カテゴリーから<strong>「 [1] から [100]までのランダムな整数」</strong>ブロックを取り出します。</li>
+      <li>このブロックを「draw circle」ブロックの<strong>「x」の入力欄</strong>にはめ込みます。</li>
+      <li>乱数の範囲を<strong>「0」から「135」</strong>に設定します（画面の横幅）。</li>
+    </ol>
+
+    <h4>3-2. y座標と半径もランダムにする</h4>
+    <ol>
+      <li>同じく「数学」→「ランダムな整数」ブロックを2つ取り出します。</li>
+      <li>
+        1つ目を「draw
+        circle」ブロックの<strong>「y」の入力欄</strong>にはめ込み、範囲を<strong>「0」から「240」</strong>に設定します（画面の縦幅）。
+      </li>
+      <li>
+        2つ目を「draw
+        circle」ブロックの<strong>「r」（半径）の入力欄</strong>にはめ込み、範囲を<strong>「5」から「30」</strong>に設定します。
+      </li>
+    </ol>
+
+    <h4>3-3. 色を設定する</h4>
+    <ol>
+      <li>「draw circle」ブロックの「color」の色の部分をクリックします。</li>
+      <li>
+        好きな色を選択します（例：<strong>「赤（Red）」</strong>、<strong>「緑（Green）」</strong>、<strong>「青（Blue）」</strong>など）。
+      </li>
+      <li>または、ランダムな色にしたい場合は、RGB値を使った高度な方法もあります（後述）。</li>
+    </ol>
+
+    <h4>3-4. 待機ブロックを追加</h4>
+    <ol>
+      <li>「システム」→「時間」から<strong>「[0.1] 秒 停止」</strong>ブロックを取り出します。</li>
+      <li>「draw circle」ブロックの下につなげます。</li>
+      <li>数値を<strong>「0.1」</strong>秒に設定します（描画速度の調整）。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>この時点でのLoopブロックの構成：</strong>
+      <pre>Loop（緑色）
+├─ ループ中でボタンやタッチパネルなどの状態を更新
+├─ draw circle 
+│  x: ランダムな整数 0 から 135
+│  y: ランダムな整数 0 から 240
+│  r: ランダムな整数 5 から 30
+│  color: 赤（Red）
+└─ 0.1 秒 停止
+      </pre>
+    </div>
+
+    <h4>ステップ4:画面クリア機能を追加(ボタンイベント)</h4>
+    <p><strong>ボタンAを押すと画面をクリアする機能を追加します。</strong></p>
+
+    <ol>
+      <li>
+        「Hardware」→「Button」カテゴリーから<strong>「ボタン [BtnA] が [clicked]」</strong>ブロックを取り出します。
+      </li>
+      <li>このブロックを、SetupやLoopブロックの<strong>外側</strong>（並列）に配置します。</li>
+      <li>「M5GFX」→「LCD」カテゴリーのClear and Fillから<strong>「LCD Fill color [Palette]」</strong>ブロックを取り出します。</li>
+      <li>このブロックを「ボタン BtnA が clicked」ブロックの中にドラッグ＆ドロップします。</li>
+      <li>色を<strong>「黒（Black）」</strong>に設定します（背景色と同じにすると画面がクリアされます）。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したイベントブロックの構成：</strong><br>
+      <pre>ボタン BtnA が clicked
+└─ Fill color 黒（Black）
+      </pre>
+      ※このブロックは、SetupやLoopとは別に、独立して配置されます。
+    </div>
+
+    <h4>ステップ5:プログラムの実行</h4>
+    <ol>
+      <li>M5StickC PLUS2がPCにUSB接続されていることを確認します。</li>
+      <li>画面上部の<strong>「▶ Run」</strong>ボタンをクリックします。</li>
+      <li>画面に次々とランダムな円が描かれれば成功です！</li>
+      <li>ボタンAを押すと、画面がクリアされることを確認してください。</li>
+    </ol>
+
+    <h4>ステップ6:描画の一時停止機能を追加(ボタンBイベント)</h4>
+    <p><strong>ボタンBを押すと描画を停止/再開できる機能を追加します。</strong></p>
+
+    <div class="box-info">
+      <strong>なぜ停止機能が必要？</strong><br>
+      このプログラムは延々と図形を描き続けます。描画を止めて、じっくり見たいときに便利な機能です。<br>
+      変数を使って「描画中」か「停止中」かの状態を管理します。
+    </div>
+
+    <h4>6-1. 変数「drawing」を作成</h4>
+    <ol>
+      <li>右側のブロックパレットから<strong>「変数（Variables）」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「変数の作成...」</strong>ボタンをクリックします。</li>
+      <li>変数名の入力画面が出るので、<strong>「drawing」</strong>と入力して「OK」を押します。</li>
+    </ol>
+
+    <h4>6-2. Setup内で変数を初期化</h4>
+    <ol>
+      <li>「変数（Variables）」カテゴリーから<strong>「[drawing] を [ ] にする」</strong>ブロックを取り出します。</li>
+      <li>このブロックを「Setup」ブロックの中、「画面の背景色を設定」ブロックの下に配置します。</li>
+      <li>値を<strong>「1」</strong>にします（1 = 描画中、0 = 停止中）。</li>
+    </ol>
+
+    <h4>6-3. Loop内に条件分岐を追加</h4>
+    <ol>
+      <li>「論理（Logic）」カテゴリーから<strong>「もし [ ] do」</strong>ブロックを取り出します。</li>
+      <li>このブロックをLoopブロックの中、「ループ中でボタンやタッチパネルなどの状態を更新」の直後に配置します。</li>
+      <li>「論理」カテゴリーから<strong>比較演算ブロック「[ ] = [ ]」</strong>を取り出します。</li>
+      <li>このブロックを「もし」ブロックの条件部分にはめ込みます。</li>
+      <li>左側に「変数（Variables）」から<strong>「drawing」</strong>ブロック、右側に<strong>「1」</strong>と入力します。</li>
+      <li>既存の「draw circle」ブロックと「0.1秒 停止」ブロックを、この「もし」ブロックの<strong>中に</strong>移動します。</li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>ポイント：条件分岐で描画を制御</strong><br>
+      「もし drawing = 1 なら」という条件により、drawingが1のときだけ円が描画されます。<br>
+      drawingが0のときは、何も描画されずにLoopが回り続けます。
+    </div>
+
+    <h4>6-4. ボタンBイベントを追加</h4>
+    <ol>
+      <li>「Hardware」→「Button」カテゴリーから<strong>「ボタン [BtnB] が [clicked]」</strong>ブロックを取り出します。</li>
+      <li>このブロックを、SetupやLoopブロックの<strong>外側</strong>（並列）に配置します。</li>
+      <li>「論理」カテゴリーから<strong>「もし [ ] do そうでなければ」</strong>ブロックを取り出します。</li>
+      <li>このブロックを「ボタン BtnB が clicked」ブロックの中に配置します。</li>
+      <li>条件部分に「drawing = 1」を設定します（先ほどと同じ要領）。</li>
+      <li>
+        「もし」の中に：
+        <ul>
+          <li>「変数（Variables）」から<strong>「[drawing] を [0] にする」</strong>（描画を停止）</li>
+        </ul>
+      </li>
+      <li>
+        「そうでなければ」の中に：
+        <ul>
+          <li>「変数（Variables）」から<strong>「[drawing] を [1] にする」</strong>（描画を再開）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したSetupブロックの構成：</strong>
+      <pre>Setup（黄色）
+├─ 内蔵ハードウェアの初期化
+├─ 画面の背景色を設定 黒（Black）
+└─ drawing を 1 にする
+      </pre>
+
+      <strong>完成したLoopブロックの構成：</strong>
+      <pre>Loop（緑色）
+├─ ループ中でボタンやタッチパネルなどの状態を更新
+└─ もし drawing = 1 なら
+   ├─ draw circle 
+   │  x: ランダムな整数 0 から 135
+   │  y: ランダムな整数 0 から 240
+   │  r: ランダムな整数 5 から 30
+   │  color: 赤（Red）
+   └─ 0.1 秒 停止
+      </pre>
+
+      <strong>完成したボタンBイベントの構成：</strong>
+      <pre>ボタン BtnB が clicked
+└─ もし drawing = 1 なら
+   ├─ drawing を 0 にする
+   そうでなければ
+   └─ drawing を 1 にする
+      </pre>
+    </div>
+
+    <h4>6-5. プログラムを実行してテスト</h4>
+    <ol>
+      <li>画面上部の<strong>「▶ Run」</strong>ボタンをクリックします。</li>
+      <li>最初は円が描画され続けます。</li>
+      <li>ボタンB（右側面）を押すと、描画が停止します。</li>
+      <li>もう一度ボタンBを押すと、描画が再開されます。</li>
+      <li>ボタンAを押すと、画面がクリアされます。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成！</strong><br>
+      これで、以下の3つの機能が実装されました：<br>
+      - <strong>自動描画</strong>: プログラムが動いている間、0.1秒ごとにランダムな円を描く<br>
+      - <strong>ボタンA</strong>: 画面をクリア（黒で塗りつぶし）<br>
+      - <strong>ボタンB</strong>: 描画の一時停止/再開
+    </div>
+
+    <h4>プログラムの仕組みを理解しよう</h4>
+    <p>このプログラムは以下のような流れで動作しています：</p>
+    <ol>
+      <li><strong>Setup（初期設定）</strong>: 背景色を黒に設定</li>
+      <li>
+        <strong>Loop（繰り返し）</strong>:
+        <ol>
+          <li>ランダムなx座標（0〜135）を生成</li>
+          <li>ランダムなy座標（0〜240）を生成</li>
+          <li>ランダムな半径（5〜30）を生成</li>
+          <li>指定した色で円を描画</li>
+          <li>0.1秒待つ</li>
+          <li>最初に戻る（繰り返し）</li>
+        </ol>
+      </li>
+      <li><strong>イベント（ボタンA押下時）</strong>: 画面を黒で塗りつぶす（クリア）</li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>重要な概念：乱数（ランダム）</strong><br>
+      「ランダムな整数 [min] から [max]」ブロックは、指定した範囲内でランダムな整数を生成します。<br>
+      今回の例では：<br>
+      - <strong>ランダムな整数 0 から 135</strong>: 0から135までのランダムな数（x座標用）<br>
+      - <strong>ランダムな整数 0 から 240</strong>: 0から240までのランダムな数（y座標用）<br>
+      - <strong>ランダムな整数 5 から 30</strong>: 5から30までのランダムな数（半径用）<br>
+      <br>
+      毎回違う値が生成されるため、実行するたびに異なるパターンが描かれます。
+    </div>
+
+    <div class="box-info">
+      <strong>座標系のポイント：</strong><br>
+      - <strong>x座標の最大値（135）</strong>: M5StickC PLUS2の画面幅<br>
+      - <strong>y座標の最大値（240）</strong>: M5StickC PLUS2の画面高さ<br>
+      - 円の中心がこの範囲を超えると、画面外に描画されて見えなくなります。<br>
+      - 半径も考慮して、<code>ランダムな整数 5 から 60</code>
+      のようにx座標を設定すると、円全体が画面内に収まりやすくなります。
+    </div>
+
+    <h4>応用してみよう</h4>
+    <p>基本ができたら、以下のような改造に挑戦してみましょう：</p>
+
+    <h4>▶ 応用1：四角形を描く</h4>
+    <ul>
+      <li>
+        「draw circle」の代わりに、LCDカテゴリーのDraw Graphicsから<strong>「LCD draw rect x [0] y [0] width [100] height [100] color [Palette]」</strong>ブロックを使ってみましょう。
+      </li>
+      <li>幅（width）と高さ（height）もランダムにすると面白いです。</li>
+    </ul>
+
+    <h4>▶ 応用2：線を描く</h4>
+    <ul>
+      <li>
+        <strong><meta charset="utf-8"><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">LCDカテゴリーのDraw Graphicsから</span>
+「LCD draw line with x0 [0] y0 [0] x1 [10] y1 [10] color [Palette]」</strong>ブロックを使って、ランダムな位置を結ぶ線を描いてみましょう。
+      </li>
+      <li>芸術的なパターンが生まれます。</li>
+    </ul>
+
+    <h4>▶ 応用3：複数の図形を同時に描く</h4>
+    <ul>
+      <li>Loopブロックの中に、「draw circle」と「draw rect」の両方を入れて、円と四角形を同時に描画してみましょう。</li>
+    </ul>
+
+    <h4>▶ 応用4：描画速度を変える</h4>
+    <ul>
+      <li>「Pause」ブロックの値を変更して、描画速度を調整してみましょう。</li>
+      <li>例：<strong>0.01秒</strong>にすると超高速、<strong>0.5秒</strong>にするとゆっくり描画されます。</li>
+    </ul>
+
+    <h4>▶ 応用5：色指定の方法を理解する</h4>
+    <div class="box-info">
+      <strong>色の指定方法（Palette, RGB, HSV, Hex）</strong><br>
+      UIFlow 2.0の色ブロックでは、4種類の色指定方法が選べます：<br>
+      <br>
+      <strong>1. Palette（パレット）</strong><br>
+      - あらかじめ用意された色から選択<br>
+      - 初心者に最も簡単です<br>
+      <br>
+      <strong>2. RGB（Red, Green, Blue）</strong><br>
+      - 赤（R）・緑（G）・青（B）の3色の光の強さで色を表現<br>
+      - <strong>各色の範囲：0〜255</strong>（0 = 光なし、255 = 最大の明るさ）<br>
+      - 例：<br>
+      &nbsp;&nbsp;• RGB(255, 0, 0) = 赤<br>
+      &nbsp;&nbsp;• RGB(0, 255, 0) = 緑<br>
+      &nbsp;&nbsp;• RGB(0, 0, 255) = 青<br>
+      &nbsp;&nbsp;• RGB(255, 255, 0) = 黄色（赤+緑）<br>
+      &nbsp;&nbsp;• RGB(255, 255, 255) = 白<br>
+      &nbsp;&nbsp;• RGB(0, 0, 0) = 黒<br>
+      - 光の三原色を使った加法混色（色を混ぜると明るくなる）<br>
+      <br>
+      <strong>3. HSV（Hue, Saturation, Value）</strong><br>
+      - 色相（H）・彩度（S）・明度（V）で色を表現<br>
+      - <strong>色相（H）の範囲：0〜360</strong>（色の種類。0=赤、120=緑、240=青）<br>
+      - <strong>彩度（S）の範囲：0〜100</strong>（色の鮮やかさ。0=灰色、100=鮮やか）<br>
+      - <strong>明度（V）の範囲：0〜100</strong>（色の明るさ。0=黒、100=明るい）<br>
+      - 例：<br>
+      &nbsp;&nbsp;• HSV(0, 100, 100) = 赤<br>
+      &nbsp;&nbsp;• HSV(120, 100, 100) = 緑<br>
+      &nbsp;&nbsp;• HSV(240, 100, 100) = 青<br>
+      &nbsp;&nbsp;• HSV(60, 100, 100) = 黄色<br>
+      - 人間の感覚に近い色の表現方法<br>
+      <br>
+      <strong>4. Hex（16進数カラーコード）</strong><br>
+      - Web開発で使われる6桁の16進数で色を表現<br>
+      - <strong>形式：#RRGGBB</strong>（RR=赤、GG=緑、BB=青）<br>
+      - <strong>各色の範囲：00〜FF</strong>（16進数。00=0、FF=255）<br>
+      - 例：<br>
+      &nbsp;&nbsp;• #FF0000 = 赤（RGB 255, 0, 0）<br>
+      &nbsp;&nbsp;• #00FF00 = 緑（RGB 0, 255, 0）<br>
+      &nbsp;&nbsp;• #0000FF = 青（RGB 0, 0, 255）<br>
+      &nbsp;&nbsp;• #FFFF00 = 黄色（RGB 255, 255, 0）<br>
+      &nbsp;&nbsp;• #FFFFFF = 白<br>
+      &nbsp;&nbsp;• #000000 = 黒<br>
+      - Webサイトやデザインツールと同じ色を使いたいときに便利
+    </div>
+
+    <h4>▶ 応用6：ランダムな色を使う</h4>
+    <ul>
+      <li>「数学」カテゴリーの「ランダムな整数」ブロックを3つ使って、RGB値をランダムにしてみましょう。</li>
+      <li>例：R = ランダム 0〜255、G = ランダム 0〜255、B = ランダム 0〜255</li>
+      <li>実行するたびにカラフルな虹色の円が描かれます！</li>
+    </ul>
+
+    <div class="box-info">
+      <strong>おめでとうございます！</strong><br>
+      「座標系」「乱数」「LCD描画」「ボタンイベント」という重要な概念を学びました。<br>
+      座標の概念は、ゲームやアニメーションを作る上で非常に重要です。<br>
+      次の作例では、センサーを使ってより高度なプログラムに挑戦していきます！
+    </div>
+
+    <h3>第3回「加速度センサーを使ってみる」</h3>
+
+    <div class="box-warning">
+      <strong>新規プロジェクトの作成</strong><br>
+      1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+      2. 画面左上の「新規Project」ボタンをクリックします<br>
+      3. プロジェクト名を「<strong>sensor</strong>」と入力します（センサー）<br>
+      4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+      5. 「Confirm」ボタンを押してプロジェクトを作成します
+    </div>
+
+    <div class="box-info">
+      <strong>この作例で学ぶこと：</strong><br>
+      - 加速度センサーの使い方<br>
+      - センサー値の取得と表示<br>
+      - 条件分岐とセンサー値の活用<br>
+      - 閾値（しきいち）判定の実装
+    </div>
+
+    <h4>完成イメージ</h4>
+    <p>
+      M5StickC
+      PLUS2を傾けると、内蔵の加速度センサーが傾きを検知し、画面に「X・Y・Z」の3軸の値がリアルタイムで表示されます。<br>
+      特定の閾値（例：X軸が0.5以上）を超えると、画面に警告メッセージ「傾きすぎ！」が表示されるプログラムを作ります。<br>
+      センサーの値を使った条件分岐の基本を学べます。
+    </p>
+
+    <h4>加速度センサーとは</h4>
+    <div class="box-info">
+      <strong>加速度センサー（Accelerometer）の基礎知識</strong><br>
+      M5StickC PLUS2には「6軸IMU（慣性計測ユニット）」が内蔵されており、以下の2種類のセンサーが含まれています：<br>
+      <br>
+      <strong>1. 加速度センサー（Accelerometer）</strong><br>
+      - 3軸（X・Y・Z）の加速度を測定<br>
+      - 重力の影響を受けるため、<strong>傾き検知</strong>に利用できる<br>
+      - 単位：G（重力加速度）<br>
+      - 例：水平に置くとZ軸が約1.0G、上下逆にすると約-1.0G<br>
+      <br>
+      <strong>2. ジャイロセンサー（Gyroscope）</strong><br>
+      - 3軸（X・Y・Z）の角速度を測定<br>
+      - 回転の速さを検知できる<br>
+      - 単位：°/s（度/秒）<br>
+      <br>
+      <strong>今回は「加速度センサー」を使って、本体の傾きを検知します。</strong>
+    </div>
+
+    <h4>ステップ1:Labelの配置</h4>
+    <p><strong>X・Y・Zの3軸の値を表示するためのLabelを4つ配置します。</strong></p>
+
+    <ol>
+      <li>
+        左端の部品パネルから<strong>「Label」アイコン</strong>を、デバイス画面エリアにドラッグ＆ドロップします（1つ目）。
+      </li>
+      <li>同じ手順で、さらに3つのLabelを配置します（合計4つ）。</li>
+      <li>
+        配置されたLabelの名前を確認します：
+        <ul>
+          <li>1つ目：<strong>label0</strong>（タイトル「加速度センサー」表示用）</li>
+          <li>2つ目：<strong>label1</strong>（X軸の値表示用）</li>
+          <li>3つ目：<strong>label2</strong>（Y軸の値表示用）</li>
+          <li>4つ目：<strong>label3</strong>（Z軸の値表示用）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-info">
+      <strong>Labelの位置調整（任意）：</strong><br>
+      配置したLabelをダブルクリックすると、UI エディターが表示されます。<br>
+      「x」「y」の値を変更することで、画面上の位置を調整できます。<br>
+      例：<br>
+      - label0（タイトル）: x = 10, y = 10, Font Size = 18<br>
+      - label1（X軸）: x = 10, y = 40, Font Size = 12<br>
+      - label2（Y軸）: x = 10, y = 60, Font Size = 12<br>
+      - label3（Z軸）: x = 10, y = 80, Font Size = 12<br>
+      ※この設定は後からでも変更できます。
+    </div>
+
+    <h4>ステップ2:初期設定(Setupブロック)</h4>
+    <p><strong>プログラム開始時に、タイトルを表示します。</strong></p>
+
+    <ol>
+      <li>中央のプログラミングエリアにある<strong>「Setup」</strong>ブロック（黄色）を確認します。</li>
+      <li>右側のブロックパレットから<strong>「M5GFX」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「Label」</strong>グループを展開します。</li>
+      <li><strong>「[label0] を設定：テキスト」</strong>ブロックを見つけます。</li>
+      <li>このブロックを「Setup」ブロックの中にドラッグ＆ドロップします。</li>
+      <li>テキスト欄に<strong>「Sensor」</strong>と入力します。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したSetupブロックの構成：</strong><br>
+      <pre>Setup（黄色）
+├─ 内蔵ハードウェアの初期化
+└─ label0 を設定：テキスト "Sensor"
+      </pre>
+    </div>
+
+    <h4>ステップ3:センサー値の取得と表示(Loopブロック)</h4>
+    <p><strong>加速度センサーから3軸の値を取得し、変数に保存してLabelに表示します。</strong></p>
+
+    <h4>3-1. 加速度を格納する変数を作成</h4>
+    <ol>
+      <li>右側のブロックパレットから<strong>「変数（Variables）」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「変数の作成...」</strong>ボタンをクリックします。</li>
+      <li>変数名を<strong>「x_accel」</strong>と入力して「OK」を押します（X軸の加速度用）。</li>
+      <li>同じ手順で、<strong>「y_accel」</strong>（Y軸用）と<strong>「z_accel」</strong>（Z軸用）の変数も作成します。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>変数名の意味：</strong><br>
+      - <strong>x_accel</strong> = X軸の加速度（acceleration）<br>
+      - <strong>y_accel</strong> = Y軸の加速度<br>
+      - <strong>z_accel</strong> = Z軸の加速度<br>
+      <br>
+      英語の変数名を使うことで、プログラミングの世界標準に慣れることができます。
+    </div>
+
+    <h4>3-2. 加速度センサーから値を取得</h4>
+    <ol>
+      <li>中央のプログラミングエリアにある<strong>「Loop」</strong>ブロック（緑色）を確認します。</li>
+      <li>右側のブロックパレットから<strong>「Hardware」</strong>→<strong>「IMU」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「IMUの加速度を X [ ] Y [ ] Z [ ] で取得」</strong>ブロックを見つけます。</li>
+      <li>このブロックを「Loop」ブロックの中（「ループ中でボタンやタッチパネルなどの状態を更新」の下）にドラッグ＆ドロップします。</li>
+      <li>X の □ 部分に、「変数（Variables）」から<strong>「x_accel」</strong>ブロックをはめ込みます。</li>
+      <li>Y の □ 部分に、<strong>「y_accel」</strong>ブロックをはめ込みます。</li>
+      <li>Z の □ 部分に、<strong>「z_accel」</strong>ブロックをはめ込みます。</li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>このブロックの動作：</strong><br>
+      「IMUの加速度を X [x_accel] Y [y_accel] Z [z_accel] で取得」ブロックは、<br>
+      センサーから取得したX, Y, Zの3つの値を、それぞれ指定した変数に自動的に代入します。<br>
+      <br>
+      実行すると：<br>
+      - x_accel に X軸の値が入る<br>
+      - y_accel に Y軸の値が入る<br>
+      - z_accel に Z軸の値が入る
+    </div>
+
+    <h4>3-3. 変数の値をLabelに表示</h4>
+    <ol>
+      <li>「M5GFX」→「Label」カテゴリーから<strong>「[label1] を設定：テキスト」</strong>ブロックを取り出します。</li>
+      <li>「IMUの加速度を取得」ブロックの下につなげます。</li>
+      <li>テキスト入力欄に、「変数（Variables）」から<strong>「x_accel」</strong>ブロックをはめ込みます。</li>
+      <li>同じ手順で、<strong>「[label2] を設定：テキスト」</strong>ブロックを取り出し、<strong>「y_accel」</strong>をはめ込みます。</li>
+      <li>さらに、<strong>「[label3] を設定：テキスト」</strong>ブロックを取り出し、<strong>「z_accel」</strong>をはめ込みます。</li>
+      <li>最後に、「システム」→「時間」から<strong>「[0.1] 秒 停止」</strong>ブロックを追加します。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>この時点でのLoopブロックの構成：</strong><br>
+      <pre>Loop（緑色）
+├─ ループ中でボタンやタッチパネルなどの状態を更新
+├─ IMUの加速度を X [x_accel] Y [y_accel] Z [z_accel] で取得
+├─ label1 を設定：テキスト x_accel
+├─ label2 を設定：テキスト y_accel
+├─ label3 を設定：テキスト z_accel
+└─ 0.1 秒 停止
+      </pre>
+    </div>
+
+    <h4>ステップ4:条件分岐の追加(閾値判定)</h4>
+    <p><strong>X軸の値が0.2以上になったら、「傾きすぎ！」と警告を表示する機能を追加します。</strong></p>
+
+    <div class="box-info">
+      <strong>閾値（しきいち）とは？</strong><br>
+      閾値とは、「この値を超えたら何かする」という判断基準の値のことです。<br>
+      今回は、<strong>X軸が0.2以上</strong>という閾値を設定し、それを超えたら警告を出します。
+    </div>
+
+    <h4>4-1. 警告用のLabelを追加</h4>
+    <ol>
+      <li>左端の部品パネルから<strong>「Label」アイコン</strong>をもう1つ、デバイス画面エリアにドラッグ＆ドロップします。</li>
+      <li>このLabelは<strong>label4</strong>として作成されます（警告メッセージ表示用）。</li>
+    </ol>
+
+    <h4>4-2. 条件分岐を追加</h4>
+    <ol>
+      <li>「論理」カテゴリーから<strong>「もし [ ] do そうでなければ」</strong>ブロックを取り出します。</li>
+      <li>「0.1秒 停止」ブロックの下につなげます。</li>
+      <li>「論理」カテゴリーから<strong>比較演算ブロック「[ ] ≥ [ ]」</strong>（以上）を取り出します。</li>
+      <li>このブロックを「If」ブロックの条件を入れる穴にはめ込みます。</li>
+      <li>左側に「変数（Variables）」から<strong>「x_accel」</strong>ブロック、右側に<strong>「0.2」</strong>と入力します。</li>
+      <li>「もし」ブロックの中に：
+        <ul>
+          <li>「M5GFX」→「Label」から<strong>「[label4] を設定：テキスト」</strong>ブロックを配置</li>
+          <li>テキスト欄に<strong>「Tilt!」</strong>と入力します（傾きすぎ！）</li>
+        </ul>
+      </li>
+      <li>「そうでなければ」ブロックの中に：
+        <ul>
+          <li>もう1つ<strong>「[label4] を設定：テキスト」</strong>ブロックを配置</li>
+          <li>テキスト欄を<strong>空白（""）</strong>にします（警告を消す）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-info">
+      <strong>最終的なLoopブロックの完成形：</strong><br>
+      <pre>Loop（緑色）
+├─ ループ中でボタンやタッチパネルなどの状態を更新
+├─ IMUの加速度を X [x_accel] Y [y_accel] Z [z_accel] で取得
+├─ label1 を設定：テキスト x_accel
+├─ label2 を設定：テキスト y_accel
+├─ label3 を設定：テキスト z_accel
+├─ 0.1 秒 停止
+└─ もし x_accel ≥ 0.2 なら
+   ├─ label4 を設定：テキスト "Tilt!"
+   そうでなければ
+   └─ label4 を設定：テキスト ""
+      </pre>
+    </div>
+
+    <h4>ステップ5:プログラムの実行</h4>
+    <ol>
+      <li>M5StickC PLUS2がPCにUSB接続されていることを確認します。</li>
+      <li>画面上部の<strong>「▶ Run」</strong>ボタンをクリックします。</li>
+      <li>画面に3つの数値（X・Y・Z軸の加速度）が表示されれば成功です！</li>
+      <li>本体を傾けると、数値がリアルタイムで変化します。</li>
+      <li>X軸の値が0.2以上になると、「Tilt!」という警告が表示されることを確認してください。</li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>センサーの向きを確認しよう：</strong><br>
+      - <strong>X軸</strong>: 画面を正面に見て、左右の傾き（左に傾けると+、右に傾けると-）<br>
+      - <strong>Y軸</strong>: 前後の傾き（手前に傾けると+、奥に傾けると-）<br>
+      - <strong>Z軸</strong>: 上下の向き（画面を上に向けると約+1.0G、下に向けると約-1.0G）<br>
+      <br>
+      水平に置いた状態で、Z軸が約1.0になるのは、地球の重力（1G）を検知しているためです。
+    </div>
+
+    <h4>プログラムの仕組みを理解しよう</h4>
+    <p>このプログラムは以下のような流れで動作しています：</p>
+    <ol>
+      <li><strong>Setup（初期設定）</strong>: タイトル「Sensor」を表示</li>
+      <li><strong>Loop（繰り返し）</strong>:
+        <ol>
+          <li>加速度センサーからX・Y・Z軸の値を取得</li>
+          <li>それぞれの値をlabel1, label2, label3に表示</li>
+          <li>0.1秒待つ（表示更新の間隔）</li>
+          <li><strong>条件判定</strong>: もしX軸が0.5以上なら → label4に「Tilt!」と表示</li>
+          <li><strong>条件判定（そうでなければ）</strong>: X軸が0.5未満なら → label4を空白にする</li>
+          <li>最初に戻る（繰り返し）</li>
+        </ol>
+      </li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>重要な概念：センサー値と条件分岐</strong><br>
+      センサーから取得した値を変数に保存することで、その値を条件分岐で使うことができます。<br>
+      今回の例では、<strong>「もし x_accel ≥ 0.2」</strong>という条件で、リアルタイムに傾きを判定しています。<br>
+      <br>
+      <strong>変数を使う利点：</strong><br>
+      - センサー値を一度取得して変数に保存するため、プログラムが読みやすくなります<br>
+      - 同じ値を何度も使いたいときに、何度もセンサーから取得する必要がありません<br>
+      <br>
+      <strong>閾値の調整：</strong><br>
+      - <strong>0.2</strong>より小さい値（例：0.1）にすると、少しの傾きでも反応します<br>
+      - <strong>0.2</strong>より大きい値（例：0.5）にすると、大きく傾けないと反応しません<br>
+      <br>
+      実際に動かしながら、自分に合った閾値を見つけてみましょう！
+    </div>
+
+    <h4>応用してみよう</h4>
+    <p>基本ができたら、以下のような改造に挑戦してみましょう：</p>
+
+    <h4>▶ 応用1：Y軸・Z軸にも閾値判定を追加</h4>
+    <ul>
+      <li>そのままIfブロックを3つ並べてしまうと、後ろの「そうでなければ」で <strong>""（空文字）</strong> に上書きされて、表示が消えてしまうことがあります。</li>
+      <li>そこで、<strong>「もし → そうでなければ（その中に次のもし）」</strong>の形で、Ifを1本につなげていきます（優先順位を作る）。</li>
+      <li>
+        例（優先順位：X → Y → Z）：
+        <ul>
+          <li>もし <strong>x_accel ≥ 0.2</strong> なら → "Tilt!"</li>
+          <li>そうでなければ、もし <strong>y_accel ≥ 0.2</strong> なら → "Forward!"（前傾）</li>
+          <li>そうでなければ、もし <strong>z_accel &lt; 0</strong> なら → "Upside Down!"（逆さま）</li>
+          <li>そうでなければ → <strong>""（何も表示しない）</strong></li>
+        </ul>
+      </li>
+      <li>※閾値（0.2など）の数字は、先に作った「閾値判定（x_accel ≥ 0.2）」と同じ考え方で調整してみましょう。</li>
+    </ul>
+
+    <h4>▶ 応用2：警告の色を変える</h4>
+    <ul>
+      <li>警告メッセージ（label4）の文字色を赤にして、より目立たせてみましょう。</li>
+      <li>デバイス表示エリアで、<strong>label4</strong>を<strong>ダブルクリック</strong>してUI エディターを表示し、文字の色などを変えてみましょう。</li>
+    </ul>
+
+    <h4>▶ 応用3：LEDを光らせる</h4>
+    <ul>
+      <li>閾値を超えたときに、本体のLEDを赤く光らせてみましょう。</li>
+      <li>「Hardware」→「LED」カテゴリーのブロックを使います（詳細は第4回以降で学習）。</li>
+    </ul>
+
+    <h4>▶ 応用4：表示フォーマットを整える</h4>
+    <ul>
+      <li>センサー値の前に「X:」「Y:」「Z:」というラベルを追加してみましょう。</li>
+      <li>「テキスト」カテゴリーの<strong>「[ hello M5 ] + [&nbsp; ] 」</strong>ブロックを使います。</li>
+      <li>例：「X: 」と「x_accel」をつなげて「X: 0.12」のように表示</li>
+    </ul>
+
+    <h4>▶ 応用5：ジャイロセンサーも使ってみる</h4>
+    <ul>
+      <li>「Hardware」→「IMU」には<strong>「IMUのジャイロを X [ ] Y [ ] Z [ ] で取得」</strong>ブロックもあります。</li>
+      <li>本体を回転させると、回転速度（°/秒）が取得できます。</li>
+      <li>新しい変数（x_gyro, y_gyro, z_gyro）を作成して、ジャイロ値も表示してみましょう。</li>
+      <li>ジャイロ値も表示して、加速度との違いを体験してみましょう。</li>
+      <li><strong>補足：</strong> ジャイロの値は、静止していても<strong>0</strong>にならず、少し揺れることがあります（センサーのズレや周囲の微小な振動・ノイズを拾うため）。</li>
+      <li>動きの判定をしたいときは、<strong>しきい値</strong>（例：abs(x_gyro) &gt; 5）を設けたり、複数回の値の<strong>平均</strong>を使ったり、起動直後に<strong>ゼロ点補正</strong>（最初の値を引く）をすると安定します。</li>
+    </ul>
+
+    <div class="box-info">
+      <strong>おめでとうございます！</strong><br>
+      「加速度センサー」「センサー値の取得」「条件分岐」「閾値判定」という重要な概念を学びました。<br>
+      センサーを使うことで、デバイスが物理世界と対話できるようになります。<br>
+      次の作例では、より複雑なプログラムに挑戦していきます！
+    </div>
+
+    <h3>第4回「デジタル名刺」</h3>
+
+    <div class="box-warning">
+      <strong>新規プロジェクトの作成</strong><br>
+      1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+      2. 画面左上の「新規Project」ボタンをクリックします<br>
+      3. プロジェクト名を「<strong>card</strong>」と入力します（名刺）<br>
+      4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+      5. 「Confirm」ボタンを押してプロジェクトを作成します
+    </div>
+
+    <div class="box-info">
+      <strong>この作例で学ぶこと：</strong><br>
+      - リスト（配列）の使い方<br>
+      - ボタンで情報を切り替える方法<br>
+      - インデックス（番号）による要素アクセス<br>
+      - 複数の情報を整理して管理する方法
+    </div>
+
+    <h4>完成イメージ</h4>
+    <p>
+      M5StickC PLUS2を「デジタル名刺」として活用します。<br>
+      画面に「名前」「趣味」「好きな食べ物」「特技」などの自己紹介情報を表示し、ボタンAを押すたびに次の項目に切り替わります。<br>
+      リスト（配列）を使って複数の情報を管理し、ボタン操作で表示内容を切り替える実用的なプログラムです。
+    </p>
+
+    <h4>リスト(配列)とは</h4>
+    <div class="box-info">
+      <strong>リスト（List / 配列 Array）の基礎知識</strong><br>
+      リストは、複数のデータを1つの箱にまとめて管理できる便利な機能です。<br>
+      <br>
+      <strong>例：自己紹介リスト</strong><br>
+      情報 = ["Taro", "Game", "Ramen", "Soccer"]<br>
+      <br>
+      <strong>インデックス（番号）でアクセス：</strong><br>
+      UIFlow 2.0の「リスト」ブロックは、番号が <strong>#1</strong> から始まります（1番目が #1）。<br>
+      - 情報 #1 = "Taro"（1番目）<br>
+      - 情報 #2 = "Game"（2番目）<br>
+      - 情報 #3 = "Ramen"（3番目）<br>
+      - 情報 #4 = "Soccer"（4番目）<br>
+    </div>
+
+    <h4>ステップ1:変数とリストの作成</h4>
+    <p><strong>表示する項目のインデックス番号を管理する変数と、自己紹介情報を格納するリストを作成します。</strong></p>
+
+    <h4>1-1. 変数「index」を作成</h4>
+    <ol>
+      <li>右側のブロックパレットから<strong>「変数（Variables）」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「変数の作成...」</strong>ボタンをクリックします。</li>
+      <li>変数名の入力画面が出るので、<strong>「index」</strong>と入力して「OK」を押します。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>変数「index」の役割：</strong><br>
+      この変数は、現在表示している項目の番号（#1, #2, #3...）を管理します。<br>
+      UIFlow 2.0の「リスト」ブロックは <strong>#1</strong> から始まるため、今回は index も <strong>1</strong> からスタートします。<br>
+      ボタンを押すたびに、この番号を増やしていきます。
+    </div>
+
+    <h4>1-2. リストを入れる変数「info」「labels」を作成</h4>
+    <ol>
+      <li>右側のブロックパレットから<strong>「変数（Variables）」</strong>カテゴリーをクリックします。</li>
+      <li><strong>「変数の作成...」</strong>ボタンをクリックします。</li>
+      <li>変数名に<strong>「info」</strong>と入力して「OK」を押します（内容用のリストを入れる変数）。</li>
+      <li>同じ手順で、変数名に<strong>「labels」</strong>と入力して「OK」を押します（項目名用のリストを入れる変数）。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>ポイント：</strong><br>
+      UIFlow 2.0では、「リスト」カテゴリーから<strong>歯車（⚙）が付いた「リストを作るブロック」</strong>を使って、変数にリストを入れて使います。<br>
+      （歯車をクリックして、<strong>item</strong>ブロックをリストの中にドラッグ&amp;ドロップすると、リストのitemを増やせます）
+    </div>
+
+    <h4>1-3. 「以下を使ってリストを作成」ブロックでリストを作る（おすすめ）</h4>
+    <ol>
+      <li><strong>（配置場所）</strong>中央のプログラミングエリアの<strong>「Setup」</strong>ブロック（黄色）の中に、これから作るブロックを入れていきます。</li>
+      <li>「変数（Variables）」から<strong>「[labels] を [ ] にする」</strong>ブロックを取り出し、<strong>Setup</strong>ブロックの中に入れます（まず“入れ物”を置きます）。</li>
+      <li>右側のブロックパレットから<strong>「リスト」</strong>カテゴリーをクリックし、<strong>「以下を使ってリストを作成：」</strong>ブロックを見つけます（左上に歯車（⚙）が付いているブロックです）。</li>
+      <li>Setup内の<strong>「[labels] を [ ] にする」</strong>ブロックの [ ] に、<strong>「以下を使ってリストを作成：」</strong>ブロックをはめ込みます。</li>
+      <li><strong>歯車（⚙）をクリック</strong>し、<strong>item</strong>を4個に増やします（Name / Hobby / Food / Skill の4つを入れるため）。</li>
+      <li>「テキスト」カテゴリーから<strong>「"&nbsp; "」</strong>ブロックを取り出し、リストの各itemの穴に入れていきます。入力例：
+        <ul>
+          <li>1つ目：<strong>Name:</strong></li>
+          <li>2つ目：<strong>Hobby:</strong></li>
+          <li>3つ目：<strong>Food:</strong></li>
+          <li>4つ目：<strong>Skill:</strong></li>
+        </ul>
+      </li>
+
+      <li>同じように、<strong>「[info] を [ ] にする」</strong>ブロックもSetupの中に作ります。</li>
+      <li>今作った<strong>「[labels] を [ ] にする」</strong>ブロックを<strong>右クリック</strong>し、<strong>「ブロックを複製」</strong>をクリックします。</li>
+      <li>複製したブロックを<strong>「[labels] を [ ] にする」</strong>ブロックの下につなげ、変数名を<strong>[labels] → [info]</strong>に変更します。</li>
+      <li>item名を次のように修正します（<strong>英語で入力してください</strong>）：
+        <ul>
+          <li>1つ目：<strong>Taro</strong></li>
+          <li>2つ目：<strong>Game</strong></li>
+          <li>3つ目：<strong>Ramen</strong></li>
+          <li>4つ目：<strong>Soccer</strong></li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>2つのリストの役割：</strong><br>
+      - <strong>labels</strong>：項目名（"Name:", "Hobby:", "Food:", "Skill:"）を格納<br>
+      - <strong>info</strong>：各項目の内容（"Taro", "Game", "Ramen", "Soccer"）を格納<br>
+      <br>
+      同じ番号（#1, #2, #3...）で対応させることで、項目名と内容をセットで管理できます。
+    </div>
+
+    <h4>ステップ2:Labelの配置</h4>
+    <p><strong>項目名と内容を表示するためのLabelを2つ配置します。</strong></p>
+
+    <ol>
+      <li>左端の部品パネルから<strong>「Label」アイコン</strong>を、デバイス画面エリアにドラッグ＆ドロップします（1つ目）。</li>
+      <li>同じ手順で、もう1つのLabelを配置します（2つ目）。</li>
+      <li>
+        配置されたLabelの名前を確認します：
+        <ul>
+          <li>1つ目：<strong>label0</strong>（項目名表示用：例 "Name:"）</li>
+          <li>2つ目：<strong>label1</strong>（内容表示用：例 "Taro"）</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-info">
+      <strong>Labelの位置調整（任意）：</strong><br>
+      配置したLabelをダブルクリックすると、UI エディターが表示されます。<br>
+      「x」「y」の値を変更することで、画面上の位置を調整できます。<br>
+      例：<br>
+      - label0（項目名）: x = 10, y = 40, Font Size = 18<br>
+      - label1（内容）: x = 10, y = 70, Font Size = 24<br>
+      ※この設定は後からでも変更できます。
+    </div>
+
+    <h4>ステップ3:初期設定(Setupブロック)</h4>
+    <p><strong>プログラム開始時に、ステップ1で作ったlabels/info（リスト）を使って、最初の項目を表示します。</strong></p>
+
+    <div class="box-info">
+      <strong>ここは確認だけ：</strong><br>
+      labels と info のリスト作成は、すでに<strong>ステップ1（1-3）</strong>でSetupの中に入れています。<br>
+      ここ（ステップ3）では、その続きとして<strong>indexの初期化</strong>と<strong>最初の表示</strong>を行います。
+    </div>
+
+    <h4>3-1. 変数「index」を初期化</h4>
+    <ol>
+      <li>「変数（Variables）」カテゴリーから<strong>「[index] を [ ] にする」</strong>ブロックを取り出します。</li>
+      <li>このブロックを、<meta charset="utf-8"><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">Setupブロック内の</span><strong style="
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    font-weight: 700;
+    color: rgb(34, 34, 34);
+    background-attachment: initial !important;
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    font-size: 14.6667px;
+    background-color: rgb(255, 255, 255);
+  ">「[info] を [ ] にする」</strong><span style="
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-attachment: initial !important;
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    color: rgb(65, 84, 98);
+    font-size: 14.6667px;
+    background-color: rgb(255, 255, 255);
+    float: none;
+    display: inline !important;
+  ">ブロック</span><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">&nbsp;の下につなげます</span><span style="
+    color: rgb(65, 84, 98);
+    font-family: 'Noto Sans JP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.6667px;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    orphans: 2;
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    widows: 2;
+    word-spacing: 0px;
+    -webkit-text-stroke-width: 0px;
+    white-space: normal;
+    background-color: rgb(255, 255, 255);
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    display: inline !important;
+    float: none;
+  ">。</span>
+</li>
+      <li>「数学（Math）」カテゴリーから、数字の<strong>「0」</strong>ブロックを取り出し、<strong>「[index] を [ ] にする」</strong>ブロックの [ ] の部分に入れ、数字を<strong>「0」→「1」</strong>に修正します（#1 = 最初の項目を表示するため）。</li>
+    </ol>
+
+    <h4>3-2. 最初の項目を表示</h4>
+    <ol>
+      <li>「M5GFX」→「Label」カテゴリーから<strong>「[label0] を設定：テキスト"Label"」</strong>ブロックを取り出します。</li>
+      <li>このブロックを「index を 1 にする」ブロックの下に配置します。</li>
+      <li>テキスト入力欄に、「リスト」カテゴリーから<strong>「リスト [labels] 取得 # [ ]」</strong>ブロックをはめ込みます。</li>
+      <li># の部分に、「変数（Variables）」から<strong>「index」</strong>ブロックをはめ込みます。</li>
+      <li>同じ手順で、<strong>「[label1] を設定：テキスト」</strong>ブロックを取り出します。</li>
+      <li>テキスト入力欄に、「リスト [info] 取得 # [index]」ブロックをはめ込みます。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したSetupブロックの構成：</strong><br>
+      <pre>Setup（黄色）
+├─ 内蔵ハードウェアの初期化
+├─ labels を テキストからリストを作る（Name:,Hobby:,Food:,Skill:）
+├─ info を テキストからリストを作る（Taro,Game,Ramen,Soccer）
+├─ index を 1 にする
+├─ label0 を設定：テキスト リスト labels 取得 # index
+└─ label1 を設定：テキスト リスト info 取得 # index
+      </pre>
+    </div>
+
+    <h4>ステップ4:ボタンイベントの作成</h4>
+    <p><strong>ボタンAを押すと、次の項目に切り替わる機能を追加します。</strong></p>
+
+    <h4>4-1. ボタンAイベントを追加</h4>
+    <ol>
+      <li>「Hardware」→「Button」カテゴリーから<strong>「ボタン [BtnA] が [clicked]」</strong>ブロックを取り出します。</li>
+      <li>このブロックを、SetupやLoopブロックの<strong>外側</strong>（並列）に配置します。</li>
+    </ol>
+
+    <h4>4-2. インデックスを増やす</h4>
+    <ol>
+      <li>「変数（Variables）」カテゴリーから<strong>「[index] を [1] 増やす」</strong>ブロックを取り出します。</li>
+      <li>このブロックを「ボタン BtnA が clicked」ブロックの中に配置します。</li>
+    </ol>
+
+    <h4>4-3. インデックスが範囲を超えたらリセット</h4>
+    <ol>
+      <li>「論理（Logic）」カテゴリーから<strong>「もし [ ] do」</strong>ブロックを取り出します。</li>
+      <li>「index を 1 増やす」ブロックの下につなげます。</li>
+      <li>「論理」カテゴリーから<strong>比較演算ブロック「[ ] &gt; [ ]」</strong>（より大きい）を取り出します。</li>
+      <li>このブロックを「もし」ブロックの条件を入れる穴にはめ込みます。</li>
+      <li>比較演算ブロック「[&nbsp;]&nbsp;&gt;&nbsp;[&nbsp;]」の<strong>左側</strong>に、「変数（Variables）」から<strong>「index」</strong>ブロックを入れます。</li>
+      <li>比較演算ブロック「[&nbsp;]&nbsp;&gt;&nbsp;[&nbsp;]」の<strong>右側</strong>に、「リスト」カテゴリーの<strong>「[&nbsp;]&nbsp;の長さ」</strong>ブロックを入れます。</li>
+      <li>「[&nbsp;] の長さ」ブロックの [&nbsp;] の部分に、「変数（Variables）」から<strong>「labels」</strong>ブロックを取り出して入れます。</li>
+      <li>「もし」ブロックの中に：
+        <ul>
+          <li>「変数（Variables）」から<strong>「[index] を [ ] にする」</strong>を取り出し、値を<strong>「1」</strong>にします（#1に戻る）。</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>ポイント：</strong><br>
+      項目数を増やしても、長さを使えば自動で対応できます。<br>
+      index が「リストの長さ」より大きくなったら、index を 1 に戻して最初に戻ります。
+    </div>
+
+    <h4>4-4. 表示内容を更新</h4>
+    <ol>
+      <li>「M5GFX」→「Label」カテゴリーから<strong>「[label0] を設定：テキスト」</strong>ブロックを取り出します。</li>
+      <li>「もし」ブロックの下（ボタンイベントブロック内）につなげます。</li>
+      <li>テキスト入力欄に、「リスト」カテゴリーの<strong>「リスト [labels] 取得 # [ ]」</strong>ブロックをはめ込みます。</li>
+      <li># の部分に、「変数（Variables）」の<strong>「index」</strong>ブロックをはめ込みます。</li>
+      <li>同じく<strong>「[label1] を設定：テキスト」</strong>ブロックを取り出します。</li>
+      <li>テキスト入力欄に、<strong>「リスト [info] 取得 # [index]」</strong>ブロックをはめ込みます。</li>
+    </ol>
+
+    <div class="box-info">
+      <strong>完成したボタンAイベントの構成：</strong><br>
+      <pre>ボタン BtnA が clicked
+├─ index を 1 増やす
+├─ もし index &gt; リスト labels の長さ なら
+│  └─ index を 1 にする
+├─ label0 を設定：テキスト リスト labels 取得 # index
+└─ label1 を設定：テキスト リスト info 取得 # index
+      </pre>
+    </div>
+
+    <h4>ステップ5:プログラムの実行</h4>
+    <ol>
+      <li>M5StickC PLUS2がPCにUSB接続されていることを確認します。</li>
+      <li>画面上部の<strong>「▶ Run」</strong>ボタンをクリックします。</li>
+      <li>最初に「Name: Taro」（または入力した名前）が表示されれば成功です！</li>
+      <li>ボタンAを押すたびに、「Hobby: Game」→「Food: Ramen」→「Skill: Soccer」→「Name: Taro」...と循環します。</li>
+    </ol>
+
+    <h4>プログラムの仕組みを理解しよう</h4>
+    <p>このプログラムは以下のような流れで動作しています：</p>
+    <ol>
+      <li><strong>Setup（初期設定）</strong>:
+        <ol>
+          <li>labels に、項目名のリスト（"Name:", "Hobby:", "Food:", "Skill:"）を作成して入れる</li>
+          <li>info に、内容のリスト（"Taro", "Game", "Ramen", "Soccer"）を作成して入れる</li>
+          <li>index を 1 に設定（#1 = 最初の項目）</li>
+          <li>label0 に labels の #index、label1 に info の #index を表示</li>
+        </ol>
+      </li>
+      <li><strong>イベント（ボタンA押下時）</strong>:
+        <ol>
+          <li>index を 1 増やす（次の項目へ）</li>
+          <li><strong>条件判定</strong>: もし index が「リスト labels の長さ」を超えたら → index を 1 にする（最初に戻る）</li>
+          <li>label0 に labels の #index、label1 に info の #index を表示</li>
+        </ol>
+      </li>
+    </ol>
+
+    <div class="box-warning">
+      <strong>重要な概念：リストとインデックス</strong><br>
+      リストは、複数のデータを番号（インデックス）で管理する仕組みです。<br>
+      今回の例では：<br>
+      - <strong>labels #1</strong> = "Name:" ← 1番目（#1）<br>
+      - <strong>labels #2</strong> = "Hobby:" ← 2番目（#2）<br>
+      - <strong>info #1</strong> = "Taro" ← 1番目（#1）<br>
+      <br>
+      <strong>インデックスを変数で管理</strong>することで、ボタン操作で動的に表示内容を切り替えられます。<br>
+      <br>
+      <strong>循環（ループバック）</strong>：<br>
+      <strong>UIFlowのリストは #1 始まり</strong>なので、index も <strong>1</strong> から始めます（#1が最初の項目）。<br>
+      index が「リストの長さ」より大きくなったら index を <strong>1</strong> に戻すことで、最後の項目の次に最初の項目が表示されます。
+    </div>
+
+    <h4>応用してみよう</h4>
+    <p>基本ができたら、以下のような改造に挑戦してみましょう：</p>
+
+    <div class="box-info">
+      <strong>自分だけの名刺にしよう：</strong><br>
+      最後は、<strong>labels</strong> と <strong>info</strong> の中身を<strong>あなたの情報</strong>に入れ替えて、世界に1つの「デジタル名刺」を完成させましょう。<br>
+      例：Name / Hobby / Food / Skill だけでなく、Birthday や School などを追加してもOKです。
+    </div>
+    <h4>▶ 応用1：項目を増やす</h4>
+    <ul>
+      <li>「Birthday:」「School:」「Dream:」などの項目を追加してみましょう。</li>
+      <li>項目を増やしたら、「もし index ≥ 4」の「4」を項目数に合わせて変更してください（例：6項目なら「6」）。</li>
+    </ul>
+
+    <h4>▶ 応用2：ボタンBで前の項目に戻る</h4>
+    <ul>
+      <li>ボタンBを押すと、前の項目に戻る機能を追加してみましょう。</li>
+      <li>「ボタン BtnB が clicked」イベントを作成し、「index を 1 減らす」ブロックを使います。</li>
+      <li>index が 0 未満になったら、最後の項目（例：3）に戻す処理を追加します。</li>
+    </ul>
+
+    <h4>▶ 応用3：文字色を変える</h4>
+    <ul>
+      <li>項目名（label0）と内容（label1）の文字色を変えて、見やすくしてみましょう。</li>
+      <li>「M5GFX」→「Label」の<strong>「[label0] を設定：テキストの色 [Cyan]」</strong>ブロックを使います。</li>
+      <li>例：label0を水色（Cyan）、label1を白（White）にする</li>
+    </ul>
+
+    <h4>▶ 応用4：フォントサイズを調整</h4>
+    <ul>
+      <li>項目名は小さく、内容は大きく表示すると見やすくなります。</li>
+      <li>UIエディターでFont Sizeを調整するか、ブロックで設定できます。</li>
+    </ul>
+
+    <h4>▶ 応用5：画像を追加する</h4>
+    <ul>
+      <li>UIFlow 2.0では、画像（Image）部品を配置できます（高度）。</li>
+      <li>自分のアイコンやイラストを表示して、よりオリジナルな名刺を作ってみましょう。</li>
+      <li><strong>※第10回</strong>で、画像の準備（サイズの考え方）や、表示の切り替え方法もあわせて扱います。</li>
+    </ul>
+
+    <h4>▶ 応用6：リストの長さを自動取得</h4>
+    <ul>
+      <li>「リスト（Lists）」カテゴリーには<strong>「リスト [labels] の長さ」</strong>ブロックがあります。</li>
+      <li>「もし index ≥ 4」の「4」の代わりに、このブロックを使うと、項目数を手動で変更しなくても自動対応できます。</li>
+      <li>例：「もし index ≥ リスト labels の長さ なら」</li>
+    </ul>
+
+    <div class="box-info">
+      <strong>おめでとうございます！</strong><br>
+      「リスト（配列）」「インデックス」「ボタンによる切り替え」という重要な概念を学びました。<br>
+      リストは、たくさんのデータを効率的に管理するための基本的なデータ構造です。<br>
+      次の作例では、さらに実践的なプログラムに挑戦していきます！
+    </div>
+  
+
+          <h3>第5回「玉よけゲーム」</h3>
+
+          <div class="box-warning">
+            <strong>新規プロジェクトの作成</strong><br>
+            1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+            2. 画面左上の「新規Project」ボタンをクリックします<br>
+            3. プロジェクト名を「<strong>dodge</strong>」と入力します（玉よけ）<br>
+            4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+            5. 「Confirm」ボタンを押してプロジェクトを作成します
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>画面の下に自機（プレイヤー）が表示されます。</li>
+            <li>上から落ちてくる玉（障害物）を、左右移動してよけ続けます。</li>
+            <li>当たったらゲームオーバー。スコア（生き残った時間）を表示します。</li>
+          </ul>
+
+          <h4>ステップ1：変数を作成</h4>
+          <p><strong>ゲームに必要な「座標」「速さ」「スコア」などを変数で管理します。</strong></p>
+          <ul>
+            <li><strong>px</strong>：自機のx座標（プレイヤーの位置）</li>
+            <li><strong>py</strong>：自機のy座標（固定でOK）</li>
+            <li><strong>bx</strong>：玉のx座標</li>
+            <li><strong>by</strong>：玉のy座標</li>
+            <li><strong>speed</strong>：玉が落ちる速さ</li>
+            <li><strong>score</strong>：スコア（時間/回数）</li>
+            <li><strong>game_over</strong>：ゲームオーバーかどうか（0=続行、1=終了）</li>
+          </ul>
+
+          <h4>ステップ2：Labelの配置（スコア表示）</h4>
+          <p><strong>スコアを表示するLabelを1つ配置します。</strong></p>
+          <ol>
+            <li>左端の部品パネルから<strong>「Label」</strong>を1つ配置します（例：label0）。</li>
+            <li>配置したLabelをダブルクリックしてUIエディターを開きます。</li>
+            <li>例：<br>
+              - label0（スコア）: x = 5, y = 5, Font Size = 16<br>
+              ※この設定は後からでも変更できます。
+            </li>
+          </ol>
+
+          <h4>ステップ3：初期設定（Setupブロック）</h4>
+          <p><strong>ゲーム開始時の初期位置を決め、最初の1回だけ準備します。</strong></p>
+          <ol>
+            <li>中央の<strong>Setup</strong>ブロック（黄色）を確認し、「内蔵ハードウェアの初期化」は一番上に置いたままにします。</li>
+            <li>「変数（Variables）」の<strong>「[ ] を [ ] にする」</strong>で、次の初期値を設定します：
+              <ul>
+                <li>px = 67（画面中央あたり）</li>
+                <li>py = 210（画面下あたり）</li>
+                <li>bx = 67（仮でOK、あとで乱数にします）</li>
+                <li>by = 0（画面上）</li>
+                <li>speed = 4</li>
+                <li>score = 0</li>
+                <li>game_over = 0</li>
+              </ul>
+            </li>
+            <li>「M5GFX」→「画面」から<strong>「画面の背景色を設定」</strong>で黒（Black）にします（好みでOK）。</li>
+            <li>「M5GFX」→「Label」から<strong>「[label0] を設定：テキスト」</strong>で <strong>"Score: 0"</strong> を表示します。</li>
+          </ol>
+
+          <h4>ステップ4：メインゲームループ（Loopブロック）</h4>
+          <p><strong>ループの中で「操作 → 移動 → 当たり判定 → 表示更新」をくり返します。</strong></p>
+
+          <div class="box-info">
+            <strong>Loopブロックの基本構成（例）</strong><br>
+            Loop（緑色）<br>
+            ├─ ループ中でボタンやタッチパネル等の状態を更新<br>
+            ├─ もし game_over = 0 なら（ゲーム中）<br>
+            │  ├─ ボタンで自機を動かす（左右）<br>
+            │  ├─ 玉を落とす（by を増やす）<br>
+            │  ├─ 当たり判定<br>
+            │  ├─ 画面を描画（自機と玉）<br>
+            │  └─ スコア更新<br>
+            └─ 少し待つ（ゲーム速度調整）
+          </div>
+
+          <h4>4-1：ゲーム中だけ動くようにする</h4>
+          <ol>
+            <li>「論理（Logic）」の<strong>「もし [ ] do」</strong>ブロックをLoopに入れます。</li>
+            <li>条件を入れる穴に、比較演算ブロック<strong>「[ ] = [ ]」</strong>を入れます。</li>
+            <li>左側に<strong>game_over</strong>、右側に<strong>0</strong>を入れます。</li>
+          </ol>
+
+          <h4>4-2：ボタンで自機を左右に動かす（本文：ボタン操作）</h4>
+          <p><strong>ボタンAで左、ボタンBで右に動かします。</strong></p>
+          <ol>
+            <li>「Hardware」→「Button」で、ボタンの状態が取れるブロックを使います（例：押されている/pressed）。</li>
+            <li>左ボタン（BtnA）が押されていたら：px を 4 減らす</li>
+            <li>右ボタン（BtnB）が押されていたら：px を 4 増やす</li>
+            <li>画面外に出ないように、px の範囲を制限します：
+              <ul>
+                <li>もし px &lt; 0 なら px = 0</li>
+                <li>もし px &gt; 134 なら px = 134</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>4-3：玉を落とす</h4>
+          <ol>
+            <li>by を speed だけ増やします（by = by + speed）。</li>
+            <li>もし by が 240 を超えたら、上から出し直します：
+              <ul>
+                <li>by = 0</li>
+                <li>bx は「数学」→「ランダムな整数」で 0〜134 にします</li>
+                <li>score を 1 増やす</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>4-4：当たり判定（A：範囲判定／おすすめ）</h4>
+          <p><strong>小学生でもブロックで作りやすい「範囲判定」で当たりを判定します。</strong></p>
+          <ol>
+            <li>まず、自機（px, py）と玉（bx, by）を「四角い当たり判定」で考えます（半径10の四角）。</li>
+            <li>次の<strong>2つが両方</strong>当てはまったら、当たり（game_over = 1）にします：
+              <ul>
+                <li><strong>bx が（px - 10）以上 かつ（px + 10）以下</strong></li>
+                <li><strong>by が（py - 10）以上 かつ（py + 10）以下</strong></li>
+              </ul>
+            </li>
+            <li>ブロックの組み方の例：
+              <ul>
+                <li>比較（≥ / ≤）を2つ作り、「かつ（AND）」でつなぎます。</li>
+                <li>もし（条件）なら → <strong>game_over を 1 にする</strong></li>
+              </ul>
+            </li>
+            <li><strong>難しければ段階的に：</strong>まずは「bx が px±10 の範囲」だけで当たりにしてもOKです。</li>
+          </ol>
+
+          <h4>4-5：画面に描画する</h4>
+          <ol>
+            <li>毎回、画面を黒でクリアします（ちらつきが出たら応用で改善します）。</li>
+            <li>「M5GFX」→「LCD」→「Draw Graphics」で、
+              <ul>
+                <li>自機：四角形（rect）や円（circle）</li>
+                <li>玉：円（circle）</li>
+              </ul>
+              を描画します。
+            </li>
+            <li>label0 を「Score: ○○」の形で更新します。</li>
+          </ol>
+
+          <h4>ステップ5：プログラムの実行</h4>
+          <ol>
+            <li>M5StickC PLUS2をPCにUSB接続します。</li>
+            <li>画面上部の<strong>「▶ Run」</strong>をクリックします。</li>
+            <li>ボタンA/Bで左右に動かし、玉をよけられたら成功です。</li>
+            <li>当たったら game_over が 1 になり、動きが止まればOKです。</li>
+          </ol>
+
+          <h4>プログラムの仕組みを理解しよう</h4>
+          <ul>
+            <li>ゲームは「Loop（くり返し）」で動き続けます。</li>
+            <li>毎回、<strong>操作</strong>→<strong>更新</strong>→<strong>判定</strong>→<strong>表示</strong>の順で処理します。</li>
+            <li>game_over の変数で「動く/止める」を切り替えています。</li>
+          </ul>
+
+          <h4>応用してみよう</h4>
+          <p>基本ができたら、以下のような改造に挑戦してみましょう：</p>
+
+          <h4>▶ 応用1：加速度で操作する（応用：センサー操作）</h4>
+          <ul>
+            <li>第3回で学んだIMUの加速度（x_accel など）を使って、傾けた方向に自機が動くようにしてみましょう。</li>
+            <li>例：x_accel が 0.2 より大きいなら右へ、-0.2 より小さいなら左へ</li>
+          </ul>
+
+          <h4>▶ 応用2：スピードアップ</h4>
+          <ul>
+            <li>score が増えたら speed も少しずつ増やして、だんだん難しくしてみましょう。</li>
+          </ul>
+
+          <h4>▶ 応用3：効果音をつける</h4>
+          <ul>
+            <li>当たったときにスピーカーで音を鳴らしてみましょう（第6回につながります）。</li>
+          </ul>
+
+          <h4>▶ 応用4：ゲームオーバー表示</h4>
+          <ul>
+            <li>game_over = 1 のとき、画面に "GAME OVER" を表示してみましょう。</li>
+          </ul>
+
+          <h4>▶ 応用5：ちらつきを減らす（発展）</h4>
+          <ul>
+            <li>画面を毎回全部消すとちらつくことがあります。背景を消す回数を減らしたり、描画の工夫をしてみましょう。</li>
+          </ul>
+
+          <div class="box-info">
+            <strong>おめでとうございます！</strong><br>
+            「座標」「乱数」「当たり判定」「ゲームループ」という、ゲーム作りの基本を学びました。<br>
+            次の作例では、音（スピーカー）やリストを使って、さらに表現を広げていきます！
+          </div>
+
+
+
+          <h3>第6回「メロディを作ろう（ブザー）」</h3>
+
+          <div class="box-warning">
+            <strong>新規プロジェクトの作成</strong><br>
+            1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+            2. 画面左上の「新規Project」ボタンをクリックします<br>
+            3. プロジェクト名を「<strong>melody</strong>」と入力します<br>
+            4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+            5. 「Confirm」ボタンを押してプロジェクトを作成します
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>ボタンAで<strong>音階テスト（ドレミ…）</strong>を再生できます。</li>
+            <li>ボタンBで<strong>簡単な曲（例：きらきら星）</strong>を再生できます。</li>
+            <li>音の高さ（音程）と長さ（リズム）を、<strong>リスト</strong>で管理します。</li>
+          </ul>
+
+          <h4>ブザーでも音階は作れる？（できます）</h4>
+          <ul>
+            <li>音の高さは<strong>周波数（Hz）</strong>で決まります。</li>
+            <li>UIFlow 2.0の「スピーカー」カテゴリーには、<strong>周波数（Hz）と時間（ミリ秒）</strong>を指定して鳴らせるブロックがあります。</li>
+            <li>ただし音色は電子音っぽくなります（それでもメロディは十分分かります）。</li>
+          </ul>
+
+          <h4>ステップ1：変数を作成</h4>
+          <p><strong>再生位置（index）や、再生中かどうかを変数で管理します。</strong></p>
+          <ul>
+            <li><strong>index</strong>：今どの音を再生しているか（#1から始めます）</li>
+            <li><strong>mode</strong>：0=停止、1=音階テスト、2=曲</li>
+          </ul>
+
+          <h4>ステップ2：Labelの配置（任意）</h4>
+          <p><strong>画面に状態を表示したい場合はLabelを置きます（なくてもOK）。</strong></p>
+          <ul>
+            <li>label0：今のモード（TEST/SONG）</li>
+            <li>label1：今の音（例：C4=262Hz）</li>
+          </ul>
+
+          <h4>ステップ3：初期設定（Setupブロック）</h4>
+          <p><strong>リストを作り、最初の状態を準備します。</strong></p>
+          <ol>
+            <li>中央の<strong>Setup</strong>ブロック（黄色）を確認し、「内蔵ハードウェアの初期化」は一番上に置いたままにします。</li>
+            <li>「変数（Variables）」から<strong>「[index] を [ ] にする」</strong>を取り出し、<strong>1</strong>にします。<br>
+              <strong>ポイント：</strong>UIFlowのリストは <strong>#1 始まり</strong>なので、indexも <strong>1から</strong>始めます。</li>
+            <li>「変数（Variables）」から<strong>「[mode] を [ ] にする」</strong>を取り出し、<strong>0</strong>（停止）にします。</li>
+            <li>周波数のリスト（音階用）を作ります：
+              <ul>
+                <li>変数<strong>notes_test</strong>を作成し、Setupの中で<strong>「[notes_test] を [ ] にする」</strong>に設定します。</li>
+                <li>「リスト」カテゴリーの歯車（⚙）付き<strong>「以下を使ってリストを作成：」</strong>ブロックをはめ込み、itemを8個にします。</li>
+                <li>例（C4〜C5）：<br>
+                  item1=262, item2=294, item3=330, item4=349, item5=392, item6=440, item7=494, item8=523</li>
+              </ul>
+            </li>
+            <li>音の長さのリスト（音階用）を作ります：
+              <ul>
+                <li>変数<strong>dur_test</strong>を作成し、Setupの中で<strong>「[dur_test] を [ ] にする」</strong>に設定します。</li>
+                <li>同じく「以下を使ってリストを作成：」でitemを8個にし、全部<strong>200</strong>（ms）など同じ長さでOKです。</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ4：ボタンイベントの作成（再生開始）</h4>
+          <p><strong>ボタンで「音階テスト」または「曲」を選んで再生します。</strong></p>
+          <ol>
+            <li>ボタンAが押されたら：
+              <ul>
+                <li>mode = 1（音階テスト）</li>
+                <li>index = 1</li>
+              </ul>
+            </li>
+            <li>ボタンBが押されたら：
+              <ul>
+                <li>mode = 2（曲）</li>
+                <li>index = 1</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ5：メインループ（Loopブロック）</h4>
+          <p><strong>modeに応じて、リストから周波数と長さを取り出して鳴らします。</strong></p>
+          <ol>
+            <li>もし mode = 1（音階テスト）なら：
+              <ul>
+                <li>freq = リスト notes_test 取得 # index</li>
+                <li>dur = リスト dur_test 取得 # index</li>
+                <li>「スピーカー」カテゴリーの<strong>「スピーカーでトーンを周波数 [freq] で以下の時間（ミリ秒）鳴らす [dur]」</strong>ブロックを使います。</li>
+                <li>index を 1 増やす</li>
+                <li>もし index &gt; リスト notes_test の長さ なら：mode=0（停止）, index=1</li>
+              </ul>
+            </li>
+            <li>（Labelを置いた人は）label0/label1を更新して表示してみましょう。</li>
+            <li>鳴らす間隔が短すぎる場合は「待つ（delay）」を少し入れて調整します（例：50ms）。</li>
+          </ol>
+
+          <h4>ステップ6：曲を鳴らしてみよう（きらきら星の例）</h4>
+          <p><strong>音階テストができたら、同じ仕組みで曲も作れます。</strong></p>
+          <ul>
+            <li>notes_song（周波数のリスト）と dur_song（長さのリスト）を作り、mode=2のときにそれを再生するだけです。</li>
+            <li>まずは短いフレーズ（8〜16音）から始めましょう。</li>
+          </ul>
+
+          <h4>ステップ7：プログラムの実行</h4>
+          <ol>
+            <li>M5StickC PLUS2をPCにUSB接続します。</li>
+            <li>画面上部の<strong>「▶ Run」</strong>をクリックします。</li>
+            <li>ボタンAで音階テスト、ボタンBで曲が鳴ったら成功です。</li>
+          </ol>
+
+          <h4>プログラムの仕組みを理解しよう</h4>
+          <ul>
+            <li>周波数（Hz）のリストと、長さ（ms）のリストを<strong>同じindex</strong>で管理しています。</li>
+            <li><strong>indexは#1始まり</strong>なので、最初は1にします（UIFlowのリスト仕様）。</li>
+            <li>modeで「何を再生するか」を切り替えています（状態管理）。</li>
+          </ul>
+
+          <h4>応用してみよう</h4>
+          <ul>
+            <li><strong>応用1：テンポを変える</strong>（durを短く/長く）</li>
+            <li><strong>応用2：休符を入れる</strong>（周波数を0にして鳴らさない、などルールを決める）</li>
+            <li><strong>応用3：第12回のゲームにつなげる</strong>（当たり・撃破・ゲームオーバーで効果音）</li>
+          </ul>
+
+
+              <h3>第7回「回転速度ゲーム（ジャイロ）」</h3>
+
+          <div class="box-warning">
+            <strong>新規プロジェクトの作成</strong><br>
+            1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+            2. 画面左上の「新規Project」ボタンをクリックします<br>
+            3. プロジェクト名を「<strong>gyro</strong>」と入力します<br>
+            4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+            5. 「Confirm」ボタンを押してプロジェクトを作ってください
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>M5StickC PLUS2を<strong>手でクルッと回す</strong>とスコアが増えます（ジャイロで回転速度を測ります）。</li>
+            <li>一定時間（例：10秒）でどれだけスコアを稼げたかを表示します。</li>
+            <li>安全のため、<strong>強く振り回さない</strong>ようにします（手首を痛めない、周りの物にぶつけない）。</li>
+          </ul>
+
+          <h4>ジャイロセンサーとは</h4>
+          <ul>
+            <li>ジャイロ（Gyro）は「<strong>回転の速さ</strong>」を測るセンサーです（単位はdeg/sなど）。</li>
+            <li>数値が大きいほど、速く回転していることになります。</li>
+            <li>この回では、ジャイロの値を使ってゲームのスコアに変えます。</li>
+          </ul>
+
+          <h4>ステップ1：変数を作成</h4>
+          <p><strong>ゲームの状態・スコア・タイマーを変数で管理します。</strong></p>
+          <ul>
+            <li><strong>score</strong>：得点</li>
+            <li><strong>game</strong>：0=待機、1=ゲーム中、2=終了</li>
+            <li><strong>t</strong>：経過時間（秒）またはカウント</li>
+            <li><strong>gyro</strong>：ジャイロ値（使う軸の回転速度）</li>
+            <li><strong>threshold</strong>：カウントする基準（例：80）</li>
+          </ul>
+
+          <h4>ステップ2：Labelの配置</h4>
+          <p><strong>スコアと残り時間を表示します。</strong></p>
+          <ul>
+            <li>label0：Score（例：x=5, y=5, Font Size=16）</li>
+            <li>label1：Time（例：x=5, y=30, Font Size=16）</li>
+            <li>label2：Status（READY/GO!/ENDなど）（例：x=5, y=60, Font Size=16）</li>
+          </ul>
+
+          <h4>ステップ3：初期設定（Setupブロック）</h4>
+          <p><strong>起動時に1回だけ初期化します。</strong></p>
+          <ol>
+            <li>中央の<strong>Setup</strong>ブロック（黄色）を確認し、「内蔵ハードウェアの初期化」は一番上に置いたままにします。</li>
+            <li>score=0, game=0, t=0 にします。</li>
+            <li>threshold を 80 などにしておきます（後で調整します）。</li>
+            <li>label0/label1/label2 を初期表示にします（例：Score:0 / Time:10 / READY）。</li>
+          </ol>
+
+          <h4>ステップ4：Timerイベントを作る（1秒ごと）</h4>
+          <p><strong>この回はTimerで「残り時間」を作ります。</strong></p>
+          <ol>
+            <li>Timer（定期実行）イベントを作り、<strong>1秒ごと</strong>に動くようにします。</li>
+            <li>もし game = 1（ゲーム中）なら、t を 1 増やします。</li>
+            <li>残り時間（例：10 - t）を計算して label1 に表示します。</li>
+            <li>もし t が 10 以上になったら game=2（終了）にします。</li>
+          </ol>
+
+          <h4>ステップ5：メインループ（Loopブロック）</h4>
+          <p><strong>Loopの中でジャイロ値を読み取り、スコアに変換します。</strong></p>
+          <ol>
+            <li>毎回、IMU（ジャイロ）の値を読み取ります。ブロックは次のどちらでもOKです（どちらも同じ結果になります）：
+              <ul>
+                <li><strong>方法A：</strong>「IMUのジャイロを X [ ] Y [ ] Z [ ] で取得」ブロックを使い、Zの値を使う</li>
+                <li><strong>方法B：</strong>「IMUのジャイロ値を取得（return tuple）」→「リスト」ブロックで「取得 # 3」を取り出してZの値にする<br>
+                  （#1=X, #2=Y, #3=Z）</li>
+              </ul>
+            </li>
+            <li>もし game = 1（ゲーム中）なら、次を行います：
+              <ul>
+                <li>gyro の絶対値（プラス/マイナスを同じ扱いにする）を計算します。<br>
+                  「数学」カテゴリーの<strong>「平方根 [ ]」</strong>ブロックを取り出し、下向き矢印（▼）で<strong>「絶対値」</strong>に切り替えて使います（abs）。</li>
+                <li>もし gyro &gt; threshold なら score を 1 増やします。</li>
+                <li>label0 を「Score: ○○」に更新します。</li>
+              </ul>
+            </li>
+            <li>もし game = 2（終了）なら、label2 に「END」を表示します。</li>
+          </ol>
+
+          <h4>ステップ6：ボタンイベント（ゲーム開始）</h4>
+          <p><strong>本文はジャイロ操作ですが、開始だけはボタンで行うと安全です。</strong></p>
+          <ol>
+            <li>ボタンAがクリックされたら：score=0, t=0, game=1 にしてスタート。</li>
+            <li>ボタンBがクリックされたら：game=0（待機）に戻す（リセット）。</li>
+          </ol>
+
+          <h4>ステップ7：プログラムの実行</h4>
+          <ol>
+            <li>「▶ Run」で実行します。</li>
+            <li>Aで開始 → 10秒間、M5StickCを<strong>軽く回す</strong> → 終了表示になったら成功です。</li>
+            <li>反応が弱い/強すぎる場合は、threshold を調整します。</li>
+          </ol>
+
+          <h4>プログラムの仕組みを理解しよう</h4>
+          <ul>
+            <li>ジャイロは「回転の速さ」を数値で出します。速く回すほど値が大きくなります。</li>
+            <li>threshold より大きいときだけ score を増やすことで、<strong>小さな揺れ</strong>では増えないようにしています。</li>
+            <li>Timer（1秒）で制限時間を作り、ゲームの終わりを作っています。</li>
+          </ul>
+
+          <h4>応用してみよう</h4>
+          <ul>
+            <li><strong>応用1：3段階の難易度</strong>（thresholdをボタンで切り替える）</li>
+            <li><strong>応用2：回転が速いほど加点</strong>（gyroが大きいほど +2, +3 など）</li>
+            <li><strong>応用3：第12回のゲームにつなげる</strong>（ジャイロで自機移動/照準などに使う）</li>
+          </ul>
+
+
+          <h3>第8回「データロガー（NVSに保存）」</h3>
+
+                  <div class="box-info">
+                    <strong>この回のねらい（大事！）：</strong><br>
+                    第8回は、見た目の派手さは少なめですが、<strong>今後の作品の楽しさを一気に上げる</strong>ための回です。<br>
+                    NVSを使うと、電源を切ってもデータを<strong>のこす（保存）</strong>ことができます。<br>
+                    たとえば、ゲームの<strong>ハイスコア</strong>を残したり、自分の<strong>設定</strong>（難易度・音量など）を覚えさせたりできます。<br>
+                    ここを一度クリアすると、次の回から作品の完成度がぐっと上がります。<strong>今回は少し我慢して頑張ろう！</strong>
+                  </div>
+          <div class="box-warning">
+            <strong>新規プロジェクトの作成</strong><br>
+            1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+            2. 画面左上の「新規Project」ボタンをクリックします<br>
+            3. プロジェクト名を「<strong>logger</strong>」と入力します<br>
+            4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+            5. 「Confirm」ボタンを押してプロジェクトを作成します
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>ボタンAで<strong>記録開始/停止</strong>を切り替えます。</li>
+            <li>記録中は、1秒ごとにデータ（例：加速度X）を保存していきます。</li>
+            <li>ボタンBで、保存したデータを<strong>画面に表示</strong>して確認します。</li>
+          </ul>
+
+          <h4>NVS（不揮発性ストレージ）とは</h4>
+          <ul>
+            <li>NVSは、電源を切っても消えない<strong>保存場所</strong>です（メモ帳のようなもの）。</li>
+            <li>今回の目的は「センサーの値をためて、あとから見られるようにする」ことです。</li>
+            <li>教室では"保存→表示"までできればOK。家でも同じように記録できます。</li>
+          </ul>
+
+          <h4>ステップ1：変数を作成</h4>
+          <p><strong>記録の状態、保存先キー、表示用のindexを変数で管理します。</strong></p>
+          <ul>
+            <li><strong>record</strong>：0=停止、1=記録中</li>
+            <li><strong>i</strong>：保存したデータの番号（#1から増やす）</li>
+            <li><strong>show_i</strong>：表示するときの番号（#1から）</li>
+            <li><strong>value</strong>：今回記録する値（例：加速度X）※INT32で保存しやすいように、あとで「1000倍して整数化」します</li>
+          </ul>
+
+          <h4>ステップ2：Labelの配置</h4>
+          <p><strong>記録状態と、値を画面に表示します。</strong></p>
+          <ul>
+            <li>label0：Status（例：REC/STOP）</li>
+            <li>label1：Value（例：ax = 0.12）</li>
+            <li>label2：Count（例：i = 5）</li>
+          </ul>
+
+          <h4>ステップ3：初期設定（Setupブロック）</h4>
+          <p><strong>起動時に1回だけ初期化します。</strong></p>
+          <ol>
+            <li>中央の<strong>Setup</strong>ブロック（黄色）を確認し、「内蔵ハードウェアの初期化」は一番上に置いたままにします。</li>
+            <li>record=0, i=0, show_i=1 にします。</li>
+            <li>「NVS」カテゴリーの<strong>「nvs_0 を オープン:名前空間: [ "" ]」</strong>ブロックを Setup に入れます。<br>
+              （名前空間は空のままでOKです）</li>
+            <li>label0に「STOP」、label1に「-」、label2に「i=0」を表示します。</li>
+          </ol>
+
+          <h4>ステップ4：メインループ（Loopブロック）</h4>
+          <p><strong>record=1のときだけ、センサー値を読み取って保存します。</strong></p>
+          <ol>
+            <li>もし record = 1 なら：
+              <ul>
+                <li>IMUの加速度を取得し、Xの値を取り出します（第3回の復習）。</li>
+                      <li><strong>保存用に整数化します（重要）</strong>：NVSのINT32に保存しやすいように、次のようにします。<br>
+                        例）加速度X（小数）×1000 → 整数にして value に入れる
+                        <ul>
+                          <li>「数学」カテゴリーの掛け算ブロックで、（加速度X）×1000 を作る</li>
+                          <li>必要なら「整数に変換」ブロックで整数にします</li>
+                          <li>その結果を<strong>value</strong>に入れます（例：0.123 → 123）</li>
+                        </ul>
+                        <strong>ポイント：</strong>表示するときは value ÷ 1000 で元の小数に戻せます。
+                      </li>
+                <li>i を 1 増やします（保存番号）。</li>
+                <li>保存は「NVS」カテゴリーの<strong>「Please init a NVS キー [ "" ] をINT32値 [0] に設定」</strong>を使います。<br>
+                  今回は <strong>キー= i</strong>、<strong>値= value</strong> にします。</li>
+                <li>最後に<strong>必ず</strong>「Please init a NVS :変更をフラッシュに書き込む」ブロックで保存を確定します（commit）。</li>
+                <li>label1/label2を更新します。</li>
+                <li>1秒待ちます（記録間隔）。</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ5：ボタンAイベント（記録開始/停止）</h4>
+          <p><strong>ボタンAで record を切り替えます。</strong></p>
+          <ol>
+            <li>ボタンAがクリックされたら：
+              <ul>
+                <li>もし record=0 なら record=1（記録開始）</li>
+                <li>もし record=1 なら record=0（停止）</li>
+                <li>label0を「REC」または「STOP」に更新します</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ6：ボタンBイベント（データ表示）</h4>
+          <p><strong>ボタンBで、保存したデータを順番に表示します。</strong></p>
+          <ol>
+            <li>ボタンBがクリックされたら：
+              <ul>
+                <li>NVSから読み出すには「NVS」カテゴリーの<strong>「Please init a NVS INT32値をキー [ "" ] から取得」</strong>を使います。<br>
+  今回は <strong>キー= show_i</strong> を入れて値を取り出します。</li>
+<li><strong>表示用に小数へ戻します（重要）</strong>：保存時に1000倍しているので、表示するときは <strong>（読み出した値）÷1000</strong> にして label1 に表示します。<br>
+  例：123 → 0.123</li>
+                <li>show_i を 1 増やします。</li>
+                <li>もし show_i &gt; i なら show_i = 1 に戻します（ループ）。</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ7：プログラムの実行</h4>
+          <ol>
+            <li>「▶ Run」で実行します。</li>
+            <li>AでRECにして、机の上で少し動かす/傾ける/持ち上げるなどして値を記録します。</li>
+            <li>Aでもう一度押してSTOPにします。</li>
+            <li>Bを押して、保存された値が順番に表示されれば成功です。</li>
+          </ol>
+
+          <h4>プログラムの仕組みを理解しよう</h4>
+          <ul>
+            <li>recordで「記録する/しない」を切り替えています。</li>
+            <li>iは「何個保存したか」、show_iは「何番目を表示するか」です。</li>
+            <li>NVSに保存したので、電源を切ってもデータが残ります（環境によっては残り方が変わります）。</li>
+          </ul>
+
+          <h4>応用してみよう</h4>
+          <ul>
+            <li><strong>応用1：記録間隔を変える</strong>（1秒→0.2秒など）</li>
+            <li><strong>応用2：保存する値を変える</strong>（加速度Y/Z、ジャイロZ、温度など）</li>
+            <li><strong>応用3：保存をリセット</strong>（iを0にして、NVSのキーを作り直す）</li>
+          </ul>
+
+
+          <h3>第9回「赤外線リモコンを作ろう（IR／NEC方式）」</h3>
+
+          <div class="box-info">
+            <strong>この回のゴール：</strong><br>
+            教室で「送信できる」状態まで作り、家で自分のテレビ/エアコン用に調べて<strong>本当に動くリモコン</strong>を完成させます。<br>
+            うまく動かなかった場合でも、調べ方と試し方が身につけばOKです。
+          </div>
+
+          <div class="box-warning">
+            <strong>新規プロジェクトの作成</strong><br>
+            1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+            2. 画面左上の「新規Project」ボタンをクリックします<br>
+            3. プロジェクト名を「<strong>ir_remote</strong>」と入力します<br>
+            4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+            5. 「Confirm」ボタンを押してプロジェクトを作成します
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>ボタンA：電源（Power）など、よく使う1つを送信</li>
+            <li>ボタンB：別のボタン（入力切替など）を送信</li>
+            <li>家に帰って、テレビ/エアコンで動くコードを調べて差し替えます</li>
+          </ul>
+
+          <h4>赤外線（IR）とは（NEC方式）</h4>
+          <ul>
+            <li>赤外線は、リモコンがテレビやエアコンを操作するための光（目に見えない）です。</li>
+            <li>UIFlow 2.0のIR送信は、資料にある通り<strong>NEC方式</strong>で送ります。</li>
+            <li>UIFlow 2.0（M5StickC PLUS2）のブロックは、<strong>「IR send addr [ ] data [ ]」</strong>です。基本は<strong>addr（アドレス）</strong>と<strong>data（データ）</strong>の2つの数値を送ります。</li>
+            <li>数値は、<strong>0xから始まる16進数</strong>でも入力できます（例：0x01）。表示が10進に見えることがありますが、値は同じです。</li>
+          </ul>
+
+          <h4>ステップ1：IRの初期化（Init IR）</h4>
+          <ol>
+            <li>「IR」カテゴリーから<strong>初期化（Init IR）</strong>ブロックを取り出します。</li>
+            <li>中央の<strong>Setup</strong>ブロック（黄色）の中へ入れます（起動時に1回だけ行います）。</li>
+          </ol>
+
+          <h4>ステップ2：ボタンでIR送信（まずは動作確認用）</h4>
+          <p><strong>まずは「送信ブロックが動く」ことを確認するために、仮の数字で送ってみます。</strong></p>
+          <ol>
+            <li>ボタンAのイベント（クリック）を作り、その中に「IR送信」ブロックを入れます。</li>
+            <li>送信ブロックは、資料の<strong>「IR.tx(cmd, data)（NEC）」</strong>に相当します。UIFlow上の表示は<strong>「IR send addr [ ] data [ ]」</strong>です（表記が違って見えますが、NEC方式の送信です）。</li>
+            <li>例として、まずは <strong>addr=0x01</strong>、<strong>data=0x00</strong> などを入れてOKです（この値で家電が動くとは限りません）。</li>
+          </ol>
+
+          <h4>ステップ3：教室での送信チェック（できれば）</h4>
+          <ul>
+            <li>教室にテレビ/エアコンがあれば、まずは「電源（Power）」を狙って試します。</li>
+            <li>反応しなくてもOKです。<strong>この時点の合格は「自分で送信ブロックを組めた」こと</strong>です。</li>
+          </ul>
+
+          <h4>ステップ4：家でIRコードを調べる（手順を少なく！）</h4>
+          <div class="box-info">
+            <strong>家での最短手順（おすすめ）：</strong><br>
+            ① 家のリモコンの<strong>メーカー名</strong>と<strong>型番（リモコンの裏に書いてあることが多い）</strong>をメモ<br>
+            ② 検索で「NEC addr data」または「IR code」＋型番で探す<br>
+            ③ 見つけた <strong>addr/data</strong> を、UIFlowの<strong>「IR send addr [ ] data [ ]」</strong>にそのまま入れて試す
+          </div>
+
+          <div class="box-info">
+            <strong>うまくいかない時の最短リカバリ：</strong><br>
+            まずは「Power」だけを狙い、<strong>候補を2〜3個</strong>だけ試してみましょう（同じメーカーでも機種で違うことがあります）。
+          </div>
+
+          <ol>
+            <li>まずは<strong>テレビの電源（Power）</strong>だけを探します（成功しやすい）。</li>
+            <li>検索キーワードの例：
+              <ul>
+                <li>「（メーカー） （テレビ型番） IR code NEC」</li>
+                <li>「（リモコン型番） IR code NEC」</li>
+                <li>「（メーカー） Power IR code addr data」</li>
+              </ul>
+            </li>
+            <li>見つかった情報が「0x..」の16進なら、<strong>そのまま0x..で入力してOK</strong>です。</li>
+            <li>cmd/dataが見つからず、<strong>32bitのコード</strong>（例：0x20DF10EF のような長いコード）しか見つからない場合は、次のコラムを見て分解します。</li>
+          </ol>
+
+          <h4>（コラム）32bitのIRコードをaddr/dataへ分解する</h4>
+          <p><strong>ネット上には「32bitコード」だけが載っていることがあります。UIFlowはaddr/dataで送るので、分解して入れます。</strong></p>
+          <ul>
+            <li>例：0x20DF10EF の場合、後ろから2桁ずつ区切って <strong>20 DF 10 EF</strong> と見ます。</li>
+            <li>基本の考え方（NECのよくある形）：
+              <ul>
+                <li><strong>addr = 0x20</strong></li>
+                <li><strong>addr反転 = 0xDF</strong></li>
+                <li><strong>cmd = 0x10</strong></li>
+                <li><strong>cmd反転 = 0xEF</strong></li>
+              </ul>
+            </li>
+            <li>UIFlow（M5StickC PLUS2）は <strong>「IR send addr [ ] data [ ]」</strong> なので、まずは<strong>addr=0x20</strong>、<strong>data=0x10</strong>（addr=アドレス、data=コマンド）として試します。</li>
+          <li>もし反応が無い場合は、逆（<strong>addr=0x10</strong>、<strong>data=0x20</strong>）も試します。機器や掲載情報の書き方で入れ方が違うことがあります。</li>
+            <li>分からなければ、次のAIの聞き方テンプレを使ってOKです。</li>
+          </ul>
+
+          <h4>（コラム）AIでの調べ方（小学生でもできるテンプレ）</h4>
+          <p>下の文をそのままコピペして、機種名だけ変えて使ってください。</p>
+          <div class="box-warning">
+            <strong>AIに聞くテンプレ（例）</strong><br>
+            「テレビのリモコン（メーカー：○○、型番：○○）の電源（Power）を赤外線で送信したいです。NEC方式で、UIFlow 2.0（M5StickC PLUS2）の<strong>IR send addr [ ] data [ ]</strong>に入れられる形で、<strong>addr/data</strong>を16進数（0x..）で教えてください。もし32bitコードしか分からない場合は、addr/dataに分解して説明してください。情報の出典URLもできれば付けてください。」
+          </div>
+
+          <h4>ステップ5：家のテレビ/エアコン用に調整</h4>
+          <ol>
+            <li>見つかった<strong>addr/data</strong>を、ボタンA/Bの送信ブロックに入力して試します。</li>
+            <li>まずはPowerが動けばOK。次に音量や入力切替などを追加します。</li>
+            <li>うまくいかないときは「候補を2〜3個」試します（同じメーカーでも機種で違うことがあります）。</li>
+          </ol>
+
+          <h4>プログラムの仕組みを理解しよう</h4>
+          <ul>
+            <li>SetupでIRを初期化し、ボタンイベントで必要なときだけIR信号を送っています。</li>
+            <li>「addr/data」の数字を変えるだけで、違うボタンの信号を送れます。</li>
+          </ul>
+
+          <h4>応用してみよう</h4>
+          <ul>
+            <li><strong>応用1：送信メニューを作る</strong>（labelに操作一覧を出す／ボタンで切替）</li>
+            <li><strong>応用2：第8回のNVSを使う</strong>（うまくいったコードを保存して、次回もすぐ使えるようにする）</li>
+            <li><strong>応用3：第12回のゲームへ</strong>（ゲーム内で「リモコン発射！」演出など）</li>
+          </ul>
+
+
+          <h3>第10回「画像で見た目をパワーアップ（UIエディター中心）」</h3>
+
+          <div class="box-info">
+            <strong>この回のねらい：</strong><br>
+            文字だけの画面に「アイコン」や「イラスト」が入ると、作品の完成度が一気に上がります。<br>
+            第10回は、プログラムよりも<strong>UIエディター</strong>の操作が中心です。
+          </div>
+
+          <div class="box-warning">
+            <strong>新規プロジェクトの作成</strong><br>
+            1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+            2. 画面左上の「新規Project」ボタンをクリックします<br>
+            3. プロジェクト名を「<strong>ui_design</strong>」と入力します<br>
+            4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+            5. 「Confirm」ボタンを押してプロジェクトを作成します
+          </div>
+
+          <h4>最初に確認（重要）</h4>
+          <div class="box-info">
+            <strong>ポイント：</strong><br>
+            UIFlow 2.0（StickC Plus2）には、<strong>「画像」</strong>と<strong>「画像+」</strong>部品があります。第10回は、まず<strong>「画像」</strong>で「自分の画像を表示」できるようになるのがゴールです。<br>
+            ※「画像+」はURLから画像を取り込む機能で、ネットワークや環境に左右されやすいので、この回では発展（応用）扱いにします。
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>画面の上に「タイトル」</li>
+            <li>中央に「アイコン（例：★ / ♥ / 🙂 など）」</li>
+            <li>下に「説明」</li>
+            <li>ボタンでアイコンや色を切り替える（応用）</li>
+          </ul>
+
+          <h4>ステップ1：UIエディターで部品を配置する</h4>
+          <ol>
+            <li>UIエディターを開きます。</li>
+            <li>部品パネルから、まずは次の4つを置きます：
+              <ul>
+                <li>Label（label0）：タイトル</li>
+                <li>Label（label1）：説明文</li>
+                <li><strong>画像（image0）：表示したい画像</strong></li>
+                <li>（任意）Label+ / 画像+：発展用</li>
+              </ul>
+            </li>
+            <li>位置（x,y）を調整します。例：
+              <ul>
+                <li>label0：x=5, y=5</li>
+                <li>image0：x=21, y=120（例）</li>
+                <li>label1：x=5, y=210</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ2：画像ファイルを用意して読み込む</h4>
+          <ol>
+            <li>UIFlow 2.0のプロジェクト内に画像ファイル（PNG/JPG/BMP）を用意します。</li>
+            <li>まずはサンプルの<strong>default.png</strong>を表示できることを確認します。</li>
+            <li>自分の画像に差し替えるときは、<strong>小さめ（画面に収まるサイズ）</strong>から始めましょう（例：幅100px前後）。</li>
+            <li>保存場所はブロックに合わせます：
+              <ul>
+                <li>「image0 を設定:画像 "default.png"」のようにファイル名で指定する方法</li>
+                <li>（発展）「Set image0 SDcard image "res/img/default.png"」のようにパスで指定する方法<br>
+  ※SDカードを使う場合は、教室の環境によっては外部パーツが必要になることがあります。第10回の本編では使いません。</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ3：（任意）Label+で「データ表示」を強化する</h4>
+          <p><strong>教室で紹介用：</strong>Label+ はURLからJSONを取得して表示できる部品です（高度）。今回は「使えることを知る」程度でOKです。</p>
+          <ul>
+            <li>UIエディターで Label+ を置くと、「ラベル+」カテゴリーが出ます。</li>
+            <li>主なブロック：
+              <ul>
+                <li><strong>label_plus0 が有効なデータか</strong></li>
+                <li><strong>label_plus0 画面データを取得</strong></li>
+                <li><strong>label_plus0 更新は可能か</strong></li>
+                <li><strong>label_plus0 更新間隔 [ms]</strong></li>
+                <li><strong>label_plus0 を設定:テキスト [ ]</strong></li>
+                <li><strong>label_plus0 を設定:x [ ] y [ ]</strong></li>
+                <li><strong>label_plus0 を設定:テキストの色 [ ] 背景の色 [ ]</strong></li>
+                <li><strong>label_plus0 を設定:大きさ [ ]</strong></li>
+                <li><strong>label_plus0 を設定:フォント [ ]</strong></li>
+                <li><strong>表示状態：label_plus0 [show]</strong></li>
+              </ul>
+            </li>
+          </ul>
+
+          <h4>ステップ4：プログラムで表示を作る（最低限）</h4>
+          <ol>
+            <li>Setupで、label0/label1 の文字を設定します。</li>
+            <li>「画像」カテゴリーのブロックで image0 を設定します：
+              <ul>
+                <li><strong>image0 を設定:x [0] y [0]</strong>（位置）</li>
+                <li><strong>image0 を設定:画像 [default.png]</strong>（画像の指定）</li>
+                <li><strong>表示状態：image0 [show]</strong></li>
+                <li><strong>Set image0 scale x [1] and scale y [1]</strong>（拡大縮小）</li>
+              </ul>
+            </li>
+            <li>例：
+              <ul>
+                <li>label0："My Screen"</li>
+                <li>label1："Push A/B"</li>
+                <li>image0：default.png を表示</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>応用してみよう（応用B：切り替え／画像+）</h4>
+          <ul>
+            <li><strong>応用1：ボタンAで画像を切り替える</strong>（image0 を設定:画像 を別ファイルにする）</li>
+            <li><strong>応用2：ボタンBで拡大縮小</strong>（Set image0 scale x/y を変える）</li>
+            <li><strong>応用3：画像+に挑戦（発展）</strong>：
+              <ul>
+                <li><strong>image_plus0 が有効な画像か？</strong></li>
+                <li><strong>image_plus0 更新可能か</strong></li>
+                <li><strong>image_plus0 更新間隔 [ms]</strong></li>
+                <li><strong>image_plus0 を設定:x [ ] y [ ]</strong></li>
+                <li><strong>表示状態：image_plus0 [show]</strong></li>
+              </ul>
+            </li>
+            <li><strong>応用4：第12回のゲームのタイトル画面にする</strong></li>
+          </ul>
+
+
+          <h3>第11回「インベーダー風ゲーム（準備編：弾を撃つ）」</h3>
+
+          <div class="box-info">
+            <strong>この回のねらい：</strong><br>
+            第12回で「インベーダー風ゲーム」を完成させるために、まずは<strong>自機の移動</strong>と<strong>弾を撃つ</strong>ところまで作ります。<br>
+            第5回（ゲームループ）・第6回（効果音）・第7回（センサー）・第10回（画像）を、できるだけまとめて使います。
+          </div>
+
+          <div class="box-warning">
+            <strong>新規プロジェクトの作成</strong><br>
+            1. UIFlow 2.0を開きます（https://uiflow2.m5stack.com/）<br>
+            2. 画面左上の「新規Project」ボタンをクリックします<br>
+            3. プロジェクト名を「<strong>invader</strong>」と入力します<br>
+            4. デバイス選択で「<strong>StickC Plus2</strong>」を選びます<br>
+            5. 「Confirm」ボタンを押してプロジェクトを作成します
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>画面下に自機（プレイヤー）が表示されます。</li>
+            <li>本体を<strong>左右に少し傾ける</strong>と、自機がなめらかに左右移動します。</li>
+            <li>ボタンAを押すと弾を発射します（ボタン操作はこれだけ）。</li>
+            <li>弾が上に飛んでいき、画面上で消えたら次の弾が撃てます。</li>
+          </ul>
+
+          <h4>ステップ1：変数を作成</h4>
+          <p><strong>自機と弾の座標を変数で管理します。</strong></p>
+          <ul>
+            <li><strong>px</strong>：自機のx座標</li>
+            <li><strong>py</strong>：自機のy座標（固定）</li>
+            <li><strong>bx</strong>：弾のx座標</li>
+            <li><strong>by</strong>：弾のy座標</li>
+            <li><strong>bullet</strong>：0=弾なし、1=弾が飛んでいる</li>
+            <li><strong>vx</strong>：自機のx方向の速度（なめらか移動用）</li>
+            <li><strong>ax</strong>：加速度X（傾き）</li>
+            <li><strong>deadzone</strong>：小さな揺れを無視する範囲（例：0.08）</li>
+            <li><strong>gain</strong>：傾き→速度に変える強さ（例：2.0）</li>
+            <li><strong>friction</strong>：減衰（止まりやすさ）（例：0.85）</li>
+            <li><strong>bspeed</strong>：弾の速さ（例：8）</li>
+          </ul>
+
+          <h4>ステップ2：UIエディター（任意：画像を置く）</h4>
+          <p><strong>第10回の復習です。画像が使える場合は、自機を画像で表示してみましょう。</strong></p>
+          <ul>
+            <li>（任意）画像（image0）を置く：自機画像（default.pngなど）</li>
+            <li>画像を使わない場合は、四角形（rect）で自機を描きます。</li>
+          </ul>
+
+          <h4>ステップ3：初期設定（Setupブロック）</h4>
+          <ol>
+            <li>中央の<strong>Setup</strong>ブロック（黄色）を確認し、「内蔵ハードウェアの初期化」は一番上に置いたままにします。</li>
+            <li>初期値を入れます：
+              <ul>
+                <li>px = 67（中央）</li>
+                <li>py = 210（下）</li>
+                <li>vx = 0</li>
+                <li>deadzone = 0.08（小さな揺れを無視）</li>
+                <li>gain = 2.0（傾き→速度）</li>
+                <li>friction = 0.85（なめらかに止める）</li>
+                <li>bullet = 0</li>
+                <li>bspeed = 8</li>
+                <li>bx = px（最初は自機に合わせておく）</li>
+                <li>by = py</li>
+              </ul>
+            </li>
+            <li>背景色を黒（Black）にします。</li>
+          </ol>
+
+          <h4>ステップ4：Loop（自機の移動＋弾の更新）</h4>
+          <p><strong>第5回のゲームループと同じ考え方で作ります。</strong></p>
+          <ol>
+            <li>自機の左右移動（傾きでなめらか移動）：
+              <ul>
+                <li>IMUの加速度X（ax）を取得します（第3回の復習）。</li>
+                <li>小さな揺れを無視します：
+                  <ul>
+                    <li>「数学」→「平方根[ ]」を▼で<strong>絶対値</strong>に切り替え、abs(ax) を作る</li>
+                    <li>もし abs(ax) &lt; deadzone なら ax = 0 にする</li>
+                  </ul>
+                </li>
+                <li>速度を少しずつ変えます：vx = vx + (ax × gain)</li>
+                <li><strong>速度の上限をつけます（おすすめ）</strong>：vx が大きくなりすぎないように制限します。<br>
+                  例：もし vx &gt; 5 なら vx = 5、もし vx &lt; -5 なら vx = -5</li>
+                <li>減衰（まろやかに止める）：vx = vx × friction</li>
+                <li>位置を更新：px = px + vx</li>
+                <li>画面外に出ないように制限（0〜134）</li>
+              </ul>
+            </li>
+            <li>弾の更新（bullet=1のときだけ）：
+              <ul>
+                <li>by を bspeed だけ減らす（上に進む）</li>
+                <li>もし by &lt; 0 なら bullet=0（弾を消す）</li>
+              </ul>
+            </li>
+            <li>描画：
+              <ul>
+                <li>画面をクリア</li>
+                <li>自機を描く（画像 or 四角）</li>
+                <li>弾があるなら弾を描く（小さい円）</li>
+              </ul>
+            </li>
+            <li>少し待つ（例：30ms）で速度調整</li>
+          </ol>
+
+          <h4>ステップ5：ボタンイベント（弾を撃つ）</h4>
+          <p><strong>弾がないとき（bullet=0）のみ、弾を発射します。</strong></p>
+          <ol>
+            <li>ボタンA（BtnA）のクリックイベントを作ります。</li>
+            <li>もし bullet = 0 なら：
+              <ul>
+                <li>bullet = 1</li>
+                <li>bx = px</li>
+                <li>by = py</li>
+              </ul>
+            </li>
+            <li>（任意）第6回のスピーカーで発射音を鳴らします：<br>
+              「スピーカーでトーンを周波数 2000 で以下の時間（ミリ秒）鳴らす 50」など</li>
+          </ol>
+
+          <h4>ステップ6：プログラムの実行</h4>
+          <ol>
+            <li>「▶ Run」で実行します。</li>
+            <li>本体を左右に傾けて自機がなめらかに動き、ボタンAで弾が上に飛べば成功です。</li>
+          </ol>
+
+          <h4>プログラムの仕組みを理解しよう</h4>
+          <ul>
+            <li>bullet 変数で「弾がある/ない」を管理しています。</li>
+            <li>弾があるときだけ by を更新するので、弾が1発だけ飛ぶ仕組みになります。</li>
+            <li>第12回では、ここに<strong>敵の動き</strong>と<strong>当たり判定</strong>、<strong>スコア</strong>を足して完成させます。</li>
+          </ul>
+
+          <h4>応用してみよう</h4>
+          <ul>
+            <li><strong>応用1：2連射にする</strong>（弾を2発分の変数で管理）</li>
+            <li><strong>応用2：感度調整</strong>（deadzone / gain / friction を変えて、自分好みの操作感にする）</li>
+            <li><strong>応用3：画像で自機をかっこよく</strong>（第10回の復習）</li>
+          </ul>
+
+
+          <h3>第12回「インベーダー風ゲーム（完成編）」</h3>
+
+          <div class="box-info">
+            <strong>この回のねらい：</strong><br>
+            第11回で作った「自機＋弾」をベースに、<strong>敵</strong>・<strong>当たり判定</strong>・<strong>スコア</strong>・<strong>ゲームオーバー</strong>を加えて、インベーダー風ゲームを完成させます。<br>
+            ここまでの内容（変数、条件分岐、ループ、リスト、音、画像）をできるだけ使います。
+          </div>
+
+          <div class="box-warning">
+            <strong>プロジェクトについて</strong><br>
+            第11回の <strong>invader</strong> プロジェクトをそのまま使って、続きを作ります（新規作成しなくてOK）。
+          </div>
+
+          <h4>完成イメージ</h4>
+          <ul>
+            <li>敵（1体〜複数体）が上の方に表示され、左右に動きます。</li>
+            <li>弾が敵に当たると、敵が消えてスコアが増えます。</li>
+            <li>敵が下まで来たらゲームオーバー。</li>
+            <li>スコア表示、効果音、（できれば）タイトル画像で完成度UP。</li>
+          </ul>
+
+          <h4>ステップ1：追加の変数を作成</h4>
+          <p><strong>敵の位置・移動・ゲーム状態を管理します。</strong></p>
+          <ul>
+            <li><strong>game</strong>：0=プレイ中、1=ゲームオーバー</li>
+            <li><strong>score</strong>：スコア</li>
+            <li><strong>ex</strong>：敵のx座標</li>
+            <li><strong>ey</strong>：敵のy座標</li>
+            <li><strong>espeed</strong>：敵の横移動速度（例：2）</li>
+            <li><strong>edir</strong>：敵の向き（1=右、-1=左）</li>
+          </ul>
+
+          <h4>ステップ2：UI（表示）を整える</h4>
+          <ul>
+            <li>Labelで <strong>Score</strong> を表示します（label_score など）。</li>
+            <li>第10回の画像が使えるなら、タイトルや自機を画像で表示してもOKです。</li>
+          </ul>
+
+          <h4>ステップ3：Setupに初期値を追加</h4>
+          <ol>
+            <li>第11回の初期化に加えて、次を追加します：
+              <ul>
+                <li>game = 0</li>
+                <li>score = 0</li>
+                <li>ex = 67（中央付近）</li>
+                <li>ey = 40（上の方）</li>
+                <li>edir = 1</li>
+                <li>espeed = 2</li>
+              </ul>
+            </li>
+            <li>Score表示を "Score: 0" にします。</li>
+          </ol>
+
+          <h4>ステップ4：Loopに「敵の動き」を追加</h4>
+          <ol>
+            <li>もし game = 0（プレイ中）なら、敵を動かします：</li>
+            <li>ex = ex + (espeed × edir)</li>
+            <li>もし ex が端に来たら（例：ex &lt; 5 または ex &gt; 130）：
+              <ul>
+                <li>edir = edir × -1（左右反転）</li>
+                <li>ey = ey + 10（少し下に下げる）</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h4>ステップ5：当たり判定（弾 vs 敵）</h4>
+          <p><strong>第5回A方式と同じ「範囲判定」を使います。</strong></p>
+          <ol>
+            <li>もし bullet = 1 のときだけ判定します。</li>
+            <li>次の2つが両方当てはまったら命中です（例：半径10）：
+              <ul>
+                <li>bx が（ex - 10）以上 かつ（ex + 10）以下</li>
+                <li>by が（ey - 10）以上 かつ（ey + 10）以下</li>
+              </ul>
+            </li>
+            <li>命中したら：
+              <ul>
+                <li>score を 1 増やす</li>
+                <li>bullet = 0（弾を消す）</li>
+                <li>敵を上に戻す（ey=40）＋xをランダムにする（ex=ランダム 5〜130）</li>
+              </ul>
+            </li>
+            <li>（任意）命中音を鳴らす（第6回）。</li>
+          </ol>
+
+          <h4>ステップ6：ゲームオーバー判定（敵が下に来たら）</h4>
+          <ol>
+            <li>もし ey &gt; 200 なら game = 1（ゲームオーバー）にします。</li>
+            <li>game=1のときは「GAME OVER」表示にして、敵の動きを止めます。</li>
+          </ol>
+
+          <h4>ステップ7：描画を仕上げる</h4>
+          <ul>
+            <li>毎フレーム：背景クリア → 自機 → 弾（あれば）→ 敵 → スコア表示</li>
+            <li>敵は円や四角でOK。画像が使えるなら画像でもOK。</li>
+          </ul>
+
+          <h4>ステップ8：実行して調整</h4>
+          <ol>
+            <li>「▶ Run」で実行します。</li>
+            <li>うまく当たらない場合は、当たり判定の±10を±12などに調整します。</li>
+            <li>難しすぎる/簡単すぎる場合は、espeedやeyの下がり幅を調整します。</li>
+          </ol>
+
+          <h4>プログラムの仕組みを理解しよう</h4>
+          <ul>
+            <li>第11回：自機（傾き）＋弾（ボタン）</li>
+            <li>第12回：敵の移動＋当たり判定＋スコア＋ゲーム状態（game）</li>
+            <li>ゲームの基本は「更新（移動）→判定→描画」をLoopで繰り返すことです。</li>
+          </ul>
+
+          <h4>応用してみよう</h4>
+          <ul>
+            <li><strong>応用1：敵をリストで複数にする</strong>（ex_list / ey_list を作る）<br>
+              <span class="small">手順の例：① ex_list と ey_list を「Make List」で作り、敵の数（例：3体）だけ初期値を入れます（exはランダム、eyは0〜40など）。② Loopの「敵の更新（移動）」を index=1〜リスト長 でくり返し、ex_list[index] / ey_list[index] を更新します。③ 当たり判定も同じく index を回し、当たった敵だけ ey_list[index]=0、ex_list[index]=ランダム にして、上に出しなおします。</span>
+            </li>
+            <li><strong>応用2：ハイスコア保存</strong>（第8回NVSで保存）</li>
+            <li><strong>応用3：弾を2連射</strong>（第11回応用の発展）</li>
+            <li><strong>応用4：画像と効果音で演出</strong>（第6回・第10回）</li>
+          </ul>
+
+          <div class="box-info">
+            <strong>おめでとうございます！</strong><br>
+            これで、M5StickC PLUS2 と UIFlow 2.0 の基本機能を使って、ひとつのゲーム作品を完成させました。<br>
+            この経験は、これからPython/JavaScriptなどのコード学習に進むときにも必ず役に立ちます。
+          </div>
+
+
+<div class="footer">
+      <p><strong>テノヒラメキ！M5ラボ ― テノヒラサイズのひらめきが、動き出す ―</strong></p>
+      <p>M5StickC PLUS2 &amp; UIFlow 2.0 プログラミング入門ガイド</p>
+      <p>プログラミングのKOBEYA</p>
+      <p>© 2026 テノヒラメキ！M5ラボ</p>
+    </div>
+  
+</body></html>
