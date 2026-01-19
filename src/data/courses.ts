@@ -76,7 +76,7 @@ export const courses: Course[] = [
     title: 'テノヒラメキ！M5ラボ',
     shortTitle: 'M5ラボ',
     description: '手のひらサイズのマイコンで、光る・鳴る・反応する自分だけのガジェットを発明しよう！',
-    image: '/images/m5-lab-announcement.jpg',
+    image: '/images/m5-lab-logo-square.jpg',
     imageAlt: 'テノヒラメキ！M5ラボ',
     targetAge: '小学3年生～中学3年生',
     duration: '90分/回',
