@@ -570,7 +570,7 @@ export const homePage = () => {
                   🎮 Scratch、マイクラッチでゲーム作り
                 </div>
                 <div style="padding: 0.5rem; text-align: center; font-size: 0.9rem; line-height: 1.5;">
-                  🐍 PythonでAI・本格プログラミング
+                  🤖 AI学習・英検対策・小論文対策
                 </div>
                 <div style="padding: 0.5rem; text-align: center; font-size: 0.9rem; line-height: 1.5;">
                   🎨 動画編集・デザイン・クリエイティブ
