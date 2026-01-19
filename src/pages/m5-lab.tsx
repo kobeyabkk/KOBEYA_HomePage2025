@@ -616,57 +616,57 @@ export const m5LabPage = () => (
             
             <div class="lesson-card">
               <div class="lesson-number">6</div>
-              <div class="lesson-title">ストップウォッチ</div>
+              <div class="lesson-title">メロディを作ろう</div>
               <div class="lesson-description">
-                タイム測定ができるストップウォッチを作ります。時間の計算やボタン操作を学びます。
+                ブザーを使って音楽を作ります。音の高さやリズムをプログラミングして、オリジナルメロディを奏でよう！
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">7</div>
-              <div class="lesson-title">電子サイコロ</div>
+              <div class="lesson-title">回転速度ゲーム</div>
               <div class="lesson-description">
-                振るとランダムに数字が出るサイコロプログラム。センサーと乱数の組み合わせを学びます。
+                ジャイロセンサーで回転を検知！M5Stickを素早く回して遊べるゲームを作ります。
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">8</div>
-              <div class="lesson-title">アラーム時計</div>
+              <div class="lesson-title">データロガー</div>
               <div class="lesson-description">
-                設定した時刻にアラームが鳴る時計を作ります。音の出し方や条件判定を学びます。
+                センサーのデータを記録して保存する方法を学びます。自分だけのデータ測定器を作ろう！
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">9</div>
-              <div class="lesson-title">歩数計</div>
+              <div class="lesson-title">赤外線リモコンを作ろう</div>
               <div class="lesson-description">
-                歩いた歩数をカウントするプログラム。センサーのデータを使った計算方法を学びます。
+                赤外線でテレビなどを操作できるリモコンを作ります。身近な家電を自分のプログラムでコントロール！
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">10</div>
-              <div class="lesson-title">傾き計測器</div>
+              <div class="lesson-title">画像でゲームをパワーアップ</div>
               <div class="lesson-description">
-                物の傾きを測る道具を作ります。センサーデータの視覚化を学びます。
+                画像を表示してゲームをもっと楽しく！キャラクターや背景を使った本格的なゲーム作りに挑戦。
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">11</div>
-              <div class="lesson-title">反応速度ゲーム</div>
+              <div class="lesson-title">タイマーでゲームを制御</div>
               <div class="lesson-description">
-                ボタンを素早く押すゲームを作ります。タイミングの測定や結果の表示を学びます。
+                タイマー機能を使ったゲームの仕組みを学びます。時間制限やカウントダウンを実装しよう！
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">12</div>
-              <div class="lesson-title">オリジナル作品</div>
+              <div class="lesson-title">インベーダー風ゲーム</div>
               <div class="lesson-description">
-                今まで学んだことを組み合わせて、自分だけのオリジナル作品を作ります！
+                今まで学んだすべてを使って、本格的なシューティングゲームを完成させます！
               </div>
             </div>
           </div>
