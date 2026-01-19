@@ -576,7 +576,7 @@ export const homePage = () => {
                   🎨 動画編集・デザイン・クリエイティブ
                 </div>
                 <div style="padding: 0.5rem; text-align: center; font-size: 0.9rem; line-height: 1.5;">
-                  🧠 思考力育成・算数数学個別指導
+                  💡 テノヒラメキ！M5でガジェット発明
                 </div>
               </div>
             </div>
