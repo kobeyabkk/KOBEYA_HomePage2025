@@ -648,25 +648,25 @@ export const m5LabPage = () => (
             
             <div class="lesson-card">
               <div class="lesson-number">10</div>
-              <div class="lesson-title">画像でゲームをパワーアップ</div>
+              <div class="lesson-title">画像で見た目をパワーアップ（UIエディター中心）</div>
               <div class="lesson-description">
-                画像を表示してゲームをもっと楽しく！キャラクターや背景を使った本格的なゲーム作りに挑戦。
+                UIエディターで画面を作り、画像を配置してゲームの見た目を本格化！画像の準備方法や表示の切り替えを学びます。
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">11</div>
-              <div class="lesson-title">タイマーでゲームを制御</div>
+              <div class="lesson-title">インベーダー風ゲーム（準備編：弾を撃つ）</div>
               <div class="lesson-description">
-                タイマー機能を使ったゲームの仕組みを学びます。時間制限やカウントダウンを実装しよう！
+                シューティングゲームの基礎を作ります。自機を動かして弾を撃つプログラムに挑戦！
               </div>
             </div>
             
             <div class="lesson-card">
               <div class="lesson-number">12</div>
-              <div class="lesson-title">インベーダー風ゲーム</div>
+              <div class="lesson-title">インベーダー風ゲーム（完成編）</div>
               <div class="lesson-description">
-                今まで学んだすべてを使って、本格的なシューティングゲームを完成させます！
+                敵キャラの動き、当たり判定、スコア表示を実装して、本格的なシューティングゲームを完成させます！
               </div>
             </div>
           </div>
