@@ -605,7 +605,7 @@ export const homePage = () => {
           {/* News Item 1 - M5 Lab */}
           <a href="/m5-lab" style="text-decoration: none; display: block;">
             <div class="news-item">
-              <div style="display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
                 <div style="flex-shrink: 0;">
                   <img src="/images/m5-lab-announcement.jpg" alt="テノヒラメキ！M5ラボ" style="width: 180px; height: 180px; object-fit: cover; border-radius: 0.75rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" />
                 </div>
