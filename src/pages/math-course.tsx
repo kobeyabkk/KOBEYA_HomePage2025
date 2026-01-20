@@ -6,7 +6,7 @@ export function mathCoursePage() {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>算数数学個別指導｜KOBEYA プログラミング教室 - オーダーメイドプリント対応</title>
-      <meta name="description" content="KOBEYA（コベヤ）の算数数学個別指導。小学生から中学生まで、一人ひとりに合わせたオーダーメイドプリントで学習。算数プリント・国語プリントも対応。バンコクのプログラミング教室。">
+      <meta name="description" content="KOBEYA（コベヤ）の算数数学個別指導。小5以上対象、一人ひとりに合わせたオーダーメイドプリントで学習。算数プリント・国語プリントも対応。バンコクのプログラミング教室。">
       <meta name="keywords" content="算数,数学,個別指導,算数 プリント,国語 プリント,オーダーメイド,小学生,中学生,バンコク,KOBEYA,コベヤ,プログラミング教室">
       <meta property="og:title" content="算数数学個別指導｜KOBEYA">
       <meta property="og:description" content="一人ひとりに合わせたオーダーメイドプリントで学ぶ算数数学個別指導">
@@ -243,7 +243,7 @@ export function mathCoursePage() {
             <i class="fas fa-calculator"></i>
           </div>
           <h1 class="hero-title">算数数学個別指導</h1>
-          <p class="hero-subtitle">小中高校生の算数・数学を丁寧に指導します</p>
+          <p class="hero-subtitle">小5以上の算数・数学を丁寧に指導します</p>
           <a href="/" class="back-home">
             <i class="fas fa-home"></i>
             ホームに戻る
@@ -267,7 +267,7 @@ export function mathCoursePage() {
 
             <div class="availability-notice">
               <p>＜現在の空きコマ状況＞</p>
-              <p class="availability-date">2025.10現在</p>
+              <p class="availability-date">2026.2現在</p>
               <p style="margin-top: 16px;">空きコマはありません。</p>
               <p>空き状況についてはお問い合わせください。</p>
             </div>
