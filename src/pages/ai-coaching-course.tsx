@@ -10,8 +10,8 @@ export const aiCoachingCoursePage = () => (
       <meta property="og:title" content="AI学習コーチング｜KOBEYA" />
       <meta property="og:description" content="AIと講師のハイブリッド個別指導" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/ai-coaching-course" />
-      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/ai-coaching-course" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/courses/ai-coaching" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/courses/ai-coaching" />
       
       {/* Course Structured Data for AI */}
       <script type="application/ld+json">{`
