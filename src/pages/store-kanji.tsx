@@ -447,23 +447,20 @@ export const storeKanjiPage = () => (
           {/* Product Image */}
           <div class="product-image-section">
             <div class="product-image product-image-simple">
-              <img src="/images/kanji-test-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px; position: relative; z-index: 10;" />
+              <img src="/images/kanji-test-icon.png" alt="漢字テストジェネレーター" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px; position: relative; z-index: 10;" />
             </div>
             
-            {/* YouTube Video */}
+            {/* YouTube Video - 準備中 */}
             <div style="margin-top: 30px;">
-              <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <iframe 
-                  src="https://www.youtube.com/embed/8-Dihg_B_Z0" 
-                  title="漢字テストジェネレーター デモ動画" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
-                ></iframe>
+              <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                  <i class="fas fa-video" style="font-size: 4rem; margin-bottom: 15px; opacity: 0.8;"></i>
+                  <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">紹介動画 準備中</p>
+                  <p style="font-size: 1rem; opacity: 0.9;">Coming Soon...</p>
+                </div>
               </div>
               <p style="text-align: center; margin-top: 15px; color: var(--text-gray); font-size: 0.9rem;">
-                📹 アプリの使い方を動画で確認
+                📹 使い方動画を準備中です
               </p>
             </div>
           </div>
@@ -499,8 +496,16 @@ export const storeKanjiPage = () => (
               </div>
             </div>
 
-            <div class="product-price">
-              350<span class="product-price-unit">バーツ</span>
+            <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
+              <div class="product-price" style="margin-bottom: 0;">
+                250<span class="product-price-unit">バーツ</span>
+              </div>
+              <div style="font-size: 1.3rem; color: var(--text-gray); text-decoration: line-through;">
+                350バーツ
+              </div>
+            </div>
+            <div style="display: inline-block; background: #FF5722; color: white; padding: 8px 16px; border-radius: 8px; font-weight: 700; margin-bottom: 15px;">
+              🔥 期間限定！100バーツOFF
             </div>
             <p class="product-price-note">※ 買い切り型（追加料金なし）</p>
 
@@ -537,20 +542,15 @@ export const storeKanjiPage = () => (
                 <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 12px;">
                   こちらからでもご購入できます
                 </p>
-                <a 
-                  href="https://namfonix.gumroad.com/l/igmyye" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                <div 
                   class="gumroad-button"
-                  style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: #FF90E8; color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 144, 232, 0.3);"
-                  onmouseover="this.style.background='#FF6FD8'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 144, 232, 0.4)'"
-                  onmouseout="this.style.background='#FF90E8'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 144, 232, 0.3)'"
+                  style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: #E0E0E0; color: #757575; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); cursor: not-allowed; opacity: 0.7;"
                 >
-                  <i class="fas fa-external-link-alt"></i>
-                  Gumroadで購入（ドル建て）
-                </a>
+                  <i class="fas fa-clock"></i>
+                  Gumroad 準備中
+                </div>
                 <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 8px;">
-                  🌍 外部リンク・クレジットカード決済
+                  🔜 まもなく開始予定
                 </p>
               </div>
 
@@ -615,7 +615,7 @@ export const storeKanjiPage = () => (
           {/* Hero Message */}
           <div class="detail-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
             <h2 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 20px; color: white;">
-              計算力と「学習の自信」を引き出す
+              漢字力と「学習の自信」を引き出す
             </h2>
             <p style="font-size: 1.5rem; font-weight: 500; color: rgba(255,255,255,0.95);">
               次世代百ます計算アプリ
@@ -690,21 +690,21 @@ export const storeKanjiPage = () => (
                 🚀 毎日5分の習慣が未来を変える
               </h3>
               <p style="font-size: 1.1rem; margin-bottom: 20px; color: var(--text-gray);">
-                計算力・正確性・集中力が"自然に"伸びる設計
+                漢字力・記憶力・学習習慣が"自然に"身につく設計
               </p>
               
               <div class="features-grid">
                 <div class="feature-card">
-                  <div class="feature-icon">⚡</div>
-                  <h3 class="feature-title">計算速度が速くなる</h3>
+                  <div class="feature-icon">✍️</div>
+                  <h3 class="feature-title">正しい書き順が身につく</h3>
                 </div>
                 <div class="feature-card">
                   <div class="feature-icon">🎯</div>
-                  <h3 class="feature-title">ケアレスミスが減る</h3>
+                  <h3 class="feature-title">漢字テストのミスが減る</h3>
                 </div>
                 <div class="feature-card">
                   <div class="feature-icon">🧠</div>
-                  <h3 class="feature-title">集中力が上がる</h3>
+                  <h3 class="feature-title">記憶力が上がる</h3>
                 </div>
               </div>
 
@@ -921,8 +921,8 @@ export const storeKanjiPage = () => (
             </h2>
             <div class="detail-content">
               <ul>
-                <li><strong>計算力を基礎から鍛えたい小学生</strong> - 繰り返し練習で自然と計算が速くなります</li>
-                <li><strong>中学受験を控えた生徒</strong> - 計算ミスを減らし、試験での得点力アップ</li>
+                <li><strong>漢字力を基礎から鍛えたい小学生</strong> - 繰り返し練習で自然と漢字が書けるようになります</li>
+                <li><strong>中学受験を控えた生徒</strong> - 漢字の書き間違いを減らし、試験での得点力アップ</li>
                 <li><strong>毎日の学習習慣をつけたい方</strong> - 短時間で取り組める内容で継続しやすい</li>
                 <li><strong>保護者の方</strong> - お子様の学習をサポートしたい方に最適</li>
                 <li><strong>教室や塾の先生</strong> - 生徒の宿題や小テストとして活用可能</li>
