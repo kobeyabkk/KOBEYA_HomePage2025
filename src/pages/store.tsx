@@ -348,9 +348,9 @@ export const storePage = () => (
           {/* 今後のアプリ予告（2つ表示） */}
           {/* 漢字テストジェネレーター */}
           <div class="app-card" onclick="window.location.href='/store/kanji-test'">
-            <div class="app-card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-              <span class="app-card-badge" style="background: #10B981; color: white;">NEW!</span>
-              <span class="app-card-icon">✍️</span>
+            <div class="app-card-image" style="background: none;">
+              <span class="app-card-badge" style="background: #FF5722; color: white; font-weight: 700; font-size: 0.9rem;">🔥 期間限定！</span>
+              <img src="/images/kanji-test-icon-optimized.png" alt="漢字テスト" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="app-card-content">
               <h3 class="app-card-title">漢字テストジェネレーター</h3>
@@ -368,8 +368,10 @@ export const storePage = () => (
                 小学校1〜6年生の全1026漢字を完全収録。練習モード・テストモードで効率的に漢字学習。
               </p>
               <div class="app-card-price">
-                350<span class="app-card-price-unit">バーツ</span>
+                <span style="text-decoration: line-through; color: #999; font-size: 0.9rem; margin-right: 8px;">350</span>
+                <span style="color: #FF5722; font-weight: 700; font-size: 1.3rem;">250</span><span class="app-card-price-unit">バーツ</span>
               </div>
+              <p style="margin: 8px 0 0; font-size: 0.9rem; color: #FF5722; font-weight: 600;">🔥 今だけ100バーツOFF!</p>
               <a href="/store/kanji-test" class="app-card-button">
                 詳細を見る →
               </a>
