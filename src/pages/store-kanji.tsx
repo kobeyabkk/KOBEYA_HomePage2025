@@ -714,104 +714,38 @@ export const storeKanjiPage = () => (
             </div>
           </div>
 
-          {/* ゲーム感覚 */}
-          <div class="detail-section" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white;">
-            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
-              🎮 ゲーム感覚で続けられるから、子どもがやめない
-            </h2>
-            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 25px; color: white;">
-              🏆 自己ベスト更新が楽しい
-            </p>
-            <p style="font-size: 1.1rem; margin-bottom: 15px; line-height: 1.8; color: rgba(255,255,255,0.95);">
-              タイムアタック × 見える化でモチベが続く
-            </p>
-            
-            <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 15px; margin-top: 25px;">
-              <ul style="list-style: none; padding: 0; font-size: 1.05rem; line-height: 2;">
-                <li>✅ 「昨日の自分」と勝負</li>
-                <li>✅ ベストタイムを金色バッジで表彰</li>
-                <li>✅ 履歴グラフで成長がわかる</li>
-              </ul>
-            </div>
 
-            <p style="font-size: 1.1rem; margin-top: 25px; font-weight: 600; color: white;">
-              気づけば、お子さまが"自分から"机に向かう習慣が身につきます。
-            </p>
-          </div>
-
-          {/* デジタル × 紙 */}
+          {/* 手書き練習 × プリント学習 */}
           <div class="detail-section">
             <h2 class="detail-section-title">
               <i class="fas fa-layer-group"></i>
-              デジタル学習 × 紙の学習、どちらにも完璧対応
+              手書き練習 × プリント学習、両方に完全対応
             </h2>
             <div class="detail-content">
               <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-bottom: 20px;">
-                🖥️ デジタル入力モード
+                ✍️ 手書き練習モード
               </h3>
-              <p style="margin-bottom: 15px; font-size: 1.05rem;">自動採点・タイマー・履歴保存つき</p>
+              <p style="margin-bottom: 15px; font-size: 1.05rem;">書き順を確認しながら正しく書けるようになる</p>
               <ul style="font-size: 1.05rem; line-height: 1.8;">
-                <li>PC、iPad、スマホで直接入力</li>
-                <li>全デバイスに最適化（スマホ横でテンキー表示）</li>
-                <li>Enterキーの移動方向も設定可能</li>
-                <li>全角→半角自動変換で入力ミス防止</li>
+                <li>PC、iPad、スマホで手書き練習</li>
+                <li>4マスをなぞって書き順を覚える</li>
+                <li>ペン設定（太さ・色）や消しゴム機能</li>
+                <li>スクショ保存で学習記録を残せる</li>
               </ul>
 
               <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 40px; margin-bottom: 20px;">
-                🖨️ 印刷モード
+                🖨️ プリント生成モード
               </h3>
               <p style="margin-bottom: 15px; font-size: 1.05rem;">A4に問題＋解答を自動レイアウト</p>
               <ul style="font-size: 1.05rem; line-height: 1.8;">
-                <li>問題は紙で練習したい派にも最適</li>
-                <li>折れば問題と解答が1枚に</li>
+                <li>紙で練習したい派にも最適</li>
+                <li>読み仮名・例文も一緒にプリント</li>
                 <li>学校や塾の課題プリントにもそのまま使える</li>
               </ul>
             </div>
           </div>
 
-          {/* 16言語対応 */}
-          <div class="detail-section" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
-            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
-              🌍 世界72%の人が母国語で学べる 16言語対応
-            </h2>
-            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">
-              🇯🇵🇺🇸🇨🇳🇹🇭 … 全16言語完全対応
-            </p>
-            <p style="font-size: 1.1rem; margin-bottom: 15px; line-height: 1.8; color: rgba(255,255,255,0.95);">
-              家庭でも、学校でも、世界中どこでも使える
-            </p>
-            <p style="font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.95);">
-              英語・日本語・中国語・韓国語・タイ語・スペイン語…<br/>
-              合計16言語で表示され、UIも完全ローカライズ。
-            </p>
-            <p style="font-size: 1.1rem; margin-top: 20px; font-weight: 600; color: white;">
-              学校・塾・インターナショナルスクールでもすぐ使えます。
-            </p>
-          </div>
 
-          {/* カスタマイズ */}
-          <div class="detail-section">
-            <h2 class="detail-section-title">
-              <i class="fas fa-sliders-h"></i>
-              3×3〜15×15まで、完全自由なカスタマイズ
-            </h2>
-            <div class="detail-content">
-              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-bottom: 20px;">
-                🔢 すべての子に最適な問題を作れる
-              </h3>
-              <p style="margin-bottom: 15px; font-size: 1.05rem;">グリッド・範囲・難易度をフルカスタマイズ</p>
-              <ul style="font-size: 1.05rem; line-height: 1.8;">
-                <li>3×3〜15×15の正方形／長方形に対応</li>
-                <li>数値範囲を自由設定（-999〜999）</li>
-                <li>固定値モードで九九の反復練習も</li>
-                <li>負の数50%ランダム生成にも対応</li>
-                <li>割り算は自動で"割り切れる問題だけ"を生成（解答できるマス6割以上）</li>
-              </ul>
-              <p style="font-size: 1.1rem; margin-top: 25px; font-weight: 600; color: var(--store-primary);">
-                初心者から中学生まで、これ1つで全学年カバー。
-              </p>
-            </div>
-          </div>
 
           {/* 最強コスパ */}
           <div class="detail-section" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
@@ -867,7 +801,7 @@ export const storeKanjiPage = () => (
               <div style="font-size: 1.1rem; line-height: 2.5;">
                 <p><strong>1️⃣</strong> ZIPをダウンロード</p>
                 <p><strong>2️⃣</strong> 解凍して index.html または START.html を開く</p>
-                <p><strong>3️⃣</strong> 言語を選んで「問題を生成」</p>
+                <p><strong>3️⃣</strong> 学年と出題数を選んで「問題を生成」</p>
               </div>
             </div>
 
@@ -886,12 +820,13 @@ export const storeKanjiPage = () => (
               <div style="background: var(--store-bg); padding: 30px; border-radius: 15px;">
                 <ul style="font-size: 1.05rem; line-height: 2.2;">
                   <li>✅ 漢字テストジェネレーター（全デバイス対応完全版）</li>
-                  <li>✅ 16言語対応UI</li>
-                  <li>✅ デジタル入力モード</li>
-                  <li>✅ 印刷モード</li>
-                  <li>✅ 自動採点・タイマー・履歴保存</li>
+                  <li>✅ 手書き練習モード</li>
+                  <li>✅ テストモード</li>
+                  <li>✅ プリント生成モード</li>
+                  <li>✅ 書き順確認機能</li>
+                  <li>✅ 例文カスタマイズ機能</li>
+                  <li>✅ スクショ保存機能</li>
                   <li>✅ 無制限の問題生成</li>
-                  <li>✅ 多言語マニュアル</li>
                   <li>✅ 生涯使用権</li>
                   <li>✅ 無料アップデート（スマホ・タブレットは自動更新、PCは自己更新）</li>
                 </ul>
