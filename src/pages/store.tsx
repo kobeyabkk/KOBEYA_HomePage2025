@@ -5,10 +5,10 @@ export const storePage = () => (
   <>
     <head>
       <title>KOBEYAアプリストア｜KOBEYA プログラミング教室</title>
-      <meta name="description" content="KOBEYAが開発した学習アプリ。100マス計算ジェネレーターなど、子どもたちの学力向上をサポートするアプリを販売しています。" />
-      <meta name="keywords" content="KOBEYAアプリストア,学習アプリ,100マス計算,教材,KOBEYA,バンコク" />
+      <meta name="description" content="KOBEYAが開発した学習アプリ。100マス計算ジェネレーター、漢字テストジェネレーターなど、子どもたちの学力向上をサポートするアプリを販売しています。" />
+      <meta name="keywords" content="KOBEYAアプリストア,学習アプリ,100マス計算,漢字テスト,教材,KOBEYA,バンコク" />
       <meta property="og:title" content="KOBEYAアプリストア｜KOBEYA" />
-      <meta property="og:description" content="学習アプリの販売。100マス計算ジェネレーターなど。" />
+      <meta property="og:description" content="学習アプリの販売。100マス計算・漢字テストジェネレーターなど。" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/store" />
       <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/store" />
@@ -315,7 +315,6 @@ export const storePage = () => (
           {/* 100マス計算ジェネレーター */}
           <div class="app-card" onclick="window.location.href='/store/100mas-calculator'">
             <div class="app-card-image" style="background: none;">
-              <span class="app-card-badge" style="background: #FF5722; color: white;">期間限定</span>
               <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="app-card-content">
@@ -337,12 +336,8 @@ export const storePage = () => (
               </p>
 
               <div class="app-card-price">
-                250<span class="app-card-price-unit">バーツ</span>
+                350<span class="app-card-price-unit">バーツ</span>
               </div>
-              <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: -10px; margin-bottom: 15px;">
-                <span style="text-decoration: line-through;">通常 350バーツ</span>
-                <span style="color: #FF5722; font-weight: 700; margin-left: 8px;">🔥 今だけ!</span>
-              </p>
 
               <a href="/store/100mas-calculator" class="app-card-button">
                 詳細を見る →
@@ -351,35 +346,37 @@ export const storePage = () => (
           </div>
 
           {/* 今後のアプリ予告（2つ表示） */}
-          <div class="app-card" style="opacity: 0.6; cursor: default;">
-            <div class="app-card-image">
-              <span class="app-card-badge" style="background: #E2E8F0; color: #718096;">近日公開</span>
+          {/* 漢字テストジェネレーター */}
+          <div class="app-card" onclick="window.location.href='/store/kanji-test'">
+            <div class="app-card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <span class="app-card-badge" style="background: #10B981; color: white;">NEW!</span>
               <span class="app-card-icon">✍️</span>
             </div>
             <div class="app-card-content">
-              <h3 class="app-card-title">漢字練習ジェネレーター</h3>
+              <h3 class="app-card-title">漢字テストジェネレーター</h3>
               <div class="app-card-meta">
                 <span class="app-card-meta-item">
-                  <i class="fas fa-clock"></i>
-                  開発中
+                  <i class="fas fa-users"></i>
+                  小1〜小6
                 </span>
                 <span class="app-card-meta-item">
-                  <i class="fas fa-users"></i>
-                  小1〜中学生
+                  <i class="fas fa-globe"></i>
+                  Webアプリ
                 </span>
               </div>
               <p class="app-card-description">
-                学年別の漢字練習プリントを自動生成。書き順・読み方も学べる総合練習アプリ。
+                小学校1〜6年生の全1026漢字を完全収録。練習モード・テストモードで効率的に漢字学習。
               </p>
-              <div class="app-card-price" style="color: #718096;">
-                近日公開
+              <div class="app-card-price">
+                350<span class="app-card-price-unit">バーツ</span>
               </div>
-              <button class="app-card-button" style="background: #E2E8F0; color: #718096; cursor: default;" disabled>
-                開発中
-              </button>
+              <a href="/store/kanji-test" class="app-card-button">
+                詳細を見る →
+              </a>
             </div>
           </div>
 
+          {/* 今後のアプリ予告 */}
           <div class="app-card" style="opacity: 0.6; cursor: default;">
             <div class="app-card-image">
               <span class="app-card-badge" style="background: #E2E8F0; color: #718096;">近日公開</span>
