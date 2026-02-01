@@ -13,6 +13,7 @@ import { pricingPage } from './pages/pricing'
 // Store pages
 import { storePage } from './pages/store'
 import { store100masPage } from './pages/store-100mas'
+import { storeKanjiPage } from './pages/store-kanji'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
@@ -85,6 +86,10 @@ app.get('/store', (c) => {
 
 app.get('/store/100mas-calculator', (c) => {
   return c.render(store100masPage())
+})
+
+app.get('/store/kanji-test', (c) => {
+  return c.render(storeKanjiPage())
 })
 
 // AI Consult page
