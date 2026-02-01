@@ -1,17 +1,17 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 
-export const store100masPage = () => (
+export const storeKanjiPage = () => (
   <>
     <head>
-      <title>100マス計算ジェネレーター｜KOBEYAアプリストア｜KOBEYA</title>
-      <meta name="description" content="たす・ひく・かける・わるの四則計算に対応した100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。小学1年生から中学生まで対応。" />
-      <meta name="keywords" content="100マス計算,算数,学習アプリ,教材,KOBEYA,バンコク" />
-      <meta property="og:title" content="100マス計算ジェネレーター｜KOBEYA" />
-      <meta property="og:description" content="たす・ひく・かける・わるの四則計算に対応した100マス計算アプリ。印刷もデジタル入力も可能。" />
+      <title>漢字テストジェネレーター｜KOBEYAアプリストア｜KOBEYA</title>
+      <meta name="description" content="小学校1〜6年生の全1026漢字を完全収録。練習モード・テストモード搭載で、親の準備5秒、子供は毎日5分で漢字力アップ。買い切り型350バーツ。" />
+      <meta name="keywords" content="漢字,漢字テスト,漢字練習,小学生,学習アプリ,教材,KOBEYA,バンコク" />
+      <meta property="og:title" content="漢字テストジェネレーター｜KOBEYA" />
+      <meta property="og:description" content="小学校1〜6年生の全1026漢字を完全収録。練習→テストで定着。親の準備5秒、買い切り型350バーツ。" />
       <meta property="og:type" content="product" />
-      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/store/100mas-calculator" />
-      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/store/100mas-calculator" />
+      <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/store/kanji-test" />
+      <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/store/kanji-test" />
     </head>
     
     <style>{`
@@ -438,7 +438,7 @@ export const store100masPage = () => (
         <span>/</span>
         <a href="/store">KOBEYAアプリストア</a>
         <span>/</span>
-        <span>100マス計算ジェネレーター</span>
+        <span>漢字テストジェネレーター</span>
       </div>
 
       <div class="product-container">
@@ -447,7 +447,7 @@ export const store100masPage = () => (
           {/* Product Image */}
           <div class="product-image-section">
             <div class="product-image product-image-simple">
-              <img src="/images/100mas-calculator-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px; position: relative; z-index: 10;" />
+              <img src="/images/kanji-test-icon.png" alt="100マス計算" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px; position: relative; z-index: 10;" />
             </div>
             
             {/* YouTube Video */}
@@ -455,7 +455,7 @@ export const store100masPage = () => (
               <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                 <iframe 
                   src="https://www.youtube.com/embed/8-Dihg_B_Z0" 
-                  title="100マス計算ジェネレーター デモ動画" 
+                  title="漢字テストジェネレーター デモ動画" 
                   frameborder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                   allowfullscreen
@@ -470,9 +470,9 @@ export const store100masPage = () => (
 
           {/* Product Info */}
           <div class="product-info">
-            <h1 class="product-title">100マス計算ジェネレーター</h1>
+            <h1 class="product-title">漢字テストジェネレーター</h1>
             <p class="product-subtitle">
-              たす・ひく・かける・わるの四則計算に対応した100マス計算を自動生成。印刷もデジタル入力もできるハイブリッド型。
+              小学校1〜6年生の全1026漢字を完全収録。親の準備5秒、子供は毎日5分で継続できる漢字学習。
             </p>
 
             <div class="product-meta">
@@ -480,7 +480,7 @@ export const store100masPage = () => (
                 <span class="product-meta-label">対象年齢</span>
                 <span class="product-meta-value">
                   <i class="fas fa-users"></i>
-                  小1〜中学生
+                  小1〜小6
                 </span>
               </div>
               <div class="product-meta-item">
@@ -626,28 +626,42 @@ export const store100masPage = () => (
           <div class="detail-section">
             <h2 class="detail-section-title">
               <i class="fas fa-bolt"></i>
-              このアプリが選ばれる3つの理由
+              このアプリが選ばれる5つの理由
             </h2>
             <div class="detail-content">
               <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
-                【1. 圧倒的な高機能 × 使いやすさ】
+                【1. 親の負担ゼロ】
               </h3>
               <p>
-                四則演算・負の数・長方形グリッド（3×3〜15×15）・数値範囲の自由設定に完全対応。印刷モードは問題と解答を一発生成。先生や保護者の準備時間はわずか5秒で完了します。デジタル入力モードではタイマー・自動採点・直近10回分の成績記録機能を搭載。もう、ドリルの買い足しや丸付けの手間に時間を割く必要はありません。
+                準備時間5秒。学年と問題数を選ぶだけで、あとは子供が自分で練習→テスト→完了。プリント作成・丸付けの手間がゼロになります。
               </p>
 
               <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
-                【2. 1日5分で計算力が2倍に】
+                【2. 練習→テストで定着】
               </h3>
               <p>
-                タイムアタック方式で「昨日の自分」と競争。成長が見える化されるから、子どもが自ら机に向かう。1ヶ月後には驚くほどの成長を実感できます。
+                4マスで漢字をなぞって練習 → テストで確認。繰り返し学習で記憶に定着します。書き順確認機能付きで、正しい書き方が身につきます。
               </p>
 
               <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
-                【3. 他アプリと比べて圧倒的な高コスパ】
+                【3. 書き順確認機能】
               </h3>
               <p>
-                月額課金なし・買い切り12.99ドル・無限に問題生成・16言語対応・家族全員＆教室OK。市販ドリル($10-30/冊)や月額アプリ($10-20/月)と比べて圧倒的コスパ。アプリ購入後の返金はできません。（GUMROADでご購入の方は、30日間返金保証が付いています）
+                ワンタップで書き順を確認できます。正しい書き方が身につくから、学校のテストでも自信が持てます。
+              </p>
+
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
+                【4. スクショで学習記録】
+              </h3>
+              <p>
+                子供だけで学習しても、スクリーンショット機能で後から親が確認できます。学習の進捗が一目でわかります。
+              </p>
+
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--store-primary); margin-top: 30px; margin-bottom: 15px;">
+                【5. 例文カスタマイズ】
+              </h3>
+              <p>
+                子供に最適な例文に変更可能。身近な例文にすることで記憶に定着しやすくなります。
               </p>
             </div>
           </div>
@@ -655,14 +669,13 @@ export const store100masPage = () => (
           {/* 百ます計算とは */}
           <div class="detail-section" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
             <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px;">
-              🧮 百ます計算とは？
+              📝 漢字テストジェネレーターとは？
             </h2>
             <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">
-              40年以上、日本の小学校で愛される「計算力強化メソッド」
+              小学校1〜6年生の全1026漢字を完全収録
             </p>
             <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.95);">
-              10×10マスで100問の計算を素早く解く、シンプルで最強の学習法。
-              日本の小学校で40年以上使われ続け、数百万人の子どもの計算力を劇的に伸ばしてきました。
+              学年と問題数を選ぶだけで、わずか5秒で準備完了。練習モード・テストモード・練習+テストモードの3つのモードを搭載。手書き練習、書き順確認、例文カスタマイズなど充実の機能で、漢字学習をサポートします。
             </p>
           </div>
 
@@ -670,7 +683,7 @@ export const store100masPage = () => (
           <div class="detail-section">
             <h2 class="detail-section-title">
               <i class="fas fa-fire"></i>
-              毎日5分で、計算力・正確性・集中力が驚くほど伸びる
+              毎日5分で、漢字力が着実に身につく
             </h2>
             <div class="detail-content">
               <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 25px;">
@@ -872,7 +885,7 @@ export const store100masPage = () => (
             <div class="detail-content">
               <div style="background: var(--store-bg); padding: 30px; border-radius: 15px;">
                 <ul style="font-size: 1.05rem; line-height: 2.2;">
-                  <li>✅ 100マス計算ジェネレーター（全デバイス対応完全版）</li>
+                  <li>✅ 漢字テストジェネレーター（全デバイス対応完全版）</li>
                   <li>✅ 16言語対応UI</li>
                   <li>✅ デジタル入力モード</li>
                   <li>✅ 印刷モード</li>
