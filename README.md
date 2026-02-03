@@ -1,302 +1,217 @@
-# AI & プログラミングのKOBEYA - 公式ウェブサイト
+# KOBEYA Programming School - Official Website
 
-バンコクの日本人向けプログラミング教室の公式ウェブサイト
+**AI-powered programming education for Japanese families in Bangkok**
 
-## 🎯 プロジェクト概要
+🌐 **Live Site**: https://kobeyabkk-homepage.pages.dev/  
+📧 **Contact**: kobeyabkk@gmail.com  
+🏫 **Location**: Bangkok, Thailand
 
-### 目的
-- バンコク在住の日本人家庭向けプログラミング教育情報の提供
-- 8つの多様なプログラミングコースの詳細紹介
-- オンライン・対面両対応の柔軟な学習環境のアピール
-- 無料体験授業の申込み促進
+[日本語](#日本語版) | [English](#english-version)
 
-### ターゲット
-- バンコク在住の日本人家庭
-- 5歳〜高校生の子どもを持つ保護者
-- プログラミング教育に関心のある家庭
-- 海外での日本語教育を重視する家庭
+---
 
-## 🏗️ 技術スタック
+## English Version
+
+### 🎯 About
+
+KOBEYA Programming School is a comprehensive programming education center in Bangkok, Thailand, specializing in teaching Japanese children aged 5-18. We offer 8 diverse courses ranging from STEAM education to AI/ML, all taught in Japanese with both online and in-person options.
+
+### ✨ Features
+
+- ✅ 8 specialized programming courses
+- ✅ Japanese language instruction
+- ✅ AI-powered learning support (Study Partner)
+- ✅ Flexible online/offline learning
+- ✅ Individual tutoring available
+- ✅ Real-world project-based learning
+- ✅ 20+ years of teaching experience
+
+### 📚 Courses
+
+| Course | Age | Description |
+|--------|-----|-------------|
+| **STEAM Course** | 5-12 | Science, Technology, Engineering, Art, Mathematics |
+| **Minecraft Programming** | 7+ | Learn coding through Minecraft (Scratch-based) |
+| **Toy Programming** | 5-14 | Robotics and educational toys |
+| **Think Think** | 4-12 | Logical thinking training app |
+| **Unity Game Dev** | 12+ | Professional game development with C# |
+| **Creators Course** | 8+ | Video editing, design, web development |
+| **AI Coaching Lab** | 13+ | Machine learning and AI fundamentals |
+| **Math Tutoring** | Grade 1-12 | Individual math instruction |
+
+### 🛠️ Tech Stack
 
 - **Framework**: Hono (Cloudflare Workers/Pages)
 - **Language**: TypeScript/JSX
-- **Styling**: Custom CSS + Font Awesome Icons
-- **Deployment**: Cloudflare Pages対応
-- **Process Manager**: PM2 (development)
+- **Styling**: Custom CSS + Font Awesome
+- **Database**: Cloudflare D1 (SQLite)
+- **Deployment**: Cloudflare Pages
 - **Build Tool**: Vite
 
-## 📚 提供コース
+### 🚀 Quick Start
 
-### 8つのメインコース
-
-| コース名 | 対象年齢 | 特徴 |
-|----------|----------|------|
-| **①STEAMコース** | 5〜12歳 | Science・Technology・Engineering・Art・Mathematics総合学習 |
-| **②マイクラッチコース** | 小学1年生〜 | Minecraft + プログラミング。TNT爆発、大規模建築、ダンジョン制作など |
-| **③トイプロ** | 5〜14歳 | おもちゃ・ロボット教材を使った体験型プログラミング |
-| **④シンクシンク** | 4〜12歳 | 思考力アプリを使った論理的思考力育成 |
-| **⑤Unity** | 12歳〜 | 本格的ゲーム開発・C#プログラミング |
-| **⑥クリエイターズ** | 8歳〜 | 動画編集・デザイン・ウェブ制作総合クリエイション |
-| **⑦AIコーチング・ラボ** | 13歳〜 | 機械学習・AI技術の理論と実践 |
-| **⑧算数数学個別指導** | 小1〜高3 | 完全個別指導による算数・数学学力向上 |
-
-## 🎨 デザインシステム
-
-### カラーパレット
-- **Main Yellow**: #FFC107 (メインブランドカラー)
-- **Accent Yellow**: #FFD700 (アクセント)
-- **Base White**: #FFFFFF (ベース)
-- **Text Dark**: #2D3748 (メインテキスト)
-- **Text Gray**: #718096 (サブテキスト)
-
-### フォント
-- **日本語**: Noto Sans JP, Hiragino Sans, Meiryo
-- **英語**: Helvetica Neue, Inter
-- **アイコン**: Font Awesome 6.4.0
-
-## 📱 ページ構成
-
-### 🏠 メインページ
-| Path | 説明 | 主な機能 |
-|------|------|----------|
-| `/` | ホームページ | ヒーローセクション、8コース概要、統計情報、CTA |
-| `/about` | 教室・講師紹介 | 講師プロフィール、教室理念、アクセス情報 |
-| `/contact` | お問い合わせ | 体験申込み、教室情報、FAQ、アクセスマップ |
-
-### 🎓 コースページ
-| Path | コース名 | 特徴 |
-|------|----------|------|
-| `/courses/steam` | STEAMコース | 総合STEAM教育 |
-| `/courses/minecraft` | マイクラッチコース | Minecraft×プログラミング |
-| `/courses/toyprogramming` | トイプロ | ロボット・おもちゃプログラミング |
-| `/courses/thinkthink` | シンクシンク | 思考力育成アプリ |
-| `/courses/unity` | Unity | 本格ゲーム開発 |
-| `/courses/creators` | クリエイターズ | デジタルクリエイション |
-| `/courses/ai-coaching` | AIコーチング・ラボ | AI・機械学習 |
-| `/courses/math` | 算数数学個別指導 | 完全個別算数・数学指導 |
-
-## 🎯 各コースページの共通構成
-
-### 📋 コンテンツ構造
-1. **ヒーローセクション** - コース名、キャッチコピー、メインビジュアル
-2. **コース概要** - 学習内容、特徴、身につくスキル
-3. **詳細機能・技術** - 使用ツール、学習内容の具体例
-4. **学習プロセス** - ステップバイステップの学習の流れ
-5. **対象年齢・レベル** - 推奨年齢、前提条件
-6. **実践例・作品例** - 制作可能な作品、プロジェクト例
-7. **身につく能力** - 習得できるスキル、将来への活用
-8. **スケジュール・料金** - 開講時間、料金プラン
-9. **CTA** - 体験申込み、問い合わせボタン
-
-### 🎨 ビジュアルデザイン特徴
-- **コース別カラーテーマ** - 各コースに特化した色彩設計
-- **グラデーション効果** - 現代的で魅力的な視覚表現
-- **アイコンシステム** - Font Awesomeによる統一されたアイコン使用
-- **レスポンシブ対応** - スマートフォン・タブレット完全対応
-- **アニメーション効果** - ホバーエフェクト、トランジション
-
-## 🚀 デプロイ状況
-
-### 本番環境
-- **Status**: ✅ 準備完了
-- **Platform**: Cloudflare Pages
-- **Domain**: 設定予定
-
-### 開発環境
-- **Status**: ✅ 動作中
-- **URL**: https://3000-iw2qwwbk4jhlcmmssyc11-6532622b.e2b.dev
-- **Local URL**: http://localhost:3000
-
-## 🛠️ 開発・デプロイ手順
-
-### ローカル開発
 ```bash
-# 依存関係インストール
+# Clone repository
+git clone https://github.com/kobeyabkk/KOBEYA_HomePage2025.git
+cd KOBEYA_HomePage2025
+
+# Install dependencies
 npm install
 
-# ビルド
+# Build project
 npm run build
 
-# 開発サーバー起動 (PM2使用)
-pm2 start ecosystem.config.cjs
-
-# サーバー停止
-pm2 delete all
+# Run development server
+npm run preview
 ```
 
-### プロジェクト構造
+### 📁 Project Structure
+
 ```
 webapp/
 ├── src/
-│   ├── index.tsx           # メインアプリケーション
-│   ├── renderer.tsx        # レンダリング設定
-│   ├── components/         # 共通コンポーネント
-│   │   ├── header.tsx      # ヘッダーナビゲーション
-│   │   └── footer.tsx      # フッター
-│   └── pages/              # ページコンポーネント
-│       ├── home.tsx        # ホームページ
-│       ├── about.tsx       # 教室紹介
-│       ├── contact.tsx     # お問い合わせ
-│       └── [course].tsx    # 8つのコースページ
-├── public/                 # 静的ファイル
-├── dist/                   # ビルド出力
-├── package.json            # 依存関係・スクリプト
-├── tsconfig.json          # TypeScript設定
-├── vite.config.ts         # Vite設定
-└── wrangler.jsonc         # Cloudflare設定
+│   ├── index.tsx           # Main application
+│   ├── components/         # Shared components
+│   │   ├── header.tsx      # Navigation header
+│   │   ├── footer.tsx      # Footer
+│   │   └── floating-cta.tsx # Floating CTA button
+│   ├── pages/              # Page components
+│   │   ├── home.tsx        # Homepage
+│   │   ├── about.tsx       # About us
+│   │   ├── contact.tsx     # Contact form
+│   │   ├── m5-lab.tsx      # M5Stack workshop
+│   │   └── [course].tsx    # 8 course pages
+│   ├── data/               # Static data
+│   └── utils/              # Utility functions
+├── public/                 # Static assets
+│   └── images/             # Images and logos
+├── dist/                   # Build output
+└── wrangler.jsonc         # Cloudflare config
 ```
 
-### デプロイ
+### 🌐 Deployment
+
 ```bash
-# Cloudflare Pages デプロイ
+# Deploy to Cloudflare Pages
 npm run build
-npx wrangler pages deploy dist --project-name kobeya-programming
+npx wrangler pages deploy dist
 ```
 
-## 📊 テスト済み機能
+### 📄 License
 
-### ✅ 動作確認済み
-- ホームページ表示 (200 OK)
-- 全8コースページ表示 (200 OK)  
-- aboutページ表示 (200 OK)
-- contactページ表示 (200 OK)
-- レスポンシブデザイン対応
-- ナビゲーション機能
-- CTAボタン動作
+Proprietary - All rights reserved
 
-### 🧪 テスト結果
-```
-Testing course pages...
-Testing /courses/steam: ✅ OK (200)
-Testing /courses/minecraft: ✅ OK (200)
-Testing /courses/toyprogramming: ✅ OK (200)
-Testing /courses/thinkthink: ✅ OK (200)
-Testing /courses/unity: ✅ OK (200)
-Testing /courses/creators: ✅ OK (200)
-Testing /courses/ai-coaching: ✅ OK (200)
-Testing /courses/math: ✅ OK (200)
+### 👤 Author
 
-Testing other pages...
-Testing /about: ✅ OK (200)
-Testing /contact: ✅ OK (200)
-```
+**Masamichi Suzuki (鈴木政路)**  
+Founder & Lead Instructor  
+KOBEYA Programming School, Bangkok
 
-## 📞 教室情報
+- 🎓 20+ years of education experience
+- 💻 AI Engineer & Full-stack Developer
+- 🌏 Based in Bangkok, Thailand
 
-### 基本情報
-- **教室名**: AI & プログラミングのKOBEYA
-- **代表**: 鈴木政路（すずき まさみち）
-- **所在地**: フジスーパー2号店2階, バンコク
-- **対象**: 在タイ日本人の子どもたち
-
-### 指導方針
-- **楽しく学ぶ**: ゲーム感覚で自然に学習
-- **個別最適化**: 一人ひとりのペースに合わせた指導
-- **実践重視**: 作品制作を通じた実践的スキル習得
-- **創造性育成**: 自由な発想と表現力の育成
-
-### 開講時間
-- **平日**: 16:00-20:00
-- **土日**: 9:00-17:00
-- **オンライン**: 8:00-22:00対応可能
-
-## 🔄 更新履歴
-
-### v3.0.2 - Unityコース外部サイトリダイレクト対応 (2025-10-20)
-
-#### 🔗 Unityコースの外部化
-**目的**: オンライン専門の提携校サイトへの誘導
-
-#### 🎨 変更内容
-- **外部リンク化**: Unityコースを提携校サイト（kodomopro.com）にリダイレクト
-- **説明文更新**: 「オンライン専門の提携校のサイトに移ります」を追加
-- **ボタン変更**: 「詳細を見る」→「提携校サイトへ」+ 外部リンクアイコン
-- **302リダイレクト**: `/courses/unity` → `https://www.kodomopro.com/`
-
-#### 📋 技術実装
-- **data/courses.ts**: ctaUrl, ctaText, description を更新
-- **home.tsx**: 外部リンク判定ロジック追加（target="_blank", rel="noopener noreferrer"）
-- **index.tsx**: `/courses/unity` ルートを302リダイレクトに変更
-- **外部リンクアイコン**: Font Awesome `fa-external-link-alt` 自動表示
-
-#### 🔗 リンク
-- Internal Route: `/courses/unity` → 302 Redirect
-- External URL: https://www.kodomopro.com/
-- Production: https://d52beab2.kobeya-homepage2025.pages.dev/
+**Contact**
+- GitHub: [@kobeyabkk](https://github.com/kobeyabkk)
+- Email: kobeyabkk@gmail.com
+- Website: https://kobeyabkk-homepage.pages.dev/
+- LINE: @093dagwm
 
 ---
 
-### v3.0.1 - 算数数学個別指導ページ簡素化 (2025-10-20)
+## 日本語版
 
-#### 📐 算数数学ページの変更
-**目的**: 個別指導は大きく宣伝しない方針に合わせたシンプルなデザイン
+### 🎯 プロジェクト概要
 
-#### 🎨 変更内容
-- **シンプルデザイン**: 詳細な統計・実績情報を削除し、基本情報のみに集約
-- **コンパクト化**: 1ページ構成で必要最小限の情報提供
-- **空きコマ情報**: 現在の空き状況を明示（2025.10時点: 空きなし）
-- **お問い合わせ優先**: 詳細は問い合わせで対応する設計
+AI & プログラミングのKOBEYAは、バンコク在住の日本人家庭向けプログラミング教室の公式ウェブサイトです。5歳から高校生まで、8つの多様なコースで本格的なプログラミング教育を提供しています。
 
-#### 📋 ページ構成
-1. **ヒーローセクション**: コース名のみのシンプル表示
-2. **基本情報カード**: iPadデジタル指導、オンライン推奨、継続学習可能
-3. **空きコマ状況**: 最新の空き状況（要問い合わせ）
-4. **CTAセクション**: お問い合わせフォームへの誘導
+### ✨ 特徴
 
-#### 🔗 URL
-- Production: https://39266f34.kobeya-homepage2025.pages.dev/courses/math
-- Path: `/courses/math`
+- ✅ 8つの専門プログラミングコース
+- ✅ 日本語での丁寧な指導
+- ✅ AI学習支援システム（Study Partner）
+- ✅ オンライン・対面両対応
+- ✅ 個別指導対応
+- ✅ 実践的なプロジェクト学習
+- ✅ 20年以上の教育実績
+
+### 📚 提供コース
+
+| コース名 | 対象年齢 | 内容 |
+|----------|----------|------|
+| **STEAMコース** | 5〜12歳 | 科学・技術・工学・芸術・数学の総合学習 |
+| **マイクラッチコース** | 小学1年生〜 | Minecraftでプログラミングを学ぶ |
+| **トイプロ** | 5〜14歳 | ロボット・おもちゃで学ぶプログラミング |
+| **シンクシンク** | 4〜12歳 | 思考力アプリで論理的思考を育成 |
+| **Unity** | 12歳〜 | 本格的ゲーム開発・C#プログラミング |
+| **クリエイターズ** | 8歳〜 | 動画編集・デザイン・ウェブ制作 |
+| **AIコーチング・ラボ** | 13歳〜 | 機械学習・AI技術の理論と実践 |
+| **算数数学個別指導** | 小1〜高3 | 完全個別指導による算数・数学学習 |
+
+### 🛠️ 技術スタック
+
+- **フレームワーク**: Hono (Cloudflare Workers/Pages)
+- **言語**: TypeScript/JSX
+- **スタイリング**: カスタムCSS + Font Awesome
+- **データベース**: Cloudflare D1 (SQLite)
+- **デプロイ**: Cloudflare Pages
+- **ビルドツール**: Vite
+
+### 🚀 開発手順
+
+```bash
+# リポジトリのクローン
+git clone https://github.com/kobeyabkk/KOBEYA_HomePage2025.git
+cd KOBEYA_HomePage2025
+
+# 依存関係のインストール
+npm install
+
+# プロジェクトのビルド
+npm run build
+
+# 開発サーバーの起動
+npm run preview
+```
+
+### 📞 教室情報
+
+**教室名**: AI & プログラミングのKOBEYA  
+**代表**: 鈴木政路（すずき まさみち）  
+**所在地**: フジスーパー2号店2階, バンコク  
+**対象**: 在タイ日本人の子どもたち（5歳〜高校生）
+
+**指導方針**
+- 楽しく学ぶ: ゲーム感覚で自然に学習
+- 個別最適化: 一人ひとりのペースに合わせた指導
+- 実践重視: 作品制作を通じた実践的スキル習得
+- 創造性育成: 自由な発想と表現力の育成
+
+**開講時間**
+- 平日: 16:00-20:00
+- 土日: 9:00-17:00
+- オンライン: 8:00-22:00対応可能
+
+### 📄 ライセンス
+
+プロプライエタリ - すべての権利を保有
+
+### 👤 著者
+
+**鈴木政路（すずき まさみち）**  
+代表・主任講師  
+AI & プログラミングのKOBEYA
+
+- 🎓 20年以上の教育実績
+- 💻 AIエンジニア・フルスタック開発者
+- 🌏 バンコク在住
+
+**連絡先**
+- GitHub: [@kobeyabkk](https://github.com/kobeyabkk)
+- Email: kobeyabkk@gmail.com
+- Website: https://kobeyabkk-homepage.pages.dev/
+- LINE: @093dagwm
 
 ---
 
-### v3.0.0 - 公式ウェブサイトリニューアル完了 (2025-10-15)
-
-#### ✅ 完全リニューアル実装
-**新機能**: プログラミング教室の公式ウェブサイト完全リニューアル
-
-#### 🏫 教室紹介ウェブサイト
-- **8コース詳細ページ**: 各コースの特徴・対象年齢・カリキュラム詳細
-- **教室情報**: 講師紹介、教室理念、アクセス情報
-- **お問い合わせシステム**: 体験申込み、FAQ、詳細相談
-
-#### 🎨 ブランドデザイン統一
-- **イエロー＆ホワイト**: 明るく親しみやすいブランドカラー
-- **読みやすさ優先**: 保護者が情報を得やすいデザイン設計
-- **レスポンシブ対応**: スマートフォン・タブレット完全対応
-
-#### 📚 コース詳細ページ
-1. **STEAMコース**: 総合STEAM教育（5〜12歳）
-2. **マイクラッチコース**: Minecraft×プログラミング（7歳〜）
-3. **トイプロ**: ロボット・おもちゃプログラミング（5〜14歳）
-4. **シンクシンク**: 思考力育成アプリ（4〜12歳）
-5. **Unity**: 本格ゲーム開発（12歳〜）
-6. **クリエイターズ**: デジタルクリエイション（8歳〜）
-7. **AIコーチング・ラボ**: AI・機械学習（13歳〜）
-8. **算数数学個別指導**: 完全個別指導（小1〜高3）
-
-#### 🚀 技術スタック刷新
-- **Hono Framework**: 軽量高速なCloudflare Workers対応
-- **TypeScript/JSX**: 型安全な開発環境
-- **Cloudflare Pages**: エッジデプロイメント対応
-- **カスタムCSS**: 独自デザインシステム構築
-
-#### 📱 ユーザーエクスペリエンス
-- **直感的ナビゲーション**: 明確な情報階層とアクセスしやすい構造
-- **CTAボタン最適化**: 体験申込みへの誘導強化
-- **保護者目線**: 料金・スケジュール・効果を分かりやすく提示
-- **信頼性向上**: 講師経験・実績・教育方針の詳細説明
-
-#### 🧪 品質保証
-- **全ページテスト済み**: 8コース + 基本ページの動作確認完了
-- **レスポンシブテスト**: モバイル・タブレット表示確認済み
-- **パフォーマンス最適化**: 高速読み込み・軽量化実装
-- **アクセシビリティ**: 読みやすさ・使いやすさ重視設計
-
----
-
-**Last Updated**: 2025-10-20  
-**Version**: 3.0.2  
-**Status**: ✅ 公式ウェブサイト稼働中 | Unity外部リンク対応完了
-Last updated: 2025-10-21
-
-# Last updated: Tue Oct 28 12:20:41 UTC 2025
+Made with ❤️ in Bangkok, Thailand
