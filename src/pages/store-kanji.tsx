@@ -483,8 +483,8 @@ export const storeKanjiPage = () => (
               <div class="product-meta-item">
                 <span class="product-meta-label">種類</span>
                 <span class="product-meta-value">
-                  <i class="fas fa-globe"></i>
-                  Webアプリ
+                  <i class="fas fa-pen"></i>
+                  全デバイス対応（手書き・プリント）
                 </span>
               </div>
               <div class="product-meta-item">
@@ -872,10 +872,11 @@ export const storeKanjiPage = () => (
               動作環境
             </h2>
             <div class="detail-content">
-              <p><strong>Webアプリ（ブラウザで動作）</strong></p>
+              <p><strong>全デバイス対応（デジタル & 印刷）</strong></p>
               <ul>
-                <li>Windows、Mac、Chromebook対応</li>
-                <li>スマートフォン・タブレットでも利用可能</li>
+                <li><strong>デジタル学習:</strong> PC・iPad・スマホで手書き練習可能</li>
+                <li><strong>印刷学習:</strong> PDFで書き込み式プリントを生成</li>
+                <li>Windows、Mac、Chromebook、iOS、Android対応</li>
                 <li>Google Chrome、Safari、Edge、Firefoxなど主要ブラウザ対応</li>
                 <li>インターネット接続必須</li>
               </ul>

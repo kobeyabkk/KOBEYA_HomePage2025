@@ -486,8 +486,8 @@ export const store100masPage = () => (
               <div class="product-meta-item">
                 <span class="product-meta-label">種類</span>
                 <span class="product-meta-value">
-                  <i class="fas fa-globe"></i>
-                  Webアプリ
+                  <i class="fas fa-mobile-alt"></i>
+                  全デバイス対応（PC・iPad・スマホ・印刷）
                 </span>
               </div>
               <div class="product-meta-item">
@@ -936,10 +936,12 @@ export const store100masPage = () => (
               動作環境
             </h2>
             <div class="detail-content">
-              <p><strong>Webアプリ（ブラウザで動作）</strong></p>
+              <p><strong>全デバイス対応（デジタル・印刷両用）</strong></p>
               <ul>
-                <li>Windows、Mac、Chromebook対応</li>
-                <li>スマートフォン・タブレットでも利用可能</li>
+                <li>✅ PC（Windows・Mac・Chromebook）でデジタル入力</li>
+                <li>✅ iPad・スマホでタッチ入力・手書き入力</li>
+                <li>✅ 印刷して紙のプリントとしても使える</li>
+                <li>✅ ブラウザで動作（インストール不要）</li>
                 <li>Google Chrome、Safari、Edge、Firefoxなど主要ブラウザ対応</li>
                 <li>インターネット接続必須</li>
               </ul>
