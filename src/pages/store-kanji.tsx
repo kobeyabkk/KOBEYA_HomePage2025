@@ -509,6 +509,24 @@ export const storeKanjiPage = () => (
             </div>
             <p class="product-price-note">※ 買い切り型（追加料金なし）</p>
 
+            {/* Demo Button */}
+            <div style="margin: 30px 0;">
+              <a 
+                href="https://kanji-test-generator-demo.pages.dev/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style="display: inline-block; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 18px 40px; border-radius: 12px; text-decoration: none; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 12px rgba(16,185,129,0.3); transition: all 0.3s ease;"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(16,185,129,0.4)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16,185,129,0.3)';"
+              >
+                🎮 無料デモを試す
+                <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 0.9rem;"></i>
+              </a>
+              <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-gray);">
+                ※ 購入前に機能を無料でお試しいただけます
+              </p>
+            </div>
+
             {/* Purchase Section */}
             <div class="purchase-section">
               <h3 class="purchase-title">
