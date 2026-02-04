@@ -326,8 +326,8 @@ export const storePage = () => (
                   小1〜中学生
                 </span>
                 <span class="app-card-meta-item">
-                  <i class="fas fa-globe"></i>
-                  Webアプリ
+                  <i class="fas fa-mobile-alt"></i>
+                  デジタル・印刷両対応
                 </span>
               </div>
 
@@ -365,8 +365,8 @@ export const storePage = () => (
                   小1〜小6
                 </span>
                 <span class="app-card-meta-item">
-                  <i class="fas fa-globe"></i>
-                  Webアプリ
+                  <i class="fas fa-pen"></i>
+                  手書き・プリント対応
                 </span>
               </div>
               <p class="app-card-description">
