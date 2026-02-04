@@ -377,9 +377,14 @@ export const storePage = () => (
                 <span style="color: #FF5722; font-weight: 700; font-size: 1.3rem;">250</span><span class="app-card-price-unit">バーツ</span>
               </div>
               <p style="margin: 8px 0 0; font-size: 0.9rem; color: #FF5722; font-weight: 600;">🔥 今だけ100バーツOFF!</p>
-              <a href="/store/kanji-test" class="app-card-button">
-                詳細を見る →
-              </a>
+              <div style="display: flex; gap: 10px; margin-top: 12px;">
+                <a href="https://kanji-test-generator-demo.pages.dev/" class="app-card-button" style="flex: 1; background: #10B981; color: white; text-align: center;" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
+                  🎮 デモを試す
+                </a>
+                <a href="/store/kanji-test" class="app-card-button" style="flex: 1; text-align: center;" onclick="event.stopPropagation();">
+                  詳細を見る →
+                </a>
+              </div>
             </div>
           </div>
 
