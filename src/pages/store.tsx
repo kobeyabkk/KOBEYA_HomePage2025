@@ -339,9 +339,14 @@ export const storePage = () => (
                 350<span class="app-card-price-unit">バーツ</span>
               </div>
 
-              <a href="/store/100mas-calculator" class="app-card-button">
-                詳細を見る →
-              </a>
+              <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <a href="https://100-masu-generator.pages.dev/demo" target="_blank" rel="noopener noreferrer" class="app-card-button" style="flex: 1; background: #10B981; text-align: center;" onclick="event.stopPropagation();">
+                  <i class="fas fa-play-circle"></i> デモを試す
+                </a>
+                <a href="/store/100mas-calculator" class="app-card-button" style="flex: 1; text-align: center;" onclick="event.stopPropagation();">
+                  詳細を見る →
+                </a>
+              </div>
             </div>
           </div>
 
