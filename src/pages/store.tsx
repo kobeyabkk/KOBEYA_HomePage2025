@@ -298,18 +298,26 @@ export const storePage = () => (
       {/* Hero Section */}
       <section class="store-hero">
         <div class="store-hero-content">
-          <div class="store-hero-icon">📱</div>
-          <h1 class="store-hero-title">KOBEYAアプリストア</h1>
+          <div class="store-hero-icon">🏪</div>
+          <h1 class="store-hero-title">KOBEYAストア</h1>
           <p class="store-hero-subtitle">
-            学習をサポートする高品質なアプリを提供<br/>
-            子どもたちの学力向上と効率的な学習を実現
+            個人向け学習アプリから事業者向けビジネスツールまで<br/>
+            高品質なソリューションを提供
           </p>
         </div>
       </section>
 
-      {/* Apps Grid */}
+      {/* BtoC Section - 個人向け学習アプリ */}
       <div class="store-container">
-        <h2 class="store-section-title">販売中のアプリ</h2>
+        <div style="margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; color: white;">
+          <h2 style="font-size: 2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 2.5rem;">🎓</span>
+            個人向け学習アプリ（BtoC）
+          </h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; opacity: 0.95;">
+            子どもたちの学習をサポートする高品質なアプリ。買い切り型で追加料金なし。
+          </p>
+        </div>
         
         <div class="apps-grid">
           {/* 100マス計算ジェネレーター */}
@@ -387,7 +395,22 @@ export const storePage = () => (
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
+      {/* BtoB Section - 事業者向けビジネスツール */}
+      <div class="store-container" style="margin-top: 80px;">
+        <div style="margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 20px; color: white;">
+          <h2 style="font-size: 2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 2.5rem;">💼</span>
+            事業者向けビジネスツール（BtoB）
+          </h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; opacity: 0.95;">
+            教室運営・個人事業主様向けの業務効率化ツール。カスタマイズ対応・お見積もり承ります。
+          </p>
+        </div>
+        
+        <div class="apps-grid">
           {/* SNSスパークルスケジューラー */}
           <div class="app-card" onclick="window.location.href='/store/sns-scheduler'">
             <div class="app-card-image" style="background: none;">
@@ -411,9 +434,11 @@ export const storePage = () => (
               <p class="app-card-description">
                 Instagram・Facebook・Twitter への投稿を完全自動化。教室運営をもっと楽に。
               </p>
-              <p style="margin: 15px 0 0; font-size: 0.95rem; color: #667eea; font-weight: 600;">
-                💼 お見積もり・ご相談承ります
-              </p>
+              <div class="app-card-price">
+                <span style="text-decoration: line-through; color: #999; font-size: 0.9rem; margin-right: 8px;">10,000</span>
+                <span style="color: #667eea; font-weight: 700; font-size: 1.3rem;">8,000</span><span class="app-card-price-unit">バーツ</span>
+              </div>
+              <p style="margin: 8px 0 0; font-size: 0.9rem; color: #667eea; font-weight: 600;">🎉 実績作りキャンペーン価格！</p>
               <div style="display: flex; gap: 10px; margin-top: 12px;">
                 <a href="https://kobeyabkk.github.io/sns-sparkle-scheduler/" class="app-card-button" style="flex: 1; background: #10B981; color: white; text-align: center;" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
                   🎮 デモを見る
@@ -425,38 +450,70 @@ export const storePage = () => (
             </div>
           </div>
 
-          {/* 今後のアプリ予告 */}
+          {/* 請求書自動発行ツール */}
           <div class="app-card" style="opacity: 0.6; cursor: default;">
             <div class="app-card-image">
-              <span class="app-card-badge" style="background: #E2E8F0; color: #718096;">近日公開</span>
-              <span class="app-card-icon">📝</span>
+              <span class="app-card-badge" style="background: #E2E8F0; color: #718096;">開発中</span>
+              <span class="app-card-icon">📄</span>
             </div>
             <div class="app-card-content">
-              <h3 class="app-card-title">文章問題ジェネレーター</h3>
+              <h3 class="app-card-title">請求書自動発行ツール</h3>
               <div class="app-card-meta">
                 <span class="app-card-meta-item">
-                  <i class="fas fa-clock"></i>
-                  開発中
+                  <i class="fas fa-building"></i>
+                  教室・事業主向け
                 </span>
                 <span class="app-card-meta-item">
-                  <i class="fas fa-users"></i>
-                  小1〜中学生
+                  <i class="fas fa-file-invoice"></i>
+                  自動発行
                 </span>
               </div>
               <p class="app-card-description">
-                算数の文章問題を自動生成。レベル別・テーマ別に問題を作成できます。
+                月謝・受講料の請求書を自動生成。生徒管理と連携して効率的な請求業務を実現。
               </p>
               <div class="app-card-price" style="color: #718096;">
-                近日公開
+                開発中
               </div>
               <button class="app-card-button" style="background: #E2E8F0; color: #718096; cursor: default;" disabled>
+                近日公開
+              </button>
+            </div>
+          </div>
+
+          {/* 領収書自動発行ツール */}
+          <div class="app-card" style="opacity: 0.6; cursor: default;">
+            <div class="app-card-image">
+              <span class="app-card-badge" style="background: #E2E8F0; color: #718096;">開発中</span>
+              <span class="app-card-icon">🧾</span>
+            </div>
+            <div class="app-card-content">
+              <h3 class="app-card-title">領収書自動発行ツール</h3>
+              <div class="app-card-meta">
+                <span class="app-card-meta-item">
+                  <i class="fas fa-building"></i>
+                  教室・事業主向け
+                </span>
+                <span class="app-card-meta-item">
+                  <i class="fas fa-receipt"></i>
+                  自動発行
+                </span>
+              </div>
+              <p class="app-card-description">
+                支払い確認後、自動で領収書を発行。PDF形式で保存・メール送信も可能。
+              </p>
+              <div class="app-card-price" style="color: #718096;">
                 開発中
+              </div>
+              <button class="app-card-button" style="background: #E2E8F0; color: #718096; cursor: default;" disabled>
+                近日公開
               </button>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Coming Soon Section */}
+      {/* Coming Soon Section */}
+      <div class="store-container" style="margin-top: 60px;">
         <div class="coming-soon-section">
           <div class="coming-soon-icon">🚀</div>
           <h3 class="coming-soon-title">さらに多くのアプリを開発中</h3>
