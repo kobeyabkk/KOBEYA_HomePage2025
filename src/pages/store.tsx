@@ -406,7 +406,7 @@ export const storePage = () => (
             事業者向けビジネスツール（BtoB）
           </h2>
           <p style="font-size: 1.1rem; line-height: 1.7; opacity: 0.95;">
-            教室運営・個人事業主様向けの業務効率化ツール。カスタマイズ対応・お見積もり承ります。
+            教室運営・個人事業主様向けの業務効率化ツール。お見積もり・ご相談承ります。
           </p>
         </div>
         
@@ -427,12 +427,11 @@ export const storePage = () => (
                 <span class="app-card-meta-item">
                   <i class="fab fa-instagram"></i>
                   <i class="fab fa-facebook"></i>
-                  <i class="fab fa-twitter"></i>
-                  3つのSNS
+                  2つのSNS
                 </span>
               </div>
               <p class="app-card-description">
-                Instagram・Facebook・Twitter への投稿を完全自動化。教室運営をもっと楽に。
+                Instagram・Facebook への投稿を完全自動化。教室運営をもっと楽に。
               </p>
               <div class="app-card-price">
                 <span style="color: #667eea; font-weight: 700; font-size: 1.2rem;">💼 お見積もり・ご相談承ります</span>
