@@ -450,6 +450,39 @@ export const storePage = () => (
             </div>
           </div>
 
+          {/* ホームページ制作サービス */}
+          <div class="app-card" onclick="window.location.href='/store/website-creation'">
+            <div class="app-card-image" style="background: none;">
+              <span class="app-card-badge" style="background: linear-gradient(135deg, #5B21B6 0%, #A855F7 100%); color: white; font-weight: 700; font-size: 0.9rem;">🚀 BtoB</span>
+              <img src="/images/website-creation-icon-optimized.png" alt="ホームページ制作" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div class="app-card-content">
+              <h3 class="app-card-title">ホームページ制作サービス</h3>
+              <div class="app-card-meta">
+                <span class="app-card-meta-item">
+                  <i class="fas fa-building"></i>
+                  教室・事業主向け
+                </span>
+                <span class="app-card-meta-item">
+                  <i class="fas fa-laptop-code"></i>
+                  全デバイス対応
+                </span>
+              </div>
+              <p class="app-card-description">
+                格安で高品質なホームページを制作。レスポンシブデザイン・SEO対応・お問い合わせフォーム標準装備。
+              </p>
+              <div class="app-card-price">
+                <span style="color: #5B21B6; font-weight: 700; font-size: 1.3rem;">10,000</span><span class="app-card-price-unit">バーツ 〜</span>
+              </div>
+              <p style="margin: 8px 0 0; font-size: 0.9rem; color: #5B21B6; font-weight: 600;">💼 お見積もり・ご相談承ります</p>
+              <div style="display: flex; gap: 10px; margin-top: 12px;">
+                <a href="/store/website-creation" class="app-card-button" style="flex: 1; text-align: center;" onclick="event.stopPropagation();">
+                  詳細を見る →
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* 請求書自動発行ツール */}
           <div class="app-card" style="opacity: 0.6; cursor: default;">
             <div class="app-card-image">

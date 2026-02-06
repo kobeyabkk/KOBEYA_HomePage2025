@@ -15,6 +15,7 @@ import { storePage } from './pages/store'
 import { store100masPage } from './pages/store-100mas'
 import { storeKanjiPage } from './pages/store-kanji'
 import { storeSnsSchedulerPage } from './pages/store-sns-scheduler'
+import { storeWebsiteCreationPage } from './pages/store-website-creation'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
@@ -95,6 +96,10 @@ app.get('/store/kanji-test', (c) => {
 
 app.get('/store/sns-scheduler', (c) => {
   return c.render(storeSnsSchedulerPage())
+})
+
+app.get('/store/website-creation', (c) => {
+  return c.render(storeWebsiteCreationPage())
 })
 
 // AI Consult page
