@@ -5,10 +5,10 @@ export const storeSnsSchedulerPage = () => (
   <>
     <head>
       <title>SNSスパークルスケジューラー｜KOBEYAアプリストア｜KOBEYA</title>
-      <meta name="description" content="Instagram・Facebook・Twitter への投稿を完全自動化。教室・個人事業主向けSNS自動投稿システム。月額わずか$5で3つのSNSに同時投稿。" />
-      <meta name="keywords" content="SNS自動投稿,Instagram,Facebook,Twitter,教室運営,BtoB,スケジューラー,KOBEYA,バンコク" />
+      <meta name="description" content="Instagram・Facebook への投稿を完全自動化。教室・個人事業主向けSNS自動投稿システム。" />
+      <meta name="keywords" content="SNS自動投稿,Instagram,Facebook,教室運営,BtoB,スケジューラー,KOBEYA,バンコク" />
       <meta property="og:title" content="SNSスパークルスケジューラー｜KOBEYA" />
-      <meta property="og:description" content="Instagram・Facebook・Twitter への投稿を完全自動化。月額$5で教室運営をもっと楽に。" />
+      <meta property="og:description" content="Instagram・Facebook への投稿を完全自動化。教室運営をもっと楽に。" />
       <meta property="og:type" content="product" />
       <meta property="og:url" content="https://kobeyabkk-homepage.pages.dev/store/sns-scheduler" />
       <link rel="canonical" href="https://kobeyabkk-homepage.pages.dev/store/sns-scheduler" />
@@ -512,7 +512,7 @@ export const storeSnsSchedulerPage = () => (
           <span class="product-badge">🚀 BtoB システム</span>
           <h1 class="product-title">SNSスパークルスケジューラー</h1>
           <p class="product-subtitle">
-            Instagram・Facebook・Twitter への投稿を完全自動化。教室運営・個人事業主向けの次世代マルチプラットフォーム投稿システム。
+            Instagram・Facebook への投稿を完全自動化。教室運営・個人事業主向けのSNS自動投稿システム。
           </p>
           
           <div class="product-meta">
@@ -535,8 +535,7 @@ export const storeSnsSchedulerPage = () => (
               <span class="product-meta-value">
                 <i class="fab fa-instagram"></i>
                 <i class="fab fa-facebook"></i>
-                <i class="fab fa-twitter"></i>
-                3つのSNS
+                2つのSNS
               </span>
             </div>
             <div class="product-meta-item">
@@ -551,11 +550,11 @@ export const storeSnsSchedulerPage = () => (
           <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; color: white;">
             <h3 style="font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
               <i class="fas fa-info-circle"></i>
-              BtoB向けカスタマイズ対応
+              教室・事業主様向けシステム
             </h3>
             <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 15px;">
-              教室・事業主様向けのカスタマイズ可能なSNS自動投稿システムです。<br/>
-              ご要望に応じた機能追加・料金プランをご提案いたします。
+              Instagram・Facebook への投稿を自動化し、<br/>
+              SNS運用の負担を大幅に軽減するシステムです。
             </p>
             <p style="font-size: 1.1rem; font-weight: 600; margin-top: 15px;">
               💼 お気軽にお見積もり・ご相談ください
@@ -630,14 +629,14 @@ export const storeSnsSchedulerPage = () => (
               <div class="feature-icon">🎯</div>
               <h3 class="feature-title">投稿作業からの完全解放</h3>
               <p class="feature-description">
-                毎週・毎日のSNS投稿を完全自動化。予約設定後は放置するだけで、Instagram・Facebook・Twitterに自動投稿されます。
+                毎週・毎日のSNS投稿を完全自動化。予約設定後は放置するだけで、Instagram・Facebookに自動投稿されます。
               </p>
             </div>
             <div class="feature-card">
               <div class="feature-icon">📱</div>
-              <h3 class="feature-title">3つのSNSに同時投稿</h3>
+              <h3 class="feature-title">2つのSNSに同時投稿</h3>
               <p class="feature-description">
-                Instagram、Facebook、Twitter (X) に一度の設定で同時投稿。それぞれのSNSを個別に操作する手間が不要になります。
+                Instagram、Facebook に一度の設定で同時投稿。それぞれのSNSを個別に操作する手間が不要になります。
               </p>
             </div>
             <div class="feature-card">
@@ -649,9 +648,9 @@ export const storeSnsSchedulerPage = () => (
             </div>
             <div class="feature-card">
               <div class="feature-icon">✅</div>
-              <h3 class="feature-title">リアルタイム文字数チェック</h3>
+              <h3 class="feature-title">投稿プレビュー</h3>
               <p class="feature-description">
-                Twitterの文字数制限を自動チェック。投稿前にプレビュー画面で確認でき、投稿失敗を防ぎます。
+                投稿前にプレビュー画面で内容を確認でき、投稿失敗を防ぎます。
               </p>
             </div>
             <div class="feature-card">
@@ -680,7 +679,7 @@ export const storeSnsSchedulerPage = () => (
                 </div>
                 <div class="use-case-detail">
                   <strong>投稿先:</strong>
-                  <span>Instagram、Facebook、Twitter</span>
+                  <span>Instagram、Facebook</span>
                 </div>
                 <div class="use-case-detail">
                   <strong>コメント:</strong>
@@ -692,7 +691,7 @@ export const storeSnsSchedulerPage = () => (
                 </div>
               </div>
               <div class="use-case-result">
-                <strong>結果:</strong> 毎週木曜日の夜8時に、自動的に3つのSNSに投稿されます。
+                <strong>結果:</strong> 毎週木曜日の夜8時に、自動的に2つのSNSに投稿されます。
               </div>
             </div>
 
@@ -705,7 +704,7 @@ export const storeSnsSchedulerPage = () => (
                 </div>
                 <div class="use-case-detail">
                   <strong>投稿先:</strong>
-                  <span>Instagram、Facebook、Twitter</span>
+                  <span>Instagram、Facebook</span>
                 </div>
                 <div class="use-case-detail">
                   <strong>コメント:</strong>
@@ -753,7 +752,7 @@ export const storeSnsSchedulerPage = () => (
           <div class="detail-content">
             <h3 style="margin-bottom: 20px; color: var(--store-primary);">✅ 基本機能</h3>
             <ul>
-              <li>Instagram・Facebook・Twitter 同時投稿</li>
+              <li>Instagram・Facebook 同時投稿</li>
               <li>毎日・毎週・毎月のスケジュール設定</li>
               <li>テンプレートからコメント自動選択</li>
               <li>画像フォルダから自動選択</li>
@@ -763,9 +762,7 @@ export const storeSnsSchedulerPage = () => (
             <h3 style="margin: 30px 0 20px; color: var(--store-primary);">✅ 便利機能</h3>
             <ul>
               <li>バンコク時間で入力 (自動UTC変換)</li>
-              <li>Twitter文字数リアルタイムチェック</li>
-              <li>画像自動リサイズ (Twitter対応)</li>
-              <li>URL自動短縮 (Twitter)</li>
+              <li>画像自動リサイズ</li>
               <li>ハッシュタグ管理</li>
             </ul>
 
@@ -833,7 +830,6 @@ export const storeSnsSchedulerPage = () => (
             <ul style="margin-bottom: 30px;">
               <li><strong>Instagram:</strong> Graph API (Instagram Business)</li>
               <li><strong>Facebook:</strong> Graph API</li>
-              <li><strong>Twitter:</strong> API v2 with OAuth 1.0a</li>
             </ul>
 
             <h3 style="margin-bottom: 15px; color: var(--store-primary);">インフラ技術</h3>
