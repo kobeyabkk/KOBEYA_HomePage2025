@@ -709,7 +709,10 @@ export const aiConsultPage = () => (
             現場目線で、あなたの業種・目的に合わせた最適なAI活用を提案します。
           </p>
           <div class="hero-cta-buttons">
-            <a href="https://line.me/R/ti/p/@093dagwm" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">
+            <a href="/contact" class="btn-hero-primary">
+              ✉️ 問い合わせフォーム
+            </a>
+            <a href="https://line.me/R/ti/p/@093dagwm" class="btn-hero-secondary" target="_blank" rel="noopener noreferrer">
               💬 LINEはこちら
             </a>
             <a href="/store" class="btn-hero-secondary">
@@ -743,7 +746,7 @@ export const aiConsultPage = () => (
           </div>
         </div>
         <p class="problem-conclusion">
-          KOBEYAは、そんな方々に「現場で使えるAI」を一緒に作ります。
+          KOBEYAは、そんな方々に「現場で使えるAI」の使い方を教えます。
         </p>
       </div>
     </section>
@@ -919,11 +922,11 @@ export const aiConsultPage = () => (
             まずはLINEで気軽にご相談ください。
           </p>
           <div class="contact-buttons">
-            <a href="https://line.me/R/ti/p/@093dagwm" class="btn-contact-primary" target="_blank" rel="noopener noreferrer">
-              📱 LINEはこちら
+            <a href="/contact" class="btn-contact-primary">
+              ✉️ 問い合わせフォーム
             </a>
-            <a href="/contact" class="btn-contact-secondary">
-              ✉️ メールで問い合わせ
+            <a href="https://line.me/R/ti/p/@093dagwm" class="btn-contact-secondary" target="_blank" rel="noopener noreferrer">
+              📱 LINEはこちら
             </a>
           </div>
         </div>
