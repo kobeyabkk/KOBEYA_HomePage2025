@@ -540,33 +540,41 @@ export const storeSnsSchedulerPage = () => (
               </span>
             </div>
             <div class="product-meta-item">
-              <span class="product-meta-label">利用期限</span>
+              <span class="product-meta-label">料金</span>
               <span class="product-meta-value">
-                <i class="fas fa-sync-alt"></i>
-                月額制
+                <i class="fas fa-comments-dollar"></i>
+                お見積もり
               </span>
             </div>
           </div>
           
-          <div style="margin-top: 20px;">
-            <div class="product-price">$5<span class="product-price-unit">/月</span></div>
-            <p class="product-price-note">※ Railway Hobby Plan（約180バーツ/月）</p>
-            <p class="product-price-note">※ 通常の使用量では月額$2-3程度で収まります</p>
+          <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; color: white;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+              <i class="fas fa-handshake"></i>
+              BtoB システム
+            </h3>
+            <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 15px;">
+              教室・事業主様向けのカスタマイズ可能なSNS自動投稿システムです。<br/>
+              ご要望に応じたプラン・料金をご提案いたします。
+            </p>
+            <p style="font-size: 0.95rem; opacity: 0.9;">
+              💼 お気軽にお見積もり・ご相談ください
+            </p>
           </div>
 
           {/* Demo Button */}
           <div style="margin: 30px 0;">
             <a 
-              href="https://web-production-65611.up.railway.app/" 
+              href="https://kobeyabkk.github.io/sns-sparkle-scheduler/" 
               target="_blank" 
               rel="noopener noreferrer"
               class="demo-button"
             >
-              🎮 デモシステムを見る
+              🎮 デモページを見る
               <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 0.9rem;"></i>
             </a>
             <p class="demo-note">
-              ※ 実際のシステムをご覧いただけます
+              ※ システムの詳細情報と機能をご覧いただけます
             </p>
           </div>
 
@@ -728,36 +736,6 @@ export const storeSnsSchedulerPage = () => (
               <div class="use-case-result">
                 <strong>結果:</strong> 曜日ごとに異なる内容を自動投稿。週3回の投稿が完全自動化されます。
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 料金プラン */}
-        <div class="detail-section">
-          <h2 class="detail-section-title">
-            <i class="fas fa-dollar-sign"></i>
-            料金プラン
-          </h2>
-          <div class="pricing-highlight">
-            <h3>月額わずか $5 で完全自動化</h3>
-            <p style="margin-bottom: 20px;">個人事業主・小規模教室に最適</p>
-            <div class="price">$5<span style="font-size: 2rem; margin-left: 10px;">/月</span></div>
-            <p style="margin-top: 20px; font-size: 1.1rem;">約180バーツ/月（Railway Hobby Plan）</p>
-            <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.9;">※ 通常の使用量では月額$2-3程度で収まります</p>
-            
-            <div class="pricing-features">
-              <ul style="list-style: none; padding: 0;">
-                <li>✅ 3つのSNSに同時投稿</li>
-                <li>✅ 無制限の予約登録</li>
-                <li>✅ テンプレート管理機能</li>
-                <li>✅ 画像自動選択・リサイズ</li>
-              </ul>
-              <ul style="list-style: none; padding: 0;">
-                <li>✅ タイムゾーン自動変換</li>
-                <li>✅ Twitter文字数チェック</li>
-                <li>✅ Web UIで簡単管理</li>
-                <li>✅ 永続化ストレージ</li>
-              </ul>
             </div>
           </div>
         </div>
