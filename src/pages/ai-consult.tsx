@@ -710,7 +710,7 @@ export const aiConsultPage = () => (
           </p>
           <div class="hero-cta-buttons">
             <a href="https://line.me/R/ti/p/@093dagwm" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">
-              💬 AIコンサルはこちら
+              💬 LINEはこちら
             </a>
             <a href="/store" class="btn-hero-secondary">
               📱 販売中のアプリを見る
@@ -920,7 +920,7 @@ export const aiConsultPage = () => (
           </p>
           <div class="contact-buttons">
             <a href="https://line.me/R/ti/p/@093dagwm" class="btn-contact-primary" target="_blank" rel="noopener noreferrer">
-              📱 AIコンサルはこちら
+              📱 LINEはこちら
             </a>
             <a href="/contact" class="btn-contact-secondary">
               ✉️ メールで問い合わせ
