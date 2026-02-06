@@ -388,6 +388,44 @@ export const storePage = () => (
             </div>
           </div>
 
+          {/* SNSスパークルスケジューラー */}
+          <div class="app-card" onclick="window.location.href='/store/sns-scheduler'">
+            <div class="app-card-image" style="background: none;">
+              <span class="app-card-badge" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 700; font-size: 0.9rem;">🚀 BtoB</span>
+              <img src="/images/sns-scheduler-icon-optimized.png" alt="SNSスパークルスケジューラー" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div class="app-card-content">
+              <h3 class="app-card-title">SNSスパークルスケジューラー</h3>
+              <div class="app-card-meta">
+                <span class="app-card-meta-item">
+                  <i class="fas fa-building"></i>
+                  教室・事業主向け
+                </span>
+                <span class="app-card-meta-item">
+                  <i class="fab fa-instagram"></i>
+                  <i class="fab fa-facebook"></i>
+                  <i class="fab fa-twitter"></i>
+                  3つのSNS
+                </span>
+              </div>
+              <p class="app-card-description">
+                Instagram・Facebook・Twitter への投稿を完全自動化。教室運営をもっと楽に。
+              </p>
+              <div class="app-card-price">
+                $5<span class="app-card-price-unit">/月</span>
+              </div>
+              <p style="margin: 8px 0 0; font-size: 0.9rem; color: #718096;">月額制・全機能利用可能</p>
+              <div style="display: flex; gap: 10px; margin-top: 12px;">
+                <a href="https://web-production-65611.up.railway.app/" class="app-card-button" style="flex: 1; background: #10B981; color: white; text-align: center;" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
+                  🎮 デモを見る
+                </a>
+                <a href="/store/sns-scheduler" class="app-card-button" style="flex: 1; text-align: center;" onclick="event.stopPropagation();">
+                  詳細を見る →
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* 今後のアプリ予告 */}
           <div class="app-card" style="opacity: 0.6; cursor: default;">
             <div class="app-card-image">
