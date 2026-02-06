@@ -411,12 +411,11 @@ export const storePage = () => (
               <p class="app-card-description">
                 Instagram・Facebook・Twitter への投稿を完全自動化。教室運営をもっと楽に。
               </p>
-              <div class="app-card-price">
-                $5<span class="app-card-price-unit">/月</span>
-              </div>
-              <p style="margin: 8px 0 0; font-size: 0.9rem; color: #718096;">月額制・全機能利用可能</p>
+              <p style="margin: 15px 0 0; font-size: 0.95rem; color: #667eea; font-weight: 600;">
+                💼 お見積もり・ご相談承ります
+              </p>
               <div style="display: flex; gap: 10px; margin-top: 12px;">
-                <a href="https://web-production-65611.up.railway.app/" class="app-card-button" style="flex: 1; background: #10B981; color: white; text-align: center;" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
+                <a href="https://kobeyabkk.github.io/sns-sparkle-scheduler/" class="app-card-button" style="flex: 1; background: #10B981; color: white; text-align: center;" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
                   🎮 デモを見る
                 </a>
                 <a href="/store/sns-scheduler" class="app-card-button" style="flex: 1; text-align: center;" onclick="event.stopPropagation();">
