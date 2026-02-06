@@ -435,10 +435,8 @@ export const storePage = () => (
                 Instagram・Facebook・Twitter への投稿を完全自動化。教室運営をもっと楽に。
               </p>
               <div class="app-card-price">
-                <span style="text-decoration: line-through; color: #999; font-size: 0.9rem; margin-right: 8px;">10,000</span>
-                <span style="color: #667eea; font-weight: 700; font-size: 1.3rem;">8,000</span><span class="app-card-price-unit">バーツ</span>
+                <span style="color: #667eea; font-weight: 700; font-size: 1.2rem;">💼 お見積もり・ご相談承ります</span>
               </div>
-              <p style="margin: 8px 0 0; font-size: 0.9rem; color: #667eea; font-weight: 600;">🎉 実績作りキャンペーン価格！</p>
               <div style="display: flex; gap: 10px; margin-top: 12px;">
                 <a href="https://kobeyabkk.github.io/sns-sparkle-scheduler/" class="app-card-button" style="flex: 1; background: #10B981; color: white; text-align: center;" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
                   🎮 デモを見る
