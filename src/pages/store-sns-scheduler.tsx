@@ -543,28 +543,26 @@ export const storeSnsSchedulerPage = () => (
               <span class="product-meta-label">料金</span>
               <span class="product-meta-value">
                 <i class="fas fa-tag"></i>
-                8,000バーツ
+                お見積もり
               </span>
             </div>
           </div>
           
           <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; color: white;">
             <h3 style="font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-              <i class="fas fa-tag"></i>
-              特別キャンペーン価格
+              <i class="fas fa-info-circle"></i>
+              BtoB向けカスタマイズ対応
             </h3>
-            <div style="display: flex; align-items: baseline; gap: 15px; margin: 20px 0;">
-              <span style="text-decoration: line-through; opacity: 0.7; font-size: 1.5rem;">10,000バーツ</span>
-              <span style="font-size: 3rem; font-weight: 800;">8,000</span>
-              <span style="font-size: 1.3rem;">バーツ</span>
-            </div>
             <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 15px;">
-              🎉 実績作りキャンペーン！通常10,000バーツのところ、<br/>
-              <strong style="font-size: 1.2rem;">今なら8,000バーツ</strong>でご提供いたします。
+              教室・事業主様向けのカスタマイズ可能なSNS自動投稿システムです。<br/>
+              ご要望に応じた機能追加・料金プランをご提案いたします。
             </p>
-            <p style="font-size: 0.95rem; opacity: 0.9;">
-              ※ パッケージ料金（買い切り型）<br/>
-              ※ 初期設定サポート・導入支援込み
+            <p style="font-size: 1.1rem; font-weight: 600; margin-top: 15px;">
+              💼 お気軽にお見積もり・ご相談ください
+            </p>
+            <p style="font-size: 0.95rem; opacity: 0.9; margin-top: 10px;">
+              ※ 初期設定サポート・導入支援込み<br/>
+              ※ SNS APIの利用料金は別途必要となります
             </p>
           </div>
 
