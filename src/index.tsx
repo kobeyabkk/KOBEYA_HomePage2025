@@ -14,6 +14,7 @@ import { pricingPage } from './pages/pricing'
 import { storePage } from './pages/store'
 import { store100masPage } from './pages/store-100mas'
 import { storeKanjiPage } from './pages/store-kanji'
+import { storeSnsSchedulerPage } from './pages/store-sns-scheduler'
 // Course pages
 import { steamCoursePage } from './pages/steam-course'
 import { minecraftCoursePage } from './pages/minecraft-course'
@@ -90,6 +91,10 @@ app.get('/store/100mas-calculator', (c) => {
 
 app.get('/store/kanji-test', (c) => {
   return c.render(storeKanjiPage())
+})
+
+app.get('/store/sns-scheduler', (c) => {
+  return c.render(storeSnsSchedulerPage())
 })
 
 // AI Consult page
