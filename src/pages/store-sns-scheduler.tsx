@@ -542,26 +542,30 @@ export const storeSnsSchedulerPage = () => (
               <span class="product-meta-label">料金</span>
               <span class="product-meta-value">
                 <i class="fas fa-tag"></i>
-                お見積もり
+                8,000バーツ（初年度）
               </span>
             </div>
           </div>
           
-          <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; color: white;">
+          <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #FF5722 0%, #FF8A65 100%); border-radius: 16px; color: white;">
             <h3 style="font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-              <i class="fas fa-info-circle"></i>
-              教室・事業主様向けシステム
+              <i class="fas fa-fire"></i>
+              🎉 先着5名様限定キャンペーン！
             </h3>
+            <div style="display: flex; align-items: baseline; gap: 15px; margin: 20px 0;">
+              <span style="text-decoration: line-through; opacity: 0.7; font-size: 1.5rem;">10,000バーツ</span>
+              <span style="font-size: 3rem; font-weight: 800;">8,000</span>
+              <span style="font-size: 1.3rem;">バーツ</span>
+            </div>
             <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 15px;">
-              Instagram・Facebook への投稿を自動化し、<br/>
-              SNS運用の負担を大幅に軽減するシステムです。
+              <strong style="font-size: 1.2rem;">2割引の特別価格！</strong><br/>
+              実績作りのため、先着5名様に限り通常10,000バーツのところ、<br/>
+              <strong>8,000バーツ</strong>でご提供いたします。
             </p>
-            <p style="font-size: 1.1rem; font-weight: 600; margin-top: 15px;">
-              💼 お気軽にお見積もり・ご相談ください
-            </p>
-            <p style="font-size: 0.95rem; opacity: 0.9; margin-top: 10px;">
-              ※ 初期設定サポート・導入支援込み<br/>
-              ※ SNS APIの利用料金は別途必要となります
+            <p style="font-size: 0.95rem; opacity: 0.9; margin-top: 15px;">
+              ✅ 初期設定サポート・導入支援込み<br/>
+              ✅ 初年度は追加費用なし<br/>
+              ✅ 2年目以降：年間メンテナンス費 2,000バーツのみ
             </p>
           </div>
 
