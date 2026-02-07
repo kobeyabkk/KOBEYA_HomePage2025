@@ -399,7 +399,7 @@ export const storePage = () => (
       </div>
 
       {/* BtoB Section - 事業者向けビジネスツール */}
-      <div class="store-container" style="margin-top: 80px;">
+      <div id="btob" class="store-container" style="margin-top: 80px; scroll-margin-top: 100px;">
         <div style="margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 20px; color: white;">
           <h2 style="font-size: 2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
             <span style="font-size: 2.5rem;">💼</span>
