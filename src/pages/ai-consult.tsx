@@ -655,19 +655,22 @@ export const aiConsultPage = () => (
       }
 
       .tool-cta-title {
-        color: white;
+        color: #ffffff;
         font-size: 2rem;
         font-weight: 800;
         margin-bottom: 1rem;
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
       }
 
       .tool-cta-subtitle {
-        color: rgba(255, 255, 255, 0.9);
+        color: #ffffff;
         font-size: 1.1rem;
         margin-bottom: 2rem;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        opacity: 1;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
       }
 
       .btn-tool-cta {
@@ -679,6 +682,7 @@ export const aiConsultPage = () => (
         text-decoration: none;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.75rem;
         transition: all 0.3s;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
