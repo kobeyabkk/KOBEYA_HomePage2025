@@ -629,6 +629,72 @@ export const aiConsultPage = () => (
         transform: translateY(-2px);
       }
 
+      /* Tool CTA Button */}
+      .tool-cta-section {
+        padding: 4rem 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tool-cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
+      }
+
+      .tool-cta-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .tool-cta-title {
+        color: white;
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .tool-cta-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-tool-cta {
+        background: white;
+        color: #667eea;
+        font-weight: 700;
+        padding: 1.25rem 3rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.3s;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        font-size: 1.2rem;
+      }
+
+      .btn-tool-cta:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
       /* Responsive */
       @media (max-width: 1024px) {
         .service-grid {
@@ -789,6 +855,21 @@ export const aiConsultPage = () => (
       </div>
     </section>
 
+    {/* Tool CTA 1 */}
+    <section class="tool-cta-section">
+      <div class="container">
+        <div class="tool-cta-content">
+          <h2 class="tool-cta-title">📱 実際に使えるツールを今すぐチェック</h2>
+          <p class="tool-cta-subtitle">
+            SNS自動投稿・ホームページ制作など、事業者向けのツールをご用意しています
+          </p>
+          <a href="/store#btob" class="btn-tool-cta">
+            🛠️ ツールはこちら
+          </a>
+        </div>
+      </div>
+    </section>
+
     {/* Case Study Section */}
     <section class="section">
       <div class="container">
@@ -816,6 +897,21 @@ export const aiConsultPage = () => (
               SNS投稿の手間を削減。AIが文章・ハッシュタグまで提案。
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Tool CTA 2 */}
+    <section class="tool-cta-section">
+      <div class="container">
+        <div class="tool-cta-content">
+          <h2 class="tool-cta-title">⚡ AIで作るから、早い！安い！柔軟！</h2>
+          <p class="tool-cta-subtitle">
+            個人開発だからこそ実現できる価格と品質。お気軽にご相談ください
+          </p>
+          <a href="/store#btob" class="btn-tool-cta">
+            🛠️ ツールはこちら
+          </a>
         </div>
       </div>
     </section>
@@ -882,30 +978,67 @@ export const aiConsultPage = () => (
       </div>
     </section>
 
+    {/* Tool CTA 3 */}
+    <section class="tool-cta-section">
+      <div class="container">
+        <div class="tool-cta-content">
+          <h2 class="tool-cta-title">💡 個人開発だからできるこの価格！</h2>
+          <p class="tool-cta-subtitle">
+            大手では実現できない柔軟性とスピード感で、あなたのビジネスをサポート
+          </p>
+          <a href="/store#btob" class="btn-tool-cta">
+            🛠️ ツールはこちら
+          </a>
+        </div>
+      </div>
+    </section>
+
     {/* Strength Section */}
     <section class="section-alt">
       <div class="container">
         <h2 class="section-title">KOBEYAの強み</h2>
+        <p class="section-subtitle">個人開発 × AI開発で実現する高品質・低価格</p>
         <div class="strength-grid">
+          <div class="strength-card">
+            <div class="strength-icon">⚡</div>
+            <h3 class="strength-title">AI開発だから、早い！安い！柔軟！</h3>
+            <p class="strength-description">
+              AI支援により開発スピードが圧倒的に速く、その分コストを抑えられます。変更にも柔軟に対応できます。
+            </p>
+          </div>
+          <div class="strength-card">
+            <div class="strength-icon">💰</div>
+            <h3 class="strength-title">個人開発だからできるこの価格</h3>
+            <p class="strength-description">
+              大手企業のような間接コストがないため、高品質なサービスを手頃な価格でご提供できます。
+            </p>
+          </div>
           <div class="strength-card">
             <div class="strength-icon">🎯</div>
             <h3 class="strength-title">教育現場での実践知</h3>
             <p class="strength-description">
-              AI×教育のノウハウをそのままビジネス応用
+              AI×教育のノウハウをそのままビジネス応用。現場で本当に使えるツールを提供します。
             </p>
           </div>
           <div class="strength-card">
             <div class="strength-icon">⚙️</div>
             <h3 class="strength-title">現場目線のアプリ開発力</h3>
             <p class="strength-description">
-              スプレッドシート連携／自動PDF生成／LINE連携まで一気通貫
+              スプレッドシート連携／自動PDF生成／LINE連携まで一気通貫で対応できます。
             </p>
           </div>
           <div class="strength-card">
             <div class="strength-icon">🌏</div>
             <h3 class="strength-title">バンコク発・グローバル対応</h3>
             <p class="strength-description">
-              海外教育現場でも使える仕組みづくり
+              海外教育現場でも使える仕組みづくり。多言語対応も柔軟に対応します。
+            </p>
+          </div>
+          <div class="strength-card">
+            <div class="strength-icon">🤝</div>
+            <h3 class="strength-title">直接対応で安心</h3>
+            <p class="strength-description">
+              開発者が直接対応するため、意思疎通がスムーズ。細かい要望にも柔軟に対応できます。
             </p>
           </div>
         </div>
