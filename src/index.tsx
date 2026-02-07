@@ -6,6 +6,7 @@ import { homePage } from './pages/home'
 import { aboutPage } from './pages/about'
 import { contactPage } from './pages/contact'
 import { aiConsultPage } from './pages/ai-consult'
+import { productsPage } from './pages/products'
 import { faqPage } from './pages/faq'
 import { supportPage } from './pages/support'
 import { schedulePage } from './pages/schedule'
@@ -105,6 +106,11 @@ app.get('/store/website-creation', (c) => {
 // AI Consult page
 app.get('/ai-consult', (c) => {
   return c.render(aiConsultPage())
+})
+
+// Products page
+app.get('/products', (c) => {
+  return c.render(productsPage())
 })
 
 // AI Coaching Lab page
