@@ -645,13 +645,16 @@ export const aiConsultPage = () => (
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
         animation: rotate 20s linear infinite;
       }
 
       .tool-cta-content {
         position: relative;
         z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .tool-cta-title {
@@ -659,7 +662,8 @@ export const aiConsultPage = () => (
         font-size: 2rem;
         font-weight: 800;
         margin-bottom: 1rem;
-        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
+        letter-spacing: 0.5px;
       }
 
       .tool-cta-subtitle {
@@ -667,10 +671,9 @@ export const aiConsultPage = () => (
         font-size: 1.1rem;
         margin-bottom: 2rem;
         max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
         opacity: 1;
-        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+        letter-spacing: 0.3px;
       }
 
       .btn-tool-cta {
